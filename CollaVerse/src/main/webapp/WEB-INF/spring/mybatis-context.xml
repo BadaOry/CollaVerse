@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close"
+		p:driverClassName="${db.driver}"
+		p:url="${db.url}"
+		p:username="${db.username}"
+		p:password="${db.password}"
+	/>
+	 
+	
+	<bean id="mybatisConfig" class="org.apache.ibatis.session.Configuration"
+		p:jdbcTypeForNull="NULL"
+	/>
+	
+	 
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:configuration-ref="mybatisConfig"
+		p:mapperLocations="classpath:mappers/**/*.xml"
+		p:typeAliasesPackage="com.collaverse.mvc.*.model.vo"
+		p:dataSource-ref="dataSource"
+	/>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
+		c:sqlSessionFactory-ref="sqlSessionFactory"
+	/>
+	
+	<!-- 
+	<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer"
+		p:basePackage="com.collaverse.mvc.*.model.dao"
+	/> 
+	 -->
+	
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource"
+	/>
+
+
+</beans>
+
