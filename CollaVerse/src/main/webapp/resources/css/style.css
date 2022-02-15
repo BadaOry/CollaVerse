@@ -3,7 +3,7 @@
 header{
 	position: relative;
 	width: 100%;
-    height: 180px;
+    height: 160px;
     background-color: black;
 	background-size: 100% 100%;
 }
@@ -35,13 +35,14 @@ header{
     height: 50px;
 }
 
+.header_nav1{
+	color: black;
+}
+
 .header_nav a{
-	display: block;
 	font-size: 1em;
     font-weight: 900;
-    color: white;
     height: 100%;
-    text-decoration: none;
 }
 
 .header_nav>ul>li>ul{
@@ -73,7 +74,7 @@ header{
 	height: 50px;
 }
 
-.header_nav a, .header_nav a:visited {
+.header_nav a {
 	padding: 10px 5px 5px 35px;
 	display: block;
 	color: white;
@@ -81,21 +82,92 @@ header{
 	text-decoration: none;
 }
 
+.header_nav a:visited{
+	padding: 10px 5px 5px 35px;
+	display: block;
+	width: 150px;
+	text-decoration: none;
+}
+
+#section{
+	height: 2200px;
+}
+
 #table{
 	padding-right: 30px;
 	float: right;
 }
 
+/*
 #body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
-/*특정 부분 스크롤바 없애기*/
+/*특정 부분 스크롤바 없애기
 .box{ -ms-overflow-style: none; } .box::-webkit-scrollbar{ display:none; }
+*/
 
-
-#container{
-	padding-top: 500px:
-	height: 937px;
+#search{
+	margin-top: 50px;
+	width: 100%;
+	text-align: center;
 }
 
+#form{
+	display: inline-block;
+}
+
+#search_input{
+	width: 800px;
+}
+
+.image-box{
+	overflow: hidden;
+	margin: 0 auto;
+	width: 1000px;
+	height: 400px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.ganzi{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.eventbanner{
+	background: green;
+	margin: 5%;
+	height: 400px;
+	text-align: center;
+}
+
+.calendar{
+	background: lime;
+	margin: 5%;
+	height: 600px;
+	text-align: center;
+}
+
+.notice{
+    float: left;
+    width:40%;
+	background: red;
+	margin: 5%;
+	height: 600px;
+	text-align: center;
+}
+
+.rank{
+    float: right;
+    width:40%;
+	background: blue;
+	margin: 5%;
+	height: 600px;
+	text-align: center;
+}
+
+/*
 html, body {margin:0; overflow:;}
 img {
     width: 8vw;
@@ -111,7 +183,7 @@ img {
   overflow-x: hidden;
   height: 100vh;
   background-color: #9f9eac;
-  /* background by SVGBackgrounds.com */
+  /* background by SVGBackgrounds.com
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -185,6 +257,7 @@ img {
     justify-self: center;
   }
 }
+*/
 
 footer{
 	position: relative;

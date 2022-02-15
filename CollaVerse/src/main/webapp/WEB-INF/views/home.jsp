@@ -14,29 +14,40 @@
 <body class="box" style=" overflow-y: scroll;">
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
-	<section>
+	<section id="section">
 	
-		<form action="freeList">
-			<div id="search">
-				<button type="submit">검색</button>
-				<input type="text">
+		<div id="search">
+			<form id="form" action="freeList">
 				<select>
 					<option>제목</option>
 					<option>내용</option>
 					<option>작성자</option>
 					<option>제목+내용</option>
 				</select>
-			</div>
-		</form>
-	
-	
-		<div id="container">
-		<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1037366/planet2.png">
-	  	<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1037366/three.js'></script>
-		<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1037366/CanvasRenderer.js'></script>
-		<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1037366/Projector.js'></script>
-	    <script  src="js/index.js"></script>
+				<input type="text" id="search_input">
+				<button type="submit">검색</button>
+			</form>
+		</div>
+		
+		<div class="eventbanner">이벤트 배너</div>
+		
+		<div class="calendar">캘린더</div>
+		
+		<div class="notice">공지사항</div>
+		
+		<div class="rank">랭킹</div>
+		
+		<!-- 
+		<div class="image-box">
+			<div class="ganzi">
+				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1037366/planet2.png">
+			  	<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1037366/three.js'></script>
+				<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1037366/CanvasRenderer.js'></script>
+				<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/1037366/Projector.js'></script>
+			    <script src="js/index.js"></script>
+		    </div>
 	    </div>
+	     -->
 		
 		<!-- <div class="container">
 		    <div class="image vh-fix"></div>
