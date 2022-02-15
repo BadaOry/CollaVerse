@@ -143,5 +143,4 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,windows,maven
 
 #2022 02 15 23:30 Crystal Edited
-*.MF
-pom.properties
+/target
