@@ -33,9 +33,11 @@
 		
 		<div class="calendar">캘린더</div>
 		
-		<div class="notice">공지사항</div>
-		
-		<div class="rank">랭킹</div>
+		<div class="noticeandrank">
+			<div class="notice">공지사항</div>
+			
+			<div class="rank">랭킹</div>
+		</div>
 		
 		<!-- 
 		<div class="image-box">
