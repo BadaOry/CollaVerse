@@ -141,3 +141,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse,java,windows,maven
+
+# 0222 02 16 12:30 Crystal Edited
+Servers/
+/Servers
