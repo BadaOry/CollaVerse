@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-=======
-<%@ page language="java"  contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
->>>>>>> 2a4279789648332fc5e6204938d732c245f03a55
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
@@ -16,18 +11,6 @@
 	<title>CollaVerse</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
-<<<<<<< HEAD
-<body>
-<h1>
-	Hello world!  
-</h1>
-
-<P>  The time on the server is ${serverTime}. </P>
-
-<button type="button" onclick="location.href='${ pageContext.request.contextPath }/member/login'">로그인</button>
-<button type="button" onclick="location.href='${ pageContext.request.contextPath }/member/enroll'">회원가입</button>
-
-=======
 <body class="box" style=" overflow-y: scroll;">
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
@@ -86,6 +69,5 @@
 	</section>
 	
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
->>>>>>> 2a4279789648332fc5e6204938d732c245f03a55
 </body>
 </html>
