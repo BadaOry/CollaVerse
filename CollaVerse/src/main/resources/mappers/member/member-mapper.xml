@@ -4,8 +4,48 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace="com.kh.mvc.member.model.dao.MemberMapper">
-	<select id="selectCount" resultType="_int">
-		SELECT COUNT(*) FROM MEMBER
+<mapper namespace="com.collaverse.mvc.member.model.dao.MemberMapper">
+
+	<sql id="selectMemberSql">
+		SELECT MEMBER_NO,
+			   MEMBER_ROLE,
+		       ID,
+		       PASSWORD,
+		       EMAIL,
+		       PHONE,
+		       NICKNAME,
+		       PROFILE_IMG,
+		       BUSINESS_NO,
+		       BUSINESS_NAME,
+		       ENROLL_DATE,
+		       MODIFY_DATE,
+		       MEMBER_STATUS,
+		       MEMBER_AGE,
+		       MEMBER_GENDER
+		FROM MEMBER
+	</sql>
+
+	<resultMap type="Member" id="memberResultMap">
+		<id property="member_no" column="MEMBER_NO"/>
+		<result property="member_role" column="MEMBER_ROLE"/>
+		<result property="id" column="ID"/>
+		<result property="password" column="PASSWORD"/>
+		<result property="email" column="EMAIL"/>
+		<result property="phone" column="PHONE"/>
+		<result property="nickname" column="NICKNAME"/>
+		<result property="profile_img" column="PROFILE_IMG"/>
+		<result property="business_no" column="BUSINESS_NO"/>
+		<result property="business_name" column="BUSINESS_NAME"/>
+		<result property="enrollDate" column="ENROLL_DATE"/>
+		<result property="modifyDate" column="MODIFY_DATE"/>
+		<result property="member_status" column="MEMBER_STATUS"/>
+		<result property="member_age" column="MEMBER_AGE"/>
+		<result property="member_gender" column="MEMBER_GENDER"/>
+	</resultMap>
+
+	<select id="findMemberById" parameterType="string" resultMap="memberResultMap">
+		<include refid="selectMapperSql" />
+		WHERE ID = #{id} AND #{password} AND STATUS = 'Y'
 	</select>
+
 </mapper>
