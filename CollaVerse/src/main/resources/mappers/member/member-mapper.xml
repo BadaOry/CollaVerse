@@ -26,8 +26,8 @@
 	</sql>
 
 	<resultMap type="Member" id="memberResultMap">
-		<id property="member_no" column="MEMBER_NO"/>
-		<result property="member_role" column="MEMBER_ROLE"/>
+		<id property="no" column="MEMBER_NO"/>
+		<result property="role" column="MEMBER_ROLE"/>
 		<result property="id" column="ID"/>
 		<result property="password" column="PASSWORD"/>
 		<result property="email" column="EMAIL"/>
@@ -38,14 +38,51 @@
 		<result property="business_name" column="BUSINESS_NAME"/>
 		<result property="enrollDate" column="ENROLL_DATE"/>
 		<result property="modifyDate" column="MODIFY_DATE"/>
-		<result property="member_status" column="MEMBER_STATUS"/>
-		<result property="member_age" column="MEMBER_AGE"/>
-		<result property="member_gender" column="MEMBER_GENDER"/>
+		<result property="status" column="MEMBER_STATUS"/>
+		<result property="age" column="MEMBER_AGE"/>
+		<result property="gender" column="MEMBER_GENDER"/>
 	</resultMap>
 
 	<select id="findMemberById" parameterType="string" resultMap="memberResultMap">
-		<include refid="selectMapperSql" />
-		WHERE ID = #{id} AND #{password} AND STATUS = 'Y'
+		<include refid="selectMemberSql" />
+		WHERE ID = #{id} AND MEMBER_STATUS = 'Y'
 	</select>
+	
+	<insert id="insertMember" parameterType="com.collaverse.mvc.member.model.vo.Member"
+			 useGeneratedKeys="true" keyColumn="MEMBER_NO" keyProperty="no">
+			INSERT INTO MEMBER (
+					    MEMBER_NO, 
+					    MEMBER_ROLE,
+				        ID,
+				        PASSWORD,
+				        EMAIL,
+				        PHONE,
+				        NICKNAME,
+				        PROFILE_IMG,
+				        BUSINESS_NO,
+				        BUSINESS_NAME,
+				        ENROLL_DATE,
+				        MODIFY_DATE,
+				        MEMBER_STATUS,
+				        MEMBER_AGE,
+				        MEMBER_GENDER
+				) VALUES (
+						SEQ_UNO.NEXTVAL,
+						DEFAULT,
+						#{id},
+						#{password},
+						#{email},
+						#{phone},
+						#{nickname},
+						#{profile_img},
+						#{business_no},
+						#{business_name},
+						DEFAULT,
+						DEFAULT,
+						DEFAULT,
+						#{age},
+						DEFAULT
+					)
+	</insert>
 
 </mapper>

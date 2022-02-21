@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Member {
 	
-	private int memberNo;
+	private int no;
 	
-	private String memberRole;
+	private String role;
 	
 	private String id;
 	
@@ -25,21 +25,21 @@ public class Member {
 	
 	private String nickname;
 	
-	private String profileImg;
+	private String profile_img;
 	
-	private String businessNo;
+	private String business_no;
 	
-	private String businessName;
+	private String business_name;
 	
 	private Date enrollDate;
 	
 	private Date modifyDate;
 	
-	private String memberStatus;
+	private String status;
 	
-	private int memberAge;
+	private int age;
 	
-	private String memberGender;
+	private String gender;
 
 	public Member(String id, String password) {
 		this.id = id;

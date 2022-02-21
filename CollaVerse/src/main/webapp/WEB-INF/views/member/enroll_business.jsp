@@ -10,13 +10,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>개인 회원가입</title>
+<title>사업자 회원가입</title>
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 </head>
 <body>
-	<h2>개인 회원 가입</h2>
+	<h2>사업자 회원 가입</h2>
 	<div id="enroll-container">	 	
-	 	<form name="memberEnrollFrm" action="${ path }/member/enroll" method="post">
+	 	<form name="memberEnrollFrm" action="${ path }/member/enroll_business" method="post">
 	 		<table>
 	 			<tr>
 					<th>아이디 *</th>
@@ -33,18 +33,17 @@
 	 			</tr>
 
 	 			<tr>
-					<th>이름 *</th>
+					<th>기업명 *</th>
 					<td>
-						<input type="text" id="userName" size="25" required>				
+						<input type="text" id="businessName" size="25" required>				
 					</td> 			
  				</tr>
  				<tr>
-					<th>닉네임 *</th>
+					<th>사업자등록번호 *</th>
 					<td>
-						<input type="text" name="nickname" id="nickname" size="25" required>				
+						<input type="text" placeholder="000-00-00000" name="business_no" id="business_no" maxlength="10" size="25" required>								
 					</td> 			
- 				</tr> 	
-
+	 			</tr>			
 	 			<tr>
 					<th>이메일 *</th>
 					<td>
@@ -65,7 +64,6 @@
                         <input type="text" id="age" class="int" maxlength="4" placeholder="년(4자)" size="4" required>
                     </span>
 
-					<!-- 생년월일의 월, 일 코드
                     <span class="box">
                         <select id="age" style="width:65px; height:22px;" required>
                             <option>월</option>
@@ -86,7 +84,6 @@
                     <span class="box">
                         <input type="text" id="age" class="int" maxlength="2" placeholder="일" size="4" required>
                     </span>
-                     -->
 	 				</td>
 	 			</tr>
 

@@ -1,6 +1,11 @@
 package com.collaverse.mvc.member.cotroller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,19 +26,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequestMapping
+@SessionAttributes("loginMember")
 public class MemberController {
 	
 	@Autowired
 	private MemberService service;
 	
 	//로그인
-	@RequestMapping(value = "/login", method = {RequestMethod.POST})
+	@RequestMapping(value = "member/login", method = {RequestMethod.POST})
 	public ModelAndView login(ModelAndView model,
 			@RequestParam("id") String id, @RequestParam("password") String password) {
 		
-		log.info("{}, {}", id, password);		
+		log.info("{}, {}", id, password);
 		
-		Member loginMember = service.login(id, password); //멤버서비스에 로그인기능을 위임
+		Member loginMember = service.login(id, password);
 		
 		if(loginMember != null) {
 			model.addObject("loginMember", loginMember);
@@ -53,7 +61,7 @@ public class MemberController {
 	}
 	
 	// 로그아웃
-	@GetMapping("/logout")
+	@GetMapping("/member/logout")
 	public String logout(SessionStatus status) {
 		
 		log.info("status.isComplete() : {}", status.isComplete());
@@ -65,6 +73,7 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	// 개인 회원가입
 	@GetMapping("/member/enroll")
 	public String enroll() {
 		log.info("회원 가입 페이지 요청");
@@ -72,7 +81,6 @@ public class MemberController {
 		return "member/enroll";
 	}
 	
-	// 회원가입
 	@PostMapping("/member/enroll")
 	public ModelAndView enroll(ModelAndView model, @ModelAttribute Member member) {
 		
@@ -91,6 +99,52 @@ public class MemberController {
 		model.setViewName("common/msg");
 		
 		return model;
+	}
+	
+	// 사업자 회원가입
+	@GetMapping("/member/enroll_business")
+	public String enroll_business() {
+		log.info("사업자 회원 가입 페이지 요청");
+		
+		return "member/enroll_business";
+	}
+	
+	@PostMapping("/member/enroll_business")
+	public ModelAndView enroll_business(ModelAndView model, @ModelAttribute Member member) {
+		
+		log.info(member.toString());
+				
+		int result = service.save(member);
+		
+		if(result > 0) {
+			model.addObject("msg", "회원가입이 정상적으로 완료되었습니다.");
+			model.addObject("location", "/");
+		} else {
+			model.addObject("msg", "회원가입을 실패하였습니다.");
+			model.addObject("location", "/member/enroll_business");			
+		}
+		
+		model.setViewName("common/msg");
+		
+		return model;
+	}
+	
+	// id중복확인
+	@GetMapping("/member/jsonTest")
+	@ResponseBody
+	public Object jsonTest() {
+		return new Member("cxrew", "1111");
+	}
+	
+	@PostMapping("/member/idCheck")
+	public ResponseEntity<Map<String, Boolean>> idCheck(@RequestParam("userId") String userId) {
+		Map<String, Boolean> map = new HashMap<>();
+		
+		log.info("{}", userId);
+		
+		map.put("duplicate", service.isDuplicateID(userId));
+		
+		return new ResponseEntity<Map<String,Boolean>>(map, HttpStatus.OK);
 	}
 }
 
