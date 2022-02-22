@@ -50,6 +50,7 @@ header{
     list-style: none;
     position: relative;
     display: none;
+    background-color: teal;
 }
 
 .header_nav>ul>li>a:hover+ul{
@@ -58,6 +59,7 @@ header{
 
 .header_nav>ul>li>ul:hover{
     display: block;
+    height:200px;
 }
 
 .header_nav ul{
