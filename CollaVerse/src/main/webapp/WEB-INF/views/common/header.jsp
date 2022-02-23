@@ -62,11 +62,17 @@
 							<li><a class="header_nav1" href="">콜라</a></li>
 						</ul>
 					</li>
-					<li><a href="">마이페이지</a>
+					<li><a href="${ path }/mypage/main">My 콜라버스</a>
 						<ul>
-							<li><a class="header_nav1" href="">마이</a></li>
-							<li><a class="header_nav1" href="">마이</a></li>
-							<li><a class="header_nav1" href="">마이</a></li>
+							<!-- <c:if test="${ loginMember.memberRole == '개인' }">
+							<li><a class="header_nav1" href="${ path }/mypage/follow">팔로우</a></li> </c:if> -->
+							<!-- <c:if test="${ loginMember.memberRole == '기업' }">
+							<li><a class="header_nav1" href="${ path }/mypage/statistics">팔로우 및 통계</a></li> </c:if> -->
+							
+							<li><a class="header_nav1" href="${ path }/mypage/calendar">My 콜라보 캘린더</a></li>
+							<li><a class="header_nav1" href="${ path }/mypage/collection/list">My 컬렉션</a></li>
+							<li><a class="header_nav1" href="${ path }/mypage/follow">팔로우</a></li>
+							<li><a class="header_nav1" href="${ path }/mypage/memberinfo">회원 정보</a></li>
 						</ul>
 					</li>
 					<li><a href="">FAQ</a>

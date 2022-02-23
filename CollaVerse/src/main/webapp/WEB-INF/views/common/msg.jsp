@@ -18,7 +18,7 @@
 		}
 		
 		// 페이지 이동
-		location.replace("${ pageContext.request.contextPath }${ location }/member/login");
+		location.replace("${ pageContext.request.contextPath }${ location }");
 	</script>
 </body>
 </html> 
