@@ -16,6 +16,7 @@ header{
 	padding-left: 70px;
 	font-size: 50px;
 	text-decoration: none;
+	background-color: black;
 }
 
 #header2{
@@ -25,69 +26,45 @@ header{
 }
 
 #header3{
-	position: relative;
+	float: left;
 	background-color: black;
 }
 
-.header_nav{
-	position:relative;
-    background-color: black;
-    height: 50px;
-}
-
-.header_nav1{
-	color: black;
-}
-
-.header_nav a{
-	font-size: 1em;
-    font-weight: 900;
-    height: 100%;
-}
-
-.header_nav>ul>li>ul{
-    padding: 0;
-    list-style: none;
-    position: relative;
-    display: none;
-}
-
-.header_nav>ul>li>a:hover+ul{
-    display: block;
-}
-
-.header_nav>ul>li>ul:hover{
-    display: block;
-}
-
-.header_nav ul{
-	list-style-type: none;
-	height: 50px;
-}
-
-.header_nav ul li{
-	width: 15%;
-	height: 100%;
-	display: inline;
+#header3 ul li {
 	float: left;
-	font-size: 25px;
-	height: 50px;
+	list-style-type: none;
 }
 
-.header_nav a {
-	padding: 10px 5px 5px 35px;
-	display: block;
+#header3 a {
+	font-size: 20px;
+	background-color: black;
+	height: 20px;
+	padding: 0 10px 0 10px;
+	text-decoration: none;
+	margin-right: 80px;
+}
+
+#header3 a:hover {
+	background-color: black;
 	color: white;
-	width: 150px;
-	text-decoration: none;
 }
 
-.header_nav a:visited{
-	padding: 10px 5px 5px 35px;
-	display: block;
-	width: 150px;
-	text-decoration: none;
+
+#header3 ul ul {
+	display: none;
+	position: absolute;
+	padding-top: 20px;
 }
+
+#header3 ul li:hover ul {
+	display: block;
+}
+
+#header3 ul ul li {
+	float: none;
+}
+
+
 
 #section{
 	height: auto;
@@ -277,4 +254,3 @@ footer{
 	color: white;
 	text-align: center;
 }
-

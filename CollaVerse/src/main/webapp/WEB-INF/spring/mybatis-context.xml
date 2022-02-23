@@ -30,12 +30,9 @@
 		c:sqlSessionFactory-ref="sqlSessionFactory"
 	/>
 	
-	<!-- 
 	<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer"
 		p:basePackage="com.collaverse.mvc.*.model.dao"
 	/> 
-	 -->
-	
 	
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		p:dataSource-ref="dataSource"
