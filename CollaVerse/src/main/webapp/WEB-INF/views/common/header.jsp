@@ -38,38 +38,36 @@
 		</div>
 		
 		<div id="header3">
-			<nav class="header_nav">
-				<ul>
-					<li><a href="">공지사항</a>
-						<ul>
-							<li><a class="header_nav1" href="">공지</a></li>
-							<li><a class="header_nav1" href="">공지</a></li>
-							<li><a class="header_nav1" href="">공지</a></li>
-						</ul>
-					</li>
-					<li><a href="">콜라보</a>
-						<ul>
-							<li><a class="header_nav1" href="">콜라</a></li>
-							<li><a class="header_nav1" href="">콜라</a></li>
-							<li><a class="header_nav1" href="">콜라</a></li>
-						</ul>
-					</li>
-					<li><a href="">마이페이지</a>
-						<ul>
-							<li><a class="header_nav1" href="">마이</a></li>
-							<li><a class="header_nav1" href="">마이</a></li>
-							<li><a class="header_nav1" href="">마이</a></li>
-						</ul>
-					</li>
-					<li><a href="">F&Q</a>
-						<ul>
-							<li><a class="header_nav1" href="">에페큐</a></li>
-							<li><a class="header_nav1" href="">에페큐</a></li>
-							<li><a class="header_nav1" href="">에페큐</a></li>
-						</ul>
-					</li>
-				</ul>
-			</nav>
+			<ul>
+				<li><a href="">공지사항</a>
+					<ul>
+						<li><a href="">공지</a></li>
+						<li><a href="">공지</a></li>
+						<li><a href="">공지</a></li>
+					</ul>
+				</li>
+				<li><a href="">콜라보</a>
+					<ul>
+						<li><a href="">콜라</a></li>
+						<li><a href="">콜라</a></li>
+						<li><a href="">콜라</a></li>
+					</ul>
+				</li>
+				<li><a href="">마이페이지</a>
+					<ul>
+						<li><a href="">마이</a></li>
+						<li><a href="">마이</a></li>
+						<li><a href="">마이</a></li>
+					</ul>
+				</li>
+				<li><a href="">F&Q</a>
+					<ul>
+						<li><a href="">에페큐</a></li>
+						<li><a href="">에페큐</a></li>
+						<li><a href="">에페큐</a></li>
+					</ul>
+				</li>
+			</ul>
 		</div>
 	</header>
 </body>
