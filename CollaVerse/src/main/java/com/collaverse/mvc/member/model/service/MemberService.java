@@ -15,5 +15,8 @@ public interface MemberService {
 	// 아이디 중복확인
 	Boolean isDuplicateID(String userId);
 
+	// 회원탈퇴
+	int delete(int no);
+
 
 }

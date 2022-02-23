@@ -32,28 +32,32 @@
 						value="${ loginMember.password }" required >
 				</td> 	
             </tr>
-            <tr>
-                <th>이름</th>
-				<td>
-					<input type="text" name="name" id="userName" 
-						value="${ loginMember.name }" required>				
-				</td> 	
-            </tr>
-     	        <tr>
-                <th>휴대폰</th>
+     	    <tr>
+                <th>휴대폰번호</th>
                 <td>
-                    <input type="tel" placeholder="010-1234-5678" name="phone" id="phone" 
-                    	value="${ loginMember.phone }" maxlength="13">
+                    <input type="tel" name="phone" id="phone" value="${ loginMember.phone }" maxlength="13">
                 </td>
             </tr>
             <tr>
+				<th>닉네임</th>
+				<td>
+					<input type="text" name="nickname" id="nickname" value="${ loginMember.nickname }" required>				
+				</td> 			
+ 			</tr> 	
+            <tr>
                 <th>이메일</th>
 				<td>
-					<input type="email" placeholder="abc@abc.com" name="email" id="email"
-						maxlength="25" value="${ loginMember.email }">												
+					<input type="email" name="email" id="email" maxlength="25" value="${ loginMember.email }">												
+				</td> 	
+            </tr>
+            <tr>
+                <th>프로필사진</th>
+				<td>
+					<input type="file" name="profile_img" id="profile_img"><span style="color: red">png, jpg만 첨부 가능</span>
 				</td> 	
             </tr>
         </table>
+            <br>
         <input type="submit" value="정보수정">
         <input type="button" id="btnDelete" value="탈퇴">
  	</form>

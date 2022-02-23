@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -146,6 +147,62 @@ public class MemberController {
 		
 		return new ResponseEntity<Map<String,Boolean>>(map, HttpStatus.OK);
 	}
+	
+
+	// 회원 정보 수정
+	@GetMapping("/member/myPage")
+	
+		public String myPage() {
+		
+		return "member/myPage";
+	}
+	
+	@PostMapping("/member/update")
+	public ModelAndView update(
+			ModelAndView model,
+			@SessionAttribute(name="loginMember") Member loginMember,
+			@ModelAttribute Member member) {
+		int result = 0;
+		
+		member.setNo(loginMember.getNo());
+		
+		result = service.save(member);
+		
+		if(result > 0) {
+			model.addObject("loginMember", service.findMemberById(loginMember.getId()));
+			model.addObject("msg", "회원정보 수정을 완료했습니다.");
+			model.addObject("location", "/member/myPage");
+		} else {
+			model.addObject("msg", "회원정보 수정에 실패했습니다.");
+			model.addObject("location", "/member/myPage");
+		}
+		
+		model.setViewName("common/msg");
+		
+		return model;
+	}
+	
+	// 회원탈퇴
+	@GetMapping("/member/delete")
+	public ModelAndView delete(ModelAndView model, 
+			@SessionAttribute(name="loginMember") Member loginMember) {
+		int result = 0;
+		
+		result = service.delete(loginMember.getNo());
+		
+		if(result > 0) {
+			model.addObject("msg", "정상적으로 탈퇴되었습니다.");
+			model.addObject("location", "/logout");
+		} else {
+			model.addObject("msg", "회원 탈퇴에 실패하였습니다.");
+			model.addObject("location", "/member/myPage");			
+		}
+		
+		model.setViewName("common/msg");
+		
+		return model;
+	}
+	
 }
 
 

@@ -84,5 +84,26 @@
 						DEFAULT
 					)
 	</insert>
+	
+	<update id="updateMember" parameterType="com.collaverse.mvc.member.model.vo.Member">
+		UPDATE MEMBER 
+		SET 
+			ID = #{id},
+			PASSWORD = #{password},
+			PHONE = #{phone},
+			NICKNAME = #{nickname},
+			EMAIL = #{email},
+			PROFILE_IMG = #{profile_img},
+			MODIFY_DATE = SYSDATE 
+		WHERE NO = #{no}
+	</update>
+	
+	<delete id="deleteMember" parameterType="_int">
+		UPDATE MEMBER
+		SET
+			MEMBER_STATUS = 'N'
+		WHERE 
+			MEMBER_NO = #{no}
+	</delete>
 
 </mapper>

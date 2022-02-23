@@ -58,5 +58,12 @@ public class MemberServiceImpl implements MemberService {
 		
 		return mapper.findMemberById(id) != null;
 	}
+	
+	// 회원탈퇴
+	@Override
+	public int delete(int no) {
+		
+		return mapper.deleteMember(no);
+	}
 }
 
