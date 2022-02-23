@@ -29,7 +29,7 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"
 		c:sqlSessionFactory-ref="sqlSessionFactory"
 	/>
-
+	
 	<bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer"
 		p:basePackage="com.collaverse.mvc.*.model.dao"
 	/> 
