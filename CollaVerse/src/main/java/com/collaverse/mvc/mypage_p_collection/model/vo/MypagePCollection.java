@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class MypagePCollection {
 	private int cltNo;
 	
-	private int memberNo;
+	private int cltMemberNo;
 	
 	private String cltContent;
 	

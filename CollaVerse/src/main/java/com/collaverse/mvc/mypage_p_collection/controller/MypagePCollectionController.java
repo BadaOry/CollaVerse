@@ -20,9 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.collaverse.mvc.common.util.FileProcess;
 import com.collaverse.mvc.common.util.PageInfo;
+import com.collaverse.mvc.member.model.vo.Member;
 import com.collaverse.mvc.mypage_p_collection.model.dao.MypagePCollectionDao;
-import com.collaverse.mvc.mypage_p_collection.model.service.MypagePColleectionService;
-import com.collaverse.mvc.mypage_p_collection.model.vo.Member;
+import com.collaverse.mvc.mypage_p_collection.model.service.MypagePCollectionService;
 import com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection;
 
 import lombok.extern.slf4j.Slf4j;
@@ -31,32 +31,47 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class MypagePCollectionController {
 	@Autowired
-	private MypagePColleectionService service;
+	private MypagePCollectionService service;
 	
 	@Autowired
 	private ResourceLoader resourceLoader;
 	
 	
 	@GetMapping("mypage/collection/list")
-	public ModelAndView list(ModelAndView model,
-			@RequestParam(defaultValue = "1") int page,
-			@RequestParam(defaultValue = "10") int count) {
+	public ModelAndView Collectionlist(ModelAndView model,
+			@SessionAttribute("loginMember") Member loginMember
+			/*,@RequestParam(defaultValue = "1") int page,
+			@RequestParam(defaultValue = "10") int count*/) {
+//		
+//		PageInfo pageInfo = null;
+		List<MypagePCollection> collectionList = null;
+		String memberId = null;
+	
+//		
+		log.info("[컬렉션 리스트] list : {}", collectionList);
 		
-		PageInfo pageInfo = null;
-		List<MypagePCollection> list = null;
+//		memberId = service.findCollectionById(loginMember);
+//		log.info("[로그인 회원 id 정보] {}", memberId);
+//		
 		
-		log.info("page number : {}", page);
+//		pageInfo = new PageInfo(page, 10, service.getCollectionCount(), count);
+		collectionList = service.getCollectionList(loginMember);
+//		
 		
-		pageInfo = new PageInfo(page, 10, service.getCollectionCount(), count);
-		list = service.getCollectionList(pageInfo);
+		// 로그인 처리 해주는 인터셉터 필요 feat 서연님
+//		if(loginMember.getNo().equals(collectionList[0].get))
 		
-		model.addObject("pageInfo", pageInfo);
-		model.addObject("list", list);
+//		model.addObject("pageInfo", pageInfo);
+		model.addObject("collectionList", collectionList);
 		model.setViewName("mypage/collection/list");
 
+		// ▼ 리스트가 잘 저장되었는지 확인하는 로그
+		log.info("[컬렉션 리스트] list : {}", collectionList);
+		
 		return model;
 	}
 	
+	/*
 	
 	// ▼ 컬렉션 작성 페이지로 넘어가는 메소드
 	@GetMapping("mypage/collection/write")
@@ -121,7 +136,7 @@ public class MypagePCollectionController {
 			}	
 		}
 		
-		mypagePCollection.setWriterNo(loginMember.getNo());
+		mypagePCollection.setMemberNo(loginMember.getNo());
 		result = service.save(mypagePCollection);
 		
 		if(result > 0) {
@@ -199,6 +214,7 @@ public class MypagePCollectionController {
 //		return "mypage_p_collection/mypage_p_collection_list";
 //	}
 	
+	*/
 	
 	
 }

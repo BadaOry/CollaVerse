@@ -3,7 +3,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
+  
+
+
 <mapper namespace="com.collaverse.mvc.mypage_p_collection.model.dao.MypagePCollectionMapper">
 	<sql id="mypagePCollectionListSql">
 		SELECT MPC.CLT_NO,
@@ -28,9 +30,10 @@
 		JOIN MEMBER M ON (MPC.MEMBER_NO = M.MEMBER_NO)	
 	</sql>
 	
-	<resultMap type="Collection" id="MypagePCollectionListResultMap">
+
+	<resultMap type="com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection" id="MypagePCollectionResultMap">
 		<id property="cltNo" column="CLT_NO"/>
-		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="cltMemberNo" column="MEMBER_NO"/>
 		<result property="cltContent" column="CLT_CONTENT"/>
 		<result property="cltCreateDate" column="CLT_CREATE_DATE"/>
 		<result property="cltModifyDate" column="CLT_MODIFY_DATE"/>
@@ -49,18 +52,37 @@
 		<result property="RenamedFileName06" column="CLT_IMG_06_RNAME"/>
 	</resultMap>
 
-	<select id="findAll" parameterType="map" resultMap="MypagePCollectionListResultMap">
+
+
+	<select id="getCollectionListY" parameterType="string" resultMap="MypagePCollectionResultMap"
+			resultType="arrayList">
 		<include refid="mypagePCollectionListSql"/>
-		<choose>
-			<when test="loginMember.no == #{memberNo}">
-				WHERE MPC.CLT_STATUS IN ('Y', 'P')
-			</when>
-			<when test="loginMember.no != #{memberNo}">
-				WHERE MPC.CLT_STATUS = 'Y'
-			</when>
-		</choose>
-		ORDER BY MPC.CLT_NO DESC
+			WHERE MPC.CLT_STATUS = 'Y'
+			ORDER BY MPC.CLT_NO DESC
 	</select>
+	
+	
+	<!--  
+	<select id="getCollectionListYP" parameterType="string" resultMap="MypagePCollectionResultMap"
+			resultType="arrayList">
+		<include refid="mypagePCollectionListSql"/>
+			WHERE MPC.CLT_STATUS IN ('Y', 'P')
+			ORDER BY MPC.CLT_NO DESC
+	</select>
+	
+	<select id="String findCollectionById" parameterType="string" resultMap="MypagePCollectionResultMap"
+			resultType="string">
+		SELECT M.ID, MPC.CLT_NO, MPC.CLT_STATUS
+		FROM MYPAGE_P_COLLECTION MPC
+		JOIN MEMBER M ON (MPC.MEMBER_NO = M.MEMBER_NO)	
+		WHERE M.ID = #{loginMemberMemberId};
+	</select>
+	 -->
+	
+
+	
+
+<!-- 
 
 	<select id="getCollectionCount" resultType="_int">
 		SELECT COUNT(*)
@@ -74,6 +96,7 @@
 			</when>
 		</choose>
 	</select>
+	
 	
 	<insert id="insertCollection" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.mypagePCollection"
 		useGeneratedKeys="true" keyProperty="cltNo" keyColumn="CLT_NO">
@@ -119,7 +142,7 @@
 		</insert>
 	
 	
-	<!-- 인피니트스크롤 내용
+	인피니트스크롤 내용
 	<select id="collection_count" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.CollectionTO"
 		resultType="int">
 		SELECT COUNT(NO)
@@ -127,5 +150,6 @@
 		WHEN MEMBER_NO = 1
 	</select>
 	 -->
+
 
 </mapper>
