@@ -67,7 +67,7 @@
 				        MEMBER_AGE,
 				        MEMBER_GENDER
 				) VALUES (
-						SEQ_UNO.NEXTVAL,
+						SEQ_MEM_MEMBER_NO.NEXTVAL,
 						DEFAULT,
 						#{id},
 						#{password},
