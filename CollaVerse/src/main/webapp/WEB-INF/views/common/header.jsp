@@ -64,10 +64,12 @@
 					</li>
 					<li><a href="${ path }/mypage/main">My 콜라버스</a>
 						<ul>
-							<!-- <c:if test="${ loginMember.memberRole == '개인' }">
-							<li><a class="header_nav1" href="${ path }/mypage/follow">팔로우</a></li> </c:if> -->
+							<%--
+								<c:if test="${ loginMember.memberRole == '개인' }">
+							<li><a class="header_nav1" href="${ path }/mypage/follow">팔로우</a></li> </c:if> 
 							<!-- <c:if test="${ loginMember.memberRole == '기업' }">
-							<li><a class="header_nav1" href="${ path }/mypage/statistics">팔로우 및 통계</a></li> </c:if> -->
+							<li><a class="header_nav1" href="${ path }/mypage/statistics">팔로우 및 통계</a></li> </c:if>S
+							 --%>
 							
 							<li><a class="header_nav1" href="${ path }/mypage/calendar">My 콜라보 캘린더</a></li>
 							<li><a class="header_nav1" href="${ path }/mypage/collection/list">My 컬렉션</a></li>
