@@ -38,7 +38,7 @@ public class MemberController {
 	public ModelAndView login(ModelAndView model,
 			@RequestParam("id") String id, @RequestParam("password") String password) {
 		
-		log.info("{}, {}", id, password);
+		log.info("[로그인] id : {} , password : {}", id, password);
 		
 		Member loginMember = service.login(id, password);
 		
