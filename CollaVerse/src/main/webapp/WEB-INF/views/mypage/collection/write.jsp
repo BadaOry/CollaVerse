@@ -43,17 +43,21 @@
 	
 	<h2> 컬렉션 작성</h2>
 	
-	<form name="collectionWriteFrm" action="${ path }/mypage/collection/write" method="get" enctype="multipart/form-data">
+	<form name="collectionWriteFrm" action="${ path }/mypage/collection/write" method="post" enctype="multipart/form-data">
 		<div class="mypage_collection_write_container">
 	        <table class="mypage_collection_write">	
 	            <tr>
-	                <td id="mypage_collection_write_imagePreview"></td>
 	                <td>
-	                    <input type="text"  id="mypage_collection_write_content">
+	                	<img id="mypage_collection_write_imagePreview" /d>
+	                </td>
+	                <td>
+	                    <input type="text" id="mypage_collection_write_content" name="content"/>
 	                </td>
 	            </tr>
 	            <tr>
-	                <td><input type="file" name="upfile"></td>
+	                <td>
+	                	<input multiple="multiple" type="file" name="upfile" />
+	                </td>
 	                <td> 
 	                     <button type="submit" id="mypage_collection_write_submit">글쓰기</button>
 	                </td>
@@ -63,22 +67,27 @@
 	</form>
 	
 	
-    <script>
-	    // ▼ Image Preview
-	    $(document).ready(() => {
-	        $('input[name="upfile"]').on('change',function(e) {
-	            console.log(e);
-	            
-	            var reader = new FileReader();
-	            reader.onload = function(file){
-	                $('#mypage_collection_write_imagePreview').html($('<img src="' + file.target.result + '">'));
-	            };
-	            reader.readAsDataURL(e.target.files[0]);
-	            // $('#mypage_collection_write_imagePreview')
-	        });
-	    });
-	</script>
 	
+	<script>
+		function readImage(input) {
+			if(input.files && input.files[0]) {
+				
+				const reader = new FileReader();
+				
+				reader.onload = e => {
+					const previewImage = document.getElementById("mypage_collection_write_imagePreview")
+					previewImage.src = e.target.result
+				}
+				
+				reader.readAsDataURL(input.files[0])
+			}
+		}
+		
+		const inputImage = document.getElementById("mypage_collection_write_imagePreview")
+		inputImage.addEventListener("change", e => {
+			readImage(e.target)
+		})
+	</script>
 	
 	
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
