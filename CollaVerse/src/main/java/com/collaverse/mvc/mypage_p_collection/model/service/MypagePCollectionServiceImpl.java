@@ -23,14 +23,14 @@ public class MypagePCollectionServiceImpl implements MypagePCollectionService {
 	@Override
 	public List<MypagePCollection> getCollectionList(Member loginMember) {
 		
-		String loginMemberMemberId = loginMember.getId();
+		int loginMemberMemberNo = loginMember.getNo();
 //		String collectionMemberId = this.findCollectionById(loginMember);
 		
 		List<MypagePCollection> collectionList = null;
 		
-		log.info("[서비스 임플까지 loginMember 내용이 잘 왔는지 확인] {}", loginMemberMemberId);
+		log.info("[서비스 임플까지 loginMember 내용이 잘 왔는지 확인] {}", loginMemberMemberNo);
 
-			collectionList = mapper.getCollectionListY(loginMemberMemberId);
+			collectionList = mapper.getCollectionListY(loginMemberMemberNo);
 			
 //		// ▼ 로그인멤버와 데이터베이스의 멤버가 맞으면, YP 를 가져오는 쿼리문 실행
 //		if (loginMemberMemberId.equals(collectionMemberId)) {
@@ -43,6 +43,19 @@ public class MypagePCollectionServiceImpl implements MypagePCollectionService {
 //		}
 		
 		return collectionList;
+	}
+
+	@Override
+	public int save(MypagePCollection mypagePCollection) {
+		int result = 0;
+		
+		if(mypagePCollection.getCltNo() != 0) {
+			// 정보 수정하는 쿼리
+			// result = mapper.updateMypagePCollection(mypagePCollection);
+		} else {
+			result = mapper.insertMypagePCollection(mypagePCollection);
+		}
+		return result;
 	}
 	
 //	public String findCollectionById(Member loginMember) {

@@ -78,8 +78,8 @@
 		    MPC.CLT_IMG_03_RNAME, MPC.CLT_IMG_04_RNAME,
 		    MPC.CLT_IMG_05_RNAME, MPC.CLT_IMG_06_RNAME
 		) VALUES (
-			SEQ_MPC_CLT_NO.NEXTVAL, #{ loginMember.no },
-			#{ mypage_collection_write_content },
+			SEQ_MPC_CLT_NO.NEXTVAL, #{ cltMemberNo },
+			#{ cltContent },
 			DEFAULT, DEFAULT,
 			DEFAULT,
 			#{ originalFileName01 }, 'GONNA DELETE',
@@ -87,7 +87,7 @@
 			'GONNA DELETE', 'GONNA DELETE',
 			#{ renamedFileName01 }, 'GONNA DELETE',
 			'GONNA DELETE', 'GONNA DELETE',
-			'GONNA DELETE', 'GONNA DELETE',
+			'GONNA DELETE', 'GONNA DELETE'
 		)	
 	</insert>
 	

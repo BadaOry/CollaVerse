@@ -42,10 +42,10 @@ public class MypagePCollectionController {
 			@SessionAttribute("loginMember") Member loginMember
 			/*,@RequestParam(defaultValue = "1") int page,
 			@RequestParam(defaultValue = "10") int count*/) {
-//		
-//		PageInfo pageInfo = null;
+		
 		List<MypagePCollection> collectionList = null;
-		String memberId = null;
+//		PageInfo pageInfo = null;
+//		String memberId = null;
 	
 //		
 		log.info("[컬렉션 리스트] list : {}", collectionList);
@@ -108,8 +108,9 @@ public class MypagePCollectionController {
 					String location = null;
 					String renamedFileName = null;
 					
-					List<String> originalFileNameList = new ArrayList<String>();
+					List<String> originalFileNameList= new ArrayList<String>();
 					List<String> renamedFileNameList = new ArrayList<String>();
+					
 					
 					try {
 						location = resourceLoader.getResource("resources/upload/collection").getFile().getPath();						
@@ -117,6 +118,11 @@ public class MypagePCollectionController {
 						
 						log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
 
+						originalFileNameList.add(originalFileName);
+						renamedFileNameList.add(renamedFileName);
+						
+						log.info("[Controller] originalFileNameList 정보 확인 : {}", originalFileNameList);
+						log.info("[Controller] renamedFileNameList 정보 확인 : {}", renamedFileNameList);
 						
 						if (renamedFileName != null) {
 							// ▼ renamedFileName 이 왔으면, upfile 하나하나에 set 으로 or 이랑 rm 을 세팅해주자
@@ -125,9 +131,10 @@ public class MypagePCollectionController {
 							//     ▶ 안된다... 리스트가 아니라 마지막 하나만 저장됨
 							//        ▷ VO 값을 list 형태로 바꿔야하네.. 바꿨는데 List<String> 에 String 값을 못저장한다?
 							//          ▷ 그래서 list 형태로 넣어줘도 안되네
+							//     ▶ 자꾸 마지막 값만 저장된다..
 //							mypagePCollection.setOriginalFileName01(originalFileName);
-							mypagePCollection.setOriginalFileName01(originalFileName);
-							mypagePCollection.setRenamedFileName01(renamedFileName);
+							mypagePCollection.setOriginalFileName01(originalFileNameList.toString());
+							mypagePCollection.setRenamedFileName01(renamedFileNameList.toString());
 							log.info("[Controller] or,nr 이 VO 에 잘 set 되었는지 확인 : {}, {}", mypagePCollection.getOriginalFileName01(), mypagePCollection.getRenamedFileName01());
 						}
 					} catch (IOException e) {
@@ -221,6 +228,12 @@ public class MypagePCollectionController {
 		
 
 		}
+
+
+	private void add(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	/*	
 	// ▼ 컬렉션 수정 페이지로 넘어가는 메소드
