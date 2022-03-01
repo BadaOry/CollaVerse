@@ -23,37 +23,37 @@
 	<div align="center">
 	<form id="memberFrm" action="${ path }/member/update" method="post">	
 		<table>
-			<tr>
+			  <tr>
                 <th>아이디</th>
-				<td>
-					<input type="text" name="id" id="newId" 
-						value="${ loginMember.id }" readonly required >
-				</td> 	
+            <td>
+               <input type="text" name="id" id="newId" 
+                  value="${ loginMember.id }" readonly required >
+            </td>    
             </tr>
-			<tr>
+         <tr>
                 <th>비밀번호</th>
-				<td>
-					<input type="password" name="password" id="pass1" 
-						value="${ loginMember.password }" required >
-				</td> 	
+            <td>
+               <input type="password" name="password" id="pass1" 
+                  value="${ loginMember.password }" required >
+            </td>    
             </tr>
-     	    <tr>
+            <tr>
                 <th>휴대폰번호</th>
                 <td>
                     <input type="tel" name="phone" id="phone" value="${ loginMember.phone }" maxlength="13">
                 </td>
             </tr>
             <tr>
-				<th>닉네임</th>
-				<td>
-					<input type="text" name="nickname" id="nickname" value="${ loginMember.nickname }" required>				
-				</td> 			
- 			</tr> 	
+            <th>닉네임</th>
+            <td>
+               <input type="text" name="nickname" id="nickname" value="${ loginMember.nickname }" required>            
+            </td>          
+          </tr>    
             <tr>
                 <th>이메일</th>
-				<td>
-					<input type="email" name="email" id="email" maxlength="25" value="${ loginMember.email }">												
-				</td> 	
+            <td>
+               <input type="email" name="email" id="email" maxlength="25" value="${ loginMember.email }">                                    
+            </td>    
             </tr>
             <tr>
                 <th>프로필사진</th>
@@ -73,20 +73,20 @@
  	</div>
 </div>
 <script>
-	$(document).ready(() => {
-		$("#updatePwd").on("click", () => {
-			const url = "${ pageContext.request.contextPath }/member/updatePwd";
-			const status = "left=500px,top=200px,width=400px,height=200px";
-			
-			open(url, "", status);
-		});
-		
-		$("#btnDelete").on("click", () => {
-			if(confirm("정말로 탈퇴하시겠습니까?")) {
-				location.replace("${ pageContext.request.contextPath }/member/delete");
-			}
-		});
-	});
+   $(document).ready(() => {
+      $("#updatePwd").on("click", () => {
+         const url = "${ pageContext.request.contextPath }/member/updatePwd";
+         const status = "left=500px,top=200px,width=400px,height=200px";
+         
+         open(url, "", status);
+      });
+      
+      $("#btnDelete").on("click", () => {
+         if(confirm("정말로 탈퇴하시겠습니까?")) {
+            location.replace("${ pageContext.request.contextPath }/member/delete");
+         }
+      });
+   });
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>	

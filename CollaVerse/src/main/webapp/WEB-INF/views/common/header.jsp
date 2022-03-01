@@ -64,14 +64,33 @@
 							<li><a class="header_nav1" href="">콜라</a></li>
 						</ul>
 					</li>
-					<li><a href="${ path }/mypage/main">My 콜라버스</a>
-						<ul>
-							<li><a class="header_nav1" href="${ path }/mypage/calendar">My 콜라보 캘린더</a></li>
-							<li><a class="header_nav1" href="${ path }/mypage/collection/list">My 컬렉션</a></li>
-							<li><a class="header_nav1" href="${ path }/mypage/follow">팔로우</a></li>
-							<li><a class="header_nav1" href="${ path }/mypage/memberinfo">회원 정보</a></li>
-						</ul>
-					</li>
+					
+					<c:if test="${ loginMember.role == '개인' }">
+						<li><a href="${ path }/mypage/person_mypage">My 콜라버스</a>
+							<ul>
+								<li><a class="header_nav1" href="${ path }/mypage/calendar/calendar_detail">My 콜라보 캘린더</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/follow">팔로우</a></li>
+							</ul>
+						</li>
+					</c:if>
+					<c:if test="${ loginMember.role == '기업' }">
+						<li><a href="${ path }/mypage/business_mypage">My 콜라버스</a>
+							<ul>
+								<li><a class="header_nav1" href="${ path }/mypage/calendar/calendar_detail_business">My 콜라보 캘린더</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/statistics">팔로워 및 통계</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/memberinfo">회원 정보</a></li>
+							</ul>
+						</li>
+					</c:if>
+					<c:if test="${ loginMember.role == '관리자' }">
+						<li><a href="${ path }/mypage/main">My 콜라버스</a>
+							<ul>
+								<li><a class="header_nav1" href="${ path }/mypage/calendar/calendar_detail">My 콜라보 캘린더</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/memberinfo">회원 정보</a></li>
+							</ul>
+						</li>
+					</c:if>
+					
 					<li><a href="">FAQ</a>
 						<ul>
 							<li><a class="header_nav1" href="">에페큐</a></li>

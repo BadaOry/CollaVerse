@@ -31,9 +31,9 @@ public class MemberServiceImpl implements MemberService {
 		
 		member = mapper.findMemberById(id);
 		
-		return member != null && 
-				passwordEncoder.matches(password, member.getPassword()) ? member : null; //로그인 클릭 했을 때 암호화 비번이랑 맞는지 확인 (삼항연산자 사용)
-//		return member; //암호화 하지 않으려면 이 코드를 넣고, 위 두줄은 막는다
+//		return member != null && 
+//				passwordEncoder.matches(password, member.getPassword()) ? member : null; //로그인 클릭 했을 때 암호화 비번이랑 맞는지 확인 (삼항연산자 사용)
+		return member; //암호화 하지 않으려면 이 코드를 넣고, 위 두줄은 막는다
 	}
 
 	// 회원가입
