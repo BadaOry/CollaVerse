@@ -1,0 +1,115 @@
+@charset "UTF-8";
+
+#person {
+  margin: 0 auto;
+  width: 1200px;
+}
+#person .mypage {
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+#person .mypage #person-photo img {
+  margin-top: 20px;
+  text-align:center;
+  width: 160px;
+  height: 160px;
+  border-style: solid;
+  border-color: rgb(207, 205, 205);
+  border-radius: 70%;
+  overflow: hidden;
+}
+#person .mypage #person-name {
+  font-size: 60px;
+  position: absolute;
+  top: 55px;
+  left: 200px;
+}
+
+/* 캘린더 */
+#person #person-calendar p {
+  font-size: 40px;
+}
+#person #person-calendar a {
+	text-decoration-line: none;
+}
+#person #person-calendar a:active {
+	color: black;
+}
+#person #person-calendar a #calendar {
+	width: 800px;
+	height: 600px;
+	margin-bottom: 40px;
+}
+
+/* 팔로우 */
+#person #person-follow p {
+  font-size: 40px;
+}
+#person #person-follow #follow {
+  display: flex;
+  position: relative;
+}
+#person #person-follow #follow article {
+  margin-right: 25px;
+}
+#person #person-follow article img {
+  text-align:center;
+  width: 90px;
+  height: 90px;
+  border-radius: 70%;
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+#person #person-follow #follow article div {
+  text-align: center;
+  font-size: 20px;
+}
+#person #person-follow #follow article .material-icons {
+  position: absolute;
+  margin-top: 15px;
+  font-size: 60px;
+  left: 690px;
+}
+#person #person-follow #follow article .text {
+  font-size: 15px;
+  position: absolute;
+  bottom: 40px;
+  left: 695px;
+}
+
+/* 컬렉션 */
+#person #person-collection p {
+  margin-top: 70px;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+#person #person-collection #collection {
+  display: flex;
+  position: relative;
+}
+#person #person-collection #collection article {
+  margin-right: 25px;
+}
+#person #person-collection article img {
+  text-align:center;
+  width: 90px;
+  height: 90px;
+  margin-bottom: 2px;
+}
+#person #person-collection #collection article div {
+  text-align: center;
+  font-size: 20px;
+}
+#person #person-collection #collection article .material-icons {
+  position: absolute;
+  margin-top: 15px;
+  font-size: 60px;
+  left: 690px;
+}
+#person #person-collection #collection article .text {
+  font-size: 15px;
+  position: absolute;
+  bottom: 40px;
+  left: 695px;
+}

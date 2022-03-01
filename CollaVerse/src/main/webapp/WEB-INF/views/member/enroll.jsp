@@ -11,11 +11,18 @@
 <head>
 <meta charset="UTF-8">
 <title>개인 회원가입</title>
+<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/enroll.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 </head>
 <body>
-	<h2>개인 회원 가입</h2>
-	<div id="enroll-container">	 	
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+
+<div class="enroll">
+
+	<h1>개인 회원 가입</h1>
+	<div id="enroll-container">	
+	<div align="center">
+
 	 	<form name="memberEnrollFrm" action="${ path }/member/enroll" method="post">
 	 		<table>
 	 			<tr>
@@ -107,24 +114,31 @@
 	 				</td>
 	 			</tr>
 	 		</table>
+	 	</div>
 	 		<br>
-	 		<label for="agree_all">
-				<input type="checkbox" name="agree_all" id="agree_all"><b>모두 동의합니다</b><br>
-			</label>
-			<label for="agree">
-				  <input type="checkbox" name="agree" value="1">(필수) 이용약관과 개인정보 수집 및 이용에 동의합니다.<br>
-			</label>
-			<label for="agree">
-				  <input type="checkbox" name="agree" value="2">(필수) 만 14세 이상입니다.<br>
-			</label>
-			<label for="agree">
-				  <input type="checkbox" name="agree" value="3">(선택) 이메일 및 SMS 마케팅 정보 수신에 동의합니다.<br>
-			</label>
+	 		<div class="labelAll">
+	 			<label for="agree_all">
+					<input type="checkbox" name="agree_all" id="agree_all"><b>모두 동의합니다</b><br>
+				</label>
+				<label for="agree">
+					  <input type="checkbox" name="agree" value="1">(필수) 이용약관과 개인정보 수집 및 이용에 동의합니다.<br>
+				</label>
+				<label for="agree">
+					  <input type="checkbox" name="agree" value="2">(필수) 만 14세 이상입니다.<br>
+				</label>
+				<label for="agree">
+					  <input type="checkbox" name="agree" value="3">(선택) 이메일 및 SMS 마케팅 정보 수신에 동의합니다.<br>
+				</label>
+		 	</div>
 			<br>
- 		<input type="submit" id="enrollSubmit" value="가입">	
- 		<input type="reset" value="취소" onclick="location.href='${ path }'">
- 	</form>
+			<div class="btnAll" align="center">
+ 				<input type="submit" id="enrollSubmit" value="가입">	
+ 				<input type="reset" id="reset" value="취소" onclick="location.href='${ path }'">
+			</div>
+ 		</form>
+	</div>
 </div>
+
 <script>
 	// 아이디 중복 확인
 	$(document).ready(() => {
@@ -196,5 +210,6 @@
 	})
 </script>
 	
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>	
 </body>
 </html>

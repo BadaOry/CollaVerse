@@ -28,4 +28,23 @@
 	<context:component-scan base-package="com.collaverse.mvc" />
 
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+	
+		<interceptors>
+		<interceptor>
+
+			<!-- 인터셉터를 적용시킬 요청(컨트롤러) 선택 -->
+			<mapping path="/member/myPage"/>
+			<mapping path="/member/myPage_business"/>
+			<mapping path="/member/update"/>
+			
+			<!-- 인터셉터를 제외시킬 요청(컨트롤러) 선택 -->
+			<exclude-mapping path="/member/enroll"/>
+			<exclude-mapping path="/member/enroll_business"/>
+			<exclude-mapping path="/member/idCheck"/>
+		
+			<!-- 인터셉터 등록 -->
+			<beans:bean id="loginCheckInterceptor" class="com.collaverse.mvc.common.interceptor.LoginCheckInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>

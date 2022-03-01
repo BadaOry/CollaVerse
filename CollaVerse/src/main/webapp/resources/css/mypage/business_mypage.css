@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+#business {
+  margin: 0 auto;
+  width: 1200px;
+}
+#business .mypage {
+  position: relative;
+  margin-bottom: 50px;
+}
+#business .mypage #brand-photo img {
+  margin-top: 20px;
+  text-align:center;
+  width: 160px;
+  height: 160px;
+  border-style: solid;
+  border-color: rgb(207, 205, 205);
+  border-radius: 70%;
+  overflow: hidden;
+}
+#business .mypage #brand-name {
+  font-size: 60px;
+  position: absolute;
+  top: 55px;
+  left: 200px;
+}
+#business #brand-calendar p {
+  font-size: 40px;
+}
+#business #brand-calendar a {
+	text-decoration-line: none;
+}
+#business #brand-calendar a:active {
+	color: black;
+}
+#business #brand-calendar a #calendar {
+	width: 800px;
+	height: 600px;
+	margin-bottom: 40px;
+}
+#business #brand-follower p {
+  font-size: 40px;
+}
+#business #brand-follower #follower {
+  display: flex;
+  position: relative;
+}
+#business #brand-follower #follower article {
+  margin-right: 25px;
+}
+#business #brand-follower article img {
+  text-align:center;
+  width: 90px;
+  height: 90px;
+  border-radius: 70%;
+  overflow: hidden;
+  margin-bottom: 2px;
+}
+#business #brand-follower #follower article div {
+  text-align: center;
+  font-size: 20px;
+}
+#business #brand-follower #follower article .material-icons {
+  position: absolute;
+  margin-top: 15px;
+  font-size: 60px;
+  left: 690px;
+}
+#business #brand-follower #follower article .text {
+  font-size: 15px;
+  position: absolute;
+  bottom: 40px;
+  left: 695px;
+}
+#business #statistics p {
+  margin-top: 70px;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+#business #statistics #follower-statistic {
+  width: 800px;
+  height: 600px;
+}
+#business #statistics #follower-statistic p {
+  font-size: 60px;
+  text-align: center;
+}
+#business #statistics #follower-statistic div {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+#business #statistics #follower-statistic ul {
+  column-count: 2;
+  background-color: rgba(149, 178, 142, 0.5);
+  line-height: 2;
+
+}
+#business #statistics #follower-statistic ul li {
+  padding-left: -5px;
+  font-size: 20px;
+}
