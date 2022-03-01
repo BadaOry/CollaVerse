@@ -1,6 +1,9 @@
 package com.collaverse.mvc.mypage_p_collection.model.vo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.type.Alias;
 
@@ -9,9 +12,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class MypagePCollection {
+
 	private int cltNo;
 	
 	private int cltMemberNo;
@@ -23,6 +26,8 @@ public class MypagePCollection {
 	private Date cltModifyDate;
 	
 	private String cltStatus;
+	
+	private List<Map<String, String>> files;
 	
 	private String OriginalFileName01;
 	
@@ -47,4 +52,9 @@ public class MypagePCollection {
 	private String RenamedFileName05;
 	
 	private String RenamedFileName06;
+	
+	public MypagePCollection() {
+		this.files = new ArrayList<Map<String,String>>();
+	}
+
 }

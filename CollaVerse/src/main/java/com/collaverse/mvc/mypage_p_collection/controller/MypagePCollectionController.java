@@ -2,7 +2,9 @@ package com.collaverse.mvc.mypage_p_collection.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.collaverse.mvc.common.util.FileProcess;
 import com.collaverse.mvc.common.util.PageInfo;
@@ -37,40 +40,29 @@ public class MypagePCollectionController {
 	private ResourceLoader resourceLoader;
 	
 	
-	@GetMapping("mypage/collection/list")
+	@GetMapping("mypage/collection/list") 
 	public ModelAndView Collectionlist(ModelAndView model,
-			@SessionAttribute("loginMember") Member loginMember
-			/*,@RequestParam(defaultValue = "1") int page,
-			@RequestParam(defaultValue = "10") int count*/) {
+			@SessionAttribute("loginMember") Member loginMember) {
 		
 		List<MypagePCollection> collectionList = null;
-//		PageInfo pageInfo = null;
-//		String memberId = null;
-	
-//		
+		
 		log.info("[컬렉션 리스트] list : {}", collectionList);
 		
-//		memberId = service.findCollectionById(loginMember);
-//		log.info("[로그인 회원 id 정보] {}", memberId);
-//		
-		
-//		pageInfo = new PageInfo(page, 10, service.getCollectionCount(), count);
 		collectionList = service.getCollectionList(loginMember);
-//		
+	
 		
 		// 로그인 처리 해주는 인터셉터 필요 feat 서연님
-//		if(loginMember.getNo().equals(collectionList[0].get))
+//		if(loginMember.getNo().equals(collectionList.);
 		
-//		model.addObject("pageInfo", pageInfo);
 		model.addObject("collectionList", collectionList);
 		model.setViewName("mypage/collection/list");
 
-		// ▼ 리스트가 잘 저장되었는지 확인하는 로그
-		log.info("[컬렉션 리스트] list : {}", collectionList);
+		log.info("[Controller] service 가 가져온 CollectionList 출력 : {}", collectionList);
 		
 		return model;
 	}
 	
+
 	
 	// ▼ 컬렉션 작성 페이지로 넘어가는 메소드
 	@GetMapping("mypage/collection/write")
@@ -82,6 +74,7 @@ public class MypagePCollectionController {
 	}
 	
 
+	
 	// ▼ 컬렉션 작성 요청 메소드
 	@PostMapping("mypage/collection/write")
 	public ModelAndView write(ModelAndView model,
@@ -123,6 +116,17 @@ public class MypagePCollectionController {
 						
 						log.info("[Controller] originalFileNameList 정보 확인 : {}", originalFileNameList);
 						log.info("[Controller] renamedFileNameList 정보 확인 : {}", renamedFileNameList);
+						List<Map<String, String>> files = mypagePCollection.getFiles();
+						
+						Map<String, String> onrnMap = new HashMap<String, String>();
+						onrnMap.put("original",originalFileName);
+						onrnMap.put("rename", renamedFileName);
+						files.add(onrnMap);
+//						String test = files.get(0).get("rename");
+						log.info("[Controller] onrn 을 Map 에 저장 후, Map 내용 출력 : {}", onrnMap.toString());
+						log.info("[Controller] onrn 을 Map 에 저장 후, Map 내용 출력 : {}",files.toString());
+						// ▲ 이 Map 을 DB 에 저장하는 방법을 알아야겠는데... 맵 공부해야겟다
+						
 						
 						if (renamedFileName != null) {
 							// ▼ renamedFileName 이 왔으면, upfile 하나하나에 set 으로 or 이랑 rm 을 세팅해주자
@@ -158,82 +162,18 @@ public class MypagePCollectionController {
 			result = service.save(mypagePCollection);
 			
 			if(result > 0) {
-				model.addObject("msg", "컬렉션 등록 완료 !");
-				model.addObject("location", "mypage/collection/list");
+//				model.addObject("msg", "컬렉션 등록 완료 !");
+				this.Collectionlist(model, loginMember);
 			} else {
 				model.addObject("msg", "컬렉션 등록 실패....");			
 				model.addObject("location", "mypage/collection/write");
+				model.setViewName("/common/msg");
 			}
-			model.setViewName("/common/msg");
 			
 			return model;
 			
-		/*
-		int result = 0;
-		
-		// 파일을 업로드하지 않으면 "", 파일을 업로드하면 "파일명"
-		log.info("Upfile Name : {}", upfile[0].getOriginalFilename());
-		// 파일을 업로드하지 않으면 true, 파일을 업로드하면 false 
-		log.info("Upfile is Empty : {}", upfile[0].isEmpty());
-		
-		log.info("[마이페이지Controller] 컬렉션 리스트 정보 : {} ", mypagePCollection.toString());
-//		log.info("Upfile Name : {}", upfile[0].getOriginalFilename());
-//		log.info("Upfile is Empty : {}", upfile[0].isEmpty());
-
-		// 1. 파일을 업로드 했는지 확인 후 파일을 저장
-		for(int i = 0; i < 6; i++) {
-			if (upfile[i] != null && !upfile[i].isEmpty()) {
-				String location = null;
-				String renamedFileName = null;
-				
-				try {
-					location = resourceLoader.getResource("resources/upload/collection").getFile().getPath();
-					renamedFileName = FileProcess.save(upfile[i], location);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				
-				if (renamedFileName != null) {
-					mypagePCollection.setOriginalFileName01(upfile[0].getOriginalFilename());
-					mypagePCollection.setRenamedFileName01(renamedFileName);
-//					mypagePCollection.setOriginalFileName02(upfile[1].getOriginalFilename());
-//					mypagePCollection.setRenamedFileName02(renamedFileName);
-//					mypagePCollection.setOriginalFileName03(upfile[2].getOriginalFilename());
-//					mypagePCollection.setRenamedFileName03(renamedFileName);
-//					mypagePCollection.setOriginalFileName04(upfile[3].getOriginalFilename());
-//					mypagePCollection.setRenamedFileName04(renamedFileName);
-//					mypagePCollection.setOriginalFileName05(upfile[4].getOriginalFilename());
-//					mypagePCollection.setRenamedFileName05(renamedFileName);
-//					mypagePCollection.setOriginalFileName06(upfile[5].getOriginalFilename());
-//					mypagePCollection.setRenamedFileName06(renamedFileName);
-				}
-			}	
-		}
-		
-		// 2. 작성한 게시글 데이터를 데이터베이스에 저장
-		mypagePCollection.setCltMemberNo(loginMember.getNo());
-		result = service.save(mypagePCollection);
-		
-		if(result > 0) {
-			model.addObject("msg", "컬렉션 등록 완료 !");
-			model.addObject("location", "mypage/collection/list");
-		} else {
-			model.addObject("msg", "컬렉션 등록 실패....");			
-			model.addObject("location", "mypage/collection/write");
-		}
-		model.setViewName("/common/msg");
-		
-		return model;
-		*/
-		
-
-		}
-
-
-	private void add(String string) {
-		// TODO Auto-generated method stub
-		
 	}
+
 	
 	/*	
 	// ▼ 컬렉션 수정 페이지로 넘어가는 메소드
