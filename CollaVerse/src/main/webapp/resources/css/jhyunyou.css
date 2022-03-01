@@ -1,0 +1,168 @@
+@charset "UTF-8";
+
+body{
+    background-color: rgb(198, 182, 218);
+}
+
+.colla_menu{
+    font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    flex-direction: row;  
+    justify-content:center;
+    word-spacing: 45px;
+}
+
+li{
+    display: inline;
+    align-self: center;
+    margin: 0;
+    margin-left: 15px;
+}
+
+/* hover 추가하기 */ 
+
+/* 콜라보 메인 */
+.colla_img{
+    font-family: 'Nanum Gothic', sans-serif;
+    background-color: lemonchiffon;
+    height: 350px;
+    text-align: center;
+    margin: 3%;
+}
+
+.promotion{
+    font-family: 'Nanum Gothic', sans-serif;
+    margin: 3%;
+}
+
+.p_new{
+    font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    justify-content: space-around
+}
+
+.p_img{
+/*    background-color: lemonchiffon;*/
+    text-align: center;
+/*    height: 150px;
+    width: 250px;*/
+}
+
+.p_new p {
+    text-align: center;
+}
+
+/* 카테고리 목록 */
+
+.category_list{
+    font-family: 'Nanum Gothic', sans-serif;
+    margin: 3%;
+}
+
+.living{
+    font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    justify-content: space-around
+}
+
+.living p{
+    text-align: center;
+}
+
+/* 프로모션 상세 */
+
+/* 이미지 탭*/
+/* 가운데 정렬 다른 방법 찾을 것 */
+input[type="radio"] {
+	display:none;
+}
+
+.conbox{
+    margin-top: 3%;
+    margin-left: 17%;
+
+    width:550px;
+	height:350px;
+    border: 20px solid rgb(161, 155, 155);
+    border-radius: 30px;
+    display:none;
+    text-align: center;
+}
+
+.btn {
+    margin-left: 43.3%;
+	padding:10px;
+}
+
+label[for*="tab"] {
+    margin-left: 20%;
+	display:inline-block;
+	padding:10px;
+	background:lightgrey;
+	margin:5px;
+	border-radius:100%;
+}
+
+input[id="tab01"]:checked ~ .con1 {
+	display:block;
+}
+input[id="tab02"]:checked ~ .con2 {
+	display:block;
+}
+input[id="tab03"]:checked ~ .con3 {
+	display:block;
+}
+
+input[id="tab01"]:checked ~ .btn > label[for="tab01"]{
+	background:#ebd266;;
+}
+input[id="tab02"]:checked ~ .btn > label[for="tab02"]{
+	background:#f1bfd4;;
+}
+input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
+	background:#b4dee9;;
+}
+
+/* 그 외 */
+.p_title{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: large;
+    margin: 3%;
+    text-align: center;
+
+}
+
+.category_detail{
+    font-family: 'Nanum Gothic', sans-serif;
+    margin: 3%;
+}
+
+.p_info{
+    font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    justify-content: space-around
+}
+
+.p_info p {
+    text-align: center;
+}
+
+.p_explain{
+    font-family: 'Nanum Gothic', sans-serif;
+    margin: 3%;
+
+}
+
+.p_content{
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
