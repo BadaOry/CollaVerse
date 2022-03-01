@@ -64,7 +64,7 @@
 	
 	
 	
-	<insert id="insertMypagePCollection" parameterType="MypagePCollection"
+	<insert id="insertMypagePCollection" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection"
 		useGeneratedKeys="true" keyProperty="cltNo" keyColumn="CLT_NO">
 		INSERT INTO MYPAGE_P_COLLECTION MPC(
 			MPC.CLT_NO, MPC.MEMBER_NO,

@@ -53,6 +53,7 @@ public class MypagePCollectionServiceImpl implements MypagePCollectionService {
 			// 정보 수정하는 쿼리
 			// result = mapper.updateMypagePCollection(mypagePCollection);
 		} else {
+			log.info("[ServiceImpl] mypagePCollection 객체 내용 잘 가져오는지 확인 : {}", mypagePCollection);
 			result = mapper.insertMypagePCollection(mypagePCollection);
 		}
 		return result;

@@ -24,7 +24,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.collaverse.mvc.common.util.FileProcess;
 import com.collaverse.mvc.common.util.PageInfo;
 import com.collaverse.mvc.member.model.vo.Member;
-import com.collaverse.mvc.mypage_p_collection.model.dao.MypagePCollectionDao;
 import com.collaverse.mvc.mypage_p_collection.model.service.MypagePCollectionService;
 import com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection;
 
@@ -46,7 +45,7 @@ public class MypagePCollectionController {
 		
 		List<MypagePCollection> collectionList = null;
 		
-		log.info("[컬렉션 리스트] list : {}", collectionList);
+//		log.info("[컬렉션 리스트] list : {}", collectionList);
 		
 		collectionList = service.getCollectionList(loginMember);
 	
@@ -101,8 +100,8 @@ public class MypagePCollectionController {
 					String location = null;
 					String renamedFileName = null;
 					
-					List<String> originalFileNameList= new ArrayList<String>();
-					List<String> renamedFileNameList = new ArrayList<String>();
+//					List<String> originalFileNameList= new ArrayList<String>();
+//					List<String> renamedFileNameList = new ArrayList<String>();
 					
 					
 					try {
@@ -110,25 +109,35 @@ public class MypagePCollectionController {
 						renamedFileName = FileProcess.save(mf, location);
 						
 						log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
+						
 
-						originalFileNameList.add(originalFileName);
-						renamedFileNameList.add(renamedFileName);
-						
-						log.info("[Controller] originalFileNameList 정보 확인 : {}", originalFileNameList);
-						log.info("[Controller] renamedFileNameList 정보 확인 : {}", renamedFileNameList);
-						List<Map<String, String>> files = mypagePCollection.getFiles();
-						
-						Map<String, String> onrnMap = new HashMap<String, String>();
-						onrnMap.put("original",originalFileName);
-						onrnMap.put("rename", renamedFileName);
-						files.add(onrnMap);
-//						String test = files.get(0).get("rename");
-						log.info("[Controller] onrn 을 Map 에 저장 후, Map 내용 출력 : {}", onrnMap.toString());
-						log.info("[Controller] onrn 을 Map 에 저장 후, Map 내용 출력 : {}",files.toString());
-						// ▲ 이 Map 을 DB 에 저장하는 방법을 알아야겠는데... 맵 공부해야겟다
+//						originalFileNameList.add(originalFileName);
+//						renamedFileNameList.add(renamedFileName);
+//						
+//						log.info("[Controller] originalFileNameList 정보 확인 : {}", originalFileNameList);
+//						log.info("[Controller] renamedFileNameList 정보 확인 : {}", renamedFileNameList);
+//						List<Map<String, String>> files = mypagePCollection.getFiles();
+//						
+//						Map<String, String> onrnMap = new HashMap<String, String>();
+//						onrnMap.put("original",originalFileName);
+//						onrnMap.put("rename", renamedFileName);
+//						files.add(onrnMap);
+////						String test = files.get(0).get("rename");
+//						log.info("[Controller] onrn 을 Map 에 저장 후, Map 내용 출력 : {}", onrnMap.toString());
+//						log.info("[Controller] VO 변수 files 의 Map 내용 출력 : {}",files.toString());
+//						// ▲ 이 Map 을 DB 에 저장하는 방법을 알아야겠는데... 맵 공부해야겟다
+//						
+//						// ornMap 을 vo 의 on01 에 to.String으로 set해보자
+//						mypagePCollection.setOriginalFileName01(files.toString());
+//						log.info("[Controller] files 맵 이 VO 에 잘 set 되었는지 확인 : {}",mypagePCollection.getOriginalFileName01());
 						
 						
 						if (renamedFileName != null) {
+							mypagePCollection.setOriginalFileName01(originalFileName);
+							mypagePCollection.setRenamedFileName01(renamedFileName);
+							
+							log.info("[Controller] originalFileNam 정보 확인 : {}", originalFileName);
+							log.info("[Controller] renamedFileName 정보 확인 : {}", renamedFileName);
 							// ▼ renamedFileName 이 왔으면, upfile 하나하나에 set 으로 or 이랑 rm 을 세팅해주자
 							//   : DB 의 ON, RN 컬럼을 하나로 하고 리스트를 그 값 안에 넣으면 된다...? 일단 돌려보고 해보자
 							//     ▷ 된다 !!! 이제 DB 에 컬럼은 하나씩만 남겨놓자
@@ -137,9 +146,9 @@ public class MypagePCollectionController {
 							//          ▷ 그래서 list 형태로 넣어줘도 안되네
 							//     ▶ 자꾸 마지막 값만 저장된다..
 //							mypagePCollection.setOriginalFileName01(originalFileName);
-							mypagePCollection.setOriginalFileName01(originalFileNameList.toString());
-							mypagePCollection.setRenamedFileName01(renamedFileNameList.toString());
-							log.info("[Controller] or,nr 이 VO 에 잘 set 되었는지 확인 : {}, {}", mypagePCollection.getOriginalFileName01(), mypagePCollection.getRenamedFileName01());
+//							mypagePCollection.setOriginalFileName01(originalFileNameList.toString());
+//							mypagePCollection.setRenamedFileName01(renamedFileNameList.toString());
+//							log.info("[Controller] or,nr 이 VO 에 잘 set 되었는지 확인 : {}, {}", mypagePCollection.getOriginalFileName01(), mypagePCollection.getRenamedFileName01());
 						}
 					} catch (IOException e) {
 						System.out.println("renamedFileName 불러오기 실패..");
