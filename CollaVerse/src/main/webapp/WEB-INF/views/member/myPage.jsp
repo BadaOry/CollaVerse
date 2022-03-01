@@ -11,14 +11,19 @@
 <head>
 <meta charset="UTF-8">
 <title>개인 회원 정보 수정</title>
+<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/myPage.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 </head>
 <body>
-<h2>개인 회원 정보 수정</h2>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+
+<div class="myPage">
+<h1>개인 회원 정보 수정</h1>
 <div id="view-container">
-   <form id="memberFrm" action="${ path }/member/update" method="post">   
-      <table>
-         <tr>
+	<div align="center">
+	<form id="memberFrm" action="${ path }/member/update" method="post">	
+		<table>
+			  <tr>
                 <th>아이디</th>
             <td>
                <input type="text" name="id" id="newId" 
@@ -52,16 +57,20 @@
             </tr>
             <tr>
                 <th>프로필사진</th>
-            <td>
-               <input type="file" name="profile_img" id="profile_img"><span style="color: red">png, jpg만 첨부 가능</span>
-            </td>    
+				<td>
+					<input type="file" name="profile_img" id="profile_img"><span style="color: red">&nbsp; png, jpg만 첨부 가능</span>
+				</td> 	
             </tr>
         </table>
+ 	</form>
+        </div>
             <br>
-        <input type="submit" value="정보수정">
-        <input type="button" id="btnDelete" value="탈퇴">
-        <input type="reset" value="취소" onclick="location.href='${ path }'">
-    </form>
+        <div class="btnAll" align="center">
+        	<input type="submit" id="btn1" value="정보수정">
+        	<input type="button" id="btnDelete" value="탈퇴">
+        	<input type="reset" id="btn2" value="취소" onclick="location.href='${ path }'">
+        </div>
+ 	</div>
 </div>
 <script>
    $(document).ready(() => {
@@ -79,5 +88,7 @@
       });
    });
 </script>
+
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>	
 </body>
 </html>

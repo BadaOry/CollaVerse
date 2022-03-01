@@ -17,19 +17,22 @@
 	<section id="section">
 	
 		<div id="search">
-			<form id="form" action="freeList">
-				<select>
-					<option>제목</option>
-					<option>내용</option>
-					<option>작성자</option>
-					<option>제목+내용</option>
+			<form id="searchForm" action="getBoardList.do" method="get">
+				<select name="type">
+					<option value="title" <c:out value="${ paging.cri.type == null?'selected':'' }" />>제목</option>
+					<option value="content" <c:out value="${ paging.cri.type eq 'content'?'selected':'' }" />>내용</option>
+					<option value="writer" <c:out value="${ paging.cri.type eq 'writer'?'selected':'' }" />>작성자</option>
+					<option value="titlecontent" <c:out value="${ paging.cri.type eq 'titlecontent'?'selected':'' }" />>제목+내용</option>
 				</select>
-				<input type="text" id="search_input">
-				<button type="submit">검색</button>
+				<input type="text" name="keyword" />
+				<button id="searchBtn">검색</button>
 			</form>
+			
+			<input type="hidden" name="pageNum" value="1">
+			<input type="hidden" name="amount" value="10">
 		</div>
 		
-		<div class="eventbanner">이벤트 배너</div>
+		<div class="eventbanner"><input type="button" value="aa" onclick="location.href='detail.jsp'">이벤트 배너</div>
 		
 		<div class="calendar">캘린더</div>
 		

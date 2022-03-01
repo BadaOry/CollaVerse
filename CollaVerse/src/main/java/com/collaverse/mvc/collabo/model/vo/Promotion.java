@@ -1,0 +1,33 @@
+package com.collaverse.mvc.collabo.model.vo;
+
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Promotion {
+	private int no;
+	
+	private String title;
+	
+	private String imgpath;
+	
+	private String content;
+	
+	private String status;
+	
+	private Date startDate;
+	
+	private Date endDate;
+	
+	private int readCount;
+	
+	// 외래키 (Category 참조)
+	private String cNo;
+	
+	
+}

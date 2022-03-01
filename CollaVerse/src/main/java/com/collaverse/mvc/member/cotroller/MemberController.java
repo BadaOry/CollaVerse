@@ -3,10 +3,14 @@ package com.collaverse.mvc.member.cotroller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +42,7 @@ public class MemberController {
 	public ModelAndView login(ModelAndView model,
 			@RequestParam("id") String id, @RequestParam("password") String password) {
 		
-		log.info("{}, {}", id, password);
+		log.info("[로그인] id : {} , password : {}", id, password);
 		
 		Member loginMember = service.login(id, password);
 		
@@ -90,10 +94,10 @@ public class MemberController {
 		int result = service.save(member);
 		
 		if(result > 0) {
-			model.addObject("msg", "회원가입이 정상적으로 완료되었습니다.");
+			model.addObject("msg", "회원가입 완료");
 			model.addObject("location", "/");
 		} else {
-			model.addObject("msg", "회원가입을 실패하였습니다.");
+			model.addObject("msg", "회원가입 실패");
 			model.addObject("location", "/member/enroll");			
 		}
 		
@@ -118,10 +122,10 @@ public class MemberController {
 		int result = service.save(member);
 		
 		if(result > 0) {
-			model.addObject("msg", "회원가입이 정상적으로 완료되었습니다.");
+			model.addObject("msg", "회원가입 완료");
 			model.addObject("location", "/");
 		} else {
-			model.addObject("msg", "회원가입을 실패하였습니다.");
+			model.addObject("msg", "회원가입 실패");
 			model.addObject("location", "/member/enroll_business");			
 		}
 		
@@ -149,9 +153,8 @@ public class MemberController {
 	}
 	
 
-	// 회원 정보 수정
+	// 개인 회원 정보 수정
 	@GetMapping("/member/myPage")
-	
 		public String myPage() {
 		
 		return "member/myPage";
@@ -170,11 +173,43 @@ public class MemberController {
 		
 		if(result > 0) {
 			model.addObject("loginMember", service.findMemberById(loginMember.getId()));
-			model.addObject("msg", "회원정보 수정을 완료했습니다.");
+			model.addObject("msg", "회원정보수정 완료");
 			model.addObject("location", "/member/myPage");
 		} else {
-			model.addObject("msg", "회원정보 수정에 실패했습니다.");
+			model.addObject("msg", "회원정보수정 실패");
 			model.addObject("location", "/member/myPage");
+		}
+		
+		model.setViewName("common/msg");
+		
+		return model;
+	}
+	
+	// 사업자 회원 정보 수정
+	@GetMapping("/member/myPage_business")
+		public String myPage_business() {
+		
+		return "member/myPage_business";
+	}
+	
+	@PostMapping("/member/update1")
+	public ModelAndView update1(
+			ModelAndView model,
+			@SessionAttribute(name="loginMember") Member loginMember,
+			@ModelAttribute Member member) {
+		int result = 0;
+		
+		member.setNo(loginMember.getNo());
+		
+		result = service.save(member);
+		
+		if(result > 0) {
+			model.addObject("loginMember", service.findMemberById(loginMember.getId()));
+			model.addObject("msg", "회원정보수정 완료");
+			model.addObject("location", "/member/myPage_business");
+		} else {
+			model.addObject("msg", "회원정보수정 실패");
+			model.addObject("location", "/member/myPage_business");
 		}
 		
 		model.setViewName("common/msg");
@@ -191,16 +226,110 @@ public class MemberController {
 		result = service.delete(loginMember.getNo());
 		
 		if(result > 0) {
-			model.addObject("msg", "정상적으로 탈퇴되었습니다.");
+			model.addObject("msg", "탈퇴 완료");
 			model.addObject("location", "/logout");
 		} else {
-			model.addObject("msg", "회원 탈퇴에 실패하였습니다.");
+			model.addObject("msg", "탈퇴 실패");
 			model.addObject("location", "/member/myPage");			
 		}
 		
 		model.setViewName("common/msg");
 		
 		return model;
+	}
+	
+	// id 찾기
+	@GetMapping("/member/findId")
+	public String findId() {
+		
+		log.info("아이디 찾기");
+		
+		return "member/findId";
+	}
+	
+	@RequestMapping(value = "member/findId", method = {RequestMethod.POST})
+	public ModelAndView findId(ModelAndView model, @RequestParam("email") String email) {
+		
+		log.info("{}", email);
+		
+		Member findId = service.findId(email);
+		
+		if(findId != null) {
+			model.addObject("findId", findId);
+			model.setViewName("redirect:/");
+			
+		} else {
+			model.addObject("msg", "등록된 이메일이 없습니다.");
+			model.addObject("location", "/");
+			model.setViewName("common/msg");
+		}
+		
+		return model;
+	}
+	
+	// id 찾기 결과
+	@GetMapping(value="/member/findIdResult")
+	public String findIdResult() {
+		
+		log.info("아이디 찾기 결과");
+		
+		return "member/findIdResult";
+	}
+	
+	// pw 찾기
+	@GetMapping("/member/findPw")
+	public String findPw() {
+		
+		log.info("비밀번호 찾기");
+		
+		return "member/findPw";
+	}
+	
+	@RequestMapping(value = "member/findPw", method = {RequestMethod.POST})
+	public ModelAndView findPw(ModelAndView model, @RequestParam("email") String email, @RequestParam("id") String id) {
+		
+		log.info(email, id);
+		
+		Member findPw = service.findPw(email, id);
+		
+		if(findPw != null) {
+			model.addObject("findPw", findPw);
+			model.setViewName("redirect:/");
+			
+		} else {
+			model.addObject("msg", "등록된 이메일/아이디가 없습니다.");
+			model.addObject("location", "/");
+			model.setViewName("common/msg");
+		}
+		
+		return model;
+	}
+	
+	// pw 찾기 결과
+	@GetMapping(value="/member/findPwResult")
+	public String findPwResult() {
+		
+		log.info("비밀번호 찾기 결과");
+		
+		return "member/findPwResult";
+	}
+	
+	// 사업자등록번호 중복확인
+	@GetMapping("/member/jsonTest1")
+	@ResponseBody
+	public Object jsonTest1() {
+		return new Member("1348107358", "삼성전자");
+	}
+	
+	@PostMapping("/member/businessNoCheck")
+	public ResponseEntity<Map<String, Boolean>> businessNoCheck(@RequestParam(value="business_no", required=false) String business_no) {
+		Map<String, Boolean> map = new HashMap<>();
+		
+		log.info("{}", business_no);
+		
+		map.put("duplicate", service.isDuplicatedBusiness_no(business_no));
+		
+		return new ResponseEntity<Map<String,Boolean>>(map, HttpStatus.OK);
 	}
 	
 }

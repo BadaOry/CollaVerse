@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.myPage {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 380px;
+    margin: 100px auto 0;
+    margin-bottom: 100px;
+    padding: 30px 40px 40px 30px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px rgba(113, 6, 175, 0.1), -1px -1px 5px rgba(132, 8, 148, 0.1);
+}
+
+#btn1, #btn2, #btnDelete {
+    background-color: rgb(255, 255, 255);
+    border-color: blueviolet;
+    box-shadow: 1px 1px 1px 1px rgb(175, 46, 201, 0.5);
+    font-size: 13px;
+    padding: 5px 10px 10px;
+    cursor: pointer;
+    width: 90px;
+}
+
+#btnDelete {
+    color: red;
+}
+
+input[type=text], input[type=password], input[type=tel], input[type=email] {
+    width: 200px;
+    height: 20px;
+    font-size: 13px;
+}
+
+input[type=file] {
+    width: 200px;
+    height: 30px;
+    font-size: 13px;
+}
+
+#fn_chkBusinessNum1 {
+	background-color: rgb(255, 255, 255);
+    border-color: rgb(1, 0, 2);
+    font-size: 14px;
+}
