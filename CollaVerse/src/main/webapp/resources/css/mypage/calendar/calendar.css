@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+@charset "UTF-8";
+
+#person-calendar, #calendar {
+  margin: 0 auto;
+  width: 1200px;	
+}
+
+#person-calendar {
+	position: relative;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-size: 70px;
+}
+
+#calendar {
+	position: relative;
+	width: 1200px;
+	height: 800px;
+	margin-bottom: 40px;
+}
