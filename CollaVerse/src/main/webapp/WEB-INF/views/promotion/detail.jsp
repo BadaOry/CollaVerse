@@ -16,18 +16,30 @@
 
 	<section>
 		<!-- 대표 프로모션 이미지 -->
-		<form method="" enctype=""></form>
+		<div>
+			<div class="form_section_content">
+				<div id="upload_img"></div>
+			</div>
+		</div>
 		
+		<!-- 프로모션 이름 -->
 		<hr width="80%">
-			<input type="text" value="프로모션 이름">
+		<div>
+			<div id="upload_name"></div>
+		</div>
 		<hr width="80%">
 		
 		<!-- 제품 정보 -->
+		
+		<div id="goods_information">제품 정보</div>
+		
 		<div>
-			<input type="image" src="">
-			<input type="text" value="제품 이름">
-			<input type="text" value="제품 가격">
-			<input type="text" value="제품 설명 & 획득 조건">
+			<div>
+				<div id="upload_img_"></div>
+				<input type="text" value="제품 이름">
+				<input type="text" value="제품 가격">
+				<input type="text" value="제품 설명 & 획득 조건">
+			</div>
 		</div>
 		
 		<div>
@@ -45,7 +57,7 @@
 		</div>
 		
 		<h1>프로모션 설명</h1>
-		<input type="text" value="콜라버스 관리자가 이미지 & 텍스트로 입력">
+		<div><label>~~~</label></div>
 		
 		
 		

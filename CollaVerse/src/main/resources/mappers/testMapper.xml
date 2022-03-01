@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="BoardMapper">
+	
+	<sql id="criteria">
+		<trim prefixOverrides="OR" suffix=") AND " prefix="(">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'content'.toString()">title like '%'||#{keyword}||'%' </when>
+						<when test="type == 'writer'.toString()">content like '%'||#{keyword}||'%' </when>
+						<when test="type == 'titlecontent'.toString()">writer like '%'||#{keyword}||'%' </when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	
+	<select id="getBoardList" resultType="BoardVo">
+		<![CDATA[
+			SELECT idx,title,writer,reg_date,cnt
+			FROM	(
+					SELECT /*+INDEX_DESC(boardTest pk_board) */
+						rownum rn, idx, title, writer,reg_date,cnt 
+					from boardTest
+					where
+		]]>
+		<include refid="criteria"></include>
+		<![CDATA[			
+					rownum <= #{pageNum} * #{amount}
+					)
+			where rn > (#{pageNum}-1) * #{amount}
+		]]>
+	</select>
+
+	<select id="getTotalCnt" resultType="int">
+		SELECT count(*)
+		FROM boardTest
+		where
+		<include refid="criteria"></include>
+		idx>0
+	</select>
+</mapper>
