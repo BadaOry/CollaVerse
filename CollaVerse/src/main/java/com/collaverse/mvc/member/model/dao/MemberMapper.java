@@ -13,6 +13,8 @@ public interface MemberMapper {
 	int insertMember(Member member); //회원가입
 	
 	int updateMember(Member member); //회원정보수정
+	
+	int updateMember_business(Member member); //사업자회원정보수정
 
 	int deleteMember(int no); //회원탈퇴
 	
