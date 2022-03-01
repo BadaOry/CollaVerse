@@ -11,11 +11,18 @@
 <head>
 <meta charset="UTF-8">
 <title>사업자 회원가입</title>
+<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/enroll.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 </head>
 <body>
-	<h2>사업자 회원 가입</h2>
-	<div id="enroll-container">	 	
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+
+<div class="enroll">
+
+	<h1>사업자 회원 가입</h1>
+	<div id="enroll-container">	
+	<div align="center">
+	
 	 	<form name="memberEnrollFrm" action="${ path }/member/enroll_business" method="post">
 	 		<table>
 	 			<tr>
@@ -35,14 +42,20 @@
 	 			<tr>
 					<th>기업명 *</th>
 					<td>
-						<input type="text" id="businessName" size="25" required>				
+						<input type="text" name="business_name" id="business_name" size="25" required>				
 					</td> 			
  				</tr>
  				<tr>
+					<th>닉네임 *</th>
+					<td>
+						<input type="text" name="nickname" id="nickname" size="25" required>				
+					</td> 			
+ 				</tr> 
+ 				<tr>
 					<th>사업자등록번호 *</th>
 					<td>
-						<input type="text" placeholder="숫자만 입력하세요" name="business_no" id="business_no" maxlength="10" size="25" required>								
-						<input type="button" id=BizNOChk value="번호확인" >
+						<input type="text" placeholder="숫자만 입력하세요" name="business_no" id="newbusiness_no" maxlength="10" size="25" required>								
+						<input type="button" id="businessNoCheck" value="번호확인" >
 					</td> 			
 	 			</tr>			
 	 			<tr>
@@ -74,7 +87,9 @@
 	 				</td>
 	 			</tr>
 	 		</table>
+	 	</div>
 	 		<br>
+	 		<div class="labelAll">
 	 		<label for="agree_all">
 				<input type="checkbox" name="agree_all" id="agree_all"><b>모두 동의합니다</b><br>
 			</label>
@@ -87,11 +102,16 @@
 			<label for="agree">
 				  <input type="checkbox" name="agree" value="3">(선택) 이메일 및 SMS 마케팅 정보 수신에 동의합니다.<br>
 			</label>
+			</div>
 			<br>
- 		<input type="submit" id="enrollSubmit" value="가입">	
- 		<input type="reset" value="취소" onclick="location.href='${ path }'">
+		<div class="btnAll" align="center">
+ 			<input type="submit" id="enrollSubmit" value="가입">	
+ 			<input type="reset" id="reset" value="취소" onclick="location.href='${ path }'">
+ 		</div>
  	</form>
+ 	</div>
 </div>
+
 <script>
 	// 아이디 중복 확인
 	$(document).ready(() => {
@@ -163,6 +183,36 @@
 		})
 </script>
 
-	
+<script>
+	// 사업자번호 중복확인
+	$(document).ready(() => {
+		$("#businessNoCheck").on("click", () => {
+			let business_no = $("#newbusiness_no").val();
+			
+			$.ajax({
+				type: "post",
+				url: "${ pageContext.request.contextPath }/member/businessNoCheck",
+				dataType: "json",
+				data: {
+					business_no
+				},
+				success: (data) => {
+					console.log(data);
+					
+					if(data.duplicate === true) {
+						alert("중복된 사업자등록번호 입니다.");
+					} else {
+						alert("사용 가능합니다.");						
+					}
+				},
+				error: (error) => {
+					console.log(error);
+				}
+			});
+		});		
+	});
+</script>
+
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 </html>

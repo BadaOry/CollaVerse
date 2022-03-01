@@ -1,5 +1,6 @@
 package com.collaverse.mvc.member.model.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -51,7 +52,6 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
-
 	// id 중복확인
 	@Override
 	public Boolean isDuplicateID(String id) {
@@ -65,5 +65,42 @@ public class MemberServiceImpl implements MemberService {
 		
 		return mapper.deleteMember(no);
 	}
+
+	// id 찾기
+	@Override
+	public Member findId(String email) {
+		
+		return mapper.findId(email);
+	}
+	
+	@Override
+	public Member findIdResult(String email) {
+		
+		return mapper.findId(email);
+	}
+
+	// pw 찾기
+	@Override
+	public Member findPwResult(String email, String id) {
+		
+		return mapper.findPw(id, email);
+	}
+
+	@Override
+	public Member findPw(String id, String email) {
+		
+		return mapper.findPw(id, email);
+	}
+
+	
+	// 사업자등록번호 중복확인
+	@Override
+	public Boolean isDuplicatedBusiness_no(String business_no) {
+		
+		return mapper.findMemberByBusiness_no(business_no) != null;
+	}
+	
+
+	
 }
 

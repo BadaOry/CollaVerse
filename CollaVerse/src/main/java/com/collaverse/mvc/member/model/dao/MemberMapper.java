@@ -14,8 +14,17 @@ public interface MemberMapper {
 	
 	int updateMember(Member member); //회원정보수정
 	
-	int updateMember_business(Member member); //사업자회원정보수정
+	int updateMember_business(Member member); //사업자 회원정보수정
 
 	int deleteMember(int no); //회원탈퇴
+	
+	Member findId(@Param("email") String email); //id 찾기
+	
+	Member findPw(@Param("id") String id, String email); // pw 찾기
+
+	Object findMemberByBusiness_no(String business_no); // 사업자등록번호 중복확인
+	
+	
+
 	
 }

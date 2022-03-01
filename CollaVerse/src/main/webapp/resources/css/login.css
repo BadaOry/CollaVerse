@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 500px;
+    margin: 100px auto 0;
+    margin-bottom: 100px;
+    padding: 30px 40px 40px 30px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px rgba(113, 6, 175, 0.1), -1px -1px 5px rgba(132, 8, 148, 0.1);
+}
+
+input[type=text] {
+    width: 200px;
+    height: 30px;
+    font-size: 13px;
+}
+
+input[type=password] {
+    width: 200px;
+    height: 30px;
+    font-size: 13px;
+}
+
+.id, .pw{
+    padding: 10px 60px;
+}
+
+.findAll {
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+    font-size: 15px;
+}
+
+#findid, #findpw{
+    background-color: white;
+    border-style: none;
+    font-size: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+}
+
+#btn1, #btn2, #btn3 {
+    background-color: rgb(255, 255, 255);
+    border-color: blueviolet;
+    box-shadow: 1px 1px 1px 1px rgb(175, 46, 201, 0.5);
+    font-size: 15px;
+    padding: 5px 10px 10px;
+    cursor: pointer;
+    width: 130px;
+}
