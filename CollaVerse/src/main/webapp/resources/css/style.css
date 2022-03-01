@@ -67,7 +67,7 @@ header{
 
 
 #section{
-	height: auto;
+	height: 2000px;
 }
 
 #table{
@@ -155,7 +155,7 @@ header{
 }
   	
 .title_and_write_button {
-	height: auto;
+	height: 90px;
 }
   		
 .mypage_mycollection_title {
@@ -175,13 +175,13 @@ header{
 
 .mypage_mycollection_list_container {
     width: 70%;
-    height: 116%;
+    height: 100%;
     margin: auto;
 }
 
 .mypage_mycollection_list {
-    height: auto;
-    margin: 0 0 30px 0;
+    height: 100%;
+    /* margin: 0 0 30px 0; */
 }
 
 .mypage_mycollection_list .collection_list {
