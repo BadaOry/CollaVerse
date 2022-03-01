@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+
+
+<mapper namespace="com.collaverse.mvc.mypage_p_collection.model.dao.MypagePCollectionMapper">
+	<sql id="mypagePCollectionListSql">
+		SELECT MPC.CLT_NO,
+			   MPC.MEMBER_NO,
+			   MPC.CLT_CONTENT,
+			   MPC.CLT_CREATE_DATE,
+			   MPC.CLT_MODIFY_DATE,
+			   MPC.CLT_STATUS,
+			   MPC.CLT_IMG_01_ONAME,
+			   MPC.CLT_IMG_02_ONAME,
+			   MPC.CLT_IMG_03_ONAME,
+			   MPC.CLT_IMG_04_ONAME,
+			   MPC.CLT_IMG_05_ONAME,
+			   MPC.CLT_IMG_06_ONAME,
+			   MPC.CLT_IMG_01_RNAME,
+			   MPC.CLT_IMG_02_RNAME,
+			   MPC.CLT_IMG_03_RNAME,
+			   MPC.CLT_IMG_04_RNAME,
+			   MPC.CLT_IMG_05_RNAME,
+			   MPC.CLT_IMG_06_RNAME
+		FROM MYPAGE_P_COLLECTION MPC
+		JOIN MEMBER M ON (MPC.MEMBER_NO = M.MEMBER_NO)	
+	</sql>
+	
+
+	<resultMap type="com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection" id="MypagePCollectionResultMap">
+		<id property="cltNo" column="CLT_NO"/>
+		<result property="cltMemberNo" column="MEMBER_NO"/>
+		<result property="cltContent" column="CLT_CONTENT"/>
+		<result property="cltCreateDate" column="CLT_CREATE_DATE"/>
+		<result property="cltModifyDate" column="CLT_MODIFY_DATE"/>
+		<result property="cltStatus" column="CLT_STATUS"/>
+		<result property="OriginalFileName01" column="CLT_IMG_01_ONAME"/>
+		<result property="OriginalFileName02" column="CLT_IMG_02_ONAME"/>
+		<result property="OriginalFileName03" column="CLT_IMG_03_ONAME"/>
+		<result property="OriginalFileName04" column="CLT_IMG_04_ONAME"/>
+		<result property="OriginalFileName05" column="CLT_IMG_05_ONAME"/>
+		<result property="OriginalFileName06" column="CLT_IMG_06_ONAME"/>
+		<result property="RenamedFileName01" column="CLT_IMG_01_RNAME"/>
+		<result property="RenamedFileName02" column="CLT_IMG_02_RNAME"/>
+		<result property="RenamedFileName03" column="CLT_IMG_03_RNAME"/>
+		<result property="RenamedFileName04" column="CLT_IMG_04_RNAME"/>
+		<result property="RenamedFileName05" column="CLT_IMG_05_RNAME"/>
+		<result property="RenamedFileName06" column="CLT_IMG_06_RNAME"/>
+	</resultMap>
+
+
+
+	<select id="getCollectionListY" parameterType="_int" resultMap="MypagePCollectionResultMap"
+			resultType="arrayList">
+		<include refid="mypagePCollectionListSql"/>
+			WHERE MPC.CLT_STATUS = 'Y'
+				AND MPC.MEMBER_NO = #{ loginMember.no }
+			ORDER BY MPC.CLT_NO DESC
+	</select>
+	
+	
+	
+	<insert id="insertMypagePCollection" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection"
+		useGeneratedKeys="true" keyProperty="cltNo" keyColumn="CLT_NO">
+		INSERT INTO MYPAGE_P_COLLECTION MPC(
+			MPC.CLT_NO, MPC.MEMBER_NO,
+		    MPC.CLT_CONTENT,
+		    MPC.CLT_CREATE_DATE,  MPC.CLT_MODIFY_DATE,
+		    MPC.CLT_STATUS,
+		    MPC.CLT_IMG_01_ONAME, MPC.CLT_IMG_02_ONAME,
+		    MPC.CLT_IMG_03_ONAME, MPC.CLT_IMG_04_ONAME,
+		    MPC.CLT_IMG_05_ONAME, MPC.CLT_IMG_06_ONAME,
+		    MPC.CLT_IMG_01_RNAME, MPC.CLT_IMG_02_RNAME,
+		    MPC.CLT_IMG_03_RNAME, MPC.CLT_IMG_04_RNAME,
+		    MPC.CLT_IMG_05_RNAME, MPC.CLT_IMG_06_RNAME
+		) VALUES (
+			SEQ_MPC_CLT_NO.NEXTVAL, #{ cltMemberNo },
+			#{ cltContent },
+			DEFAULT, DEFAULT,
+			DEFAULT,
+			#{ originalFileName01 }, 'GONNA DELETE',
+			'GONNA DELETE', 'GONNA DELETE',
+			'GONNA DELETE', 'GONNA DELETE',
+			#{ renamedFileName01 }, 'GONNA DELETE',
+			'GONNA DELETE', 'GONNA DELETE',
+			'GONNA DELETE', 'GONNA DELETE'
+		)	
+	</insert>
+	
+	
+	
+	<!--  
+	<select id="getCollectionListYP" parameterType="string" resultMap="MypagePCollectionResultMap"
+			resultType="arrayList">
+		<include refid="mypagePCollectionListSql"/>
+			WHERE MPC.CLT_STATUS IN ('Y', 'P')
+			ORDER BY MPC.CLT_NO DESC
+	</select>
+	
+	<select id="String findCollectionById" parameterType="string" resultMap="MypagePCollectionResultMap"
+			resultType="string">
+		SELECT M.ID, MPC.CLT_NO, MPC.CLT_STATUS
+		FROM MYPAGE_P_COLLECTION MPC
+		JOIN MEMBER M ON (MPC.MEMBER_NO = M.MEMBER_NO)	
+		WHERE M.ID = #{loginMemberMemberId};
+	</select>
+	 -->
+	
+
+	
+
+<!-- 
+
+	<select id="getCollectionCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MYPAGE_P_COLLECTION MPC
+				<choose>
+			<when test="loginMember.no == #{memberNo}">
+				WHERE MPC.CLT_STATUS IN ('Y', 'P')
+			</when>
+			<when test="loginMember.no != #{memberNo}">
+				WHERE MPC.CLT_STATUS = 'Y'
+			</when>
+		</choose>
+	</select>
+	
+	
+	<insert id="insertCollection" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.mypagePCollection"
+		useGeneratedKeys="true" keyProperty="cltNo" keyColumn="CLT_NO">
+		INSERT INTO MYPAGE_P_COLLEECTION (
+			CLT_NO,
+			MEMBER_NO,
+			CLT_CONTENT,
+			CLT_CREATE_DATE,
+			CLT_MODIFY_DATE,
+			CLT_STATUS,
+			CLT_IMG_01_ONAME,
+			CLT_IMG_02_ONAME,
+			CLT_IMG_03_ONAME,
+			CLT_IMG_04_ONAME,
+			CLT_IMG_05_ONAME,
+			CLT_IMG_06_ONAME,
+			CLT_IMG_01_RNAME,
+			CLT_IMG_02_RNAME,
+			CLT_IMG_03_RNAME,
+			CLT_IMG_04_RNAME,
+			CLT_IMG_05_RNAME,
+			CLT_IMG_06_RNAME
+		) VALUES (
+			SEQ_MPC_CLT_NO.NEXTVAL,
+			#{writerNo},
+			#{content}, 
+			DEFAULT,
+			DEFAULT,
+			DEFAULT,
+			#{originalFileName01},
+			#{originalFileName02},
+			#{originalFileName03},
+			#{originalFileName04},
+			#{originalFileName05},
+			#{originalFileName06},
+			#{renamdFileName01},
+			#{renamdFileName02},
+			#{renamdFileName03},
+			#{renamdFileName04},
+			#{renamdFileName05},
+			#{renamdFileName06}
+		)
+		</insert>
+	
+	
+	인피니트스크롤 내용
+	<select id="collection_count" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.CollectionTO"
+		resultType="int">
+		SELECT COUNT(NO)
+		FROM P_BOARD
+		WHEN MEMBER_NO = 1
+	</select>
+	 -->
+
+
+</mapper>
