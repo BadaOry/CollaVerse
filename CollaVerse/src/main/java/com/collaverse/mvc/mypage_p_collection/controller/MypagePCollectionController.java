@@ -79,7 +79,7 @@ public class MypagePCollectionController {
 	public ModelAndView write(ModelAndView model,
 			@SessionAttribute(name = "loginMember") Member loginMember,
 			@ModelAttribute MypagePCollection mypagePCollection,
-			@RequestParam("upfile") List<MultipartFile> upfile,
+			@RequestParam("files") List<MultipartFile> upfile,
 			@RequestParam("content") String content) {
 		
 			int result = 0;
@@ -181,6 +181,15 @@ public class MypagePCollectionController {
 			
 			return model;
 			
+	}
+	
+	// ▼ 컬렉션 디테일 페이지로 넘어가는 메소드
+	@GetMapping("mypage/collection/detail")
+	public String detail() {
+		
+		log.info("컬렉션 디테일 페이지로 이동 성공");
+		
+		return "mypage/collection/detail";
 	}
 
 	

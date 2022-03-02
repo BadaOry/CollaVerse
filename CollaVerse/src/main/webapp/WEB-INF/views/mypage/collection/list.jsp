@@ -9,7 +9,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>CollaVerse</title>
-	<link rel="stylesheet" type="text/css" href="${path}/resources/css/style.css">
+	<link rel="stylesheet" type="text/css" href="${path}/resources/css/mypage/collection/list.css">
 </head>
 <body class="box" style=" overflow-y: scroll;">
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
@@ -32,14 +32,15 @@
            <div class="mypage_mycollection_list">
            <c:choose>
 	    	<c:when test="${ !empty collectionList }">
-			    <c:forEach var="collectionList" items="${ collectionList }">
-                    <div class="collection_list" id="collection_box">
-                    	<img src= "${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }"
-                    		style="width: 100%; height: 100%" />
-                    	▲ ${ collectionList.cltNo } : ${ collectionList.cltContent }
-                    	<%-- ${ collectionList.cltNo } --%>
-                    </div>
-			    </c:forEach>
+				    <c:forEach var="collectionList" items="${ collectionList }">
+			    		<a onclick="location.href='${ path }/mypage/collection/detail?cltNo=${ collectionList.cltNo }'">
+		                    <div class="collection_list" id="collection_box">
+		                    	<img src= "${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }"
+		                    		style="width: 100%; height: 100%" />
+		                    	▲ ${ collectionList.cltNo } : ${ collectionList.cltContent }
+		                    </div>
+			    		</a>
+				    </c:forEach>
 			</c:when>
 	    	<c:otherwise>
 	    		<p id="collection_no_collectionList">컬렉션이 존재하지 않습니다.</p>
