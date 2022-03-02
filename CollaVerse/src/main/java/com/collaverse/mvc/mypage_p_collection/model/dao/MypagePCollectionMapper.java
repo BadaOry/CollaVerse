@@ -16,6 +16,10 @@ public interface MypagePCollectionMapper {
 
 	int insertMypagePCollection(MypagePCollection mypagePCollection);
 
+	MypagePCollection findCollectionByNo(int cltNo);
+
+	int updateMypagePCollection(MypagePCollection mypagePCollection);
+
 //	String getCollectionById();
 
 //	String findCollectionById(String loginMemberMemberId);

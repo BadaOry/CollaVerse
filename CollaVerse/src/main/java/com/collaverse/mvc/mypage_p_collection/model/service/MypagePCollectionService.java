@@ -14,6 +14,8 @@ public interface MypagePCollectionService {
 
 	int save(MypagePCollection mypagePCollection);
 
+	MypagePCollection findCollectionByNo(int cltNo);
+
 //	String findCollectionById(Member loginMember);
 
 //	int save(MypagePCollection mypagePCollection);

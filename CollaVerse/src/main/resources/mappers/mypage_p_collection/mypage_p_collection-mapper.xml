@@ -91,7 +91,16 @@
 		)	
 	</insert>
 	
+	<select id="findCollectionByNo" parameterType="_int" resultMap="MypagePCollectionResultMap">
+			<include refid="mypagePCollectionListSql"/>
+			WHERE MPC.CLT_NO = #{ cltNo }
+	</select>
 	
+	<update id="updateMypagePCollection" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection">
+		UPDATE MYPAGE_P_COLLECTION MPC
+		SET MPC.CLT_CONTENT = #{ cltContent }
+		WHERE MPC.CLT_NO = #{ cltNo }
+	</update>
 	
 	<!--  
 	<select id="getCollectionListYP" parameterType="string" resultMap="MypagePCollectionResultMap"

@@ -9,7 +9,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>CollaVerse</title>
+	
 	<link rel="stylesheet" type="text/css" href="${path}/resources/css/mypage/collection/list.css">
+	
+	<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
+	
+	<link rel="stylesheet" href="${ path }/resources/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="${ path }/resources/bootstrap/css/bootstrap.css" />
+	<script src="${ path }/resources/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body class="box" style=" overflow-y: scroll;">
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
@@ -33,13 +40,29 @@
            <c:choose>
 	    	<c:when test="${ !empty collectionList }">
 				    <c:forEach var="collectionList" items="${ collectionList }">
-			    		<a onclick="location.href='${ path }/mypage/collection/detail?cltNo=${ collectionList.cltNo }'">
-		                    <div class="collection_list" id="collection_box">
-		                    	<img src= "${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }"
-		                    		style="width: 100%; height: 100%" />
-		                    	▲ ${ collectionList.cltNo } : ${ collectionList.cltContent }
-		                    </div>
-			    		</a>
+	                    <div class="collection_list" id="collection_box">
+	                    
+	                    	<img src= "${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }"
+	                    		style="width: 100%; height: 100%" />
+	                    	▲ ${ collectionList.cltNo } : ${ collectionList.cltContent }
+	                    		
+	                    	<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header"></div>
+						                <img src="${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }">
+										<div class="modal-body">
+											${ collectionList.cltContent }					
+											</div>
+										<div class="modal-footer">
+											<button onclick="location.href='${ path }/mypage/collection/update?cltNo=${ collectionList.cltNo }'">수정</button>
+											<button onclick="location.href='${path}/mypage/collection/delete'"> 삭제 </button>
+										</div>
+									</div>
+								</div>
+	                    	</div>
+	                    	
+	                    </div>
 				    </c:forEach>
 			</c:when>
 	    	<c:otherwise>
@@ -52,6 +75,12 @@
     </section>    
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>    
 	
-	<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
+	<script>
+		$('#collection_box').click(function(e){
+			e.preventDefault();
+			$('#detailModal').modal("show");
+		});
+	</script>
+	
 </body>
 </html>

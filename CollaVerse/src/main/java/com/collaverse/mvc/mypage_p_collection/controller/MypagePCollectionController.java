@@ -79,7 +79,7 @@ public class MypagePCollectionController {
 	public ModelAndView write(ModelAndView model,
 			@SessionAttribute(name = "loginMember") Member loginMember,
 			@ModelAttribute MypagePCollection mypagePCollection,
-			@RequestParam("files") List<MultipartFile> upfile,
+			@RequestParam("upfile") List<MultipartFile> upfile,
 			@RequestParam("content") String content) {
 		
 			int result = 0;
@@ -183,7 +183,62 @@ public class MypagePCollectionController {
 			
 	}
 	
-	// ▼ 컬렉션 디테일 페이지로 넘어가는 메소드
+	
+	// ▼ 모달에서 컬렉션 수정 버튼을 눌렀을 때 업데이트 페이지로 이동하는 메소드
+	@GetMapping("mypage/collection/update")
+	public ModelAndView update(@RequestParam("cltNo") int cltNo, ModelAndView model) {
+		
+		log.info("컬렉션 업데이트 페이지로 이동 성공, ctlNo : {}", cltNo);
+		
+		MypagePCollection mypagePCollection = service.findCollectionByNo(cltNo);
+		
+		log.info("[Controller] update 할 컬렉션의 정보 출력 : {}", mypagePCollection);
+		
+		model.addObject("updateCollectionInfo", mypagePCollection);
+		model.setViewName("/mypage/collection/update");
+		
+		return model;
+	}
+	
+	
+	
+	// ▼ 모달에서 컬렉션 수정 버튼을 눌렀을 때 동작하는 메소드
+	@PostMapping("/mypage/collection/update")
+	public ModelAndView update(@SessionAttribute("loginMember") Member loginMember,
+			@RequestParam("cltNo") int cltNo, @RequestParam("content") String updatecontent, 
+			ModelAndView model) {
+	
+		log.info("[Controller] update 할 컬렉션의 cltNo 를 잘 받아왔는지 출력 : {}", cltNo);
+		log.info("[Controller] update 할 컬렉션의 cltContent 를 잘 받아왔는지 출력 : {}", updatecontent);
+
+		MypagePCollection mypagePCollection = service.findCollectionByNo(cltNo);
+		
+		log.info("[Controller] update 할 컬렉션의 정보 출력 : {}", mypagePCollection);
+		
+		mypagePCollection.setCltContent(updatecontent);
+		
+		log.info("[Controller] content 내용이 update 된 컬렉션의 정보 출력 : {}", mypagePCollection);
+		
+		int result = 0;
+		
+		result= service.save(mypagePCollection);
+		log.info("[Controller] update 완료된 컬렉션의 정보 출력 : {}", mypagePCollection);
+		
+		if(result > 0) {
+//			model.addObject("msg", "컬렉션 등록 완료 !");
+			this.Collectionlist(model, loginMember);
+		} else {
+			model.addObject("msg", "컬렉션 수정 실패....");			
+			model.addObject("location", "mypage/collection/write");
+			model.setViewName("/common/msg");	
+		}
+		
+		return model;
+	}
+	
+/*
+		
+	// ▼ 컬렉션 디테일 페이지로 넘어가는 메소드 (모달창 아니고 주소로 넘어가기)
 	@GetMapping("mypage/collection/detail")
 	public String detail() {
 		
@@ -191,69 +246,6 @@ public class MypagePCollectionController {
 		
 		return "mypage/collection/detail";
 	}
-
-	
-	/*	
-	// ▼ 컬렉션 수정 페이지로 넘어가는 메소드
-	@GetMapping("/mypage/collection/update")
-	public ModelAndView update(@SessionAttribute("loginMember") Member loginMember,
-			ModelAndView model, @RequestParam("no") int no) {
-		
-		MypagePCollection mypagePCollection = service.findCollectionByNo(no);
-		
-		if (loginMember.getNo() == mypagePCollection.getMemberNo()) {
-			model.addObject("mypagePCollection", mypagePCollection);
-			model.setViewName("/mypage/collection/update");
-		} else {
-			model.addObject("msg", "잘못된 접근입니다.");
-			model.addObject("location", "/mypage/collection/list");
-			model.setViewName("common/msg");
-		}
-		return model;
-		
-	}
-	
-	// ▼ 컬렉션 수정 요청 메소드
-//	@PostMapping("mypage/collection/write")
-//	public ModelAndView write(ModelAndView model,
-	
-	
-	
-//	@GetMapping(value = "mypage/mycollection/list")
-//	public String collectionList(HttpServletRequest request, HttpSession session) {
-//		
-//		final int PAGE_ROW_COUNT = 6;
-//		
-//		int pageNum = 1;
-//		String strPageNum = request.getParameter("pageNum");
-//		
-//		if(strPageNum != null) {
-//			pageNum = Integer.parseInt(strPageNum);
-//		}
-//		
-//		int startRowNum = 0 + (pageNum - 1) * PAGE_ROW_COUNT;
-//		int endRowNum = pageNum * PAGE_ROW_COUNT;
-//		int rowCount = PAGE_ROW_COUNT;
-//		
-//		CollectionTO cto = new CollectionTO();
-//		cto.setStartRowNum(startRowNum);
-//		cto.setEndRowNum(endRowNum);
-//		cto.setRowCount(rowCount);
-//		
-//		ArrayList<CollectionTO> list = null;
-//		int totalRow = 0;
-//		
-//		totalRow = MypagePCollectionDao.CollectionCount(cto);
-//		
-//		int totalPageCount = (int) Math.ceil(totalRow / (double) PAGE_ROW_COUNT);
-//		
-//		request.setAttribute("list", list);
-//		request.setAttribute("totalPageCount", totalPageCount );
-//		request.setAttribute("totalRow", totalRow);
-//		request.setAttribute("pageNum", pageNum );
-//		
-//		return "mypage_p_collection/mypage_p_collection_list";
-//	}
 	
 	*/
 
