@@ -31,7 +31,7 @@
 	            </tr>
 	            <tr>
 	                <td>
-	                	<input multiple="multiple" type="file" name="files" id="files" />
+	                	<input multiple="multiple" type="file" name="upfile"  />
 	                </td>
 	                <td> 
 	                     <button type="submit" id="mypage_collection_write_submit">글쓰기</button>
@@ -41,17 +41,19 @@
 	    </div>
 	</form>
 	 
- 	<script>
-       document.getElementsByName("files").onchange = function() {
-           var reader = new FileReader();
-
-           reader.onload = function (e) {
-               document.getElementById("imagePreview").src = e.target.result;
-           };
-
-           reader.readAsDataURL(this.files[0]);
-        };
-	</script>
+	 <%-- 
+	 	<script>
+	       document.getElementsByName("files").onchange = function() {
+	           var reader = new FileReader();
+	
+	           reader.onload = function (e) {
+	               document.getElementById("imagePreview").src = e.target.result;
+	           };
+	
+	           reader.readAsDataURL(this.files);
+	        };
+		</script>
+	 --%>
 	
 	
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
