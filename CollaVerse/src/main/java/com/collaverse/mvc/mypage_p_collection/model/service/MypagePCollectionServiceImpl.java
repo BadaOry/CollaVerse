@@ -61,50 +61,19 @@ public class MypagePCollectionServiceImpl implements MypagePCollectionService {
 		return result;
 	}
 
+	
 	@Override
 	public MypagePCollection findCollectionByNo(int cltNo) {
 		
 		
 		return mapper.findCollectionByNo(cltNo);
 	}
-	
-//	public String findCollectionById(Member loginMember) {
-//			
-//		String loginMemberMemberId = loginMember.getId();
-//		String collectionMemberId = mapper.findCollectionById(loginMemberMemberId);
-//				
-//		return collectionMemberId;
-//		
-//	}
-	
 
-//	@Override
-//	public int getCollectionCount() {
-//		
-//		return mapper.getCollectionCount();
-//	}
-//
-//	@Override
-//	public List<MypagePCollection> getCollectionList(PageInfo pageInfo) {
-//		int offset = (pageInfo.getCurrentPage() - 1) * pageInfo.getListLimit();
-//		int limit = pageInfo.getListLimit();
-//		RowBounds rowBounds = new RowBounds(offset, limit);
-//
-//		
-//		return mapper.findAll(rowBounds);
-//	}
-//
-//	@Override
-//	public int save(MypagePCollection mypagePCollection) {
-//		int result = 0;
-//		
-//		if(mypagePCollection.getCltNo() != 0) {
-//			//update
-//		} else {
-//			result = mapper.insertCollection(mypagePCollection);
-//		}
-//		return result;
-//	}
-
+	
+	@Override
+	public int delete(MypagePCollection mypagePCollection) {
+	
+		return mapper.deleteMypagePCollection(mypagePCollection);
+	}
 
 }

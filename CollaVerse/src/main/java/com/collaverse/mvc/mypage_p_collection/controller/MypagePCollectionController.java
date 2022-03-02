@@ -38,7 +38,25 @@ public class MypagePCollectionController {
 	@Autowired
 	private ResourceLoader resourceLoader;
 	
+//	// ▼ 마이페이지 메인에서 보는 collectionList
+//	@GetMapping("/mypage/person_mypage") 
+//	public ModelAndView mypageMainCollectionlist(ModelAndView model,
+//			@SessionAttribute("loginMember") Member loginMember) {
+//		
+//		List<MypagePCollection> mypageMaincollectionList = null;
+//		
+//		mypageMaincollectionList = service.getCollectionList(loginMember);
+//		
+//		model.addObject("collectionList", mypageMaincollectionList);
+//		model.setViewName("mypage/person_mypage");
+//
+//		log.info("[Controller] myapge 메인에서 보는 CollectionList 출력 : {}", mypageMaincollectionList);
+//		
+//		return model;
+//	}
 	
+	
+	// ▼ 마이컬렉션 메뉴에서 보는 collectionList
 	@GetMapping("mypage/collection/list") 
 	public ModelAndView Collectionlist(ModelAndView model,
 			@SessionAttribute("loginMember") Member loginMember) {
@@ -236,17 +254,37 @@ public class MypagePCollectionController {
 		return model;
 	}
 	
-/*
+
 		
-	// ▼ 컬렉션 디테일 페이지로 넘어가는 메소드 (모달창 아니고 주소로 넘어가기)
-	@GetMapping("mypage/collection/detail")
-	public String detail() {
+	// ▼ 모달에서 삭제 버튼을 눌렀을 때, 베이비 모달에서 예 클릭시 실행되는 메소드
+	@GetMapping("mypage/collection/delete")
+	public ModelAndView delete(@RequestParam("cltNo") int cltNo, 
+			@SessionAttribute("loginMember") Member loginMember, ModelAndView model) {
 		
-		log.info("컬렉션 디테일 페이지로 이동 성공");
+		log.info("컬렉션 삭제 컨트롤러로 이동 성공, ctlNo : {}", cltNo);
 		
-		return "mypage/collection/detail";
+		MypagePCollection mypagePCollection = service.findCollectionByNo(cltNo);
+		
+		log.info("[Controller] delete 할 컬렉션의 정보 출력 : {}", mypagePCollection);
+		
+		int result = 0;
+		
+		result= service.delete(mypagePCollection);
+		log.info("[Controller] delete 완료된 컬렉션의 정보 출력 : {} /{}", mypagePCollection.getCltStatus(), mypagePCollection);
+		
+		
+		if(result > 0) {
+//			model.addObject("msg", "컬렉션 삭제 완료 !");
+			this.Collectionlist(model, loginMember);
+		} else {
+			model.addObject("msg", "컬렉션 수정 실패....");			
+			model.addObject("location", "mypage/collection/write");
+			model.setViewName("/common/msg");	
+		}
+		
+		return model;
 	}
 	
-	*/
+
 
 }
