@@ -69,6 +69,7 @@
 						<li><a href="${ path }/mypage/person_mypage">My 콜라버스</a>
 							<ul>
 								<li><a class="header_nav1" href="${ path }/mypage/calendar/calendar_detail">My 콜라보 캘린더</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/collection/list">MyCollection</a></li>
 								<li><a class="header_nav1" href="${ path }/mypage/follow">팔로우</a></li>
 							</ul>
 						</li>
