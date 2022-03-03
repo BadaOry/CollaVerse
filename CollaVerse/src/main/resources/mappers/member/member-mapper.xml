@@ -81,10 +81,11 @@
 						DEFAULT,
 						DEFAULT,
 						#{age},
-						DEFAULT
+						#{gender}
 					)
 	</insert>
 	
+	<!-- 개인 회원정보수정 -->
 	<update id="updateMember" parameterType="com.collaverse.mvc.member.model.vo.Member">
 		UPDATE MEMBER 
 		SET 

@@ -30,6 +30,7 @@
     background-color: rgb(255, 255, 255);
     border-color: rgb(1, 0, 2);
     font-size: 14px;
+    cursor: pointer;
 }
 
 input[type=text], input[type=password], input[type=tel], input[type=email] {
@@ -59,4 +60,5 @@ input[type=radio] {
 	background-color: rgb(255, 255, 255);
     border-color: rgb(1, 0, 2);
     font-size: 14px;
+    cursor: pointer;
 }
