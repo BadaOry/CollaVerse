@@ -14,7 +14,7 @@ public class Promotion {
 	
 	private String title;
 	
-	private String imgpath;
+	private String imgPath;
 	
 	private String content;
 	

@@ -57,11 +57,13 @@
 							<li><a class="header_nav1" href="">공지</a></li>
 						</ul>
 					</li>
-					<li><a href="">콜라보</a>
+					<li><a href="${ path }/collabo/promotion/main">콜라보</a>
 						<ul>
-							<li><a class="header_nav1" href="">콜라</a></li>
-							<li><a class="header_nav1" href="">콜라</a></li>
-							<li><a class="header_nav1" href="">콜라</a></li>
+							<li><a class="header_nav1" href="${ path }/collabo/category/living/livingList">리빙</a></li>
+							<li><a class="header_nav1" href="${ path }/collabo/category/culture/cultureList">문화</a></li>
+							<li><a class="header_nav1" href="${ path }/collabo/category/food/foodList">식품</a></li>
+							<li><a class="header_nav1" href="${ path }/collabo/category/tech/techList">테크</a></li>
+							<li><a class="header_nav1" href="${ path }/collabo/category/fashion/fashionList">패션</a></li>
 						</ul>
 					</li>
 					

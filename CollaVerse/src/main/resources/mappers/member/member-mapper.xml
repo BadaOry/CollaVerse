@@ -114,21 +114,6 @@
 		WHERE MEMBER_NO = #{no}
 
 	</update>
-	<!-- 사업자 회원정보수정 -->
-   <update id="updateMember_business" parameterType="com.collaverse.mvc.member.model.vo.Member">
-      UPDATE MEMBER 
-      SET 
-         ID = #{id},
-         PASSWORD = #{password},
-         PHONE = #{phone},
-         BUSINESS_NAME = #{business_name},
-         BUSINESS_NO = #{business_no},
-         NICKNAME = #{nickname},
-         EMAIL = #{email},
-         PROFILE_IMG = #{profile_img},
-         MODIFY_DATE = SYSDATE 
-      WHERE MEMBER_NO = #{no}
-   </update>
 	
 	<delete id="deleteMember" parameterType="_int">
 		UPDATE MEMBER

@@ -7,13 +7,19 @@ import com.collaverse.mvc.common.util.PageInfo;
 
 public interface PromotionService {
 
+	List<Promotion> selectAll();
+
+//	List<Promotion> pmtMainList();
+
 //	Promotion selectAll();
 
-/*	int getPromotionCount();
+/* int getPromotionCount();
 
 	List<Promotion> getPromotionList(PageInfo pageInfo);
 */
 
+
+//	Promotion findPromotionByNo(String no);
 
 //	Promotion findPromotionByNo(int no);
 
