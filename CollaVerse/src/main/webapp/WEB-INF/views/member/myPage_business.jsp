@@ -86,14 +86,6 @@
      </div>
 </div>
 <script>
-	$(document).ready(() => {
-		$("#updatePwd").on("click", () => {
-			const url = "${ pageContext.request.contextPath }/member/updatePwd";
-			const status = "left=500px,top=200px,width=400px,height=200px";
-			
-			open(url, "", status);
-		});
-		
 		$("#btnDelete").on("click", () => {
 			if(confirm("정말로 탈퇴하시겠습니까?")) {
 				location.replace("${ pageContext.request.contextPath }/member/delete");

@@ -57,6 +57,7 @@
 							<li><a class="header_nav1" href="">공지</a></li>
 						</ul>
 					</li>
+
 					<li><a href="${ path }/collabo/promotion/main">콜라보</a>
 						<ul>
 							<li><a class="header_nav1" href="${ path }/collabo/category/living/livingList">리빙</a></li>

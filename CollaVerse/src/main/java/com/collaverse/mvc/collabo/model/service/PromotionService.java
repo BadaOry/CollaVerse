@@ -22,5 +22,7 @@ public interface PromotionService {
 //	Promotion findPromotionByNo(String no);
 
 //	Promotion findPromotionByNo(int no);
+	
+//	int save(Promotion promotion);
 
 }
