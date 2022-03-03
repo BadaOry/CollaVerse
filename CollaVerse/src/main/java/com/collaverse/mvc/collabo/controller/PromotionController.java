@@ -21,13 +21,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/promotion")
 public class PromotionController {
 	@Autowired
 	private PromotionService service;
 	
-	@Autowired
-	private ResourceLoader resourceLoader;
 
 /*
 	@GetMapping("/collabo/promotion/main")

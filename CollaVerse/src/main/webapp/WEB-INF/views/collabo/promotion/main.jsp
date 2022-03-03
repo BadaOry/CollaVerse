@@ -110,8 +110,6 @@
  		</c:forEach>
             </div>
 
--->
-
             <div id="area2">
                 <div class="p_img">
                     <img src="${ pageContext.request.contextPath }/resources/images/promotion/promotion4.jpg" width="470px" height="350px">

@@ -62,7 +62,7 @@
 				</td> 	
             </tr>
         </table>
- 	</form>
+
         </div>
             <br>
         <div class="btnAll" align="center">
@@ -71,6 +71,7 @@
         	<input type="reset" id="btn2" value="취소" onclick="location.href='${ path }'">
         </div>
  	</div>
+</form>
 </div>
 <script>
       $("#btnDelete").on("click", () => {
