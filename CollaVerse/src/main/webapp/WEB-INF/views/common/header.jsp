@@ -91,7 +91,7 @@
 						</li>
 					</c:if>
 					
-					<li><a href="">FAQ</a>
+					<li><a href="${ path }/board/boardList">FAQ</a>
 						<ul>
 							<li><a class="header_nav1" href="">에페큐</a></li>
 							<li><a class="header_nav1" href="">에페큐</a></li>
