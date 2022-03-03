@@ -43,5 +43,18 @@ public class PromotionServiceImpl implements PromotionService {
 		return mapper.selectPromotionByNo(no);
 	}
 */
+	
+	public int save(Promotion promotion) {
+		int result = 0;
+		
+		if(promotion.getNo() != 0) {
+			//update
+		} else {
+			//insert
+//			result = mapper.insertpromotion(promotion);
+		}
+		
+		return result;
+	}
 
 }
