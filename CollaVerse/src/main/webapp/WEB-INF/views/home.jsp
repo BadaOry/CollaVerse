@@ -32,7 +32,7 @@
 			<input type="hidden" name="amount" value="10">
 		</div>
 		
-		<div class="eventbanner"><input type="button" value="aa" onclick="location.href='detail.jsp'">이벤트 배너</div>
+		<div class="eventbanner">이벤트 배너</div>
 		
 		<div class="calendar">캘린더</div>
 		
