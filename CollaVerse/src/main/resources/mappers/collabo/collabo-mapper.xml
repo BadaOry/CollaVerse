@@ -22,7 +22,7 @@
   		<resultMap type="Promotion" id="promotionListResultMap">
   		<id property="no" column="PMT_NO"/>
   		<result property="title" column="PMT_TITLE"/>
-  		<result property="imgpath" column="PMT_IMG_PATH"/>
+  		<result property="imgPath" column="PMT_IMG_PATH"/>
   		<result property="content" column="PMT_CONTENT"/>
   		<result property="startDate" column="START_DATE"/>
   		<result property="endDate" column="END_DATE"/>
@@ -30,15 +30,44 @@
   		<result property="cNo" column="C_NO"/>	  		
   		</resultMap>
   		
-  		<select id="selectAll" resultMap="promotionListResultMap">
+  		<select id="selectAll" parameterType="map" resultMap="promotionListResultMap">
   			<include refid="promotionListSql"/>
-  			WHERE PMT_STATUS = 'Y'
+  			 
   		</select>
+  		
+  		<select id="getPromotionCount" parameterType="map" resultType="_int">
+			SELECT COUNT(*) 
+			FROM PROMOTION
+			WHERE PMT_STATUS = 'Y'
+			<choose>
+					<when test="title != null">
+							AND PMT_TITLE LIKE '%' || #{title} || '%'
+					</when>
+					<when test="content != null">
+							AND PMT_CONTENT LIKE '%' || #{content} || '%'
+					</when>
+			</choose>
+		</select>
+	
+ <!-- 
+   		<select id="selectAll" parameterType="String" resultType="promotionListResultMap">
+  			<include refid="promotionListSql"/>
+  			 
+  		</select>  
+
+ 		
+  		<select id="pmtMainList" parameterType="String" resultType="String">
+  		SELECT PMT_TITLE,
+  			   START_DATE
+  			   WHERE PMT_NO = #{no}
+  		</select>
+  		
  
- <!--  		
+ 		
   		<resultMap type="Promotion" extends="promotionListResultMap" id="promotionDetailResultMap">
   			<collection property="replies" javaType="arraylist" columnPrefix="R_" resultMap="replyResultMap"></collection>
   		</resultMap>
+
   		
   		<select id="findAll" parameterType="map" resultMap="promotionListResultMap">
   				<include refid="promotionListSql"/>
@@ -52,6 +81,7 @@
 					</when>
 			</choose>
   		</select>
+
   		
   		 <select id="getPromotionCount" parameterType="map" resultType="_int">
 			SELECT COUNT(*) 
@@ -66,6 +96,7 @@
 					</when>
 			</choose>
 		</select>
+		
 		
 		  <select id="getPromotionList" parameterType="map" resultType="_int">
 			SELECT COUNT(*) 
@@ -91,10 +122,9 @@
   					READCOUNT, 
   					C_NO
 					FROM PROMOTION
-					WHERE PMT_STATUS = 'Y'
-			WHERE PMT_STATUS = 'Y'
+					WHERE PMT_STATUS = 'Y' AND PMT_NO = #{no}
 		</select>
---> 		
+
 <!-- 
 		<insert id="insertPromotion" parameterType="Promotion" useGeneratedKeys="true" keyProperty="no" keyColumn="NO">
 			INSERT INTO PROMOTION (
@@ -120,6 +150,5 @@
 			)
 		</insert>
  -->
-  		
 
   </mapper>

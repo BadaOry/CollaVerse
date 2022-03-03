@@ -2,6 +2,7 @@ package com.collaverse.mvc.collabo.model.service;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +17,29 @@ public class PromotionServiceImpl implements PromotionService {
 
 	/*
 	@Override
+	public List<Promotion> pmtMainList() {
+		
+		return mapper.pmtMainList();
+	}
+	*/
+
+
+	@Override
+	public List<Promotion> selectAll() {
+		
+		return mapper.selectAll();
+	}
+
+
+	/*
+	@Override
 	public Promotion selectAll() {
 		
 		return mapper.selectAll();
 	}
 	*/
 
-	/*
+/*
 	@Override
 	public int getPromotionCount() {
 
@@ -31,13 +48,15 @@ public class PromotionServiceImpl implements PromotionService {
 
 	@Override
 	public List<Promotion> getPromotionList(PageInfo pageInfo) {
-
-		return null;
+		int offset = (pageInfo.getCurrentPage() - 1) * pageInfo.getListLimit();
+		int limit = pageInfo.getListLimit();
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return mapper.selectAll(rowBounds);
 	}
-	*/
-
+*/
 	
-/*	@Override
+/*
+	@Override
 	public Promotion findPromotionByNo(int no) {
 		
 		return mapper.selectPromotionByNo(no);

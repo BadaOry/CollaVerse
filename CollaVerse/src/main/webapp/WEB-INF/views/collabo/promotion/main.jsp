@@ -9,19 +9,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jhyunyou.css">
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/jhyunyou.css">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+	
    <div class="frame">
         <nav class="colla_menu">
             <ul>
-                <li>리빙</li>
-                <li>문화</li>
-                <li>식품</li>
-                <li>테크</li>
-                <li>패션</li>
-                <li>브랜드</li>
+                <li><a onclick="location.href='${ path }/collabo/category/living/livingList'" >리빙</a></li>
+                <li><a onclick="location.href='${ path }/collabo/category/culture/cultureList'" >문화</li>
+                <li><a onclick="location.href='${ path }/collabo/category/food/foodList'" >식품</li>
+                <li><a onclick="location.href='${ path }/collabo/category/tech/techList'" >테크</li>
+                <li><a onclick="location.href='${ path }/collabo/category/fashion/fashionList'" >패션</li>
+                <li><a onclick="location.href='${ path }/collabo/brand/brand'" >브랜드</li>
             </ul>
         </nav>
     </div>
@@ -32,18 +35,82 @@
     <div class="promotion">
         <h3>최신 프로모션</h3>
     </div>
-
+        
     <div class="p_new">
             <div id="area1">
+            <ul>
+            <c:forEach var="list" items="${ list }" begin="0" end="3">
+            	<li>
                 <div class="p_img">
-                    <img src="${ pageContext.request.contextPath }/resources/images/promotion/promotion1.jpg" width="470px" height="350px">
-                </div>
-     
+                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
+                </div>     
                 <p>
-                <p>${ promotion.title }</p>
-                <p>프로모션 기간</p>
-                
+                <p>${ list.title }</p>
+				<p>${ list.startDate }</p>
+                </li> 
+ 			</c:forEach>
+ 			</ul>
             </div>
+
+            <div id="area2">
+            <ul>
+            <c:forEach var="list" items="${ list }" begin="4" end="7">
+            <li>
+                <div class="p_img">
+                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
+                </div>     
+                <p>
+                <p>${ list.title }</p>
+				<p>${ list.startDate }</p>
+            </li>     
+ 		</c:forEach>
+ 		</ul>
+            </div>
+
+            <div id="area3">
+            <ul>
+             <c:forEach var="list" items="${ list }" begin="8" end="11">
+             <li>
+                <div class="p_img">
+                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
+                </div>     
+                <p>
+                <p>${ list.title }</p>
+				<p>${ list.startDate }</p>
+             </li>
+ 		</c:forEach>
+ 		</ul>
+            </div>         
+            
+            <div id="area4">
+            <ul>
+            <c:forEach var="list" items="${ list }" begin="12" end="15">
+            <li>
+                <div class="p_img">
+                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
+                </div>     
+                <p>
+                <p>${ list.title }</p>
+				<p>${ list.startDate }</p>
+            </li>    
+ 		</c:forEach>
+ 		</ul>
+            </div>
+            
+<!--           
+            <div id="area5">
+             <c:forEach var="list" items="${ list }" begin="12" end="15">
+                <div class="p_img">
+                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="450px" height="330px">
+                </div>     
+                <p>
+                <p>${ list.title }</p>
+				<p>${ list.startDate }</p>
+                 
+ 		</c:forEach>
+            </div>
+
+-->
 
             <div id="area2">
                 <div class="p_img">
@@ -62,7 +129,14 @@
                 <p>프로모션 타이틀</p>
                 <p>프로모션 기간</p>
             </div>
+-->
+
+
+
     </div>
 </div>
+
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 
+	
 </body>
 </html>
