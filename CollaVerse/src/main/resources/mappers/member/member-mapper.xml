@@ -115,6 +115,7 @@
 			MODIFY_DATE = SYSDATE 
 		WHERE MEMBER_NO = #{no}
 	</update>
+
 	
 	<!-- 회원정보삭제 -->
 	<delete id="deleteMember" parameterType="_int">
