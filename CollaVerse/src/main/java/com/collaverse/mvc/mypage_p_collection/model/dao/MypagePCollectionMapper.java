@@ -16,17 +16,12 @@ public interface MypagePCollectionMapper {
 
 	int insertMypagePCollection(MypagePCollection mypagePCollection);
 
-//	String getCollectionById();
+	MypagePCollection updateMypagePCollection(int cltNo);
 
-//	String findCollectionById(String loginMemberMemberId);
+	int updateMypagePCollection(MypagePCollection mypagePCollection);
 
-//	List<MypagePCollection> getCollectionListYP(String loginMemberMemberId);
+	MypagePCollection findCollectionByNo(int cltNo);
 
-//	int getCollectionCount();
-//
-//	List<MypagePCollection> findAll(RowBounds rowBounds);
-//
-//	int insertCollection(MypagePCollection mypagePCollection);
-
+	int deleteMypagePCollection(MypagePCollection mypagePCollection);
 
 }

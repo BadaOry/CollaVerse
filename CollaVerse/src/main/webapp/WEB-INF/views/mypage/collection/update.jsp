@@ -13,28 +13,29 @@
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<meta charset="UTF-8">
 	<title>CollaVerse</title>
-	<link rel="stylesheet" type="text/css" href="${path}/resources/css/mypage/collection/write.css">
+	<link rel="stylesheet" type="text/css" href="${path}/resources/css/mypage/collection/update.css">
 	<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
 	
-	<h2> 컬렉션 작성</h2>
+	<h2> 컬렉션 수정</h2>
 	
-	<form name="collectionWriteFrm" action="${ path }/mypage/collection/write" method="post" enctype="multipart/form-data">
+	<form name="collectionUpdateFrm" action="${ path }/mypage/collection/update" method="post" enctype="multipart/form-data">
 		<div class="mypage_collection_write_container">
 	        <table class="mypage_collection_write">	
 	            <tr>
 	                <td>
-	                	<img id="imagePreview" />
+	                	<img id="imagePreview" src="${ path }/resources/upload/collection/${ updateCollectionInfo.renamedFileName01 }"/>
 	                </td>
 	                <td>
-	                    <input type="text" id="mypage_collection_write_content" name="content"/>
+	                    <input type="text" id="mypage_collection_update_content" name="content"
+	                    	value=" ${ updateCollectionInfo.cltContent }"/>
 	                </td>
 	            </tr>
 	            <tr>
 	                <td>
-	                	<input multiple="multiple" type="file" name="upfile"  />
+	                	<input type="hidden" id="cltNo" name="cltNo" value="${ updateCollectionInfo.cltNo }">
 	                </td>
-	                <td> 
-	                     <button type="submit" id="mypage_collection_write_submit">글쓰기</button>
+	                <td>
+	                     <button type="submit" id="mypage_collection_update_submit">컬렉션 수정</button>
 	                </td>
 	            </tr>
 	        </table>

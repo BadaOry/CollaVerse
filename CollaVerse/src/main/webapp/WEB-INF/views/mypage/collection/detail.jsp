@@ -13,7 +13,7 @@
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<meta charset="UTF-8">
 	<title>CollaVerse</title>
-	<link rel="stylesheet" type="text/css" href="${path}/resources/css/mypage/collection/write.css">
+	<link rel="stylesheet" type="text/css" href="${path}/resources/css/mypage/collection/detail.css">
 	<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
 	
 	<h2> 컬렉션 작성</h2>
@@ -23,7 +23,7 @@
 	        <table class="mypage_collection_write">	
 	            <tr>
 	                <td>
-	                	<img id="imagePreview" />
+	                	<img id="image" src="${ path }/resources/upload/collection/${ collectionList.renamedFileName01 } "/>
 	                </td>
 	                <td>
 	                    <input type="text" id="mypage_collection_write_content" name="content"/>
@@ -31,7 +31,7 @@
 	            </tr>
 	            <tr>
 	                <td>
-	                	<input multiple="multiple" type="file" name="upfile"  />
+	                	<input multiple="multiple" type="file" name="files" id="files" />
 	                </td>
 	                <td> 
 	                     <button type="submit" id="mypage_collection_write_submit">글쓰기</button>
@@ -39,9 +39,10 @@
 	            </tr>
 	        </table>
 	    </div>
+	<input type="hidden" id="cltNo" name="cltNo" value="${ collectionList.cltNo }">	 
 	</form>
-	 
-	 <%-- 
+	
+	<!-- 
 	 	<script>
 	       document.getElementsByName("files").onchange = function() {
 	           var reader = new FileReader();
@@ -50,10 +51,10 @@
 	               document.getElementById("imagePreview").src = e.target.result;
 	           };
 	
-	           reader.readAsDataURL(this.files);
+	           reader.readAsDataURL(this.files[0]);
 	        };
 		</script>
-	 --%>
+	 -->
 	
 	
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
