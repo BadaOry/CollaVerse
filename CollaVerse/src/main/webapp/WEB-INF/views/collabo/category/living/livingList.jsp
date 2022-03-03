@@ -13,15 +13,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+	
    <div class="frame">
         <nav class="colla_menu">
             <ul>
-                <li>리빙</li>
-                <li>문화</li>
-                <li>식품</li>
-                <li>테크</li>
-                <li>패션</li>
-                <li>브랜드</li>
+                <li><a onclick="location.href='${ path }/collabo/category/living/livingList'" >리빙</a></li>
+                <li><a onclick="location.href='${ path }/collabo/category/culture/cultureList'" >문화</li>
+                <li><a onclick="location.href='${ path }/collabo/category/food/foodList'" >식품</li>
+                <li><a onclick="location.href='${ path }/collabo/category/tech/techList'" >테크</li>
+                <li><a onclick="location.href='${ path }/collabo/category/fashion/fashionList'" >패션</li>
+                <li><a onclick="location.href='${ path }/collabo/brand/brand'" >브랜드</li>
             </ul>
         </nav>
     </div>
@@ -65,5 +68,8 @@
             <p>제품 2</p>
         </div>
     </div>
+    
+    	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 
+    	
 </body>
 </html>

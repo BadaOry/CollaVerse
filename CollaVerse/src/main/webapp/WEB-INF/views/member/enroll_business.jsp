@@ -21,9 +21,9 @@
 
 	<h1>사업자 회원 가입</h1>
 	<div id="enroll-container">	
-	<div align="center">
-	
+	<div>
 	 	<form name="memberEnrollFrm" action="${ path }/member/enroll_business" method="post">
+	 	<div  align="center">
 	 		<table>
 	 			<tr>
 					<th>아이디 *</th>
@@ -89,7 +89,7 @@
 	 		</table>
 	 	</div>
 	 		<br>
-	 		<div class="labelAll">
+	 	<div class="labelAll">
 	 		<label for="agree_all">
 				<input type="checkbox" name="agree_all" id="agree_all"><b>모두 동의합니다</b><br>
 			</label>
@@ -102,7 +102,7 @@
 			<label for="agree">
 				  <input type="checkbox" name="agree" value="3">(선택) 이메일 및 SMS 마케팅 정보 수신에 동의합니다.<br>
 			</label>
-			</div>
+		</div>
 			<br>
 		<div class="btnAll" align="center">
  			<input type="submit" id="enrollSubmit" value="가입">	
@@ -110,6 +110,7 @@
  		</div>
  	</form>
  	</div>
+</div>
 </div>
 
 <script>

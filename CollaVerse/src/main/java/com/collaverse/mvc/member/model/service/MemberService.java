@@ -11,7 +11,7 @@ public interface MemberService {
 	int save(Member member);
 
 	Member findMemberById(String id);
-
+	
 	// 아이디 중복확인
 	Boolean isDuplicateID(String userId);
 
