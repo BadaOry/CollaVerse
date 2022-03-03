@@ -81,10 +81,11 @@
 						DEFAULT,
 						DEFAULT,
 						#{age},
-						DEFAULT
+						#{gender}
 					)
 	</insert>
 	
+	<!-- 개인 회원정보수정 -->
 	<update id="updateMember" parameterType="com.collaverse.mvc.member.model.vo.Member">
 		UPDATE MEMBER 
 		SET 
@@ -114,8 +115,8 @@
 			MODIFY_DATE = SYSDATE 
 		WHERE MEMBER_NO = #{no}
 	</update>
-
 	
+	<!-- 회원정보삭제 -->
 	<delete id="deleteMember" parameterType="_int">
 		UPDATE MEMBER
 		SET

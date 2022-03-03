@@ -49,7 +49,7 @@ input[type=password] {
     border-color: blueviolet;
     box-shadow: 1px 1px 1px 1px rgb(175, 46, 201, 0.5);
     font-size: 15px;
-    padding: 5px 10px 10px;
     cursor: pointer;
     width: 130px;
+    padding: 5px 10px 10px;
 }

@@ -1,8 +1,10 @@
 @charset "UTF-8";
 
+/*
 body{
     background-color: rgb(198, 182, 218);
 }
+*/
 
 .colla_menu{
     font-family: 'Nanum Gothic', sans-serif;
@@ -42,15 +44,20 @@ li{
 }
 
 .p_img{
+	display: flex;
+	flex-wrap: wrap;
 /*    background-color: lemonchiffon;*/
-    text-align: center;
-/*    height: 150px;
+/*    text-align: center;*/
+    /*height: 150px;
     width: 250px;*/
+    
 }
 
 .p_new p {
     text-align: center;
 }
+
+
 
 /* 카테고리 목록 */
 

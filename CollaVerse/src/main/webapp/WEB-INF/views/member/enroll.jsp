@@ -103,6 +103,11 @@
 						<select name="yy" id="year"></select>년
 						<select name="mm" id="month"></select>월
 						<select name="dd" id="day"></select>일
+						<!-- text 박스 나이계산
+						<input type="text" id="testUserYear" placeholder="ex.1990" size="8">
+						<button type="button" id="testAgeBtn">계산</button>
+						<span id="testResultBox">만 : <span></span> 세 </span>
+						 -->
 					</td>
 				</tr>
 
@@ -209,6 +214,24 @@
 	    $("#day  > option[value="+day+"]").attr("selected", "true");       
 	})
 </script>
+
+<!-- 나이계산 text박스 사용 시 
+<script>
+	document.querySelector('#testAgeBtn').addEventListener('click', function() {
+		var birthYear = document.querySelector('#testUserYear').value;
+			if(! birthYear) {
+				alert('태어난 연도를 입력하세요');
+					document.querySelector('#testUserYear').focus();
+			} else {
+		var today = new Date();
+		var nowYear = today.getFullYear();
+		var age = nowYear - birthYear;
+			document.querySelector('#testResultBox span').innerText = age;
+		}
+	});
+</script>
+-->
+
 	
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>	
 </body>
