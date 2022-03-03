@@ -3,10 +3,12 @@ package com.collaverse.mvc.collabo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,9 +20,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+@RequestMapping("/promotion")
 public class PromotionController {
 	@Autowired
 	private PromotionService service;
+	
+	@Autowired
+	private ResourceLoader resourceLoader;
 
 /*
 	@GetMapping("/collabo/promotion/main")

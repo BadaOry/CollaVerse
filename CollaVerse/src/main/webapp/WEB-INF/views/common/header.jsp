@@ -57,9 +57,9 @@
 							<li><a class="header_nav1" href="">공지</a></li>
 						</ul>
 					</li>
-					<li><a href="">콜라보</a>
+					<li><a href="${ path }/collabo/promotion/detail">콜라보</a>
 						<ul>
-							<li><a class="header_nav1" href="">콜라</a></li>
+							<li><a class="header_nav1" href="${ path }/collabo/promotion/main">콜라</a></li>
 							<li><a class="header_nav1" href="">콜라</a></li>
 							<li><a class="header_nav1" href="">콜라</a></li>
 						</ul>
