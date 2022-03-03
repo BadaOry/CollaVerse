@@ -7,39 +7,14 @@
 <html>
 
 <head>
-    <style>
-        .mypage_collection_write_container {
-            padding: 50px 0 50px 0;
-        }
-        .mypage_collection_write {
-            border: solid 2px black;
-            margin: auto;
-        }
 
-        #mypage_collection_write_imagePreview {
-            width: 400px;
-            height: 400px;
-            border: 2px solid black;
-        }
-
-        #mypage_collection_write_content {
-            width: 300px;
-            height: 400px;
-        }
-
-        #mypage_collection_write_submit {
-            width: 308px;
-            height: 30px;
-            background-color: blueviolet;
-            color: white;
-        }
-    </style>
 </head>
 <body class="box" style=" overflow-y: scroll;">
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	<meta charset="UTF-8">
 	<title>CollaVerse</title>
-	<link rel="stylesheet" type="text/css" href="${path}/resources/css/style.css">
+	<link rel="stylesheet" type="text/css" href="${path}/resources/css/mypage/collection/write.css">
+	<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
 	
 	<h2> 컬렉션 작성</h2>
 	
@@ -48,7 +23,7 @@
 	        <table class="mypage_collection_write">	
 	            <tr>
 	                <td>
-	                	<img id="mypage_collection_write_imagePreview" /d>
+	                	<img id="imagePreview" />
 	                </td>
 	                <td>
 	                    <input type="text" id="mypage_collection_write_content" name="content"/>
@@ -56,7 +31,7 @@
 	            </tr>
 	            <tr>
 	                <td>
-	                	<input multiple="multiple" type="file" name="upfile" />
+	                	<input multiple="multiple" type="file" name="upfile"  />
 	                </td>
 	                <td> 
 	                     <button type="submit" id="mypage_collection_write_submit">글쓰기</button>
@@ -65,34 +40,24 @@
 	        </table>
 	    </div>
 	</form>
+	 
+	 <%-- 
+	 	<script>
+	       document.getElementsByName("files").onchange = function() {
+	           var reader = new FileReader();
 	
+	           reader.onload = function (e) {
+	               document.getElementById("imagePreview").src = e.target.result;
+	           };
 	
-	
-	<script>
-		function readImage(input) {
-			if(input.files && input.files[0]) {
-				
-				const reader = new FileReader();
-				
-				reader.onload = e => {
-					const previewImage = document.getElementById("mypage_collection_write_imagePreview")
-					previewImage.src = e.target.result
-				}
-				
-				reader.readAsDataURL(input.files[0])
-			}
-		}
-		
-		const inputImage = document.getElementById("mypage_collection_write_imagePreview")
-		inputImage.addEventListener("change", e => {
-			readImage(e.target)
-		})
-	</script>
+	           reader.readAsDataURL(this.files);
+	        };
+		</script>
+	 --%>
 	
 	
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
-	<script src="${ path }/resources/js/mypage_p_collection_list_infinite.js"></script>
-	<script src="${ path }/resources/js/jquery-3.6.0.js"></script>
+	
 </body>
 </html>
