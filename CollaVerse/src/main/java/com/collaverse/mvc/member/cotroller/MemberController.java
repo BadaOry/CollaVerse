@@ -37,6 +37,14 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	// 로그인 페이지로 이동
+	@GetMapping("/member/login")
+	public String loginpage() {
+		log.info("로그인");
+		
+		return "member/login";
+	}
+	
 	//로그인
 	@RequestMapping(value = "member/login", method = {RequestMethod.POST})
 	public ModelAndView login(ModelAndView model,
@@ -58,13 +66,7 @@ public class MemberController {
 		return model;
 	}
 	
-	@GetMapping("/member/login")
-	public String loginpage() {
-		log.info("로그인");
-		
-		return "member/login";
-	}
-	
+
 	// 로그아웃
 	@GetMapping("/member/logout")
 	public String logout(SessionStatus status) {
@@ -76,6 +78,14 @@ public class MemberController {
 		log.info("status.isComplete() : {}", status.isComplete());
 		
 		return "redirect:/";
+	}
+	
+	// 회원가입 페이지 이동
+	@GetMapping("/member/enrollPage")
+	public String enrollPage() {
+		log.info("회원 가입 페이지 이동");
+		
+		return "member/enrollPage";
 	}
 	
 	// 개인 회원가입
@@ -151,7 +161,6 @@ public class MemberController {
 		
 		return new ResponseEntity<Map<String,Boolean>>(map, HttpStatus.OK);
 	}
-	
 
 	// 개인 회원 정보 수정
 	@GetMapping("/member/myPage")
@@ -165,6 +174,9 @@ public class MemberController {
 			ModelAndView model,
 			@SessionAttribute(name="loginMember") Member loginMember,
 			@ModelAttribute Member member) {
+		
+		log.info("컨트롤러로 요청 오는지 확인");
+		
 		int result = 0;
 		
 		member.setNo(loginMember.getNo());
@@ -331,6 +343,8 @@ public class MemberController {
 		
 		return new ResponseEntity<Map<String,Boolean>>(map, HttpStatus.OK);
 	}
+	
+
 	
 }
 

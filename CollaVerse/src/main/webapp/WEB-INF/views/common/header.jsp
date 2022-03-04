@@ -26,8 +26,7 @@
 				<table id="table">
 					<thead>
 						<tr>
-							<td><input type="button" value="개인회원가입" onclick="location.href='${ path }/member/enroll'"></td>
-							<td><input type="button" value="사업자회원가입" onclick="location.href='${ path }/member/enroll_business'"></td>
+							<td><input type="button" value="회원가입" onclick="location.href='${ path }/member/enrollPage'"></td>
 							<td><input type="button" value="로그인" onclick="location.href='${ path }/member/login'"></td>
 						</tr>
 					</thead>
