@@ -34,17 +34,22 @@
 				</table>
 			</c:if>
 			<c:if test="${ !empty loginMember }">
-					<table id="table">
+				<table id="table">
 					<thead>
 						<tr>
-							<td><span style="color: white" align="right">${ loginMember.nickname } 님 환영합니다! </span></td>
-							<td><button onclick="location.href='${ path }/member/myPage'">내정보</button></td>
-							<td><button onclick="location.href='${ path }/member/myPage_business'">내정보</button></td>
+							<td><span style="color: white">${ loginMember.nickname } 님 환영합니다! </span></td>
+							<c:if test="${ loginMember.role == '개인' }">
+								<td><button onclick="location.href='${ path }/member/myPage'">내정보</button></td>
+							</c:if>
+							<c:if test="${ loginMember.role == '기업' }">
+								<td><button onclick="location.href='${ path }/member/myPage_business'">내정보</button></td>
+							</c:if>
 							<td><input type="button" value="로그아웃" onclick="location.href='${ path }/member/logout'"></td>
 						</tr>
 					</thead>
 				</table>
 			</c:if>
+			
 		</div>
 		
 		<div id="header3">
