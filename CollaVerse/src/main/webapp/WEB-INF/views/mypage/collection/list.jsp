@@ -56,17 +56,17 @@
 											</div>
 										<div class="modal-footer">
 											<button onclick="location.href='${ path }/mypage/collection/update?cltNo=${ collectionList.cltNo }'">수정</button>
-											<button id="delete_btn"> 삭제 
+											<button class="deleteModalClass" id="delete_btn"> 삭제 
 												<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 													<div class="modal-dialog" role="document" id="confirmModal" 
 														style="margin-top: 38%; background-color: #4611d4;">
-														<div class="modal-content">
+														<div class="modal-content">	
 															<table>
 																<tr>정말로 삭제하시겠습니까?</tr>
 																<tr>
 																	<p> </p>
 																	<td><button onclick="location.href='${ path }/mypage/collection/delete?cltNo=${ collectionList.cltNo }'">네</button></td>
-																	<td><button id="delete_btn_n">아니오</button></td>
+																	<td><button class="delete_btn_n">아니오</button></td>
 																	<p> </p>
 																</tr>
 															</table>
@@ -94,21 +94,21 @@
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>    
 	
 	<script>
-		$('#collection_box').click(function(e){
+		$('.collection_list').click(function(e){
 			e.preventDefault();
-			$('#detailModal').modal("show");
+			$(this).children('#detailModal').modal("show");
 		});
 
 	
-		$('#delete_btn').click(function(e){
+		$('.deleteModalClass').click(function(e){
 			e.preventDefault();
-			$('#deleteModal').modal("show");
+			$(this).children('#deleteModal').modal("show");
 		});
 		
 		
-		$('#delete_btn_n').click(function(e){
+		$('.delete_btn_n').click(function(e){
 			e.preventDefault();
-			$('#deleteModal').modal("hide");
+			$(this).parents('#deleteModal').modal("hide");
 		});
 	</script>
 	

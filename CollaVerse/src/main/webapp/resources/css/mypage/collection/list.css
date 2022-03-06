@@ -30,24 +30,25 @@ body {
 
 .mypage_mycollection_list_container {
     width: 70%;
-    height: 100%;
+    /* height: 100%; */
     margin: auto;
 }
 
 .mypage_mycollection_list {
-    height: 100%;
+    /* height: 100%; */
     /* margin: 0 0 30px 0; */
 }
 
 .mypage_mycollection_list .collection_list {
-    float : left;
+    /* float : left; */
+    display: inline-block;
 }
 
 #collection_box {
     width: 30%;
     height: 270px;
     border: 1px solid rgb(89, 22, 145);
-    margin: 20px 20px 0 0 ;
+    margin: 20px 15px 0 0;
 }
       
 #collection_no_collectionList {
