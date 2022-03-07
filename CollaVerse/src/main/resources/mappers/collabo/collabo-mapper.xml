@@ -5,7 +5,6 @@
   
   
   <mapper namespace="com.collaverse.mvc.collabo.model.dao.CollaboMapper">
-  
   		<sql id="promotionListSql">
   					SELECT PMT_NO, 
   					PMT_TITLE, 
@@ -48,7 +47,32 @@
 					</when>
 			</choose>
 		</select>
-	
+			
+		
+  		<select id="selectLiving" parameterType="map" resultMap="promotionListResultMap">
+  			<include refid="promotionListSql"/> 			 
+  			 WHERE C_NO = '1' 
+  		</select>
+  		
+  		<select id="selectCulture" parameterType="map" resultMap="promotionListResultMap">
+  			<include refid="promotionListSql"/>
+  			 WHERE C_NO = '2' 
+  		</select>
+  		
+  		<select id="selectFood" parameterType="map" resultMap="promotionListResultMap">
+  			<include refid="promotionListSql"/>	 
+  			 WHERE C_NO = '3' 
+  		</select>   		  		
+
+  		<select id="selectTech" parameterType="map" resultMap="promotionListResultMap">
+  			<include refid="promotionListSql"/> 			 
+  			 WHERE C_NO = '4' 
+  		</select> 
+  		
+  		<select id="selectFashion" parameterType="map" resultMap="promotionListResultMap">
+  			<include refid="promotionListSql"/>  			 
+  			 WHERE C_NO = '5' 
+  		</select> 
  <!-- 
    		<select id="selectAll" parameterType="String" resultType="promotionListResultMap">
   			<include refid="promotionListSql"/>
@@ -125,7 +149,7 @@
 					WHERE PMT_STATUS = 'Y' AND PMT_NO = #{no}
 		</select>
 
-<!-- 
+ 
 		<insert id="insertPromotion" parameterType="Promotion" useGeneratedKeys="true" keyProperty="no" keyColumn="NO">
 			INSERT INTO PROMOTION (
 				PMT_NO

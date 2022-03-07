@@ -15,6 +15,16 @@ public interface CollaboMapper {
 
 	List<Promotion> selectAll();
 
+	List<Promotion> selectLiving();
+
+	List<Promotion> selectCulture();
+
+	List<Promotion> selectFood();
+
+	List<Promotion> selectTech();
+
+	List<Promotion> selectFashion();
+
 //	Promotion selectAll();
 
 //	int getPromotionCount();
