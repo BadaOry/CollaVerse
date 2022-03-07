@@ -62,7 +62,6 @@
 				</td> 	
             </tr>
         </table>
-
         </div>
             <br>
         <div class="btnAll" align="center">
@@ -70,9 +69,11 @@
         	<input type="button" id="btnDelete" value="탈퇴">
         	<input type="reset" id="btn2" value="취소" onclick="location.href='${ path }'">
         </div>
+ 	</form>
  	</div>
-</form>
+ 	</div>
 </div>
+
 <script>
       $("#btnDelete").on("click", () => {
          if(confirm("정말로 탈퇴하시겠습니까?")) {

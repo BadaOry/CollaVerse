@@ -18,15 +18,14 @@
 				<table id="table">
 					<thead>
 						<tr>
-							<td><input type="button" value="개인회원가입" onclick="location.href='${ path }/member/enroll'"></td>
-							<td><input type="button" value="사업자회원가입" onclick="location.href='${ path }/member/enroll_business'"></td>
+							<td><input type="button" value="회원가입" onclick="location.href='${ path }/member/enrollPage'"></td>
 							<td><input type="button" value="로그인" onclick="location.href='${ path }/member/login'"></td>
 						</tr>
 					</thead>
 				</table>
 			</c:if>
 			<c:if test="${ !empty loginMember }">
-					<table id="table">
+				<table id="table">
 					<thead>
 						<tr>
 							<td colspan="3" id="welcome"><span id="memebr_nickname">${ loginMember.nickname }</span> <span>님 환영합니다! </span></td>
@@ -45,6 +44,7 @@
 					</thead>
 				</table>
 			</c:if>
+			
 		</div>
 	
 

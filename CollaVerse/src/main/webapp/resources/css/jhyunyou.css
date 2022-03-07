@@ -40,10 +40,17 @@ li{
 .p_new{
     font-family: 'Nanum Gothic', sans-serif;
     display: flex;
+    flex-direction: row;
     justify-content: space-around
 }
 
-.p_img{
+.area{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around
+}
+
+/*.p_img{
 	display: flex;
 	flex-wrap: wrap;
 /*    background-color: lemonchiffon;*/
@@ -52,6 +59,7 @@ li{
     width: 250px;*/
     
 }
+*/
 
 .p_new p {
     text-align: center;
@@ -163,9 +171,8 @@ input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
 .p_content{
     font-family: 'Nanum Gothic', sans-serif;
     text-align: center;
+
 }
-
-
 
 /* --- ▼ Crystal Edited ▼ --- */
 .mini_title {
@@ -179,6 +186,4 @@ input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
 	width: 60%;
 }
 /* --- ▲ Crystal Edited ▲ --- */
-
-
 

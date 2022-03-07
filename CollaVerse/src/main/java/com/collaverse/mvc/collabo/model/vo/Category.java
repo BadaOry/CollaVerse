@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Category {
 	private int	no;
-		
+	
 	private String cName;
 
 }
