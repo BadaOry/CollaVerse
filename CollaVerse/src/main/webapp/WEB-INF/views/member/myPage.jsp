@@ -62,6 +62,7 @@
 				</td> 	
             </tr>
         </table>
+
             <br>
         <div class="btnAll" align="center">
         	<input type="submit" id="btn1" value="정보수정">

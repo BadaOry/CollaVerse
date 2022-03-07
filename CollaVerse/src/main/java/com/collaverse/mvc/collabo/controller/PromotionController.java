@@ -21,51 +21,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/promotion")
 public class PromotionController {
 	@Autowired
 	private PromotionService service;
-	
-	@Autowired
-	private ResourceLoader resourceLoader;
 
-/*
-	@GetMapping("/collabo/promotion/main")
-	public ModelAndView list(ModelAndView model,
-			@RequestParam(defaultValue = "1") int page) {
-		
-		int promotionCount = 0;
-		PageInfo pageInfo = null;
-		List<Promotion> list = null;
-		
-		log.info("page number : {}", page);
-		
-		promotionCount = service.getPromotionCount();
-		pageInfo = new PageInfo (page, 5, promotionCount, 3);	
-		list = service.getPromotionList(pageInfo);
-		
-		model.addObject("pageInfo", pageInfo);
-		model.addObject("list", list);
-		model.setViewName("/collabo/promotion/main"); // 실제로 전달해줄 View의 이름 
-		
-		return model;
-	}
-*/
 
-/*	
-	@GetMapping("/collabo/promotion/main")
-	public ModelAndView view(ModelAndView model, @RequestParam(defaultValue = "no") int no) {
-		
-		Promotion promotion = service.findPromotionByNo(no);
-		
-		model.addObject("promotion", promotion);
-		model.setViewName("/collabo/promotion/main");
-		
-		return model;
-	}
-*/
 	
-	// 받아오기 성공 (but 1개가 아닌 15개를 받아옴) 	
+	//Promotion 데이터list (전체) 받아옴 
 		@GetMapping("/collabo/promotion/main")
 		public ModelAndView list(ModelAndView model) {
 			
@@ -83,6 +45,50 @@ public class PromotionController {
 			
 			return model;
 		}
+		
+		
+		@GetMapping("/collabo/promotion/detail")
+		public String detail() {
+			
+			return "/collabo/promotion/detail";
+			
+		}
+		
+/*
+		@GetMapping("/collabo/promotion/main")
+		public ModelAndView list(ModelAndView model,
+				@RequestParam(defaultValue = "1") int page) {
+			
+			int promotionCount = 0;
+			PageInfo pageInfo = null;
+			List<Promotion> list = null;
+			
+			log.info("page number : {}", page);
+			
+			promotionCount = service.getPromotionCount();
+			pageInfo = new PageInfo (page, 5, promotionCount, 3);	
+			list = service.getPromotionList(pageInfo);
+			
+			model.addObject("pageInfo", pageInfo);
+			model.addObject("list", list);
+			model.setViewName("/collabo/promotion/main"); // 실제로 전달해줄 View의 이름 
+			
+			return model;
+		}
+*/
+
+	/*	
+		@GetMapping("/collabo/promotion/main")
+		public ModelAndView view(ModelAndView model, @RequestParam(defaultValue = "no") int no) {
+			
+			Promotion promotion = service.findPromotionByNo(no);
+			
+			model.addObject("promotion", promotion);
+			model.setViewName("/collabo/promotion/main");
+			
+			return model;
+		}
+	*/
 
 /*
 // 받아오기 성공 (but 1개가 아닌 15개를 받아옴) 	
@@ -126,11 +132,6 @@ public class PromotionController {
 	}
 */	
 
-	@GetMapping("/collabo/promotion/detail")
-	public String detail() {
-		
-		return "/collabo/promotion/detail";
-		
-	}
+
 
 }

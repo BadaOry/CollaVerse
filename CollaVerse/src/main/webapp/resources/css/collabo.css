@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+.frame{
+
+}
+
+.colla_menu{
+    font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    flex-direction: row;  
+    justify-content:center;
+    word-spacing: 45px;
+    margin-top: 1%;
+}
+
+.colla_menu li{
+    display: inline;
+    align-self: center;
+    margin: 0%;
+    margin-left: 15px;    
+}
+
+.colla_menu li:hover{
+	background-color: rgb(198, 182, 218);
+}
+
+/* 콜라보 메인 */
+.colla_img{
+    font-family: 'Nanum Gothic', sans-serif;
+    background-color: rgb(198, 182, 218);
+    height: 350px;
+    text-align: center;
+    margin: 3%;
+}
+
+.promotion{
+    font-family: 'Nanum Gothic', sans-serif;
+    margin: 3%;
+}
+
+.p_new {
+	font-family: 'Nanum Gothic', sans-serif;
+	display: flex;
+  	flex-direction: row;
+  	justify-content: space-around;
+}
+
+.p_new li {
+	list-style: none;
+}
+
+.p_new p {
+	text-align: center;
+}
+
+/* 카테고리 목록 */
+.category_list{
+    font-family: 'Nanum Gothic', sans-serif;
+    margin: 3%;
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+
+.living{
+    font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.living p{
+    text-align: center;
+}
+
+.culture{
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+.culture p{
+    text-align: center;
+}
+
+.food{
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+.food p{
+    text-align: center;
+}
+
+.tech{
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+.tech p{
+    text-align: center;
+}
+
+.fashion{
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: center;
+}
+
+.fashion p{
+    text-align: center;
+}
+

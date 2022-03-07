@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jhyunyou.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/collabo.css">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -19,53 +19,32 @@
         <nav class="colla_menu">
             <ul>
                 <li><a onclick="location.href='${ path }/collabo/category/living/livingList'" >리빙</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/culture/cultureList'" >문화</li>
-                <li><a onclick="location.href='${ path }/collabo/category/food/foodList'" >식품</li>
-                <li><a onclick="location.href='${ path }/collabo/category/tech/techList'" >테크</li>
-                <li><a onclick="location.href='${ path }/collabo/category/fashion/fashionList'" >패션</li>
-                <li><a onclick="location.href='${ path }/collabo/brand/brand'" >브랜드</li>
+                <li><a onclick="location.href='${ path }/collabo/category/culture/cultureList'" >문화</a></li>
+                <li><a onclick="location.href='${ path }/collabo/category/food/foodList'" >식품</a></li>
+                <li><a onclick="location.href='${ path }/collabo/category/tech/techList'" >테크</a></li>
+                <li><a onclick="location.href='${ path }/collabo/category/fashion/fashionList'" >패션</a></li>
+                <li><a onclick="location.href='${ path }/collabo/brand/brand'" >브랜드</a></li>
             </ul>
         </nav>
     </div>
     
-    <div class="frame">
     <div class="category_list">
         <h3>패션</h3>
     </div>
 
-    <div class="living">
+        <div class="fashion">
+    	<c:forEach var="fslist" items="${ fslist }">
         <div id="area1">
-            <div class="p_img">
-                 <img src="${ pageContext.request.contextPath }/resources/images/promotion/promotion13.jpg" width="470px" height="350px">
+            <div class="fs_img">
+                 <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="550px" height="400px">
             </div>
             <p>
-            <p>프로모션 타이틀</p>
-            <p>프로모션 설명</p>
+            <p>${ fslist.title }</p>
+            <p>${ fslist.content }</p>
             <p>제품 1</p>
             <p>제품 2</p>
         </div>
-
-        <div id="area2">
-            <div class="p_img">
-                <img src="${ pageContext.request.contextPath }/resources/images/promotion/promotion14.jpg" width="470px" height="350px">
-            </div>
-            <p>
-            <p>프로모션 타이틀</p>
-            <p>프로모션 설명</p>
-            <p>제품 1</p>
-            <p>제품 2</p>
-        </div>
-
-        <div id="area3">
-            <div class="p_img">
-                <img src="${ pageContext.request.contextPath }/resources/images/promotion/promotion15.jpg" width="470px" height="350px">
-            </div>
-            <p>
-            <p>프로모션 타이틀</p>
-            <p>프로모션 설명</p>
-            <p>제품 1</p>
-            <p>제품 2</p>
-        </div>
+		</c:forEach>
     </div>
     
     	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 
