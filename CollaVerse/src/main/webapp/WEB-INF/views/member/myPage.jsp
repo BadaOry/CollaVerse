@@ -80,7 +80,7 @@
             location.replace("${ pageContext.request.contextPath }/member/delete");
          }
       });
-   });
+
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>	

@@ -92,7 +92,7 @@
 						<li><a href="${ path }/mypage/business_mypage">My 콜라버스</a>
 							<ul>
 								<li><a class="header_nav1" href="${ path }/mypage/calendar/calendar_detail_business">My 콜라보 캘린더</a></li>
-								<li><a class="header_nav1" href="${ path }/mypage/statistics">팔로워 및 통계</a></li>
+								<li><a class="header_nav1" href="${ path }/statistics">팔로워 및 통계</a></li>
 								<li><a class="header_nav1" href="${ path }/mypage/memberinfo">회원 정보</a></li>
 							</ul>
 						</li>

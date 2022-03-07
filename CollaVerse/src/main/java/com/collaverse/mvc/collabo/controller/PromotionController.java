@@ -29,7 +29,6 @@ public class PromotionController {
 	@Autowired
 	private PromotionService service;
 	
-	//Promotion 데이터list (전체) 받아옴 
 		@GetMapping("/collabo/promotion/main")
 		public ModelAndView list(ModelAndView model) {
 			
@@ -43,7 +42,7 @@ public class PromotionController {
 			log.info(list.toString());
 			
 			model.addObject("list", list);
-			model.setViewName("/collabo/promotion/main");
+			model.setViewName("collabo/promotion/main");
 			
 			return model;
 		}

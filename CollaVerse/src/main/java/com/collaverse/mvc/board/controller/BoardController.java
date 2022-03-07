@@ -38,6 +38,8 @@ public class BoardController {
 		pageInfo = new PageInfo(page, 10, service.getBoardCount(), count);
 		boardList = service.getBoardList(pageInfo);
 		
+		System.out.println(pageInfo.getListLimit());
+		
 		model.addObject("pageInfo", pageInfo);
 		model.addObject("boardList", boardList);
 			
@@ -59,8 +61,11 @@ public class BoardController {
 		pageInfo = new PageInfo(page, 10, service.getBoardCount(), 5);
 		boardList = service.getBoardList(pageInfo);
 		
+		System.out.println(pageInfo.getListLimit());
+		
 		model.addObject("pageInfo", pageInfo);
 		model.addObject("boardList", boardList);
+		
 		
 		model.setViewName("board/optionList/boardList5");
 		
