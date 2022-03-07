@@ -103,6 +103,8 @@ public class PromotionServiceImpl implements PromotionService {
 	@Override
 	public int heartCheck(int pmtNo, int heartMemNo) {
 	
+		log.info("[ServiceImpl] heartCheck 를 위해 heartMemNo 잘 가져오는지 확인 : {}", heartMemNo);
+	
 		return mapper.heartCheck(pmtNo, heartMemNo);
 	}
 

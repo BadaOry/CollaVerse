@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.collaverse.mvc.collabo.model.dao.CollaboMapper;
 import com.collaverse.mvc.collabo.model.service.PromotionService;
+import com.collaverse.mvc.collabo.model.vo.Heart;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
 import com.collaverse.mvc.common.util.PageInfo;
@@ -29,6 +32,8 @@ public class PromotionController {
 	@Autowired
 	private PromotionService service;
 
+	@Autowired
+	private CollaboMapper mapper;
 /*
 	@GetMapping("/collabo/promotion/main")
 	public ModelAndView list(ModelAndView model,
@@ -190,12 +195,14 @@ public class PromotionController {
 	
 	
 	@PostMapping("/collabo/promotion/detail/heart")
-	public ModelAndView UpdateHeart(ModelAndView model,
-			@SessionAttribute("loginMember") Member loginMember,
+	@ResponseBody
+	public int UpdateHeart(@SessionAttribute("loginMember") Member loginMember,
+			@ModelAttribute Heart heart,
 			@RequestParam("pmt_no") int pmtNo,
 			@RequestParam("heart_mem_no") int heartMemNo) {
 		
 		log.info("ajax 로 하트 요청에 성공하여 Controller 에 도착");
+		log.info("[Controller] 요청으로 넘어온 파라미터 출력 : {}, {}", pmtNo, heartMemNo);
 		
 		int heartCheck = service.heartCheck(pmtNo, heartMemNo);
 		
@@ -204,18 +211,18 @@ public class PromotionController {
 		
 		if(heartCheck == 0) {
 			// 하트를 처음 누름
-//			service.insertLike(bno, memberId); //like테이블 삽입
-//			service.updateLike(bno);	//게시판테이블 +1
-//			service.updateLikeCheck(bno, memberId);//like테이블 구분자 1
-//			service.memberPointPlus(writerId); //회원포인트 +
-			
+			mapper.insertHeart(pmtNo, heartMemNo); // HEART 테이블에 삽입
+			mapper.addHeartHit(pmtNo);	// PROMOTION 테이블의 HEART_HIT +1
+			mapper.updateHeartCheck(pmtNo, heartMemNo); // HEART 테이블의 HEARTCHECK 를 1 으로 변경	
+
 		} else if (heartCheck == 1) {
 			// 하트를 빼는 구문
+			mapper.updateHeartCheckCancel(pmtNo, heartMemNo); // HEART 테이블의 HEARTCHECK 를 0 으로 변경		
+			mapper.minusHeartHit(pmtNo);	// PROMOTION 테이블의 HEART_HIT -1
+			mapper.deleteHeart(pmtNo, heartMemNo); // Heart 컬럼 한 개 삭제
 		}
 		
-		model.setViewName("/collabo/promotion/detail/");
-		
-		return model;
+		return heartCheck;
 	}
 
 

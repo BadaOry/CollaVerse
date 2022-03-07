@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CollaVerse</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/collabo/promotion/detail.css">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
 <script src="${ path }/resources/js/jquery-3.6.0.js"></script>
@@ -167,12 +167,14 @@
 			},
 			success : function(heartCheck) {
 				
-				if(heartCheck = 0) {
+				if(heartCheck == 0) {
 					alert("하트 업데이트 완료");
+					<%-- 하트 칠해지는 함수 추가하기 --%>
 					location.reload();
 				} 
-				else if (heartCheck = 1){
+				else if (heartCheck == 1){
 					alert("하트 취소");
+					<%-- 하트 하얘지는 함수 추가하기 --%>
 					location.reload();
 				}
 			}
