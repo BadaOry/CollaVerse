@@ -18,8 +18,14 @@
 				<table id="table">
 					<thead>
 						<tr>
+							<td><span class="myinfo" onclick="location.href='${ path }/member/enrollPage'">회원가입</span></td>
+							<td style="color: white; font-size:12px; font-family: 'Sam3KRFont';"> │ </td>
+							<td><span class="myinfo" id="login" onclick="location.href='${ path }/member/login'">로그인</span></td>
+							
+							<%--
 							<td><input type="button" value="회원가입" onclick="location.href='${ path }/member/enrollPage'"></td>
 							<td><input type="button" value="로그인" onclick="location.href='${ path }/member/login'"></td>
+							 --%>
 						</tr>
 					</thead>
 				</table>

@@ -55,7 +55,7 @@
 									<div class="modal-content">
 										<div class="modal-header"></div>
 						                <img src="${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }">
-										<div class="modal-body">
+										<div class="modal-body" id="cltContent">
 											${ collectionList.cltContent }					
 											</div>
 										<div class="modal-footer">

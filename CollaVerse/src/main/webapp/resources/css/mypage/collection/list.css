@@ -37,7 +37,7 @@ body {
 .mypage_mycollection_list_container {
     width: 70%;
     /* height: 100%; */
-    margin: auto;
+    margin: 0 200px 40px 250px;
 }
 
 .mypage_mycollection_list {
@@ -59,6 +59,12 @@ body {
       
 #collection_no_collectionList {
     text-align : center;
+    margin: 150px 0 150px 0px;
+    font-family: 'Sam3KRFont';
+    font-size: 30px;
+    color: #dbeaf8;
+    text-shadow: 4px 4px 0px #faaf22;
+    /* text-shadow: -4px -4px 0px #faaf22; */
 }
 
 #writeCollection {
@@ -107,7 +113,12 @@ body {
 	background-color: #730e74;
 	color: white;
 	text-align: center;
-	font-family: initial;
+	font-family: 'DOSGothic';
 	font-size: 15px;
 	padding: 5px 0 5px  0;
+}
+
+
+#cltContent {
+	font-family: 'DOSGothic';
 }

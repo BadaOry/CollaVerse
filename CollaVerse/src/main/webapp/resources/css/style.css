@@ -111,7 +111,7 @@ header{
 
 #search_input{
 	width: 800px;
-}
+}	
 
 .image-box{
 	overflow: hidden;
@@ -285,6 +285,14 @@ footer{
     font-style: normal;
 }
 
+/* ▼ 도스 고딕 폰트 */
+@font-face {
+    font-family: 'DOSGothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 #welcome {
 	padding: 30px 30px 0 0;
 	font-family: 'Sam3KRFont';
@@ -295,14 +303,14 @@ footer{
 }
 
 .myinfo {
-	font-family: 'Sam3KRFont';
+	font-family: 'DOSGothic';
 	color: white;
 	font-size: 12px;
 	cursor: pointer;
 }
 
 #logout{
-	font-family: 'Sam3KRFont';
+	font-family: 'DOSGothic';
 	color: white;
 	font-size: 12px;
 	cursor: pointer;
@@ -310,6 +318,14 @@ footer{
 
 #memebr_nickname {
 	text-shadow: 2px 2px 0px #faaf22;
+}
+
+.myinfo:hover {
+	color: #faaf22;
+}
+
+#logout:hover {
+	color: #faaf22;
 }
 
 
