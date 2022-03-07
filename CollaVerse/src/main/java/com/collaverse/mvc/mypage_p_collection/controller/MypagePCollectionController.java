@@ -38,24 +38,6 @@ public class MypagePCollectionController {
 	@Autowired
 	private ResourceLoader resourceLoader;
 	
-//	// ▼ 마이페이지 메인에서 보는 collectionList
-//	@GetMapping("/mypage/person_mypage") 
-//	public ModelAndView mypageMainCollectionlist(ModelAndView model,
-//			@SessionAttribute("loginMember") Member loginMember) {
-//		
-//		List<MypagePCollection> mypageMaincollectionList = null;
-//		
-//		mypageMaincollectionList = service.getCollectionList(loginMember);
-//		
-//		model.addObject("collectionList", mypageMaincollectionList);
-//		model.setViewName("mypage/person_mypage");
-//
-//		log.info("[Controller] myapge 메인에서 보는 CollectionList 출력 : {}", mypageMaincollectionList);
-//		
-//		return model;
-//	}
-	
-	
 	// ▼ 마이컬렉션 메뉴에서 보는 collectionList
 	@GetMapping("mypage/collection/list") 
 	public ModelAndView Collectionlist(ModelAndView model,
@@ -116,11 +98,7 @@ public class MypagePCollectionController {
 			// 1. 파일을 업로드 했는지 확인 후, rename 하여 VO 에 set & 지정 위치에 upfile 저장
 				if (mf != null && !mf.isEmpty()) {
 					String location = null;
-					String renamedFileName = null;
-					
-//					List<String> originalFileNameList= new ArrayList<String>();
-//					List<String> renamedFileNameList = new ArrayList<String>();
-					
+					String renamedFileName = null;					
 					
 					try {
 						location = resourceLoader.getResource("resources/upload/collection").getFile().getPath();						

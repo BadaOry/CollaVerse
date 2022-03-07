@@ -13,43 +13,101 @@ body {
 	height: 90px;
 }
   		
-.mypage_mycollection_title {
-    width: 100%;
-    height: 90px;
-    border: 1px solid black;
-    text-align: left;
-    font-size:30px;
-    padding: 20px 0 20px 30px ;
-    box-sizing: border-box;
+#mypage_mycollection_title {
+    /* width: 100%; */
+    /* height: 90px; */
+    /* border: 1px solid black; */
+    /* text-align: left; */
+    /* font-size:30px; */
+    /* padding: 30px 0 20px 30px; */
+    /* box-sizing: border-box; */
+    /* display: inline-block; */
+    /* text-align: center; */
+    /* margin: 30px 0 30px 30px; */
 }
 
 #collection_write_button_space {
-	width: 30%;
-	float: right;
+	width: 21%;
+	height: 30px;
+	display: inline-block;
+	background-color: #730e74;
+	margin: 0 0 0 60%;
 }
 
 .mypage_mycollection_list_container {
     width: 70%;
-    height: 100%;
+    /* height: 100%; */
     margin: auto;
 }
 
 .mypage_mycollection_list {
-    height: 100%;
+    /* height: 100%; */
     /* margin: 0 0 30px 0; */
 }
 
 .mypage_mycollection_list .collection_list {
-    float : left;
+    /* float : left; */
+    display: inline-block;
 }
 
 #collection_box {
     width: 30%;
-    height: 270px;
-    border: 1px solid rgb(89, 22, 145);
-    margin: 20px 20px 0 0 ;
+    height: 300px;
+    /* border: 1px solid rgb(89, 22, 145); */
+    margin: 20px 15px 0 0;
 }
       
 #collection_no_collectionList {
     text-align : center;
+}
+
+#writeCollection {
+	background-color:  #730e74;
+	font-family: 'Sam3KRFont';
+	color: white;
+	font-size: 20px;
+	text-align: center;
+	display: inline-block;
+	margin: 0 0 0 760px;
+	width: 310px;
+}
+
+.mini_title {
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	text-align: left;
+	color: #730e74;
+	margin: 50px 0 30px 150px;
+	width: 60%;
+}
+
+#delete_btn_y, #delete_btn_n, #update_btn, #delete_btn{
+	font-family: 'Sam3KRFont';
+	font-size: 20px;
+	color: white;
+}
+
+#delete_btn_y:hover{
+	color: #faae22;
+}
+
+#delete_btn_n:hover{
+	color: #faae22;
+}
+
+#update_btn:hover{
+	color: #faae22;
+}
+
+#delete_btn:hover{
+	color: #faae22;
+}
+
+#deleteModalColoring{
+	background-color: #730e74;
+	color: white;
+	text-align: center;
+	font-family: initial;
+	font-size: 15px;
+	padding: 5px 0 5px  0;
 }

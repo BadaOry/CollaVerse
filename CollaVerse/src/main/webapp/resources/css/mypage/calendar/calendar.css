@@ -11,7 +11,7 @@
 	position: relative;
 	margin-top: 50px;
 	margin-bottom: 50px;
-	font-size: 70px;
+	/* font-size: 70px; */
 }
 
 #calendar {
@@ -20,3 +20,16 @@
 	height: 800px;
 	margin-bottom: 40px;
 }
+
+/* --- ▼ Crystal Edited ▼ --- */
+.mini_title {
+	/* 고정값 */
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #730e74;
+	/* 변경값 */
+	text-align: left;
+	margin: 50px 0 30px 150px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 60%;
+}
+/* --- ▲ Crystal Edited ▲ --- */

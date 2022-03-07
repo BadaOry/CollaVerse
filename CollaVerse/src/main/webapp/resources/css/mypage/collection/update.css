@@ -2,24 +2,55 @@
             padding: 50px 0 50px 0;
         }
         .mypage_collection_write {
-            border: solid 2px black;
+            /* border: solid 2px black; */
             margin: auto;
         }
 
         #imagePreview {
             width: 400px;
             height: 400px;
-            border: 2px solid black;
+            /* border: 2px solid black; */
         }
 
-        #mypage_collection_update_content {
+        #mypage_collection_write_content {
             width: 300px;
             height: 400px;
         }
 
-        #mypage_collection_write_submit {
-            width: 308px;
-            height: 30px;
-            background-color: blueviolet;
-            color: white;
-        }
+#mypage_collection_write_submit {
+ 	/* 고정값 */
+	background-color:#720e74;
+	border-radius:7px;
+	border: 2px solid  #faae22;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Sam3KRFont';
+	font-size:14px;
+	padding:10px 27px;
+	text-decoration:none;
+	text-shadow: 0px 0px 0px #faaf22;
+	/* 변경값 */
+	display:inline-block;
+	width: 300px;
+}
+ #mypage_collection_write_submit:hover {
+  	/* 고정값 */
+	background-color:#faae22;
+	color: #720e74;
+	border: 2px solid #720e74;
+	
+}
+ #mypage_collection_write_submit:active {
+	position:relative;
+	top:1px;
+}
+        
+
+.mini_title {
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	text-align: left;
+	color: #730e74;
+	margin: 50px 0 30px 150px;
+	width: 60%;
+}

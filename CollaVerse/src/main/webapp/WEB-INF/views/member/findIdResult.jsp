@@ -11,19 +11,20 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기 검색결과</title>
+	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/find.css">
 </head>
 <body>
-		<h3>아이디 찾기 검색결과</h3>
+		<h2>아이디 찾기 검색결과</h2>
 
-		<c:if test="${ Member.EMAIL eq email }">
+		<c:if test="${ empty findId }">
 		<form action="${ path }/member/findIdResult" method="post">
-			<h5>아이디는 : "${ Member.id }" 입니다.</h5>
+			<h3 align="center">아이디는 : "${ Member.id }" 입니다.</h3>
 		</form>
 		
-				<p>
-					<input type="button" value="로그인" onclick="location.href='${ path }/member/login'">
-					<button type="button" onclick="history.go(-1);">취소</button>
-				</p>
+				<div class="btnAll" align="center">
+					<button type="button" id="btn2" onclick="history.go(-1);">이전</button>
+					<input type="button" id="btn1" value="로그인" onclick="location.href='${ path }/member/login'">
+				</div>
 		</c:if>
 </body>
 </html>

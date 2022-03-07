@@ -29,19 +29,21 @@
       <div id="person-photo">
         <img src="${ loginMember.profile_img }" alt="">
       </div>
-      <div id="person-name"><strong>${ loginMember.nickname }님의 콜라버스</strong></div>
+      <div id="person-name"><strong><span id="memebr_nickname">${ loginMember.nickname }</span> 님의 
+			<span id="col">콜</span><span id="la">라</span><span id="ver">버</span><span id="se">스</span></strong>
+	  </div>
     </section>
 
 
-    <section id="person-calendar">
-      <p>My 콜라보 캘린더</p>
+    <section id="person-calendar" 	>
+      <p class="mini_title">My 콜라보 캘린더</p>
       <a href="${ path }/mypage/calendar/calendar_detail">
       	<div id='calendar'></div>
       </a>
     </section>
 
     <section id="person-follow">
-      <p>팔로우</p>
+      <p class="mini_title">팔로우</p>
       <div id="follow">
         <article>
           <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
@@ -67,15 +69,15 @@
           <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
           <div>dd</div>
         </article>
-        <article id="more">
-          <a href="####"><div class="material-icons">arrow_right</div></a>
-          <a href="####"><div class="text">더보기</div></a>
+        <article class="more">
+          <a href="####"><div class="material-icons arrow_right">arrow_right</div></a>
+          <%-- <a href="####"><div class="text">더보기</div></a> --%>
         </article>
       </div>
     </section>
 
-    <section id="person-collection">
-      <p>마이 컬렉션</p>
+    <section id="person-collection" style="margin-bottom: 40px;">
+      <p class="mini_title">마이 컬렉션</p>
       <div id="collection">
         <article>
           <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
@@ -101,9 +103,9 @@
           <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
           <div>dd</div>
         </article>
-        <article id="more">
-          <a href="####"><div class="material-icons">arrow_right</div></a>
-          <a href="####"><div class="text">더보기</div></a>
+        <article class="more">
+          <a href="####"><div class="material-icons arrow_right">arrow_right</div></a>
+          <%-- <a href="####"><div class="text">더보기</div></a> --%>
         </article>
       </div>
     </section>
