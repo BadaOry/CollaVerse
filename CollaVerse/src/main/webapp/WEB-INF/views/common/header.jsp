@@ -26,25 +26,29 @@
 				<table id="table">
 					<thead>
 						<tr>
-							<td><input type="button" value="개인회원가입" onclick="location.href='${ path }/member/enroll'"></td>
-							<td><input type="button" value="사업자회원가입" onclick="location.href='${ path }/member/enroll_business'"></td>
+							<td><input type="button" value="회원가입" onclick="location.href='${ path }/member/enrollPage'"></td>
 							<td><input type="button" value="로그인" onclick="location.href='${ path }/member/login'"></td>
 						</tr>
 					</thead>
 				</table>
 			</c:if>
 			<c:if test="${ !empty loginMember }">
-					<table id="table">
+				<table id="table">
 					<thead>
 						<tr>
-							<td><span style="color: white" align="right">${ loginMember.nickname } 님 환영합니다! </span></td>
-							<td><button onclick="location.href='${ path }/member/myPage'">내정보</button></td>
-							<td><button onclick="location.href='${ path }/member/myPage_business'">내정보</button></td>
+							<td><span style="color: white">${ loginMember.nickname } 님 환영합니다! </span></td>
+							<c:if test="${ loginMember.role == '개인' }">
+								<td><button onclick="location.href='${ path }/member/myPage'">내정보</button></td>
+							</c:if>
+							<c:if test="${ loginMember.role == '기업' }">
+								<td><button onclick="location.href='${ path }/member/myPage_business'">내정보</button></td>
+							</c:if>
 							<td><input type="button" value="로그아웃" onclick="location.href='${ path }/member/logout'"></td>
 						</tr>
 					</thead>
 				</table>
 			</c:if>
+			
 		</div>
 		
 		<div id="header3">

@@ -11,25 +11,23 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
+	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/find.css">
 </head>
 <body>
 
 <h1>아이디 찾기</h1>
 
+<div class="search" align="center">
 	<form action="findId" method="post">
 		<label>이메일 : <input type="text" name="email" /></label><br>
 	</form>
-	
-	<table>
-	  <tr>
-		  <td>
-		     <button onclick="location.href='${ path }/member/findIdResult'">찾기</button>
-		  </td>
-		  <td>
-		     <button onclick="window.close();">취소</button>
-		  </td>
-	  </tr>
-	</table>
+</div>
+
+<br>
+		<div class="btnAll" align="center">
+		     <button id="btn1" onclick="location.href='${ path }/member/findIdResult'">검색</button>
+		     <button id="btn2" onclick="window.close();">취소</button>
+		</div>	
 
 </body>
 </html>
