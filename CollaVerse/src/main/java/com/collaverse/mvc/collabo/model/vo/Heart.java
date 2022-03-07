@@ -7,9 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category {
-	private int	no;
+public class Heart {
+	private int heartNo;
 	
-	private String cName;
-
+	private int heartPmtNo;
+	
+	private int heartMemNo;
+	
+	private int heartCheck;	
 }

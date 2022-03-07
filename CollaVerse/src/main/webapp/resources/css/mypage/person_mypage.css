@@ -6,24 +6,28 @@
 }
 #person .mypage {
   position: relative;
-  margin-top: 100px;
-  margin-bottom: 50px;
+  margin: 0 0 50px 0;
+  /* margin-bottom: 50px; */
 }
 #person .mypage #person-photo img {
   margin-top: 20px;
   text-align:center;
-  width: 160px;
-  height: 160px;
+  width: 100px;
+  height: 100px;
   border-style: solid;
   border-color: rgb(207, 205, 205);
   border-radius: 70%;
   overflow: hidden;
+  margin: 35px 0 0 80px;
 }
 #person .mypage #person-name {
   font-size: 60px;
   position: absolute;
   top: 55px;
   left: 200px;
+  font-family: 'Sam3KRFont';
+  /* font-size: 30px; */
+  color: #730e74;
 }
 
 /* 캘린더 */
@@ -39,7 +43,8 @@
 #person #person-calendar a #calendar {
 	width: 800px;
 	height: 600px;
-	margin-bottom: 40px;
+	/* margin-bottom: 40px; */
+	margin: auto;
 }
 
 /* 팔로우 */
@@ -49,9 +54,12 @@
 #person #person-follow #follow {
   display: flex;
   position: relative;
+  /* margin: auto; */
+  justify-content: center;
 }
 #person #person-follow #follow article {
   margin-right: 25px;
+  height: 100px;
 }
 #person #person-follow article img {
   text-align:center;
@@ -66,16 +74,19 @@
   font-size: 20px;
 }
 #person #person-follow #follow article .material-icons {
-  position: absolute;
+  /* position: absolute; */
   margin-top: 15px;
   font-size: 60px;
   left: 690px;
+  color: #730e74;
 }
 #person #person-follow #follow article .text {
   font-size: 15px;
-  position: absolute;
+  /* position: absolute; */
   bottom: 40px;
   left: 695px;
+  color: #730e74;
+  /* padding: 0 0 30px 0; */
 }
 
 /* 컬렉션 */
@@ -87,9 +98,11 @@
 #person #person-collection #collection {
   display: flex;
   position: relative;
+  justify-content: center;
 }
 #person #person-collection #collection article {
   margin-right: 25px;
+  height: 100px;
 }
 #person #person-collection article img {
   text-align:center;
@@ -102,14 +115,52 @@
   font-size: 20px;
 }
 #person #person-collection #collection article .material-icons {
-  position: absolute;
+  /* position: absolute; */
   margin-top: 15px;
   font-size: 60px;
   left: 690px;
+  color: #730e74;
 }
 #person #person-collection #collection article .text {
   font-size: 15px;
-  position: absolute;
+  /* position: absolute; */
   bottom: 40px;
   left: 695px;
+  color: #730e74;
+}
+
+.mini_title {
+	/* 고정값 */
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #730e74;
+	/* 변경값 */
+	text-align: left;
+	margin: 50px 0 30px 150px; 
+	width: 60%;
+}
+
+#memebr_nickname {
+	text-shadow: 3px 3px 0px #faaf22;
+}
+
+#col {
+	color: #550c81;
+}
+
+#ver {
+	color: #8c116c;
+}
+
+#se {
+	color: #ae165f;
+}
+
+/*
+.arrow_right:hover {
+	background-color: #faae22;
+}
+*/
+.more:hover {
+	background-color: #faae22;
 }

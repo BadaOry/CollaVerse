@@ -24,6 +24,10 @@ public interface MemberMapper {
 
 	Object findMemberByBusiness_no(String business_no); // 사업자등록번호 중복확인
 	
+	int getWomenCount(); // 통계용 여 회원정보(테스트중)
+	
+	int getMenCount(); // 통계용 남 회원정보(테스트중)
+	
 	
 
 	

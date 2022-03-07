@@ -9,6 +9,7 @@
 <mapper namespace="com.collaverse.mvc.mypage_p_collection.model.dao.MypagePCollectionMapper">
 	<sql id="mypagePCollectionListSql">
 		SELECT MPC.CLT_NO,
+		       MPC.CLT_NO2,
 			   MPC.MEMBER_NO,
 			   MPC.CLT_CONTENT,
 			   MPC.CLT_CREATE_DATE,
@@ -62,8 +63,6 @@
 			ORDER BY MPC.CLT_NO DESC
 	</select>
 	
-	
-	
 	<insert id="insertMypagePCollection" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection"
 		useGeneratedKeys="true" keyProperty="cltNo" keyColumn="CLT_NO">
 		INSERT INTO MYPAGE_P_COLLECTION MPC(
@@ -91,6 +90,29 @@
 		)	
 	</insert>
 	
+	<!-- 다중 삽입 도전
+	<insert id="insertMypagePCollection" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection"
+		useGeneratedKeys="true" keyProperty="cltNo" keyColumn="CLT_NO">
+		<selectKey keyProperty="cltNo2" resultType="int" order="BEFORE">
+		    SELECT SEQ_MPC_CLT_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT ALL
+		<foreach collection="files" item="i" separator=" "> 
+			INTO MYPAGE_P_COLLECTION(
+				CLT_NO, CLT_NO2, MEMBER_NO,
+			    CLT_CONTENT,
+			    CLT_IMG_01_ONAME,
+			    CLT_IMG_01_RNAME
+			) VALUES
+			(SEQ_MPC_CLT_NO.NEXTVAL, SEQ_MPC_CLT_NO.NEXTVAL, #{ cltMemberNo },
+			#{ cltContent },
+			#{ i.original },
+			#{ i.rename })	
+		</foreach>
+		SELECT 1 FROM DUAL
+	</insert>
+	 -->
+	
 	
 	<select id="findCollectionByNo" parameterType="_int" resultMap="MypagePCollectionResultMap">
 			<include refid="mypagePCollectionListSql"/>
@@ -112,7 +134,8 @@
 	</update>
 	
 	
-	<!--  
+	<!-- 
+	비공개 기능 시도  
 	<select id="getCollectionListYP" parameterType="string" resultMap="MypagePCollectionResultMap"
 			resultType="arrayList">
 		<include refid="mypagePCollectionListSql"/>
@@ -133,65 +156,6 @@
 	
 
 <!-- 
-
-	<select id="getCollectionCount" resultType="_int">
-		SELECT COUNT(*)
-		FROM MYPAGE_P_COLLECTION MPC
-				<choose>
-			<when test="loginMember.no == #{memberNo}">
-				WHERE MPC.CLT_STATUS IN ('Y', 'P')
-			</when>
-			<when test="loginMember.no != #{memberNo}">
-				WHERE MPC.CLT_STATUS = 'Y'
-			</when>
-		</choose>
-	</select>
-	
-	
-	<insert id="insertCollection" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.mypagePCollection"
-		useGeneratedKeys="true" keyProperty="cltNo" keyColumn="CLT_NO">
-		INSERT INTO MYPAGE_P_COLLEECTION (
-			CLT_NO,
-			MEMBER_NO,
-			CLT_CONTENT,
-			CLT_CREATE_DATE,
-			CLT_MODIFY_DATE,
-			CLT_STATUS,
-			CLT_IMG_01_ONAME,
-			CLT_IMG_02_ONAME,
-			CLT_IMG_03_ONAME,
-			CLT_IMG_04_ONAME,
-			CLT_IMG_05_ONAME,
-			CLT_IMG_06_ONAME,
-			CLT_IMG_01_RNAME,
-			CLT_IMG_02_RNAME,
-			CLT_IMG_03_RNAME,
-			CLT_IMG_04_RNAME,
-			CLT_IMG_05_RNAME,
-			CLT_IMG_06_RNAME
-		) VALUES (
-			SEQ_MPC_CLT_NO.NEXTVAL,
-			#{writerNo},
-			#{content}, 
-			DEFAULT,
-			DEFAULT,
-			DEFAULT,
-			#{originalFileName01},
-			#{originalFileName02},
-			#{originalFileName03},
-			#{originalFileName04},
-			#{originalFileName05},
-			#{originalFileName06},
-			#{renamdFileName01},
-			#{renamdFileName02},
-			#{renamdFileName03},
-			#{renamdFileName04},
-			#{renamdFileName05},
-			#{renamdFileName06}
-		)
-		</insert>
-	
-	
 	인피니트스크롤 내용
 	<select id="collection_count" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.CollectionTO"
 		resultType="int">
@@ -199,7 +163,7 @@
 		FROM P_BOARD
 		WHEN MEMBER_NO = 1
 	</select>
-	 -->
+-->
 
 
 </mapper>

@@ -7,9 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.collaverse.mvc.collabo.model.dao.CollaboMapper;
+import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
 import com.collaverse.mvc.common.util.PageInfo;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class PromotionServiceImpl implements PromotionService {
 	@Autowired
@@ -74,6 +78,32 @@ public class PromotionServiceImpl implements PromotionService {
 		}
 		
 		return result;
+	}
+
+
+	// ▼ 프로모션 번호로 프로모션 정보 조회하는 메소드 (by Crystal)
+	@Override
+	public Promotion getPromotionInfo(int pmtNo) {
+		
+		return mapper.getPromotionInfo(pmtNo);
+	}
+
+	
+	// ▼ 프로모션 번호로 Product 정보 조회하는 메소드 (by Crystal)
+	@Override
+	public List<Product> getProductInfo(int pmtNo) {
+		
+		log.info("[ServiceImpl] getProductInfo 를 위해 pmtNo 잘 가져오는지 확인 : {}", pmtNo);
+		
+		return mapper.getProductInfo(pmtNo);
+	}
+
+
+	// ▼ 프로모션 번호로 하트 중복체크하는 메소드 (by Crystal)
+	@Override
+	public int heartCheck(int pmtNo, int heartMemNo) {
+	
+		return mapper.heartCheck(pmtNo, heartMemNo);
 	}
 
 }

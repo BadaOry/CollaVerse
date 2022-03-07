@@ -169,7 +169,7 @@ address {
 
 ol,
 ul {
-  padding-left: 2rem;
+  /* padding-left: 2rem; */
 }
 
 ol,
@@ -295,11 +295,12 @@ img,
 svg {
   vertical-align: middle;
 }
-
+/*
 table {
-  /* caption-side: bottom; */
-  /* border-collapse: collapse; */
+   caption-side: bottom; 
+   border-collapse: collapse; 
 }
+*/
 
 caption {
   padding-top: 0.5rem;
@@ -5515,6 +5516,7 @@ textarea.form-control-lg {
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
   outline: 0;
+  /* background-color: #730e74; */
 }
 
 .modal-backdrop {
@@ -5542,6 +5544,7 @@ textarea.form-control-lg {
   border-bottom: 1px solid #dee2e6;
   border-top-left-radius: calc(0.3rem - 1px);
   border-top-right-radius: calc(0.3rem - 1px);
+  background-color: #730e74;
 }
 .modal-header .btn-close {
   padding: 0.5rem 0.5rem;
@@ -5569,7 +5572,10 @@ textarea.form-control-lg {
   border-top: 1px solid #dee2e6;
   border-bottom-right-radius: calc(0.3rem - 1px);
   border-bottom-left-radius: calc(0.3rem - 1px);
+  background-color: #730e74;
 }
+
+.modal-footer {}
 .modal-footer > * {
   margin: 0.25rem;
 }

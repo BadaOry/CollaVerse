@@ -20,7 +20,10 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
-	<div id="person-calendar"><strong>My 콜라보 캘린더</strong></div>
+	<%-- ▼ 봉석님 원래 코드 
+		<div id="person-calendar"><strong>My 콜라보 캘린더</strong></div>
+	--%>
+	<div class="mini_title" id="person-calendar">My 콜라보 캘린더</div>
 
 	<div id='calendar'></div>
 

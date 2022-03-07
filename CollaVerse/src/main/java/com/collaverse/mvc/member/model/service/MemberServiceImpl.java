@@ -100,6 +100,18 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.findMemberByBusiness_no(business_no) != null;
 	}
 	
+	// 통계용 여 회원정보(테스트중)
+	@Override
+	public int getWomenCount() {
+		return mapper.getWomenCount();
+	}
+	
+	// 통계용 남 회원정보(테스트중)
+	@Override
+	public int getMenCount() {
+		return mapper.getMenCount();
+	}
+	
 
 	
 }
