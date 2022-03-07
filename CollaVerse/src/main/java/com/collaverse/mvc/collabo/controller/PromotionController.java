@@ -84,14 +84,7 @@ public class PromotionController {
 			return model;
 		}
 		
-		
-		@GetMapping("/collabo/promotion/detail")
-		public String detail() {
-			
-			return "/collabo/promotion/detail";
-			
-		}
-		
+
 /*
 		@GetMapping("/collabo/promotion/main")
 		public ModelAndView list(ModelAndView model,
