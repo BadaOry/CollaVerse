@@ -13,14 +13,6 @@
 </head>
 <body>
 	<header>
-		<div id="header1">
-			<h1 id="title">
-				<a href="${ path }/" style="">
-					CollaVerse
-				</a>
-			</h1>
-		</div>
-		
 		<div id="header2">
 			<c:if test="${ empty loginMember }">
 				<table id="table">
@@ -36,25 +28,40 @@
 				<table id="table">
 					<thead>
 						<tr>
-							<td><span style="color: white">${ loginMember.nickname } 님 환영합니다! </span></td>
-							<c:if test="${ loginMember.role == '개인' }">
-								<td><button onclick="location.href='${ path }/member/myPage'">내정보</button></td>
+							<td colspan="3" id="welcome"><span id="memebr_nickname">${ loginMember.nickname }</span> <span>님 환영합니다! </span></td>
+							
+						</tr>
+						<tr style="height: 30px"> 
+							<c:if test="${ loginMember.role == '개인'}">
+								<td style="text-align: center;"><span class="myinfo" onclick="location.href='${ path }/member/myPage'">내정보</span></td>
 							</c:if>
-							<c:if test="${ loginMember.role == '기업' }">
-								<td><button onclick="location.href='${ path }/member/myPage_business'">내정보</button></td>
+							<c:if test="${ loginMember.role == '기업'}">
+								<td style="text-align: center;"><span class="myinfo" onclick="location.href='${ path }/member/myPage_business'">내정보</span></td>
 							</c:if>
-							<td><input type="button" value="로그아웃" onclick="location.href='${ path }/member/logout'"></td>
+							<td style="color: white; font-size:12px; font-family: 'Sam3KRFont';"> │ </td>
+							<td><span id="logout" onclick="location.href='${ path }/member/logout'">로그아웃</span></td>
 						</tr>
 					</thead>
 				</table>
 			</c:if>
 			
 		</div>
+	
+
+		<div id="header1">
+			<p id="title">
+				<a href="${ path }/">
+					CollaVerse
+				</a>
+			</p>
+		</div>
+		
+		
 		
 		<div id="header3">
 			<nav class="header_nav">
 				<ul>
-					<li><a href="">공지사항</a>
+					<li><a class="menu_title" href="">공지사항</a>
 						<ul>
 							<li><a class="header_nav1" href="">공지</a></li>
 							<li><a class="header_nav1" href="">공지</a></li>
@@ -62,7 +69,7 @@
 						</ul>
 					</li>
 
-					<li><a href="${ path }/collabo/promotion/main">콜라보</a>
+					<li><a class="menu_title"  href="${ path }/collabo/promotion/main">콜라보</a>
 						<ul>
 							<li><a class="header_nav1" href="${ path }/collabo/category/living/livingList">리빙</a></li>
 							<li><a class="header_nav1" href="${ path }/collabo/category/culture/cultureList">문화</a></li>
@@ -91,7 +98,7 @@
 						</li>
 					</c:if>
 					<c:if test="${ loginMember.role == '관리자' }">
-						<li><a href="${ path }/mypage/main">My 콜라버스</a>
+						<li><a class="menu_title"  href="${ path }/mypage/main">My 콜라버스</a>
 							<ul>
 								<li><a class="header_nav1" href="${ path }/mypage/calendar/calendar_detail">My 콜라보 캘린더</a></li>
 								<li><a class="header_nav1" href="${ path }/mypage/memberinfo">회원 정보</a></li>
@@ -99,7 +106,7 @@
 						</li>
 					</c:if>
 					
-					<li><a href="${ path }/board/boardList">FAQ</a>
+					<li><a class="menu_title"  href="${ path }/board/boardList">FAQ</a>
 						<ul>
 							<li><a class="header_nav1" href="">에페큐</a></li>
 							<li><a class="header_nav1" href="">에페큐</a></li>
@@ -109,6 +116,8 @@
 				</ul>
 			</nav>
 		</div>
+
+		 
 	</header>
 </body>
 </html>

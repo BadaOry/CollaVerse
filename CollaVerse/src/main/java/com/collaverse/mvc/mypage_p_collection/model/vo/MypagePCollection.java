@@ -17,6 +17,8 @@ public class MypagePCollection {
 
 	private int cltNo;
 	
+	private int cltNo2;
+	
 	private int cltMemberNo;
 	
 	private String cltContent;

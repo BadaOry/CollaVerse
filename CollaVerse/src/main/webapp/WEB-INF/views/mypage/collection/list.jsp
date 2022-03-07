@@ -24,16 +24,20 @@
 	<input type="hidden" value="${ member.id }"></hidden>
 	
 	<section id="section">
-	<div class="title_and_write_button">
-	    <div class="mypage_mycollection_title">
-	    	My 컬렉션
-	    	<div id="collection_write_button_space">
-				<a onclick="location.href='${ path }/mypage/collection/write'">
-        			<div id="feed_write" >새 피드 작성</div>
-        		</a>
-		    </div>
-		</div>
+	
+    <div class="mini_title" id="mypage_mycollection_title">
+    	<p id="collection_title">My 컬렉션</p>
+    	<a onclick="location.href='${ path }/mypage/collection/write'">
+     		<div id="writeCollection" >New Collection !</div>
+     	</a>
 	</div>
+	<!--  
+   	<div id="collection_write_button_space">
+		<a onclick="location.href='${ path }/mypage/collection/write'">
+     		<div id="writeCollection" >New Collection !</div>
+     	</a>
+	</div>
+	    -->
 	    
     <div class="mypage_mycollection_list_container">
            <div class="mypage_mycollection_list">
@@ -55,25 +59,37 @@
 											${ collectionList.cltContent }					
 											</div>
 										<div class="modal-footer">
+											<span id="update_btn" onclick="location.href='${ path }/mypage/collection/update?cltNo=${ collectionList.cltNo }'">수정</span>
+											<span class="deleteModalClass" id="delete_btn">삭제
+											<%--	
 											<button onclick="location.href='${ path }/mypage/collection/update?cltNo=${ collectionList.cltNo }'">수정</button>
-											<button id="delete_btn"> 삭제 
+											<button class="deleteModalClass" id="delete_btn"> 삭제 
+											 --%>
 												<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 													<div class="modal-dialog" role="document" id="confirmModal" 
-														style="margin-top: 38%; background-color: #4611d4;">
-														<div class="modal-content">
-															<table>
-																<tr>정말로 삭제하시겠습니까?</tr>
+														style="margin-top: 38%;">
+														<div class="modal-content" id="deleteModalColoring">	
+															<table style="padding: 0 0 0 180px;">
+																<tr><span>정말로 삭제하시겠습니까?</span></tr>
 																<tr>
+																	<td>
+																	<span id="delete_btn_y" onclick="location.href='${ path }/mypage/collection/delete?cltNo=${ collectionList.cltNo }'">네</span>
+																	</td>
+																	<td>
+																	<span class="delete_btn_n" id="delete_btn_n">아니오</span>
+																	</td>
+																	<%-- 
 																	<p> </p>
 																	<td><button onclick="location.href='${ path }/mypage/collection/delete?cltNo=${ collectionList.cltNo }'">네</button></td>
-																	<td><button id="delete_btn_n">아니오</button></td>
+																	<td><button class="delete_btn_n">아니오</button></td>
 																	<p> </p>
+																	--%>
 																</tr>
 															</table>
 														</div>
 													</div>
 												</div>			
-											</button>
+											</span>
 											
 										</div>
 									</div>
@@ -94,21 +110,21 @@
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>    
 	
 	<script>
-		$('#collection_box').click(function(e){
+		$('.collection_list').click(function(e){
 			e.preventDefault();
-			$('#detailModal').modal("show");
+			$(this).children('#detailModal').modal("show");
 		});
 
 	
-		$('#delete_btn').click(function(e){
+		$('.deleteModalClass').click(function(e){
 			e.preventDefault();
-			$('#deleteModal').modal("show");
+			$(this).children('#deleteModal').modal("show");
 		});
 		
 		
-		$('#delete_btn_n').click(function(e){
+		$('.delete_btn_n').click(function(e){
 			e.preventDefault();
-			$('#deleteModal').modal("hide");
+			$(this).parents('#deleteModal').modal("hide");
 		});
 	</script>
 	
