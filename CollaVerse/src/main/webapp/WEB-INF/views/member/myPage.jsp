@@ -18,7 +18,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <div class="myPage">
-<h1>개인 회원 정보 수정</h1>
+<h1 class="mini_title">개인 회원 정보 수정</h1>
 <div id="view-container">
 	<div align="center">
 	<form id="memberFrm" action="${ path }/member/update" method="post">	
@@ -66,7 +66,7 @@
         </div>
             <br>
         <div class="btnAll" align="center">
-        	<input type="submit" id="btn1" value="정보수정">
+        	<input type="submit" id="btn1" value="정보 수정">
         	<input type="button" id="btnDelete" value="탈퇴">
         	<input type="reset" id="btn2" value="취소" onclick="location.href='${ path }'">
         </div>

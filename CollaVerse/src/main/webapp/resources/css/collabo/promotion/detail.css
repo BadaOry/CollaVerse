@@ -18,7 +18,7 @@ li{
     display: inline;
     align-self: center;
     margin: 0;
-    /* margin-left: 15px; */
+    margin-left: 15px;
 }
 
 /* hover 추가하기 */ 
@@ -140,8 +140,16 @@ input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
 }
 
 .category_detail{
+	/* ▼ 지현님 코드
     font-family: 'Nanum Gothic', sans-serif;
     margin: 3%;
+    */
+    font-family: 'Sam3KRFont';
+   	font-size: 30px;
+   	text-align: left;
+   	color: #730e74;
+   	margin: 30px 0 30px 50px;
+   	width: 60%;
 }
 
 .p_info{
@@ -155,9 +163,16 @@ input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
 }
 
 .p_explain{
+	/* ▼ 지현님 코드
     font-family: 'Nanum Gothic', sans-serif;
     margin: 3%;
-
+    */
+    	font-family: 'Sam3KRFont';
+    	font-size: 30px;
+    	text-align: left;
+    	color: #730e74;
+    	margin: 30px 0 30px 50px;
+    	width: 60%;
 }
 
 .p_content{
@@ -167,18 +182,9 @@ input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
 
 
 
-/* --- ▼ Crystal Edited ▼ --- */
-.mini_title {
-	/* 고정값 */
-	font-family: 'Sam3KRFont';
-	font-size: 30px;
-	color: #730e74;
-	/* 변경값 */
-	text-align: left;
-	margin: 50px 0 30px 20px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
-	width: 60%;
-}
-/* --- ▲ Crystal Edited ▲ --- */
+
+
+
 
 
 
