@@ -125,7 +125,7 @@
 					WHERE PMT_STATUS = 'Y' AND PMT_NO = #{no}
 		</select>
 
-<!-- 
+ 
 		<insert id="insertPromotion" parameterType="Promotion" useGeneratedKeys="true" keyProperty="no" keyColumn="NO">
 			INSERT INTO PROMOTION (
 				PMT_NO

@@ -62,7 +62,7 @@
 				</td> 	
             </tr>
         </table>
- 	</form>
+ 	
         </div>
             <br>
         <div class="btnAll" align="center">
@@ -70,6 +70,7 @@
         	<input type="button" id="btnDelete" value="탈퇴">
         	<input type="reset" id="btn2" value="취소" onclick="location.href='${ path }'">
         </div>
+        </form>
  	</div>
 </div>
 <script>
@@ -78,7 +79,7 @@
             location.replace("${ pageContext.request.contextPath }/member/delete");
          }
       });
-   });
+
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>	
