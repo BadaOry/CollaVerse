@@ -14,12 +14,13 @@
   					START_DATE, 
   					END_DATE, 
   					READCOUNT, 
-  					C_NO
+  					C_NO,
+  					HEART_HIT
 					FROM PROMOTION
   		</sql>
   		
   		
-  		<resultMap type="Promotion" id="promotionListResultMap">
+  		<resultMap type="com.collaverse.mvc.collabo.model.vo.Promotion" id="promotionListResultMap">
   		<id property="no" column="PMT_NO"/>
   		<result property="title" column="PMT_TITLE"/>
   		<result property="imgPath" column="PMT_IMG_PATH"/>
@@ -27,7 +28,26 @@
   		<result property="startDate" column="START_DATE"/>
   		<result property="endDate" column="END_DATE"/>
   		<result property="readCount" column="READCOUNT"/>
-  		<result property="cNo" column="C_NO"/>	  		
+  		<result property="cNo" column="C_NO"/>	 
+  		<result property="heartHit" column="HEART_HIT" />
+  		</resultMap>
+  		
+  		<resultMap type="com.collaverse.mvc.collabo.model.vo.Product" id="productListResultMap">
+	  		<id property="proNo" column="PRO_NO"/>
+	  		<result property="proName" column="PRO_NAME"/>
+	  		<result property="proPrice" column="PRO_PRICE"/>
+	  		<result property="proContent" column="PRO_CONTENT"/>
+	  		<result property="proQty" column="PRO_QTY"/>
+	  		<result property="proImgpath" column="PRO_IMG_PATH"/>
+	  		<result property="cNo" column="C_NO"/>
+	  		<result property="pmtNo" column="PMT_NO"/>  		
+  		</resultMap>
+  		
+  		<resultMap type="com.collaverse.mvc.collabo.model.vo.Heart" id="heartListResultMap">
+  			<id property="heartNo" column="HEART_NO" />
+  			<result property="heartPmtNo" column="HEART_PMT_NO"/>
+  			<result property="heartMemNo" column="HEART_MEM_NO"/>
+  			<result property="heartCheck" column="HEARTCHECK"/>
   		</resultMap>
   		
   		<select id="selectAll" parameterType="map" resultMap="promotionListResultMap">
@@ -48,6 +68,32 @@
 					</when>
 			</choose>
 		</select>
+		
+		
+		<select id="getPromotionInfo" parameterType="_int" 
+			resultMap="promotionListResultMap" resultType="com.collaverse.mvc.collabo.model.vo.Promotion">
+			SELECT *
+			FROM PROMOTION
+			WHERE PMT_NO = #{ pmtNo }
+		</select>
+		
+		
+		<select id="getProductInfo" parameterType="_int" 
+			resultMap="productListResultMap" resultType="arrayList">
+			SELECT *
+			FROM PRODUCT
+			WHERE PMT_NO = #{ pmtNo }
+		</select>
+		
+		
+		<select id="heartCheck" parameterType="_int"
+			resultMap="heartListResultMap" resultType="int">
+			SELECT  HEART_PMT_NO,HEART_MEM_NO, HEARTCHECK 
+			FROM HEART
+			WHERE HEART_PMT_NO = #{ heartMemNo }
+    			AND HEART_MEM_NO = #{ pmtNo };
+		</select>
+	
 	
  <!-- 
    		<select id="selectAll" parameterType="String" resultType="promotionListResultMap">

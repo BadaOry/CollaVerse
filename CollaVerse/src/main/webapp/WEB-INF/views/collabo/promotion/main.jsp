@@ -17,6 +17,7 @@
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
    <div class="frame">
+       <!--  
         <nav class="colla_menu">
             <ul>
                 <li><a onclick="location.href='${ path }/collabo/category/living/livingList'" >리빙</a></li>
@@ -27,13 +28,17 @@
                 <li><a onclick="location.href='${ path }/collabo/brand/brand'" >브랜드</li>
             </ul>
         </nav>
+        -->
     </div>
     
     <div class="frame">
     <div class="colla_img">콜라보 소개이미지</div>
 
     <div class="promotion">
-        <h3>최신 프로모션</h3>
+        <h3 class="mini_title">최신 프로모션</h3>
+        <a onclick="location.href='${ path }/collabo/promotion/detail?pmtNo=1'">
+        	클릭해서 테스트용 pmt_no=1 으로 이동
+        </a>
     </div>
         
     <div class="p_new">
