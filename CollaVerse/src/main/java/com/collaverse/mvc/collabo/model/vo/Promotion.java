@@ -30,4 +30,8 @@ public class Promotion {
 	private String cNo;
 	
 	
+	// ▼ 하트 수 표시용 변수
+	private int heartHit;
+	
+	
 }

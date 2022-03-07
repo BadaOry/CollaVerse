@@ -141,5 +141,15 @@
 		<include refid="selectMemberSql" />
 		WHERE BUSINESS_NO = #{business_no} AND MEMBER_STATUS = 'Y'
 	</select>
+	
+	<!-- 통계용 여 회원정보(테스트중) -->
+	<select id = "getWomenCount" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_GENDER = '여'
+	</select>
+	
+	<!-- 통계용 남 회원정보(테스트중) -->
+	<select id = "getMenCount" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_GENDER = '남'
+	</select>
 
 </mapper>

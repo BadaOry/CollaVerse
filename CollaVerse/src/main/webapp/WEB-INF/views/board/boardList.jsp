@@ -150,7 +150,7 @@ function Change(idx){
         location.href="${path}/board/optionList/boardList20";    
     }else if(nowPaging == 30){
         location.href="${path}/board/optionList/boardList30";    
-    }else if(nowPaging == 30){
+    }else if(nowPaging == 34){
         location.href="${path}/board/optionList/boardList40";    
     }
 }

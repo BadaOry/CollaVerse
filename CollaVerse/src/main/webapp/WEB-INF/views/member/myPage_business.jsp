@@ -21,7 +21,7 @@
 <h1>사업자 회원 정보 수정</h1>
 <div id="view-container">
 	<div align="center">
-	<form id="memberFrm" action="${ path }/member/update" method="post">	
+	<form id="memberFrm" action="${ path }/member/update1" method="post">	
 		<table>
 			<tr>
                 <th>아이디</th>
@@ -75,14 +75,14 @@
 				</td> 	
             </tr>
         </table>
- 	</form>
- 	</div>
             <br>
         <div class="btnAll" align="center">
         <input type="submit" id="btn1" value="정보수정">
         <input type="button" id="btnDelete" value="탈퇴">
         <input type="reset" id="btn2" value="취소" onclick="location.href='${ path }'">
         </div>
+ 	</form>
+ 	</div>
      </div>
 </div>
 <script>

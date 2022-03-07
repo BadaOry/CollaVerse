@@ -30,8 +30,8 @@
 		<br>
 
 		<div class="findAll">
-			<button id="findid" onclick="window.open('${ path }/member/findId','id_popup','width=350, height=150, location=no, status=no, left=-700, top=-200');">아이디 찾기</button>
-			<button id="findpw" onclick="window.open('${ path }/member/findPw','pw_popup','width=350, height=150, location=no, status=no, left=-700, top=-200');">비밀번호 찾기</button>
+			<button id="findid" onclick="window.open('${ path }/member/findId','id_popup','width=350, height=190, location=no, status=no, left=-700, top=-200');">아이디 찾기</button>
+			<button id="findpw" onclick="window.open('${ path }/member/findPw','pw_popup','width=350, height=190, location=no, status=no, left=-700, top=-200');">비밀번호 찾기</button>
 		</div>
 		
 		<br>
