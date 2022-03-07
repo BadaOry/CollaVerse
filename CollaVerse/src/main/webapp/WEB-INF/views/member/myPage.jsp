@@ -62,14 +62,14 @@
 				</td> 	
             </tr>
         </table>
- 	</form>
-        </div>
             <br>
         <div class="btnAll" align="center">
         	<input type="submit" id="btn1" value="정보수정">
         	<input type="button" id="btnDelete" value="탈퇴">
         	<input type="reset" id="btn2" value="취소" onclick="location.href='${ path }'">
         </div>
+ 	</form>
+    </div>
  	</div>
 </div>
 <script>
