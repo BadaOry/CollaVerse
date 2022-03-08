@@ -55,6 +55,8 @@ public class MypagePCollection {
 	
 	private String RenamedFileName06;
 	
+	private String cltWriterId;
+	
 	public MypagePCollection() {
 		this.files = new ArrayList<Map<String,String>>();
 	}

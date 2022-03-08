@@ -21,77 +21,74 @@
 <body class="box" style=" overflow-y: scroll;">
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
-	<input type="hidden" value="${ member.id }"></hidden>
-	
 	<section id="section">
 	
     <div class="mini_title" id="mypage_mycollection_title">
     	<p id="collection_title">My 컬렉션</p>
-    	<a onclick="location.href='${ path }/mypage/collection/write'">
-     		<div id="writeCollection" >New Collection !</div>
-     	</a>
+    	
+    	<c:if test="${ !empty collectionList && loginMember.id == collectionList.get(0).cltWriterId}">
+		    	<a onclick="location.href='${ path }/mypage/collection/write'">
+		     		<div id="writeCollection" >New Collection !</div>
+		     	</a>
+	     </c:if>
+
 	</div>
-	<!--  
-   	<div id="collection_write_button_space">
-		<a onclick="location.href='${ path }/mypage/collection/write'">
-     		<div id="writeCollection" >New Collection !</div>
-     	</a>
-	</div>
-	    -->
 	    
     <div class="mypage_mycollection_list_container">
            <div class="mypage_mycollection_list">
            <c:choose>
 	    	<c:when test="${ !empty collectionList }">
 				    <c:forEach var="collectionList" items="${ collectionList }">
+	                    
 	                    <div class="collection_list" id="collection_box">
 	                    
 	                    	<img src= "${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }"
 	                    		style="width: 100%; height: 100%" />
-	                    	▲ ${ collectionList.cltNo } : ${ collectionList.cltContent }
+	                    	<%-- ▲ ${ collectionList.cltNo } : ${ collectionList.cltContent } --%>
 	                    		
 	                    	<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								
 								<div class="modal-dialog" role="document">
+									
 									<div class="modal-content">
+										
 										<div class="modal-header"></div>
 						                <img src="${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }">
-										<div class="modal-body" id="cltContent">
-											${ collectionList.cltContent }					
-											</div>
+										
+										<div class="modal-body" id="cltContent">${ collectionList.cltContent }</div>
+										
 										<div class="modal-footer">
-											<span id="update_btn" onclick="location.href='${ path }/mypage/collection/update?cltNo=${ collectionList.cltNo }'">수정</span>
-											<span class="deleteModalClass" id="delete_btn">삭제
-											<%--	
-											<button onclick="location.href='${ path }/mypage/collection/update?cltNo=${ collectionList.cltNo }'">수정</button>
-											<button class="deleteModalClass" id="delete_btn"> 삭제 
-											 --%>
-												<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-													<div class="modal-dialog" role="document" id="confirmModal" 
-														style="margin-top: 38%;">
-														<div class="modal-content" id="deleteModalColoring">	
-															<table style="padding: 0 0 0 180px;">
-																<tr><span>정말로 삭제하시겠습니까?</span></tr>
-																<tr>
-																	<td>
-																	<span id="delete_btn_y" onclick="location.href='${ path }/mypage/collection/delete?cltNo=${ collectionList.cltNo }'">네</span>
-																	</td>
-																	<td>
-																	<span class="delete_btn_n" id="delete_btn_n">아니오</span>
-																	</td>
-																	<%-- 
-																	<p> </p>
-																	<td><button onclick="location.href='${ path }/mypage/collection/delete?cltNo=${ collectionList.cltNo }'">네</button></td>
-																	<td><button class="delete_btn_n">아니오</button></td>
-																	<p> </p>
-																	--%>
-																</tr>
-															</table>
-														</div>
-													</div>
-												</div>			
-											</span>
+											<c:choose>
+												<c:when test="${ !empty loginMember && loginMember.id == collectionList.cltWriterId}">
+													<span id="update_btn" onclick="location.href='${ path }/mypage/collection/update?cltNo=${ collectionList.cltNo }'">수정</span>
+													<span class="deleteModalClass" id="delete_btn">삭제
+														<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															<div class="modal-dialog" role="document" id="confirmModal" 
+																style="margin-top: 38%;">
+																<div class="modal-content" id="deleteModalColoring">	
+																	<table style="padding: 0 0 0 180px;">
+																		<tr><span>정말로 삭제하시겠습니까?</span></tr>
+																		<tr>
+																			<td>
+																			<span id="delete_btn_y" onclick="location.href='${ path }/mypage/collection/delete?cltNo=${ collectionList.cltNo }'">네</span>
+																			</td>
+																			<td>
+																			<span class="delete_btn_n" id="delete_btn_n">아니오</span>
+																			</td>
+																		</tr>
+																	</table>
+																</div>
+															</div>
+														</div>			
+													</span>	
+												</c:when>
+												<c:otherwise>
+													
+												</c:otherwise>
+											</c:choose>	
 											
 										</div>
+										
 									</div>
 								</div>
 	                    	</div>
@@ -99,8 +96,12 @@
 	                    </div>
 				    </c:forEach>
 			</c:when>
-	    	<c:otherwise>
+			
+			<c:when test="${ noCollectionList == '없음' }">
 	    		<p id="collection_no_collectionList">컬렉션이 존재하지 않습니다.</p>
+			</c:when>
+			
+	    	<c:otherwise>
 			</c:otherwise>
            </c:choose>
 

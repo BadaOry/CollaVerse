@@ -51,16 +51,18 @@
 		<result property="RenamedFileName04" column="CLT_IMG_04_RNAME"/>
 		<result property="RenamedFileName05" column="CLT_IMG_05_RNAME"/>
 		<result property="RenamedFileName06" column="CLT_IMG_06_RNAME"/>
+		<result property="cltWriterId" column="CLT_WRITER_ID"/>
 	</resultMap>
 
 
 
-	<select id="getCollectionListY" parameterType="_int" resultMap="MypagePCollectionResultMap"
+	<select id="getCollectionListY" parameterType="String" resultMap="MypagePCollectionResultMap"
 			resultType="arrayList">
-		<include refid="mypagePCollectionListSql"/>
-			WHERE MPC.CLT_STATUS = 'Y'
-				AND MPC.MEMBER_NO = #{ loginMember.no }
-			ORDER BY MPC.CLT_NO DESC
+			SELECT * 
+			FROM MYPAGE_P_COLLECTION
+			WHERE CLT_STATUS = 'Y'
+			    AND CLT_WRITER_ID = #{ id }
+			ORDER BY CLT_NO DESC
 	</select>
 	
 	<insert id="insertMypagePCollection" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection"
@@ -75,7 +77,8 @@
 		    MPC.CLT_IMG_05_ONAME, MPC.CLT_IMG_06_ONAME,
 		    MPC.CLT_IMG_01_RNAME, MPC.CLT_IMG_02_RNAME,
 		    MPC.CLT_IMG_03_RNAME, MPC.CLT_IMG_04_RNAME,
-		    MPC.CLT_IMG_05_RNAME, MPC.CLT_IMG_06_RNAME
+		    MPC.CLT_IMG_05_RNAME, MPC.CLT_IMG_06_RNAME,
+		    MPC.CLT_WRITER_ID
 		) VALUES (
 			SEQ_MPC_CLT_NO.NEXTVAL, #{ cltMemberNo },
 			#{ cltContent },
@@ -86,7 +89,8 @@
 			'GONNA DELETE', 'GONNA DELETE',
 			#{ renamedFileName01 }, 'GONNA DELETE',
 			'GONNA DELETE', 'GONNA DELETE',
-			'GONNA DELETE', 'GONNA DELETE'
+			'GONNA DELETE', 'GONNA DELETE',
+			#{ cltWriterId }
 		)	
 	</insert>
 	

@@ -14,6 +14,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.collaverse.mvc.common.util.FileProcess;
 import com.collaverse.mvc.common.util.PageInfo;
+import com.collaverse.mvc.member.model.service.MemberService;
 import com.collaverse.mvc.member.model.vo.Member;
 import com.collaverse.mvc.mypage_p_collection.model.service.MypagePCollectionService;
 import com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection;
@@ -39,22 +41,29 @@ public class MypagePCollectionController {
 	private ResourceLoader resourceLoader;
 	
 	// ▼ 마이컬렉션 메뉴에서 보는 collectionList
-	@GetMapping("mypage/collection/list") 
+	@GetMapping("mypage/collection/list/{id}") 
 	public ModelAndView Collectionlist(ModelAndView model,
-			@SessionAttribute("loginMember") Member loginMember) {
+			@SessionAttribute(name="loginMember", required=false) Member loginMember,
+			@PathVariable("id") String id) {
 		
 		List<MypagePCollection> collectionList = null;
+		String noCollectionList = null;
+//		setId(id);
+//		String cltWriterId = Mservice.findMemberById(loginMember.getNo());
 		
-//		log.info("[컬렉션 리스트] list : {}", collectionList);
+		collectionList = service.getCollectionList(id);
 		
-		collectionList = service.getCollectionList(loginMember);
-	
-		
-		// 로그인 처리 해주는 인터셉터 필요 feat 서연님
-//		if(loginMember.getNo().equals(collectionList.);
+		// list 에 아무것도 없는 경우, IndexOutOfBoundsException: Index 0 out of bounds for length 0 에러 방지
+		if (collectionList.size() == 0) { 
+			noCollectionList = "없음";
+			
+			log.info("[Controller] noCollectionList 출력 : {}", noCollectionList);
+		}
 		
 		model.addObject("collectionList", collectionList);
+		model.addObject("noCollectionList", noCollectionList);
 		model.setViewName("mypage/collection/list");
+		
 
 		log.info("[Controller] service 가 가져온 CollectionList 출력 : {}", collectionList);
 		
@@ -157,18 +166,23 @@ public class MypagePCollectionController {
 			
 			// 2. 작성한 게시글 내용을 VO 에 set
 			mypagePCollection.setCltContent(content);
-			log.info("[Controller] content VO 에 잘 set 되었는지 확인 : {}", content);
 			
+			// 3. 작성자의 아이디를 VO 에 set
+			mypagePCollection.setCltWriterId(loginMember.getId());
+			log.info("[Controller] VO 정보 확인 : {}", mypagePCollection.getCltWriterId());
 			
-			// 3. 작성한 게시글 데이터를 데이터베이스에 저장
+			// 4. 작성자의 회원번호를 VO 에 set
 			mypagePCollection.setCltMemberNo(loginMember.getNo());
-			log.info("[Controller] VO 정보 확인 : {}", mypagePCollection);
+			log.info("[Controller] VO 정보 확인 : {}", mypagePCollection.getCltMemberNo());
+			
+			log.info("[Controller] content VO 에 잘 set 되었는지 확인 : {}", mypagePCollection);
+			
+			// 5. 작성한 게시글 데이터를 데이터베이스에 저장
 			
 			result = service.save(mypagePCollection);
 			
 			if(result > 0) {
-//				model.addObject("msg", "컬렉션 등록 완료 !");
-				this.Collectionlist(model, loginMember);
+				model.setViewName("redirect:list/" + loginMember.getId());
 			} else {
 				model.addObject("msg", "컬렉션 등록 실패....");			
 				model.addObject("location", "mypage/collection/write");
@@ -221,8 +235,7 @@ public class MypagePCollectionController {
 		log.info("[Controller] update 완료된 컬렉션의 정보 출력 : {}", mypagePCollection);
 		
 		if(result > 0) {
-//			model.addObject("msg", "컬렉션 등록 완료 !");
-			this.Collectionlist(model, loginMember);
+			model.setViewName("redirect:list/" + loginMember.getId());
 		} else {
 			model.addObject("msg", "컬렉션 수정 실패....");			
 			model.addObject("location", "mypage/collection/write");
@@ -252,8 +265,7 @@ public class MypagePCollectionController {
 		
 		
 		if(result > 0) {
-//			model.addObject("msg", "컬렉션 삭제 완료 !");
-			this.Collectionlist(model, loginMember);
+			model.setViewName("redirect:list/" + loginMember.getId());
 		} else {
 			model.addObject("msg", "컬렉션 수정 실패....");			
 			model.addObject("location", "mypage/collection/write");
@@ -263,6 +275,5 @@ public class MypagePCollectionController {
 		return model;
 	}
 	
-
 
 }

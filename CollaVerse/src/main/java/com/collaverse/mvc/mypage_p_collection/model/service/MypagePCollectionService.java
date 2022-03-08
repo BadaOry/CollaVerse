@@ -10,7 +10,7 @@ public interface MypagePCollectionService {
 
 //	int getCollectionCount();
 
-	List<MypagePCollection> getCollectionList(Member loginMember);
+	List<MypagePCollection> getCollectionList(String id);
 
 	int save(MypagePCollection mypagePCollection);
 
