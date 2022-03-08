@@ -171,7 +171,8 @@ public class PromotionController {
 
 	@GetMapping("/collabo/promotion/detail")
 	public ModelAndView PromotionDetail(ModelAndView model,
-				@RequestParam("pmtNo") int pmtNo) {
+			@SessionAttribute(name="loginMember", required=false) Member loginMember,
+			@RequestParam("pmtNo") int pmtNo) {
 		
 		Promotion pmt = null;
 		List<Product> pdt = null;
@@ -186,8 +187,19 @@ public class PromotionController {
 		
 		log.info("[Controller] service 가 가져온 Product 정보 : {} ", pdt);
 		
+		// 3. heartCheck 처리하기
+		int heartCheck = 0;
+		if(loginMember  != null){
+			int heartMemNo = loginMember.getNo();
+			heartCheck = service.heartCheck(pmtNo, heartMemNo);
+			
+			log.info("[Controller] loginMember 의 no 와 heartcheck : {} ▶ {}", heartMemNo, heartCheck);
+			
+		}	
+		
 		model.addObject("promotionInfo", pmt);
 		model.addObject("productInfo", pdt);
+		model.addObject("heartCheck", heartCheck);
 		model.setViewName("/collabo/promotion/detail");
 		return model;
 		
