@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+#personal, #business {
+	background-color: rgb(255, 255, 255);
+    border-color: blueviolet;
+    box-shadow: 1px 1px 1px 1px rgb(175, 46, 201, 0.5);
+    font-size: 15px;
+    cursor: pointer;
+    width: 130px;
+    padding: 5px 5px 8px;
+}

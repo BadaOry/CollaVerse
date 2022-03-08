@@ -6,7 +6,7 @@
 
 <html>
 <head>
-	<title>회원가입</title>
+	<title>CollaVerse</title>
 	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/enrollPage.css">
 	<script src="${ path }/js/jquery-3.6.0.js"></script>
 	
@@ -17,8 +17,8 @@
 		<div class="enroll" align="center">
 			<h1>회원가입</h1>
 			<div class="enroll2" align="center">
-				<input type="button" id="personal" value="개인회원가입" onclick="location.href='${ path }/member/enroll'">
-				<input type="button" id="business" value="사업자회원가입" onclick="location.href='${ path }/member/enroll_business'">
+				<input type="button" id="personal" value="개인회원가입" onclick="location.href='${ path }/member/terms'">
+				<input type="button" id="business" value="사업자회원가입" onclick="location.href='${ path }/member/terms_business'">
 			</div>
 		</div>
 

@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>아이디 찾기 검색결과</title>
+<title>CollaVerse</title>
 	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/find.css">
 </head>
 <body>

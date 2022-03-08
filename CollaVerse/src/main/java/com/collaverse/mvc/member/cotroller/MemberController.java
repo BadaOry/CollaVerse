@@ -88,6 +88,22 @@ public class MemberController {
 		return "member/enrollPage";
 	}
 	
+	// 개인 회원약관 페이지 이동
+	@GetMapping("/member/terms")
+	public String terms() {
+		log.info("개인 회원가입 약관 페이지 이동");
+		
+		return "member/terms";
+	}
+	
+	// 사업자 회원약관 페이지 이동
+	@GetMapping("/member/terms_business")
+	public String terms_business() {
+		log.info("사업자 회원가입 약관 페이지 이동");
+		
+		return "member/terms_business";
+	}
+	
 	// 개인 회원가입
 	@GetMapping("/member/enroll")
 	public String enroll() {

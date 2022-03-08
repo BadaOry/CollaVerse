@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사업자 회원가입</title>
+<title>CollaVerse</title>
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/enroll.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 </head>

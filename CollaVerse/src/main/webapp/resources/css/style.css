@@ -325,3 +325,18 @@ footer{
 ::-webkit-scrollbar-button {
      background-color: #730e74; /*스크롤 버튼 색상*/
  }
+ 
+ /* 회원가입, 로그인 버튼 */
+ .btn {
+	font-family: 'Sam3KRFont';
+	color: white;
+	font-size: 15px;
+	cursor: pointer;
+	background-color : rgba(0,0,0,0);
+	border : none;
+ }
+
+ .btn:hover {
+   color:#faae22;
+   border: none;
+}
