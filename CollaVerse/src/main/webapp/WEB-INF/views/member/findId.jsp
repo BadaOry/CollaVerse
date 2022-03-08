@@ -18,7 +18,7 @@
 <h1>아이디 찾기</h1>
 
 <div class="search" align="center">
-	<form action="findId" method="post">
+	<form action="findId" method="post" onsubmit="return false;">
 		<label>이메일 : <input type="text" name="email" /></label><br>
 	</form>
 </div>

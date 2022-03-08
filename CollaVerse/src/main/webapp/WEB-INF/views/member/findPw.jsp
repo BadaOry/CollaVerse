@@ -18,7 +18,7 @@
 <h1>비밀번호 찾기</h1>
 
 <div class="search" align="center">
-	<form action="findPw" method="post">
+	<form action="findPw" method="post" onsubmit="return false;">
 		<label>아이디 : <input type="text" name="id" /></label><br><br>
 		<label>이메일 : <input type="text" name="email" /></label><br>
 	</form>
