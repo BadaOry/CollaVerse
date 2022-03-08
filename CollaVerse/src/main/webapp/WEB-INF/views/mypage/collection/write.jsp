@@ -28,12 +28,15 @@
 	                	<img id="imagePreview" />
 	                </td>
 	                <td>
-	                    <input type="text" id="mypage_collection_write_content" name="content"/>
+	                	<%--
+	                    <input type="textarea" id="mypage_collection_write_content" name="content"/>
+	                	 --%>
+	                     <textarea name="content" id="mypage_collection_write_content" cols="30" rows="10" style="resize : none;" placeholder="내용을 입력해 주세요."></textarea>
 	                </td>
 	            </tr>
 	            <tr>
 	                <td>
-	                	<input type="file" name="upfile"  />
+	                	<input type="file" name="upfile" required />
 	                </td>
 	                <td> 
 	                     <button type="submit" id="mypage_collection_write_submit">글쓰기</button>
