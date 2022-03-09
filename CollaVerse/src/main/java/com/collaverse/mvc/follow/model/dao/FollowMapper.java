@@ -26,5 +26,13 @@ public interface FollowMapper {
 	int countFollowing(int fromMemNo);
 
 
+	// ▼ FOLLOWER 테이블에서 FOLLOWERCHECK 조회
+	int followerCheck(int toMemNo, int fromMemNo);
+
+	
+	// ▼ FOLLOWING 테이블에서 FOLLOWINGCHECK 조회
+	int followingCheck(int fromMemNo, int toMemNo);
+
+
 
 }

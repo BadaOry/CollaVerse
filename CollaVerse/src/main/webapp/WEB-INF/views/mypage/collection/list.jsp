@@ -56,10 +56,10 @@
       				<button id="follow_btn" onclick="updateFollow()">Follow !!</button> 		
       						
       						<c:if test="${ followCheck == 0 }">				
-			        			<button id="follow_btn" onclick="updateFollow()">Follow !!</button> 
+			        			<button id="follow_btn" onclick="updateFollow()">${ writerNickname } Follow 하기</button> 
 			        		</c:if>
        						<c:if test="${ followCheck == 1 }">				
-			        			<button id="follow_btn" onclick="updateFollow()">Follow !!</button>
+			        			<button id="follow_btn" onclick="updateFollow()">Follow</button>
 			        		</c:if> 
 			        		   		
 	     </c:if>
@@ -165,26 +165,26 @@
 		
 		
 		<%-- follow 신청 / 취소 --%>
-		var pmt_no = ${ promotionInfo.no };
-		var heart_mem_no = ${ loginMember.no };
+		var to_mem_no = ${ writerNo };
+		var from_mem_no = ${ loginMember.no };
 		
 		function updateFollow() {
 			$.ajax({
 				type : "POST",
-				url : "${ path }/collabo/promotion/detail/heart",
+				url : "${ path }/mypage/follow/updateFollow",
 				dataType : "json",
-				data : {'pmt_no' : pmt_no, 'heart_mem_no' : heart_mem_no },
+				data : {'to_mem_no' : TO_mem_no, 'from_mem_no' : from_mem_no },
 				error : function() {
-					alert("하트 업데이트 실패");
+					alert("팔로우 실패");
 				},
-				success : function(heartCheck) {
+				success : function(followCheck) {
 					
-					if(heartCheck == 0) {
-						alert("♥ 좋아요 ♥");
+					if(followCheck == 0) {
+						alert("Follow 성공 !");
 						location.reload();
 					} 
-					else if (heartCheck == 1){
-						alert("별로에요..?");
+					else if (followCheck == 1){
+						alert("Follow 취소...");
 						location.reload();
 					}
 				}

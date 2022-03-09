@@ -81,4 +81,12 @@
 		WHERE FROM_MEM_NO = #{ fromMemNo }
 	</select>
 	
+	
+	<select id="followerCheck" parameterType="_int" resultType="_int">
+		SELECT FOLLOWERCHECK
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{ toMemNo }
+		    AND FROM_MEM_NO = #{ fromMemNo };
+	</select>
+	
 </mapper>

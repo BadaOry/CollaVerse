@@ -26,4 +26,6 @@ public interface MypagePCollectionMapper {
 
 	String getCollectionWriterNickname(String id);
 
+	int getCollectionWriterNo(String id);
+
 }

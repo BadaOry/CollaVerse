@@ -82,4 +82,10 @@ public class MypagePCollectionServiceImpl implements MypagePCollectionService {
 		return mapper.getCollectionWriterNickname(id);
 	}
 
+	@Override
+	public int getCollectionWriterNo(String id) {
+		
+		return mapper.getCollectionWriterNo(id);
+	}
+
 }

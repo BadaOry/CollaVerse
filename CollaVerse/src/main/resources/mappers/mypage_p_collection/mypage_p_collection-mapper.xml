@@ -144,4 +144,9 @@
 		WHERE ID = #{ id }
 	</select>
 
+	<select id="getCollectionWriterNo" parameterType="String" resultType="_int">
+		SELECT MEMBER_NO
+		FROM MEMBER 
+		WHERE ID =  #{ id }
+	</select>
 </mapper>

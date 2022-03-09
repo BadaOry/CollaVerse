@@ -24,5 +24,8 @@ public interface MypagePCollectionService {
 	String getCollectionWriterNickname(String id);
 
 
+	int getCollectionWriterNo(String id);
+
+
 
 }

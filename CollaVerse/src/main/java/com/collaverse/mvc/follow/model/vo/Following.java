@@ -23,4 +23,6 @@ public class Following {
 	
 	private Date followingCreateDate;
 	
+	private int followerCheck;
+	
 }
