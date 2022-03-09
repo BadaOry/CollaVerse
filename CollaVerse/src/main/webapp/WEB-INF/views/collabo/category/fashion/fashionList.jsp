@@ -8,13 +8,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CollaVerse</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/collabo.css">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
+<!--  	
    <div class="frame">
         <nav class="colla_menu">
             <ul>
@@ -27,24 +28,93 @@
             </ul>
         </nav>
     </div>
+-->      
     
     <div class="category_list">
         <h3>패션</h3>
     </div>
 
         <div class="fashion">
-    	<c:forEach var="fslist" items="${ fslist }">
-        <div id="area1">
+        <div class="fashion1">
+    	<c:forEach var="fslist" items="${ fslist }" begin="0" end="0">
             <div class="fs_img">
                  <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="550px" height="400px">
             </div>
-            <p>
-            <p>${ fslist.title }</p>
+              
+            <p>          
+            <strong>${ fslist.title }</strong>
             <p>${ fslist.content }</p>
-            <p>제품 1</p>
-            <p>제품 2</p>
-        </div>
-		</c:forEach>
+			</c:forEach>                       
+            <p>
+               
+    		<c:forEach var="fspro" items="${ fspro }" begin="0" end="2">
+            <table>
+            <tr>
+            	<td colspan = "2" rowspan="2" width="200px" height="150px">
+            	<img src="${ path }${ fspro.proImgpath }${ fspro.proNo }.jpg" alt="" width="150px" height="100px">
+            	</td>
+            	<td>${ fspro.proName }</td>
+            </tr>
+            <tr>
+            	<td>${ fspro.proPrice }</td>
+            </tr>
+            </table>
+            </c:forEach>
+			</div>
+			
+       <div class="fashion2">
+    	<c:forEach var="fslist" items="${ fslist }" begin="1" end="1">
+            <div class="fs_img">
+                 <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="550px" height="400px">
+            </div>
+              
+            <p>          
+            <strong>${ fslist.title }</strong>
+            <p>${ fslist.content }</p>
+			</c:forEach>                       
+            <p>
+               
+    		<c:forEach var="fspro" items="${ fspro }" begin="3" end="5">
+            <table>
+            <tr>
+            	<td colspan = "2" rowspan="2" width="200px" height="150px">
+            	<img src="${ path }${ fspro.proImgpath }${ fspro.proNo }.jpg" alt="" width="150px" height="100px">
+            	</td>
+            	<td>${ fspro.proName }</td>
+            </tr>
+            <tr>
+            	<td>${ fspro.proPrice }</td>
+            </tr>
+            </table>
+            </c:forEach>
+			</div>
+			
+       <div class="fashion3">
+    	<c:forEach var="fslist" items="${ fslist }" begin="2" end="2">
+            <div class="fs_img">
+                 <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="550px" height="400px">
+            </div>
+              
+            <p>          
+            <strong>${ fslist.title }</strong>
+            <p>${ fslist.content }</p>
+			</c:forEach>                       
+            <p>
+               
+    		<c:forEach var="fspro" items="${ fspro }" begin="6" end="8">
+            <table>
+            <tr>
+            	<td colspan = "2" rowspan="2" width="200px" height="150px">
+            	<img src="${ path }${ fspro.proImgpath }${ fspro.proNo }.jpg" alt="" width="150px" height="100px">
+            	</td>
+            	<td>${ fspro.proName }</td>
+            </tr>
+            <tr>
+            	<td>${ fspro.proPrice }</td>
+            </tr>
+            </table>
+            </c:forEach>
+			</div>						
     </div>
     
     	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 

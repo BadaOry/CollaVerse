@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CollaVerse</title>
 <link rel="stylesheet" type="text/css" href="${path}/resources/css/collabo.css">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -44,76 +44,94 @@
         
     <div class="p_new">
             <div class="area1">
-            <ul>
             <c:forEach var="list" items="${ list }" begin="0" end="2">
-            	<li>
-                <div class="p_img">
+            <table>
+            <tr>
+            <td>                
                     <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
-                </div>     
-                <p>
-                <p>${ list.title }</p>
-				<p><fmt:formatDate value="${ list.startDate }" pattern="yyyy-MM-dd ~"/></p>
-                </li> 
+            </td>
+            </tr>         
+                <tr>
+                <td>${ list.title }</td>
+                </tr>
+                <tr>
+				<td><fmt:formatDate value="${ list.startDate }" pattern="yyyy-MM-dd ~"/></td>
+				</tr>
+				</table>
  			</c:forEach>
- 			</ul>
             </div>
  
             <div class="area2">
-            <ul>
             <c:forEach var="list" items="${ list }" begin="3" end="5">
-            <li>
-                <div class="p_img">
+            <table>
+            <tr>
+            <td>                
                     <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
-                </div>     
-                <p>
-                <p>${ list.title }</p>
-				<p><fmt:formatDate value="${ list.startDate }" pattern="yyyy-MM-dd ~"/></p>
-            </li>     
- 		</c:forEach>
- 		</ul>
+            </td>
+            </tr>         
+                <tr>
+                <td>${ list.title }</td>
+                </tr>
+                <tr>
+				<td><fmt:formatDate value="${ list.startDate }" pattern="yyyy-MM-dd ~"/></td>
+				</tr>
+				</table>
+ 			</c:forEach>
             </div>
 
             <div class="area3">
-            <ul>
              <c:forEach var="list" items="${ list }" begin="6" end="8">
-             <li>
-                <div class="p_img">
+            <table>
+            <tr>
+            <td>                
                     <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
-                </div>     
-                <p>
-                <p>${ list.title }</p>
-				<p><fmt:formatDate value="${ list.startDate }" pattern="yyyy-MM-dd ~"/></p>
-             </li>
- 		</c:forEach>
- 		</ul>
+            </td>
+            </tr>         
+                <tr>
+                <td>${ list.title }</td>
+                </tr>
+                <tr>
+				<td><fmt:formatDate value="${ list.startDate }" pattern="yyyy-MM-dd ~"/></td>
+				</tr>
+				</table>
+ 			</c:forEach>
             </div>         
             
             <div class="area4">
-            <ul>
-            <c:forEach var="list" items="${ list }" begin="9" end="11">
-            <li>
-                <div class="p_img">
+              <c:forEach var="list" items="${ list }" begin="9" end="11">
+            <table>
+            <tr>
+            <td>                
                     <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
-                </div>     
-                <p>
-                <p>${ list.title }</p>
-				<p><fmt:formatDate value="${ list.startDate }" pattern="yyyy-MM-dd ~"/></p>
-            </li>    
- 		</c:forEach>
- 		</ul>
+            </td>
+            </tr>         
+                <tr>
+                <td>${ list.title }</td>
+                </tr>
+                <tr>
+				<td><fmt:formatDate value="${ list.startDate }" pattern="yyyy-MM-dd ~"/></td>
+				</tr>
+				</table>
+ 			</c:forEach>
             </div>
             
       
             <div class="area5">
              <c:forEach var="list" items="${ list }" begin="12" end="14">
-                <div class="p_img">
+            <table>
+            <tr>
+            <td>                
                     <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
-                </div>     
-                <p>
-                <p>${ list.title }</p>
-				<p><fmt:formatDate value="${ list.startDate }" pattern="yyyy-MM-dd ~"/></p>
-                 
- 		</c:forEach>
+            </td>
+            </tr>         
+                <tr>
+                <td>${ list.title }</td>
+                </tr>
+                <tr>
+				<td><fmt:formatDate value="${ list.startDate }" pattern="yyyy-MM-dd ~"/></td>
+				</tr>
+				</table>
+ 			</c:forEach>
             </div>
     </div>
 </div>

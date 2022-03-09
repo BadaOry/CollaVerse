@@ -121,7 +121,43 @@
   			<include refid="promotionListSql"/>  			 
   			 WHERE C_NO = '5' 
   		</select> 
+  		
+  		 <sql id="productListSql">
+  					SELECT PRO_NO, 
+  					PRO_NAME, 
+  					PRO_PRICE, 
+  					PRO_CONTENT, 
+  					PRO_QTY, 
+  					PRO_IMG_PATH, 
+  					C_NO,
+  					PMT_NO
+					FROM PRODUCT
+  		</sql>
+  		
+  		<select id="selectLproduct" parameterType="map" resultMap="productListResultMap">
+  			<include refid="productListSql"/>
+  			 WHERE C_NO = '1' 
+  		</select>
+  		
+  		<select id="selectCproduct" parameterType="map" resultMap="productListResultMap">
+  			<include refid="productListSql"/>
+  			 WHERE C_NO = '2' 
+  		</select>  	  		
 
+  		<select id="selectFproduct" parameterType="map" resultMap="productListResultMap">
+  			<include refid="productListSql"/>
+  			 WHERE C_NO = '3' 
+  		</select>
+ 
+  		<select id="selectTproduct" parameterType="map" resultMap="productListResultMap">
+  			<include refid="productListSql"/>
+  			 WHERE C_NO = '4' 
+  		</select>
+
+  		<select id="selectFsproduct" parameterType="map" resultMap="productListResultMap">
+  			<include refid="productListSql"/>
+  			 WHERE C_NO = '5' 
+  		</select>    	  	
  <!-- 
    		<select id="selectAll" parameterType="String" resultType="promotionListResultMap">
   			<include refid="promotionListSql"/>
