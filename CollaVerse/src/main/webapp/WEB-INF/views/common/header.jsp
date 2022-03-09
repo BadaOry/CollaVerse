@@ -18,8 +18,12 @@
 				<table id="table">
 					<thead>
 						<tr>
-							<td><input type="button" class="btn" value="회원가입" onclick="location.href='${ path }/member/enrollPage'"></td>
-							<td><input type="button" class="btn" value="로그인" onclick="location.href='${ path }/member/login'"></td>
+
+						
+							<td><span class="myinfo" onclick="location.href='${ path }/member/enrollPage'">회원가입</span></td>
+							<td style="color: white; font-size:12px; font-family: 'Sam3KRFont';"> │ </td>
+							<td><span class="myinfo" id="login" onclick="location.href='${ path }/member/login'">로그인</span></td>		
+
 						</tr>
 					</thead>
 				</table>
@@ -83,8 +87,8 @@
 						<li><a href="${ path }/mypage/person_mypage">My 콜라버스</a>
 							<ul>
 								<li><a class="header_nav1" href="${ path }/mypage/calendar/calendar_detail">My 콜라보 캘린더</a></li>
-								<li><a class="header_nav1" href="${ path }/mypage/collection/list">MyCollection</a></li>
-								<li><a class="header_nav1" href="${ path }/mypage/follow">팔로우</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/collection/list/${ loginMember.id }">MyCollection</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/myFollow/main">팔로우</a></li>
 							</ul>
 						</li>
 					</c:if>

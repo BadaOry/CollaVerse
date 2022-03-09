@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CollaVerse</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/collabo/promotion/detail.css">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
 <script src="${ path }/resources/js/jquery-3.6.0.js"></script>
@@ -67,10 +67,30 @@
     <div class="p_title">
         <hr>
         	<div style="width: 10%; float: left">
-        	<%-- test="empty loginMember" 인 경우 로그인해서 하트 누르라고 alert
-        	     test="loginMember.no==HEART 테이블의 heart_mem_no && HEART 테이블의 HEARTCHECK 가 0 일 때 빈 하트 보여주고  																			 1 일 때 찬 하트 보여줌 --%>
-        	<%-- 	<p id="heart_btn" onclick="updateHeart()">♥ ${ promotionInfo.heartHit }</p> --%>
-        		<button id="heart_btn" onclick="updateHeart()">♥ </button>${ promotionInfo.heartHit }
+        		<table>
+        			<tr>
+        				<td>
+        					<c:if test="${ empty loginMember }">
+			        			<img src="${ path }/resources/images/promotion_deatil_heart/heart_empty.png" style="width:30px; hegith:30px"
+			        				onclick="updateHeart()"> 
+        					</c:if>
+        					<c:if test="${ !empty loginMember }">  		
+        						<c:if test="${ heartCheck == 0 }">				
+				        			<img src="${ path }/resources/images/promotion_deatil_heart/heart_empty.png" style="width:30px; hegith:30px"
+			        					onclick="updateHeart()"> 
+				        		</c:if>
+        						<c:if test="${ heartCheck == 1 }">				
+				        			<img src="${ path }/resources/images/promotion_deatil_heart/heart_full.png" style="width:30px; hegith:30px"
+				        				id="heart_btn" onclick="updateHeart()"> 
+				        		</c:if>
+        					</c:if>
+        				</td>
+        				
+        				<td>
+			        		<span> ${ promotionInfo.heartHit } </span>
+        				</td>
+        			</tr>
+        		</table>
         	</div>     	
         	<div style="width: 90%; float: left">
 		        <p><strong>${ promotionInfo.title }</strong></p>
@@ -145,6 +165,7 @@
         </p>
     </div>
 
+	
 
 </div>
 
@@ -152,7 +173,6 @@
 	
 
 <script>
-<%-- ▼ 하트 구현 기능 용 Ajax --%>
 	var pmt_no = ${ promotionInfo.no };
 	var heart_mem_no = ${ loginMember.no };
 	
@@ -167,12 +187,12 @@
 			},
 			success : function(heartCheck) {
 				
-				if(heartCheck = 0) {
-					alert("하트 업데이트 완료");
+				if(heartCheck == 0) {
+					alert("♥ 좋아요 ♥");
 					location.reload();
 				} 
-				else if (heartCheck = 1){
-					alert("하트 취소");
+				else if (heartCheck == 1){
+					alert("별로에요..?");
 					location.reload();
 				}
 			}

@@ -85,20 +85,62 @@
 		</select>
 		
 		
-		<select id="heartCheck" parameterType="_int"
-			resultMap="heartListResultMap" resultType="int">
-			SELECT  HEART_PMT_NO,HEART_MEM_NO, HEARTCHECK 
+		<select id="heartCheck" parameterType="map" resultType="_int">
+			SELECT COUNT(*)
 			FROM HEART
-			WHERE HEART_PMT_NO = #{ heartMemNo }
-    			AND HEART_MEM_NO = #{ pmtNo };
+			WHERE HEART_PMT_NO = #{ pmt_no }
+    			AND HEART_MEM_NO = #{ heart_mem_no }
 		</select>	
 		
+		
+		<insert id="insertHeart" parameterType="map">
+			INSERT INTO HEART(HEART_NO, HEART_PMT_NO, HEART_MEM_NO)
+			VALUES (SEQ_H_HEART_NO.NEXTVAL, #{ pmt_no }, #{ heart_mem_no })
+		</insert>
     
+    
+    	<update id="addHeartHit" parameterType="_int">
+	    	UPDATE PROMOTION 
+			SET HEART_HIT = HEART_HIT + 1
+			WHERE PMT_NO = #{ pmt_no }
+    	</update>
+    	
+    	
+    	<update id="updateHeartCheck" parameterType="map">
+	    	UPDATE HEART
+			SET HEARTCHECK = 1
+			WHERE HEART_PMT_NO = #{ pmt_no }
+			    AND HEART_MEM_NO = #{ heart_mem_no }
+    	</update>
+    
+    
+  		<update id="updateHeartCheckCancel" parameterType="map">
+  			UPDATE HEART
+			SET HEARTCHECK = 0
+			WHERE HEART_PMT_NO = #{ pmt_no }
+			    AND HEART_MEM_NO = #{ heart_mem_no }
+  		</update>
+  		
+  		
+  		<update id="minusHeartHit" parameterType="_int">
+	    	UPDATE PROMOTION 
+			SET HEART_HIT = HEART_HIT - 1
+			WHERE PMT_NO = #{ pmt_no }
+    	</update>
+    	
+    	
+    	<delete id="deleteHeart" parameterType="map">
+    		DELETE FROM HEART 
+			WHERE HEART_PMT_NO = #{ pmt_no }
+			    AND HEART_MEM_NO = #{ heart_mem_no }
+    	</delete>
+    	
+  		
   		<select id="selectLiving" parameterType="map" resultMap="promotionListResultMap">
   			<include refid="promotionListSql"/> 			 
   			 WHERE C_NO = '1' 
   		</select>
-  		
+    
     
   		<select id="selectCulture" parameterType="map" resultMap="promotionListResultMap">
   			<include refid="promotionListSql"/>

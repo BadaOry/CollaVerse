@@ -21,16 +21,16 @@ public class MypagePCollectionServiceImpl implements MypagePCollectionService {
 	private MypagePCollectionMapper mapper;
 
 	@Override
-	public List<MypagePCollection> getCollectionList(Member loginMember) {
+	public List<MypagePCollection> getCollectionList(String id) {
 		
-		int loginMemberMemberNo = loginMember.getNo();
-//		String collectionMemberId = this.findCollectionById(loginMember);
+//		int loginMemberMemberNo = loginMember.getNo();
+////		String collectionMemberId = this.findCollectionById(loginMember);
 		
 		List<MypagePCollection> collectionList = null;
 		
-		log.info("[서비스 임플까지 loginMember 내용이 잘 왔는지 확인] {}", loginMemberMemberNo);
+		log.info("[서비스 임플까지 loginMember 내용이 잘 왔는지 확인] {}", id);
 
-			collectionList = mapper.getCollectionListY(loginMemberMemberNo);
+		collectionList = mapper.getCollectionListY(id);
 			
 //		// ▼ 로그인멤버와 데이터베이스의 멤버가 맞으면, YP 를 가져오는 쿼리문 실행
 //		if (loginMemberMemberId.equals(collectionMemberId)) {
@@ -74,6 +74,18 @@ public class MypagePCollectionServiceImpl implements MypagePCollectionService {
 	public int delete(MypagePCollection mypagePCollection) {
 	
 		return mapper.deleteMypagePCollection(mypagePCollection);
+	}
+
+	@Override
+	public String getCollectionWriterNickname(String id) {
+		
+		return mapper.getCollectionWriterNickname(id);
+	}
+
+	@Override
+	public int getCollectionWriterNo(String id) {
+		
+		return mapper.getCollectionWriterNo(id);
 	}
 
 }
