@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.collaverse.mvc.collabo.model.dao.CollaboMapper;
+import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
 
 @Service
@@ -40,6 +41,36 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<Promotion> selectFashion() {
 		
 		return mapper.selectFashion();
+	}
+
+	@Override
+	public List<Product> selectLproduct() {
+		
+		return mapper.selectLproduct();
+	}
+
+	@Override
+	public List<Product> selectCproduct() {
+		
+		return mapper.selectCproduct();
+	}
+
+	@Override
+	public List<Product> selectFproduct() {
+		
+		return mapper.selectFproduct();
+	}
+
+	@Override
+	public List<Product> selectTproduct() {
+		
+		return mapper.selectTproduct();
+	}
+
+	@Override
+	public List<Product> selectFsproduct() {
+		
+		return mapper.selectFsproduct();
 	}
 
 }

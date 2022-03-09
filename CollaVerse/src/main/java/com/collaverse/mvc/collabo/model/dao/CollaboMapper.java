@@ -12,9 +12,7 @@ import com.collaverse.mvc.collabo.model.vo.Promotion;
 
 @Mapper
 public interface CollaboMapper {
-
-//	List<Promotion> pmtMainList(); 
-
+	// 프로모션 전체 조회
 	List<Promotion> selectAll();
 
 	// ▼ 프로모션 번호로 Promotion 정보 조회하는 메소드 (by Crystal)
@@ -25,6 +23,7 @@ public interface CollaboMapper {
 
 	int heartCheck(@Param("pmt_no") int pmtNo, @Param("heart_mem_no") int heartMemNo);
 
+	// 카테고리별 프로모션 조회 
 	List<Promotion> selectLiving();
 
 	List<Promotion> selectCulture();
@@ -34,6 +33,13 @@ public interface CollaboMapper {
 	List<Promotion> selectTech();
 
 	List<Promotion> selectFashion();
+	
+	// 카테고리별 상품 조회
+	List<Product> selectLproduct();
+
+	List<Product> selectCproduct();
+
+	List<Product> selectFproduct();
 
 	// 하트 관련 매퍼
 	void insertHeart(@Param("pmt_no") int pmtNo, @Param("heart_mem_no") int heartMemNo);
@@ -49,12 +55,11 @@ public interface CollaboMapper {
 	void deleteHeart(@Param("pmt_no") int pmtNo, @Param("heart_mem_no") int heartMemNo);
 
 
-//	Promotion selectAll();
 
-//	int getPromotionCount();
+	List<Product> selectTproduct();
 
-//	List<Promotion> selectAll(RowBounds rowBounds);
+	List<Product> selectFsproduct();
 
-//	Promotion selectPromotionByNo(@Param("no") int no);
+
 
 }

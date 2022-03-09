@@ -66,14 +66,36 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    text-align: center;
 }
 
 .living p{
     text-align: center;
 }
 
+.living strong{
+	text-align: center; 
+	font-size: 25px;
+	margin-bottom: 2%;
+}
+
+.l_img{
+	text-align: center;
+}
+
+.lproduct{
+	font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+}
+
 .culture{
     font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     text-align: center;
 }
 
@@ -81,8 +103,17 @@
     text-align: center;
 }
 
+.culture strong{
+	text-align: center; 
+	font-size: 25px;
+	margin-bottom: 2%;
+}
+
 .food{
     font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     text-align: center;
 }
 
@@ -90,8 +121,17 @@
     text-align: center;
 }
 
+.food strong{
+	text-align: center; 
+	font-size: 25px;
+	margin-bottom: 2%;
+}
+
 .tech{
     font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     text-align: center;
 }
 
@@ -99,12 +139,35 @@
     text-align: center;
 }
 
+.tech strong{
+	text-align: center; 
+	font-size: 25px;
+	margin-bottom: 2%;
+}
+
+.t_img {
+	text-align: center;
+}
+
 .fashion{
     font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     text-align: center;
 }
 
 .fashion p{
     text-align: center;
+}
+
+.fashion strong{
+	text-align: center; 
+	font-size: 25px;
+	margin-bottom: 2%;
+}
+
+th, td {
+  text-align: center;
 }
 

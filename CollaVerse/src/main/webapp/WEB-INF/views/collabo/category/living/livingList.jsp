@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CollaVerse</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/collabo.css">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -16,6 +16,7 @@
 
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
+<!--  	
    <div class="frame">
         <nav class="colla_menu">
             <ul>
@@ -28,27 +29,96 @@
             </ul>
         </nav>
     </div>
+-->        
+
     
     <div class="category_list">
         <h3>리빙</h3>
     </div>
     
         <div class="living">
-    	<c:forEach var="llist" items="${ llist }">
-        <div id="area1">
+        <div class="living1">
+    	<c:forEach var="llist" items="${ llist }" begin="0" end="0">
             <div class="l_img">
                  <img src="${ path }${ llist.imgPath }${ llist.no }.jpg" alt="" width="550px" height="400px">
             </div>
-            <p>
-            <p>${ llist.title }</p>
+              
+            <p>          
+            <strong>${ llist.title }</strong>
             <p>${ llist.content }</p>
-            <p>제품 1</p>
-            <p>제품 2</p>
-        </div>
-		</c:forEach>
-    </div>
-  
-    
+			</c:forEach>                       
+            <p>
+
+    		<c:forEach var="lpro" items="${ lpro }" begin="0" end="2">
+            <table>
+            <tr>
+            	<td colspan = "2" rowspan="2" width="200px" height="150px">
+            	<img src="${ path }${ lpro.proImgpath }${ lpro.proNo }.jpg" alt="" width="150px" height="100px">
+            	</td>
+            	<td>${ lpro.proName }</td>
+            </tr>
+            <tr>
+            	<td>${ lpro.proPrice }</td>
+            </tr>
+            </table>
+            </c:forEach>
+			</div>
+			
+       <div class="living2">
+    	<c:forEach var="llist" items="${ llist }" begin="1" end="1">
+            <div class="l_img">
+                 <img src="${ path }${ llist.imgPath }${ llist.no }.jpg" alt="" width="550px" height="400px">
+            </div>
+              
+            <p>          
+            <strong>${ llist.title }</strong>
+            <p>${ llist.content }</p>
+			</c:forEach>                       
+            <p>
+               
+    		<c:forEach var="lpro" items="${ lpro }" begin="3" end="5">
+            <table>
+            <tr>
+            	<td colspan = "2" rowspan="2" width="200px" height="150px">
+            	<img src="${ path }${ lpro.proImgpath }${ lpro.proNo }.jpg" alt="" width="150px" height="100px">
+            	</td>
+            	<td>${ lpro.proName }</td>
+            </tr>
+            <tr>
+            	<td>${ lpro.proPrice }</td>
+            </tr>
+            </table>
+            </c:forEach>
+			</div>
+			
+       <div class="living3">
+    	<c:forEach var="llist" items="${ llist }" begin="2" end="2">
+            <div class="l_img">
+                 <img src="${ path }${ llist.imgPath }${ llist.no }.jpg" alt="" width="550px" height="400px">
+            </div>
+              
+            <p>          
+            <strong>${ llist.title }</strong>
+            <p>${ llist.content }</p>
+			</c:forEach>                       
+            <p>
+               
+    		<c:forEach var="lpro" items="${ lpro }" begin="6" end="7">
+            <table>
+            <tr>
+            	<td colspan = "2" rowspan="2" width="200px" height="150px">
+            	<img src="${ path }${ lpro.proImgpath }${ lpro.proNo }.jpg" alt="" width="150px" height="100px">
+            	</td>
+            	<td>${ lpro.proName }</td>
+            </tr>
+            <tr>
+            	<td>${ lpro.proPrice }</td>
+            </tr>
+            </table>
+            </c:forEach>
+			</div>						
+            </div>
+            
     	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 
     	
 </body>

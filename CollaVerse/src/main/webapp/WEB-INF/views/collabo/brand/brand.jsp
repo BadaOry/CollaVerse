@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>BRAND</title>
+<title>CollaVerse</title>
 <link rel="stylesheet" type="text/css" href="${path}/resources/css/collabo.css">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
 </head>
