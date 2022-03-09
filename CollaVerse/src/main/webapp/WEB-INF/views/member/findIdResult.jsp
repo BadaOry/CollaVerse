@@ -16,14 +16,19 @@
 <body>
 		<h2>아이디 찾기 검색결과</h2>
 
-		<c:if test="${ empty findId }">
+
+		<c:if test="${ empty Member.email }">
 		<form action="${ path }/member/findIdResult" method="post" onsubmit="return false">
-			<h3 align="center">아이디는 : "${ loginMember.id }" 입니다.</h3>
+			<h3 align="center">아이디는 : "${ Member.id }" 입니다.</h3>
 		</form>
 				<div class="btnAll" align="center">
 					<button type="button" id="btn2" onclick="history.go(-1);">이전</button>
 					<button id="btn1" onclick="window.close();">창닫기</button>
 				</div>
 		</c:if>
+
+	
+
+		
 </body>
 </html>
