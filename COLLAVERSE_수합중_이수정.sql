@@ -101,7 +101,7 @@ INSERT INTO MEMBER (
     '개인', 'member1', '1111', 'member1@collaverse.co.kr', '010-1111-1111',
     '개인회원1', NULL, NULL, NULL,
     DEFAULT, DEFAULT,
-    DEFAULT, '20', DEFAULT
+    DEFAULT, '20', 'woman'
 );
 
 --03. 기업 회원 데이터 삽입 쿼리
@@ -115,7 +115,7 @@ INSERT INTO MEMBER (
     '기업', 'brand1', '1111', 'brand1@collaverse.co.kr', '010-1111-1111',
     '기업회원1', NULL, '11111111', '브랜드데스',
     DEFAULT, DEFAULT,
-    DEFAULT, '0', DEFAULT
+    DEFAULT, '0', 'woman'
 );
 
 COMMIT;
