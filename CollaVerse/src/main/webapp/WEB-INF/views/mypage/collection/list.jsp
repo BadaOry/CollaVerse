@@ -24,13 +24,46 @@
 	<section id="section">
 	
     <div class="mini_title" id="mypage_mycollection_title">
-    	<p id="collection_title">My 컬렉션</p>
+    	<p id="collection_title">${ writerNickname } 의 컬렉션</p>
     	
-    	<c:if test="${ !empty collectionList && loginMember.id == collectionList.get(0).cltWriterId}">
+    	<c:choose>
+	    		
+	    	<c:when test="${ !empty collectionList && loginMember.id == collectionList.get(0).cltWriterId}">
 		    	<a onclick="location.href='${ path }/mypage/collection/write'">
 		     		<div id="writeCollection" >New Collection !</div>
 		     	</a>
+		    </c:when>
+		    
+	    	<c:when test="${ noCollectionList == '없음' && loginMember.id == noWriterId }">
+		    	<a onclick="location.href='${ path }/mypage/collection/write'">
+		     		<div id="writeCollection" >New Collection !</div>
+		     	</a>
+		    </c:when>
+		     
+		    <c:when test="${ !empty collectionList &&  !empty loginMember && loginMember.id != collectionList.get(0).cltWriterId}">
+		        <button id="follow_btn" onclick="updateFollow()">Follow !!</button>
+		    </c:when>
+		    
+		    <c:when test="${ noCollectionList == '없음' &&  !empty loginMember && loginMember.id != noWriterId }">
+		        <button id="follow_btn" onclick="updateFollow()">Follow !!</button>
+		    </c:when>
+		    
+	     </c:choose>
+	     
+<%--	  
+
+    	<c:if test="${loginMember.id != collectionList.get(0).cltWriterId}">
+      				<button id="follow_btn" onclick="updateFollow()">Follow !!</button> 		
+      						
+      						<c:if test="${ followCheck == 0 }">				
+			        			<button id="follow_btn" onclick="updateFollow()">Follow !!</button> 
+			        		</c:if>
+       						<c:if test="${ followCheck == 1 }">				
+			        			<button id="follow_btn" onclick="updateFollow()">Follow !!</button>
+			        		</c:if> 
+			        		   		
 	     </c:if>
+--%> 
 
 	</div>
 	    
@@ -103,6 +136,7 @@
 			
 	    	<c:otherwise>
 			</c:otherwise>
+			
            </c:choose>
 
            </div>
@@ -111,6 +145,7 @@
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>    
 	
 	<script>
+		<%-- 모달창 관련 --%>
 		$('.collection_list').click(function(e){
 			e.preventDefault();
 			$(this).children('#detailModal').modal("show");
@@ -127,6 +162,35 @@
 			e.preventDefault();
 			$(this).parents('#deleteModal').modal("hide");
 		});
+		
+		
+		<%-- follow 신청 / 취소 --%>
+		var pmt_no = ${ promotionInfo.no };
+		var heart_mem_no = ${ loginMember.no };
+		
+		function updateFollow() {
+			$.ajax({
+				type : "POST",
+				url : "${ path }/collabo/promotion/detail/heart",
+				dataType : "json",
+				data : {'pmt_no' : pmt_no, 'heart_mem_no' : heart_mem_no },
+				error : function() {
+					alert("하트 업데이트 실패");
+				},
+				success : function(heartCheck) {
+					
+					if(heartCheck == 0) {
+						alert("♥ 좋아요 ♥");
+						location.reload();
+					} 
+					else if (heartCheck == 1){
+						alert("별로에요..?");
+						location.reload();
+					}
+				}
+					
+			});
+		}
 	</script>
 	
 </body>

@@ -138,36 +138,10 @@
 	</update>
 	
 	
-	<!-- 
-	비공개 기능 시도  
-	<select id="getCollectionListYP" parameterType="string" resultMap="MypagePCollectionResultMap"
-			resultType="arrayList">
-		<include refid="mypagePCollectionListSql"/>
-			WHERE MPC.CLT_STATUS IN ('Y', 'P')
-			ORDER BY MPC.CLT_NO DESC
+	<select id="getCollectionWriterNickname" parameterType="String" resultType="String">
+		SELECT NICKNAME
+		FROM MEMBER 
+		WHERE ID = #{ id }
 	</select>
-	
-	<select id="String findCollectionById" parameterType="string" resultMap="MypagePCollectionResultMap"
-			resultType="string">
-		SELECT M.ID, MPC.CLT_NO, MPC.CLT_STATUS
-		FROM MYPAGE_P_COLLECTION MPC
-		JOIN MEMBER M ON (MPC.MEMBER_NO = M.MEMBER_NO)	
-		WHERE M.ID = #{loginMemberMemberId};
-	</select>
-	 -->
-	
-
-	
-
-<!-- 
-	인피니트스크롤 내용
-	<select id="collection_count" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.CollectionTO"
-		resultType="int">
-		SELECT COUNT(NO)
-		FROM P_BOARD
-		WHEN MEMBER_NO = 1
-	</select>
--->
-
 
 </mapper>

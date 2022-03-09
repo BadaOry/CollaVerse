@@ -85,6 +85,7 @@ body {
 	color: #730e74;
 	margin: 50px 0 30px 150px;
 	width: 60%;
+	display: inline-block;
 }
 
 #delete_btn_y, #delete_btn_n, #update_btn, #delete_btn{
@@ -121,4 +122,32 @@ body {
 
 #cltContent {
 	font-family: 'DOSGothic';
+}
+
+#follow_btn {
+ 	/* 고정값 */
+ 	background-color:#720e74;
+ 	border-radius:7px;
+ 	border: 2px solid  #faae22;
+ 	cursor:pointer;
+ 	color:#ffffff;
+ 	font-family: 'Sam3KRFont';
+ 	font-size:14px;
+ 	padding:10px 27px;
+ 	text-decoration:none;
+ 	text-shadow: 0px 0px 0px #faaf22;
+	/* 변경값 */
+ 	display:inline-block;
+ 	width: 200px;
+}
+#follow_btn:hover {
+  	/* 고정값 */
+	background-color:#faae22;
+	color: #720e74;
+	border: 2px solid #720e74;
+	
+}
+#follow_btn:active {
+	position:relative;
+	top:1px;
 }

@@ -76,4 +76,10 @@ public class MypagePCollectionServiceImpl implements MypagePCollectionService {
 		return mapper.deleteMypagePCollection(mypagePCollection);
 	}
 
+	@Override
+	public String getCollectionWriterNickname(String id) {
+		
+		return mapper.getCollectionWriterNickname(id);
+	}
+
 }

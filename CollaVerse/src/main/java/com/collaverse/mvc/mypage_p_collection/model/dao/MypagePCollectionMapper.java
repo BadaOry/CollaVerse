@@ -24,4 +24,6 @@ public interface MypagePCollectionMapper {
 
 	int deleteMypagePCollection(MypagePCollection mypagePCollection);
 
+	String getCollectionWriterNickname(String id);
+
 }

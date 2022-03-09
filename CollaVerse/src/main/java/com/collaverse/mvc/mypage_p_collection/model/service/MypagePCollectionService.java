@@ -8,19 +8,21 @@ import com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection;;
 
 public interface MypagePCollectionService {
 
-//	int getCollectionCount();
 
 	List<MypagePCollection> getCollectionList(String id);
 
+	
 	int save(MypagePCollection mypagePCollection);
 
+	
 	MypagePCollection findCollectionByNo(int cltNo);
 
+	
 	int delete(MypagePCollection mypagePCollection);
 
-//	String findCollectionById(Member loginMember);
+	
+	String getCollectionWriterNickname(String id);
 
-//	int save(MypagePCollection mypagePCollection);
 
 
 }

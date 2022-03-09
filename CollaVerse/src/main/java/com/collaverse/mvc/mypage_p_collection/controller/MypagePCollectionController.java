@@ -48,6 +48,13 @@ public class MypagePCollectionController {
 		
 		List<MypagePCollection> collectionList = null;
 		String noCollectionList = null;
+		String noWriterId = null;
+		String writerNickname = null;
+		
+		writerNickname = service.getCollectionWriterNickname(id);
+		
+		log.info("[Controller] service 가 가져온 writerNickname 출력 : {}", writerNickname);
+
 //		setId(id);
 //		String cltWriterId = Mservice.findMemberById(loginMember.getNo());
 		
@@ -56,12 +63,15 @@ public class MypagePCollectionController {
 		// list 에 아무것도 없는 경우, IndexOutOfBoundsException: Index 0 out of bounds for length 0 에러 방지
 		if (collectionList.size() == 0) { 
 			noCollectionList = "없음";
+			noWriterId = id;
 			
 			log.info("[Controller] noCollectionList 출력 : {}", noCollectionList);
 		}
 		
 		model.addObject("collectionList", collectionList);
 		model.addObject("noCollectionList", noCollectionList);
+		model.addObject("noWriterId", noWriterId);
+		model.addObject("writerNickname", writerNickname);
 		model.setViewName("mypage/collection/list");
 		
 
