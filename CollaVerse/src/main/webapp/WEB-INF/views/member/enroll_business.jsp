@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사업자 회원가입</title>
+<title>CollaVerse</title>
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/enroll.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 </head>
@@ -23,7 +23,7 @@
 	<div id="enroll-container">	
 	<div>
 	 	<form name="memberEnrollFrm" action="${ path }/member/enroll_business" method="post">
-	 	<div  align="center">
+	 	<div align="center">
 	 		<table>
 	 			<tr>
 					<th>아이디 *</th>
@@ -103,7 +103,7 @@
 				  <input type="checkbox" name="agree" value="3">(선택) 이메일 및 SMS 마케팅 정보 수신에 동의합니다.<br>
 			</label>
 		</div>
-			<br>
+		<br>
 		<div class="btnAll" align="center">
  			<input type="submit" id="enrollSubmit" value="가입">	
  			<input type="reset" id="reset" value="취소" onclick="location.href='${ path }'">
