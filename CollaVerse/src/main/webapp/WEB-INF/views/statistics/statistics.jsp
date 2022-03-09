@@ -26,61 +26,51 @@
     <canvas id="genderChart"></canvas>
   </div>
 </body>
-<script type="text/javascript">
-    var context = document
-        .getElementById('genderChart')
-        .getContext('2d');
-    var myChart = new Chart(context, {
-        type: 'bar', // 차트의 형태
-        data: { // 차트에 들어갈 데이터
-            labels: [
-                //x 축
-                '여성회원','남성회원'
-            ],
-            datasets: [
-                { //데이터
-                    //label: '아이디 별', //차트 제목
-                    fill: false, // line 형태일 때, 선 안쪽을 채우는지 안채우는지
-                    data: [
-                        ${womenCount},${menCount} //x축 label에 대응되는 데이터 값
-                    ],
-                    backgroundColor: [
-                        //색상
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)'
-                    ],
-                    borderColor: [
-                        //경계선 색상
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)'
-                    ],
-                    borderWidth: 1 //경계선 굵기
-                }/* ,
-                {
-                    label: 'test2',
-                    fill: false,
-                    data: [
-                        8, 34, 12, 24
-                    ],
-                    backgroundColor: 'rgb(157, 109, 12)',
-                    borderColor: 'rgb(157, 109, 12)'
-                } */
-            ]
-        },
-        options: {
-            scales: {
-                yAxes: [
-                    {
-                        ticks: {
-                        	dispaly: false,
-                        	stepSize: 1,
-                            beginAtZero: true
-                        }
-                    }
-                ]
+
+
+<script>
+var ctx = document.getElementById('genderChart').getContext('2d');
+var myChart = new Chart(ctx, {
+type: 'pie',
+data: {
+    labels: ['여성회원', '남성회원'],
+    datasets: [{
+        label: '남녀 성별',
+        data:[${womenCount},${menCount}],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)'
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)'
+        ],
+        borderWidth: 1
+    }]
+},
+options: {
+    //그래프의 제목 옵션
+    title: {
+        display: true,
+        text: '남녀 성별',
+        fontSize: 20
+    },
+    //그래프의 항목 옵션
+    legend: {
+        display: true,
+        position: 'bottom',
+    },
+
+    /*
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
             }
-        }
-    });
-    
+        }]
+    }
+    */
+}
+});
 </script>
 </html>

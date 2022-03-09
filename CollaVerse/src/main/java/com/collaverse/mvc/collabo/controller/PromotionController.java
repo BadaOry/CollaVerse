@@ -2,17 +2,17 @@ package com.collaverse.mvc.collabo.controller;
 
 import java.util.List;
 
-import org.slf4j.Logger;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.collaverse.mvc.collabo.model.dao.CollaboMapper;
@@ -20,9 +20,9 @@ import com.collaverse.mvc.collabo.model.service.PromotionService;
 import com.collaverse.mvc.collabo.model.vo.Heart;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
-import com.collaverse.mvc.common.util.PageInfo;
+import com.collaverse.mvc.collabo.model.vo.WritePromotion;
+import com.collaverse.mvc.common.util.FileProcess;
 import com.collaverse.mvc.member.model.vo.Member;
-import com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,6 +31,44 @@ import lombok.extern.slf4j.Slf4j;
 public class PromotionController {
 	@Autowired
 	private PromotionService service;
+	
+	// 프로모션 작성 페이지로 이동
+	@GetMapping("/collabo/promotion/writing_promotion")
+	public String writingpromotion() {
+		
+		return "/collabo/promotion/writing_promotion";
+	}
+	
+	@PostMapping("/collabo/promotion/writing_promotion")
+	public ModelAndView writingpromotion(ModelAndView model, HttpServletRequest request,
+			@ModelAttribute WritePromotion writepromotion,
+			@RequestParam("promImg") MultipartFile promImg, @RequestParam("prodImg") MultipartFile[] prodImg) {
+		
+		log.info(writepromotion.toString());
+		
+		log.info("promImg Name : {}", promImg.getOriginalFilename());
+		log.info("promImg is Empty : {}", promImg.isEmpty());
+		
+		log.info("prodImg1 Name : {}", prodImg[0].getOriginalFilename());
+		log.info("prodImg1 is Empty : {}", prodImg[0].isEmpty());
+		log.info("prodImg2 Name : {}", prodImg[1].getOriginalFilename());
+		log.info("prodImg2 is Empty : {}", prodImg[1].isEmpty());
+		log.info("prodImg3 Name : {}", prodImg[2].getOriginalFilename());
+		log.info("prodImg3 is Empty : {}", prodImg[2].isEmpty());
+		
+		if (promImg != null && !promImg.isEmpty()) {
+			String renamedFileName = null; 
+			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
+			System.out.println(location); 
+			
+			renamedFileName = FileProcess.save(promImg, location);
+		}
+		
+		
+		model.setViewName("/collabo/promotion/writing_promotion");
+		
+		return model;
+	}
 
 	@Autowired
 	private CollaboMapper mapper;
@@ -168,6 +206,12 @@ public class PromotionController {
 	}
 */	
 
+//	@GetMapping("/collabo/promotion/detail")
+//	public String detail() {
+//		
+//		return "/collabo/promotion/detail";
+//		
+//	}
 
 	@GetMapping("/collabo/promotion/detail")
 	public ModelAndView PromotionDetail(ModelAndView model,

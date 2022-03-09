@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper 설정 파일임을 선언 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.collaverse.mvc.qna.model.dao.QnaMapper">
+  	<resultMap type="Qna" id="qnaListResultMap">
+		<id property="bno" column="QNA_NO" />
+		<result property="title" column="QNA_TITLE"/>
+		<result property="content" column="QNA_CONTENT"/>
+		<result property="writer" column="QNA_WRITER"/>
+		<result property="createDate" column="QNA_CREATE_DATE"/>
+		<result property="modifyDate" column="QNA_MODIFY_DATE"/>
+		<result property="readCount" column="QNA_READCOUNT"/>
+	</resultMap>
+  
+    <!-- 검색 조건문 -->
+    <sql id="criteria">
+        <trim prefix="AND (" suffix=")" prefixOverrides="OR">
+            <foreach collection="typeArr" item="type">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            QNA_TITLE LIKE '%'||#{keyword}||'%' 
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            QNA_CONTENT LIKE '%'||#{keyword}||'%' 
+                        </when>
+                        <when test="type == 'W'.toString()">
+                            QNA_WRITER LIKE '%'||#{keyword}||'%' 
+                        </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+     </sql>
+
+	<!-- 게시판 등록 -->  
+	<insert id="enroll">
+	      INSERT INTO QNA_BOARD(
+	      	QNA_NO, 
+	      	QNA_TITLE, 
+	      	QNA_CONTENT, 
+	      	QNA_WRITER
+	      ) 
+	      values (
+	      	SEQ_QNA_BOARD.NEXTVAL, 
+	      	#{title}, 
+	      	#{content}, 
+	      	#{writer}
+	      )
+	</insert>
+  
+  	<!-- 게시판 목록 -->
+    <select id="getList" resultType="com.collaverse.mvc.qna.model.vo.Qna">
+    
+        SELECT * FROM QNA_BOARD
+    
+    </select>
+    
+    <!-- 게시판 조회 -->
+    <select id="getPage" resultType="com.collaverse.mvc.qna.model.vo.Qna">
+    
+        SELECT * FROM QNA_BOARD WHERE QNA_NO = #{bno}
+    
+    </select>
+    
+    <!-- 게시물 목록(페이징) -->
+    <select id="getListPaging" resultType="com.collaverse.mvc.qna.model.vo.Qna">
+  
+    <![CDATA[
+        SELECT QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_WRITER, QNA_CREATE_DATE, QNA_MODIFY_DATE, QNA_READCOUNT FROM(
+        
+                SELECT /*+INDEX_DESC(QNA_BOARD PK_QNA_BOARD) */ ROWNUM  AS RN, QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_WRITER, QNA_CREATE_DATE, QNA_MODIFY_DATE, QNA_READCOUNT
+                  
+                FROM QNA_BOARD WHERE ROWNUM <= #{pageNum} * #{amount}         
+    ]]>            
+                <if test="keyword != null">
+                	<include refid="criteria"></include>
+                </if>
+    
+    <![CDATA[
+                    
+                )  
+        where RN > (#{pageNum} -1) * #{amount}
+    ]]>
+    
+    </select>
+    
+    <!-- 게시판 수정 -->
+    <update id="modify">   
+        UPDATE QNA_BOARD SET QNA_TITLE = #{title}, QNA_CONTENT = #{content}, QNA_MODIFY_DATE = SYSDATE WHERE QNA_NO = #{bno}
+    </update>
+    
+    <!-- 게시판 삭제 -->
+    <delete id="delete">
+        DELETE FROM QNA_BOARD WHERE QNA_NO = #{bno}
+    </delete>
+    
+    <!-- 게시물 총 갯수 -->
+    <select id="getTotal" resultType="int">
+    
+        SELECT COUNT(*) FROM QNA_BOARD
+
+ 		<if test="keyword != null">
+            WHERE QNA_NO > 0 
+        </if>
+    
+    </select>
+  </mapper>

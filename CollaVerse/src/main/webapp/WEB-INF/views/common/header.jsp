@@ -18,11 +18,12 @@
 				<table id="table">
 					<thead>
 						<tr>
+
 						
 							<td><span class="myinfo" onclick="location.href='${ path }/member/enrollPage'">회원가입</span></td>
 							<td style="color: white; font-size:12px; font-family: 'Sam3KRFont';"> │ </td>
-							<td><span class="myinfo" id="login" onclick="location.href='${ path }/member/login'">로그인</span></td>
-			
+							<td><span class="myinfo" id="login" onclick="location.href='${ path }/member/login'">로그인</span></td>		
+
 						</tr>
 					</thead>
 				</table>
@@ -109,10 +110,10 @@
 						</li>
 					</c:if>
 					
-					<li><a class="menu_title"  href="${ path }/board/boardList">FAQ</a>
+					<li><a class="menu_title"  href="">FAQ</a>
 						<ul>
-							<li><a class="header_nav1" href="">에페큐</a></li>
-							<li><a class="header_nav1" href="">에페큐</a></li>
+							<li><a class="header_nav1" href="${ path }/board/boardList">에페큐</a></li>
+							<li><a class="header_nav1" href="${ path }/qna/qnaList"">에페큐</a></li>
 							<li><a class="header_nav1" href="">에페큐</a></li>
 						</ul>
 					</li>
