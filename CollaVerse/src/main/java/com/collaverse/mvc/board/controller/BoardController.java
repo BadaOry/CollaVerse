@@ -170,5 +170,5 @@ public class BoardController {
 		redirectAttributes.addFlashAttribute("result", "enroll success");
 		return "board/boardList";
 	}
-
+	
 }

@@ -39,8 +39,8 @@
 </style>
 </head>
 <body>
-<h2>아직 구현중</h2>
-<div>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+
       	<div class="col-lg-12">
    			<div class="card">
    				<div class="card-header with-border">
@@ -128,6 +128,28 @@
 	  </ul>
 	</nav>
 	
+	
+	
+	<nav aria-label="...">	
+	  <ul class="pagination justify-content-center">
+	  	
+	    <!-- 이전페이지 버튼 -->
+        <c:if test="${pageMaker.prev}">
+            <li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">Previous</a></li>
+        </c:if>
+	    
+	    <!-- 각 번호 페이지 버튼 -->
+        <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+            <li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a href="${num}">${num}</a></li>
+        </c:forEach>
+	    
+	    <!-- 다음페이지 버튼 -->
+        <c:if test="${pageMaker.next}">
+            <li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1 }">Next</a></li>
+        </c:if> 
+	    
+	  </ul>
+	</nav>
 
 	
 	<p>
@@ -135,7 +157,7 @@
 	</p>
 	
 
-
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 <script>
 function Change(idx){
