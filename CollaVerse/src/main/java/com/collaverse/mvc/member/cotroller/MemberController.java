@@ -145,7 +145,7 @@ public class MemberController {
 		
 		log.info(member.toString());
 				
-		int result = service.save(member);
+		int result = service.savebusiness(member);
 		
 		if(result > 0) {
 			model.addObject("msg", "회원가입 완료");

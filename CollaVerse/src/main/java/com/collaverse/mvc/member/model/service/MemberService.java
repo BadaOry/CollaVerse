@@ -37,6 +37,8 @@ public interface MemberService {
 	// 통계용 남 회원정보(테스트중)
 	int getMenCount();
 
+	int savebusiness(Member member);
+
 	
 
 

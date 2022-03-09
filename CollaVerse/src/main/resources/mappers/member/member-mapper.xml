@@ -85,6 +85,43 @@
 					)
 	</insert>
 	
+	<insert id="insertBusinessMember"  parameterType="com.collaverse.mvc.member.model.vo.Member"
+			 useGeneratedKeys="true" keyColumn="MEMBER_NO" keyProperty="no">
+			INSERT INTO MEMBER (
+					    MEMBER_NO, 
+					    MEMBER_ROLE,
+				        ID,
+				        PASSWORD,
+				        EMAIL,
+				        PHONE,
+				        NICKNAME,
+				        PROFILE_IMG,
+				        BUSINESS_NO,
+				        BUSINESS_NAME,
+				        ENROLL_DATE,
+				        MODIFY_DATE,
+				        MEMBER_STATUS,
+				        MEMBER_AGE,
+				        MEMBER_GENDER
+				) VALUES (
+						SEQ_MEM_MEMBER_NO.NEXTVAL,
+						'기업',
+						#{id},
+						#{password},
+						#{email},
+						#{phone},
+						#{nickname},
+						#{profile_img},
+						#{business_no},
+						#{business_name},
+						DEFAULT,
+						DEFAULT,
+						DEFAULT,
+						#{age},
+						#{gender}
+					)
+	</insert>
+	
 	<!-- 개인 회원정보수정 -->
 	<update id="updateMember" parameterType="com.collaverse.mvc.member.model.vo.Member">
 		UPDATE MEMBER 
