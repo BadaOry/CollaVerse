@@ -6,7 +6,7 @@
 
 <html>
 <head>
-	<title>Login</title>
+	<title>CollaVerse</title>
 	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/login.css">
 	
 </head>
@@ -39,8 +39,8 @@
 		
 		<div class="btnAll" align="center">
 			<input type="submit" id="btn1" value="로그인"><br><br>
-			<input type="button" id="btn2" onclick="location.href='${ path }/member/enroll'" value="개인 회원가입"><br><br>
-			<input type="button" id="btn3" onclick="location.href='${ path }/member/enroll_business'" value="사업자 회원가입"><br><br>
+			<input type="button" id="btn2" onclick="location.href='${ path }/member/terms'" value="개인 회원가입"><br><br>
+			<input type="button" id="btn3" onclick="location.href='${ path }/member/terms_business'" value="사업자 회원가입"><br><br>
 		</div>
 		
 	</form>

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
+import com.collaverse.mvc.collabo.model.vo.Heart;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
 
@@ -20,7 +21,7 @@ public interface CollaboMapper {
 	// ▼ 프로모션 번호로 Product 정보 조회하는 메소드 (by Crystal, failed)
 	List<Product> getProductInfo(int pmtNo);
 
-	int heartCheck(int pmtNo, int heartMemNo);
+	int heartCheck(@Param("pmt_no") int pmtNo, @Param("heart_mem_no") int heartMemNo);
 
 	// 카테고리별 프로모션 조회 
 	List<Promotion> selectLiving();
@@ -39,6 +40,21 @@ public interface CollaboMapper {
 	List<Product> selectCproduct();
 
 	List<Product> selectFproduct();
+
+	// 하트 관련 매퍼
+	void insertHeart(@Param("pmt_no") int pmtNo, @Param("heart_mem_no") int heartMemNo);
+
+	void addHeartHit(@Param("pmt_no") int pmtNo);
+
+	void updateHeartCheck(@Param("pmt_no") int pmtNo, @Param("heart_mem_no") int heartMemNo);
+
+	void updateHeartCheckCancel(@Param("pmt_no") int pmtNo, @Param("heart_mem_no") int heartMemNo);
+
+	void minusHeartHit(@Param("pmt_no") int pmtNo);
+
+	void deleteHeart(@Param("pmt_no") int pmtNo, @Param("heart_mem_no") int heartMemNo);
+
+
 
 	List<Product> selectTproduct();
 

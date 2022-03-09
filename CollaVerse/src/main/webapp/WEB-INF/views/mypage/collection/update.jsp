@@ -28,7 +28,7 @@
 	                	<img id="imagePreview" src="${ path }/resources/upload/collection/${ updateCollectionInfo.renamedFileName01 }"/>
 	                </td>
 	                <td>
-	                    <input type="text" id="mypage_collection_write_content" name="content"
+	                    <input type="textarea" id="mypage_collection_write_content" name="content"
 	                   		 value=" ${ updateCollectionInfo.cltContent }"/>
 	                </td>
 	            </tr>

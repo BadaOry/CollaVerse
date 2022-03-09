@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사업자 회원 정보 수정</title>
+<title>CollaVerse</title>
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/myPage.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 </head>
@@ -18,7 +18,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <div class="myPage">
-<h1>사업자 회원 정보 수정</h1>
+<h1 class="mini_title">사업자 회원정보 수정</h1>
 <div id="view-container">
 	<div align="center">
 	<form id="memberFrm" action="${ path }/member/update1" method="post">	

@@ -144,12 +144,12 @@
 	
 	<!-- 통계용 여 회원정보(테스트중) -->
 	<select id = "getWomenCount" resultType="_int">
-		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_GENDER = '여'
+		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_GENDER = 'woman'
 	</select>
 	
 	<!-- 통계용 남 회원정보(테스트중) -->
 	<select id = "getMenCount" resultType="_int">
-		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_GENDER = '남'
+		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_GENDER = 'man'
 	</select>
 
 </mapper>

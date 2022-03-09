@@ -20,9 +20,9 @@ public interface MemberMapper {
 	
 	Member findId(@Param("email") String email); //id 찾기
 	
-	Member findPw(@Param("id") String id, String email); // pw 찾기
+	Member findPw(@Param("id") String id, String email); //pw 찾기
 
-	Object findMemberByBusiness_no(String business_no); // 사업자등록번호 중복확인
+	Object findMemberByBusiness_no(String business_no); //사업자등록번호 중복확인
 	
 	int getWomenCount(); // 통계용 여 회원정보(테스트중)
 	

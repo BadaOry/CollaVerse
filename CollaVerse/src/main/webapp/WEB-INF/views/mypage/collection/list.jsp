@@ -21,77 +21,107 @@
 <body class="box" style=" overflow-y: scroll;">
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
-	<input type="hidden" value="${ member.id }"></hidden>
-	
 	<section id="section">
 	
     <div class="mini_title" id="mypage_mycollection_title">
-    	<p id="collection_title">My 컬렉션</p>
-    	<a onclick="location.href='${ path }/mypage/collection/write'">
-     		<div id="writeCollection" >New Collection !</div>
-     	</a>
+    	<p id="collection_title">${ writerNickname } 의 컬렉션</p>
+    	
+    	<c:choose>
+	    		
+	    	<c:when test="${ !empty collectionList && loginMember.id == collectionList.get(0).cltWriterId}">
+		    	<a onclick="location.href='${ path }/mypage/collection/write'">
+		     		<div id="writeCollection" >New Collection !</div>
+		     	</a>
+		    </c:when>
+		    
+	    	<c:when test="${ noCollectionList == '없음' && loginMember.id == noWriterId }">
+		    	<a onclick="location.href='${ path }/mypage/collection/write'">
+		     		<div id="writeCollection" >New Collection !</div>
+		     	</a>
+		    </c:when>
+		     
+		    <c:when test="${ !empty collectionList &&  !empty loginMember && loginMember.id != collectionList.get(0).cltWriterId}">
+		        <button id="follow_btn" onclick="updateFollow()">Follow !!</button>
+		    </c:when>
+		    
+		    <c:when test="${ noCollectionList == '없음' &&  !empty loginMember && loginMember.id != noWriterId }">
+		        <button id="follow_btn" onclick="updateFollow()">Follow !!</button>
+		    </c:when>
+		    
+	     </c:choose>
+	     
+<%--	  
+
+    	<c:if test="${loginMember.id != collectionList.get(0).cltWriterId}">
+      				<button id="follow_btn" onclick="updateFollow()">Follow !!</button> 		
+      						
+      						<c:if test="${ followCheck == 0 }">				
+			        			<button id="follow_btn" onclick="updateFollow()">${ writerNickname } Follow 하기</button> 
+			        		</c:if>
+       						<c:if test="${ followCheck == 1 }">				
+			        			<button id="follow_btn" onclick="updateFollow()">Follow</button>
+			        		</c:if> 
+			        		   		
+	     </c:if>
+--%> 
+
 	</div>
-	<!--  
-   	<div id="collection_write_button_space">
-		<a onclick="location.href='${ path }/mypage/collection/write'">
-     		<div id="writeCollection" >New Collection !</div>
-     	</a>
-	</div>
-	    -->
 	    
     <div class="mypage_mycollection_list_container">
            <div class="mypage_mycollection_list">
            <c:choose>
 	    	<c:when test="${ !empty collectionList }">
 				    <c:forEach var="collectionList" items="${ collectionList }">
+	                    
 	                    <div class="collection_list" id="collection_box">
 	                    
 	                    	<img src= "${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }"
 	                    		style="width: 100%; height: 100%" />
-	                    	▲ ${ collectionList.cltNo } : ${ collectionList.cltContent }
+	                    	<%-- ▲ ${ collectionList.cltNo } : ${ collectionList.cltContent } --%>
 	                    		
 	                    	<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								
 								<div class="modal-dialog" role="document">
+									
 									<div class="modal-content">
+										
 										<div class="modal-header"></div>
 						                <img src="${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }">
-										<div class="modal-body">
-											${ collectionList.cltContent }					
-											</div>
+										
+										<div class="modal-body" id="cltContent">${ collectionList.cltContent }</div>
+										
 										<div class="modal-footer">
-											<span id="update_btn" onclick="location.href='${ path }/mypage/collection/update?cltNo=${ collectionList.cltNo }'">수정</span>
-											<span class="deleteModalClass" id="delete_btn">삭제
-											<%--	
-											<button onclick="location.href='${ path }/mypage/collection/update?cltNo=${ collectionList.cltNo }'">수정</button>
-											<button class="deleteModalClass" id="delete_btn"> 삭제 
-											 --%>
-												<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-													<div class="modal-dialog" role="document" id="confirmModal" 
-														style="margin-top: 38%;">
-														<div class="modal-content" id="deleteModalColoring">	
-															<table style="padding: 0 0 0 180px;">
-																<tr><span>정말로 삭제하시겠습니까?</span></tr>
-																<tr>
-																	<td>
-																	<span id="delete_btn_y" onclick="location.href='${ path }/mypage/collection/delete?cltNo=${ collectionList.cltNo }'">네</span>
-																	</td>
-																	<td>
-																	<span class="delete_btn_n" id="delete_btn_n">아니오</span>
-																	</td>
-																	<%-- 
-																	<p> </p>
-																	<td><button onclick="location.href='${ path }/mypage/collection/delete?cltNo=${ collectionList.cltNo }'">네</button></td>
-																	<td><button class="delete_btn_n">아니오</button></td>
-																	<p> </p>
-																	--%>
-																</tr>
-															</table>
-														</div>
-													</div>
-												</div>			
-											</span>
+											<c:choose>
+												<c:when test="${ !empty loginMember && loginMember.id == collectionList.cltWriterId}">
+													<span id="update_btn" onclick="location.href='${ path }/mypage/collection/update?cltNo=${ collectionList.cltNo }'">수정</span>
+													<span class="deleteModalClass" id="delete_btn">삭제
+														<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+															<div class="modal-dialog" role="document" id="confirmModal" 
+																style="margin-top: 38%;">
+																<div class="modal-content" id="deleteModalColoring">	
+																	<table style="padding: 0 0 0 180px;">
+																		<tr><span>정말로 삭제하시겠습니까?</span></tr>
+																		<tr>
+																			<td>
+																			<span id="delete_btn_y" onclick="location.href='${ path }/mypage/collection/delete?cltNo=${ collectionList.cltNo }'">네</span>
+																			</td>
+																			<td>
+																			<span class="delete_btn_n" id="delete_btn_n">아니오</span>
+																			</td>
+																		</tr>
+																	</table>
+																</div>
+															</div>
+														</div>			
+													</span>	
+												</c:when>
+												<c:otherwise>
+													
+												</c:otherwise>
+											</c:choose>	
 											
 										</div>
+										
 									</div>
 								</div>
 	                    	</div>
@@ -99,9 +129,14 @@
 	                    </div>
 				    </c:forEach>
 			</c:when>
-	    	<c:otherwise>
+			
+			<c:when test="${ noCollectionList == '없음' }">
 	    		<p id="collection_no_collectionList">컬렉션이 존재하지 않습니다.</p>
+			</c:when>
+			
+	    	<c:otherwise>
 			</c:otherwise>
+			
            </c:choose>
 
            </div>
@@ -110,6 +145,7 @@
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>    
 	
 	<script>
+		<%-- 모달창 관련 --%>
 		$('.collection_list').click(function(e){
 			e.preventDefault();
 			$(this).children('#detailModal').modal("show");
@@ -126,6 +162,35 @@
 			e.preventDefault();
 			$(this).parents('#deleteModal').modal("hide");
 		});
+		
+		
+		<%-- follow 신청 / 취소 --%>
+		var to_mem_no = ${ writerNo };
+		var from_mem_no = ${ loginMember.no };
+		
+		function updateFollow() {
+			$.ajax({
+				type : "POST",
+				url : "${ path }/mypage/follow/updateFollow",
+				dataType : "json",
+				data : {'to_mem_no' : TO_mem_no, 'from_mem_no' : from_mem_no },
+				error : function() {
+					alert("팔로우 실패");
+				},
+				success : function(followCheck) {
+					
+					if(followCheck == 0) {
+						alert("Follow 성공 !");
+						location.reload();
+					} 
+					else if (followCheck == 1){
+						alert("Follow 취소...");
+						location.reload();
+					}
+				}
+					
+			});
+		}
 	</script>
 	
 </body>

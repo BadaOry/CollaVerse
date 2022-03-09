@@ -32,6 +32,11 @@
         -->
     </div>
     
+    <div>
+    	<c:if test="${ loginMember.role == '기업'}">
+    		<a onclick="location.href='${ path }/collabo/promotion/writing_promotion'">프로모션 작성하기</a></c:if>
+    </div>
+    
     <div class="frame">
     <div class="colla_img">콜라보 소개이미지</div>
 

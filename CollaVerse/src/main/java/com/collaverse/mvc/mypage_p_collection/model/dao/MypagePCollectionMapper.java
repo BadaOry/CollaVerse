@@ -12,7 +12,7 @@ import com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection;
 @Mapper
 public interface MypagePCollectionMapper {
 
-	List<MypagePCollection> getCollectionListY(int loginMemberMemberNo);
+	List<MypagePCollection> getCollectionListY(String id);
 
 	int insertMypagePCollection(MypagePCollection mypagePCollection);
 
@@ -23,5 +23,9 @@ public interface MypagePCollectionMapper {
 	MypagePCollection findCollectionByNo(int cltNo);
 
 	int deleteMypagePCollection(MypagePCollection mypagePCollection);
+
+	String getCollectionWriterNickname(String id);
+
+	int getCollectionWriterNo(String id);
 
 }

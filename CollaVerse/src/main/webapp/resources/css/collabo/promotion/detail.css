@@ -176,7 +176,7 @@ input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
 }
 
 .p_content{
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'DOSGothic';
     text-align: center;
 }
 
