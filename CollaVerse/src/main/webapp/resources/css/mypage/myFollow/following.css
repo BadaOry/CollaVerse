@@ -1,0 +1,44 @@
+.mini_title {
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	text-align: left;
+	color: #730e74;
+	margin: 50px 0 30px 150px;
+	width: 60%;
+}
+
+.minimini_tilte {
+	font-family: 'Sam3KRFont';
+	font-size: 20px;
+	text-align: left;
+	color: #730e74;
+	/* margin: 50px 0 30px 150px; */
+	width: 20%;
+	display: inline-block;
+}
+
+#count {
+	font-family: 'DOSGothic';
+	font-size: 20px;
+	display: inline-block;
+}
+
+#profile_image{
+	width: 150px;
+	height: 150px;
+}
+
+.member_container {
+	margin: 0 150px 80px 150px;
+}
+
+#member_nickname {
+	text-align: center;
+}
+
+.member_info_container {
+	/* width: 140px; */
+	/* height: 200px; */
+	margin: 20px 10px 0 0;
+	display: inline-block;
+} 

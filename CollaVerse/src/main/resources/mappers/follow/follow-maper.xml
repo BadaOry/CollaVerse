@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+
+
+<mapper namespace="com.collaverse.mvc.follow.model.dao.FollowMapper">
+
+	<resultMap type="com.collaverse.mvc.follow.model.vo.Follower" id="FollowerResultMap">
+		<id property="followerNo" column="FOLLOWER_NO"/>
+		<result property="toMemNo" column="TO_MEM_NO"/>
+		<result property="toMemNick" column="TO_MEM_NICK"/>
+		<result property="fromMemNo" column="FROM_MEM_NO"/>
+		<result property="fromMemNick" column="FROM_MEM_NICK"/>
+		<result property="followerCreateDate" column="FOLLOWER_CREATE_DATE"/>
+	</resultMap>
+	
+	<resultMap type="com.collaverse.mvc.follow.model.vo.Following" id="FollowingResultMap">
+		<id property="followingNo" column="FOLLOWING_NO"/>
+		<result property="fromMemNo" column="FROM_MEM_NO"/>
+		<result property="fromMemNick" column="FROM_MEM_NICK"/>
+		<result property="toMemNo" column="TO_MEM_NO"/>
+		<result property="toMemNick" column="TO_MEM_NICK"/>
+		<result property="followingCreateDate" column="FOLLOWING_CREATE_DATE"/>
+	</resultMap>
+
+
+	<resultMap type="com.collaverse.mvc.follow.model.vo.Follower" id="FollowerMap">
+		<id property="followerNo" column="FOLLOWER_NO"/>
+		<result property="toMemNo" column="TO_MEM_NO"/>
+		<result property="toMemNick" column="NICKNAME"/>
+		<result property="fromMemNo" column="FROM_MEM_NO"/>
+		<result property="followerCreateDate" column="FOLLOWER_CREATE_DATE"/>
+		<!-- 나중에 프로필 이미지도 추가해야함 -->
+	</resultMap>
+	
+		<resultMap type="com.collaverse.mvc.follow.model.vo.Following" id="FollowingMap">
+		<id property="followerNo" column="FOLLOWER_NO"/>
+		<result property="fromMemNo" column="FROM_MEM_NO"/>
+		<result property="toMemNo" column="TO_MEM_NO"/>
+		<result property="toMemNick" column="NICKNAME"/>
+		<result property="followingCreateDate" column="FOLLOWING_CREATE_DATE"/>
+		<!-- 나중에 프로필 이미지도 추가해야함 -->
+	</resultMap>
+	
+	
+	<select id="getFollowerList" parameterType="_int" resultType="arrayList" 
+		resultMap="FollowerMap">
+		SELECT F.FOLLOWER_NO, F.TO_MEM_NO, M.NICKNAME,
+			F.FROM_MEM_NO, F.FOLLOWER_CREATE_DATE	<!-- 나중에 프로필 이미지도 추가해야함 -->
+		FROM FOLLOWER F
+		JOIN MEMBER M ON(M.MEMBER_NO = F.FROM_MEM_NO)
+		WHERE TO_MEM_NO = #{ toMemNo }
+	</select>
+	
+	
+	<select id="countFollower" parameterType="_int" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{ toMemNo }
+	</select>
+	
+	
+	<select id="getFollowingList" parameterType="_int" resultType="arrayList" 
+		resultMap="FollowingMap">
+		SELECT F.TO_MEM_NO, M.NICKNAME,
+			F.FROM_MEM_NO, F.FOLLOWING_CREATE_DATE	<!-- 나중에 프로필 이미지도 추가해야함 -->
+		FROM FOLLOWING F
+		JOIN MEMBER M ON(M.MEMBER_NO = F.TO_MEM_NO)
+		WHERE F.TO_MEM_NO IN (SELECT TO_MEM_NO
+		                        FROM FOLLOWING
+		                        WHERE FROM_MEM_NO = #{ fromMemNo } )
+	</select>
+
+
+	<select id="countFollowing" parameterType="_int" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWING
+		WHERE FROM_MEM_NO = #{ fromMemNo }
+	</select>
+	
+</mapper>
