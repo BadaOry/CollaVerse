@@ -70,7 +70,7 @@
         	<input type="reset" id="btn2" value="취소" onclick="location.href='${ path }'">
         </div>
  	</form>
- 	</div>
+    </div>
  	</div>
 </div>
 
