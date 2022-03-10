@@ -12,40 +12,30 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-
-<div class="login">
-	<h1>로그인</h1>
 		<c:if test="${ empty loginMember }">
 			<form action="login" method="post">
-			<div class="id">
-				<label>아이디</label><br>
-				<input type="text" name="id" required/><br><br>
-			</div>
-			<div class="pw">
-				<label>비밀번호</label><br>
-				<input type="password" name="password" required/>
-			</div>
-	
-		<br>
-		<br>
-
-		<div class="findAll">
-			<button id="findid" onclick="window.open('${ path }/member/findId','id_popup','width=350, height=190, location=no, status=no, left=-700, top=-200');">아이디 찾기</button>
-			<button id="findpw" onclick="window.open('${ path }/member/findPw','pw_popup','width=350, height=190, location=no, status=no, left=-700, top=-200');">비밀번호 찾기</button>
-		</div>
-		
-		<br>
-		<br>
-		
-		<div class="btnAll" align="center">
-			<input type="submit" id="btn1" value="로그인"><br><br>
-			<input type="button" id="btn2" onclick="location.href='${ path }/member/terms'" value="개인 회원가입"><br><br>
-			<input type="button" id="btn3" onclick="location.href='${ path }/member/terms_business'" value="사업자 회원가입"><br><br>
-		</div>
-		
+			  <table class="login">
+			    <tr>
+			      <td colspan="2"><h1>로그인</h1></td>
+			    </tr>
+			    <tr>
+			      <td class="id">아이디<br>
+			        <input type="text" name="id" required/><br><br>
+			      </td>
+			      <td rowspan="2" class="btnAll" align="center">
+			        <input type="submit" id="btn1" value="로그인"><br><br>
+			        <button id="findid" onclick="window.open('${ path }/member/findId','id_popup','width=350, height=190, location=no, status=no, left=-700, top=-200');">아이디 찾기</button>
+			        <button id="findpw" onclick="window.open('${ path }/member/findPw','pw_popup','width=350, height=190, location=no, status=no, left=-700, top=-200');">비밀번호 찾기</button>    
+			      </td>
+			    </tr>
+			    <tr>
+			      <td class="pw">비밀번호<br>
+			        <input type="password" name="password" required/>
+			      </td>
+			    </tr>
+			  </table>
 	</form>
-</c:if>
-	</div>	
+</c:if>	
 <c:if test="${ !empty loginMember && loginMember.role == '관리자'}">
 	<table>
 	   <tr>

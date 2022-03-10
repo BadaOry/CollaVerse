@@ -11,23 +11,19 @@
 <head>
 <meta charset="UTF-8">
 <title>CollaVerse</title>
-	<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/css/find.css">
+	<link rel="stylesheet" type="text/css" href="${ path }/resources/css/find.css">
 </head>
 <body>
 
 <h1>아이디 찾기</h1>
-
 <div class="search" align="center">
-	<form action="/member/findId" method="post" onsubmit="return false;">
-		<label>이메일 : <input type="text" name="email" /></label><br>
-	</form>
-</div>
-
-<br>
+	<form action="${ path }/member/findIdResult" method="post">
+		<label>이메일 : <input type="text" name="email" required/></label><br><br>
 		<div class="btnAll" align="center">
-		     <button id="btn1" onclick="location.href='${ path }/member/findIdResult'">검색</button>
+		     <input type="submit" id="btn1" value="검색">
 		     <button id="btn2" onclick="window.close();">취소</button>
 		</div>	
-
+	</form>	
+</div>
 </body>
 </html>

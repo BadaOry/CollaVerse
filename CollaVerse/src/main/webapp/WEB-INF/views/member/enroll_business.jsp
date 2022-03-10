@@ -48,7 +48,8 @@
  				<tr>
 					<th>닉네임 *</th>
 					<td>
-						<input type="text" name="nickname" id="nickname" size="25" required>				
+						<input type="text" name="nickname" id="nickname" size="25" required>
+						<input type="button" id="checkDuplicateNickname" value="중복검사" >				
 					</td> 			
  				</tr> 
  				<tr>
@@ -71,15 +72,17 @@
 					</td> 			
 	 			</tr>			
 	 			<tr>
-	 				<th>생년월일 *</th>
+	 				<th>나이 *</th>
 	 				<td>
-						<select name="yy" id="year"></select>년
-						<select name="mm" id="month"></select>월
-						<select name="dd" id="day"></select>일
+						<select name="age" id="age" required>
+							<option>나이</option>
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+						</select>
 					</td>
 				</tr>
-
-	 			<tr>
+				<tr>
 	 				<th>성별 *</th>
 	 				<td>
 						<input type="radio" name="gender" value="woman">여자
@@ -144,6 +147,36 @@
 </script>
 
 <script>
+	// 닉네임 중복 확인
+	$(document).ready(() => {
+		$("#nicknameCheck").on("click", () => {
+			let nickname = $("#newnickname").val().trim();
+			
+			$.ajax({
+				type: "post",
+				url: "${ pageContext.request.contextPath }/member/nicknameCheck",
+				dataType: "json",
+				data: {
+					nickname
+				},
+				success: (data) => {
+					console.log(data);
+					
+					if(data.duplicate === true) {
+						alert("이미 사용중인 닉네임 입니다.");
+					} else {
+						alert("사용 가능한 닉네임 입니다.");						
+					}
+				},
+				error: (error) => {
+					console.log(error);
+				}
+			});
+		});		
+	});
+</script>
+
+<script>
 	// 약관 전체선택, 해제
 	const agreeChkAll = document.querySelector('input[name=agree_all]');
 	    agreeChkAll.addEventListener('change', (e) => {
@@ -152,36 +185,6 @@
 	    			agreeChk[i].checked = e.target.checked;
 	    }
 });
-</script>
-
-<script>
-	// 생년월일
-	$(document).ready(function(){            
-	    var now = new Date();
-	    var year = now.getFullYear();
-	    var mon = (now.getMonth() + 1) > 9 ? ''+(now.getMonth() + 1) : '0'+(now.getMonth() + 1); 
-	    var day = (now.getDate()) > 9 ? ''+(now.getDate()) : '0'+(now.getDate());           
-	    
-	    //년도 selectbox만들기               
-	    for(var i = 1900 ; i <= year ; i++) {
-	        $('#year').append('<option value="' + i + '">' + i + '</option>');    
-	    }
-	
-	    // 월별 selectbox 만들기            
-	    for(var i=1; i <= 12; i++) {
-	        var mm = i > 9 ? i : "0"+i ;            
-	        $('#month').append('<option value="' + mm + '">' + mm + '</option>');    
-	    }
-	    
-	    // 일별 selectbox 만들기
-	    for(var i=1; i <= 31; i++) {
-	        var dd = i > 9 ? i : "0"+i ;            
-	        $('#day').append('<option value="' + dd + '">' + dd+ '</option>');    
-	    }
-		    $("#year  > option[value="+year+"]").attr("selected", "true");        
-		    $("#month  > option[value="+mon+"]").attr("selected", "true");    
-		    $("#day  > option[value="+day+"]").attr("selected", "true");       
-		})
 </script>
 
 <script>
