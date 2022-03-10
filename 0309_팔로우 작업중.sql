@@ -157,6 +157,19 @@ commit;
 -- 21 왱왱 팔로워 : 3명 (1, 2, 3)
 -- 21 왱왱 팔로우 : 2명 (1 관리자, 41 두두링)
 
+-- 06. 21번 회원이 1번 관리자 회원을 언팔로우
+DELETE FROM FOLLOWING 
+WHERE FROM_MEM_NO = 21
+    AND TO_MEM_NO = 1;
+    
+DELETE FROM FOLLOWER
+WHERE  TO_MEM_NO = 1
+    AND FROM_MEM_NO = 21;
+    
+COMMIT;
+-- 현재 상황
+-- 21 왱왱 팔로워 : 3명 (1, 2, 3)
+-- 21 왱왱 팔로우 : 1명 (41 두두링)
 
 ------------ ▼ 블로그 발췌 내용 (https://m.blog.naver.com/codingspecialist/221464676242) ------------ 
 CREATE TABLE users(
