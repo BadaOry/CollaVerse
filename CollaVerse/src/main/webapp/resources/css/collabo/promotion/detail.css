@@ -1,81 +1,5 @@
 @charset "UTF-8";
 
-/*
-body{
-    background-color: rgb(198, 182, 218);
-}
-*/
-
-.colla_menu{
-    font-family: 'Nanum Gothic', sans-serif;
-    display: flex;
-    justify-content:center;
-    word-spacing: 45px;
-    flex-direction: row;
-}
-
-li{
-    display: inline;
-    align-self: center;
-    margin: 0;
-    margin-left: 15px;
-}
-
-/* hover 추가하기 */ 
-
-/* 콜라보 메인 */
-.colla_img{
-    font-family: 'Nanum Gothic', sans-serif;
-    background-color: lemonchiffon;
-    height: 350px;
-    text-align: center;
-    margin: 3%;
-}
-
-.promotion{
-    font-family: 'Nanum Gothic', sans-serif;
-    margin: 3%;
-}
-
-.p_new{
-    font-family: 'Nanum Gothic', sans-serif;
-    display: flex;
-    justify-content: space-around
-}
-
-.p_img{
-	display: flex;
-	flex-wrap: wrap;
-/*    background-color: lemonchiffon;*/
-/*    text-align: center;*/
-    /*height: 150px;
-    width: 250px;*/
-    
-}
-
-.p_new p {
-    text-align: center;
-}
-
-
-
-/* 카테고리 목록 */
-
-.category_list{
-    font-family: 'Nanum Gothic', sans-serif;
-    margin: 3%;
-}
-
-.living{
-    font-family: 'Nanum Gothic', sans-serif;
-    display: flex;
-    justify-content: space-around
-}
-
-.living p{
-    text-align: center;
-}
-
 /* 프로모션 상세 */
 
 /* 이미지 탭*/
@@ -92,7 +16,7 @@ input[type="radio"] {
 	height:350px;
     border: 20px solid rgb(161, 155, 155);
     border-radius: 30px;
-    display:none;
+    display: none;
     text-align: center;
 }
 
@@ -132,11 +56,10 @@ input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
 
 /* 그 외 */
 .p_title{
-    font-family: 'Nanum Gothic', sans-serif;
-    font-size: large;
+    font-family: 'DOSGothic';
+    font-size: large; 
     margin: 3%;
     text-align: center;
-
 }
 
 .category_detail{
@@ -150,16 +73,6 @@ input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
    	color: #730e74;
    	margin: 30px 0 30px 50px;
    	width: 60%;
-}
-
-.p_info{
-    font-family: 'Nanum Gothic', sans-serif;
-    display: flex;
-    justify-content: space-around
-}
-
-.p_info p {
-    text-align: center;
 }
 
 .p_explain{
@@ -179,6 +92,48 @@ input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
     font-family: 'DOSGothic';
     text-align: center;
 }
+
+.proInfo{
+	font-family: 'DOSGothic';
+    display: flex;
+    justify-content: space-around;
+    text-align: center; 
+}
+
+/* 이미지 슬라이드 */
+/*
+.slick-prev{
+	left: 160px;
+    z-index: 1;
+}
+.slick-next{
+	right: 160px;
+    z-index: 1;
+}
+
+.slide_div img{
+	margin: auto;
+}
+.slide_content{
+	padding: 15px 0 15px 0;
+    background: #e6e9f6;
+}
+.slide_div img{
+	max-width: 85%;
+    height: auto;
+    display: block;
+	margin: auto;    
+}
+*/
+
+.slide_content{
+	width: 550px; 
+	height: 350px; /* 정렬하려는 요소의 넓이를 반드시 지정 */ 
+	margin: 0 auto;
+	margin-top: 1%;
+	margin-bottom: 5%;
+}
+
 
 
 

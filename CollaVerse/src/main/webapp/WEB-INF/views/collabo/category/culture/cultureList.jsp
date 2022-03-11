@@ -38,12 +38,13 @@
         <div class="culture">
         <div class="culture1">
     	<c:forEach var="clist" items="${ clist }" begin="0" end="0">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ clist.no }">  
             <div class="c_img">
                  <img src="${ path }${ clist.imgPath }${ clist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div>              
             <p>          
             <strong>${ clist.title }</strong>
+            </a>
             <p>${ clist.content }</p>
 			</c:forEach>                       
             <p>
@@ -65,12 +66,13 @@
 			
        <div class="culture2">
     	<c:forEach var="clist" items="${ clist }" begin="1" end="1">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ clist.no }">  
             <div class="l_img">
                  <img src="${ path }${ clist.imgPath }${ clist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div>              
             <p>          
             <strong>${ clist.title }</strong>
+            </a>
             <p>${ clist.content }</p>
 			</c:forEach>                       
             <p>
@@ -92,12 +94,13 @@
 			
        <div class="culture3">
     	<c:forEach var="clist" items="${ clist }" begin="2" end="2">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ clist.no }">  
             <div class="l_img">
                  <img src="${ path }${ clist.imgPath }${ clist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div>              
             <p>          
             <strong>${ clist.title }</strong>
+            </a>
             <p>${ clist.content }</p>
 			</c:forEach>                       
             <p>

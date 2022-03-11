@@ -39,12 +39,13 @@
         <div class="living">
         <div class="living1">
     	<c:forEach var="llist" items="${ llist }" begin="0" end="0">
+            <a href="${ path }/collabo/promotion/detail?pmtNo=${ llist.no }">   	
             <div class="l_img">
                  <img src="${ path }${ llist.imgPath }${ llist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div>              
             <p>          
             <strong>${ llist.title }</strong>
+            </a>
             <p>${ llist.content }</p>
 			</c:forEach>                       
             <p>
@@ -52,7 +53,7 @@
     		<c:forEach var="lpro" items="${ lpro }" begin="0" end="2">
             <table>
             <tr>
-            	<td colspan = "2" rowspan="2" width="200px" height="150px">
+            	<td colspan = "2" rowspan="2" width="200px" height="150px">          	
             	<img src="${ path }${ lpro.proImgpath }${ lpro.proNo }.jpg" alt="" width="150px" height="100px">
             	</td>
             	<td>${ lpro.proName }</td>
@@ -66,12 +67,14 @@
 			
        <div class="living2">
     	<c:forEach var="llist" items="${ llist }" begin="1" end="1">
+            <a href="${ path }/collabo/promotion/detail?pmtNo=${ llist.no }">    	
             <div class="l_img">
                  <img src="${ path }${ llist.imgPath }${ llist.no }.jpg" alt="" width="550px" height="400px">
             </div>
               
             <p>          
             <strong>${ llist.title }</strong>
+            </a>            
             <p>${ llist.content }</p>
 			</c:forEach>                       
             <p>
@@ -93,12 +96,13 @@
 			
        <div class="living3">
     	<c:forEach var="llist" items="${ llist }" begin="2" end="2">
+			<a href="${ path }/collabo/promotion/detail?pmtNo=${ llist.no }">    	
             <div class="l_img">
                  <img src="${ path }${ llist.imgPath }${ llist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div>              
             <p>          
             <strong>${ llist.title }</strong>
+            </a>
             <p>${ llist.content }</p>
 			</c:forEach>                       
             <p>
