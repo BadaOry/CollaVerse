@@ -1,13 +1,13 @@
-package com.collaverse.mvc.qna.model.dao;
+package com.collaverse.mvc.qna.mapper;
 
 import java.util.List;
 
-import com.collaverse.mvc.qna.model.vo.Criteria;
-import com.collaverse.mvc.qna.model.vo.Qna;
+import com.collaverse.mvc.qna.model.Criteria;
+import com.collaverse.mvc.qna.model.Qna;
 
 public interface QnaMapper {
 
-	 /* 게시글 등록 */
+	/* 게시글 등록 */
     public void enroll(Qna qna);
     
     /* 게시판 목록 */
@@ -18,6 +18,9 @@ public interface QnaMapper {
     
     /* 게시판 조회 */
     public Qna getPage(int bno);
+    
+    /* 조회수 수정 */
+    public int count(int bno);
     
     /* 게시판 수정 */
     public int modify(Qna qna);

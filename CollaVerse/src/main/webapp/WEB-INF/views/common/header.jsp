@@ -112,9 +112,8 @@
 					
 					<li><a class="menu_title"  href="">FAQ</a>
 						<ul>
-							<li><a class="header_nav1" href="${ path }/board/boardList">에페큐</a></li>
-							<li><a class="header_nav1" href="${ path }/qna/qnaList"">에페큐</a></li>
-							<li><a class="header_nav1" href="">에페큐</a></li>
+							<li><a class="header_nav1" href="${ path }/qna/qnaList">에페큐</a></li>
+							<li><a class="header_nav1" href="${ path }/qnatest/qnatestList">에페큐</a></li>
 						</ul>
 					</li>
 				</ul>

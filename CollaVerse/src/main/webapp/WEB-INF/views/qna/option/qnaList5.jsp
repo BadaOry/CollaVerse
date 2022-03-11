@@ -51,6 +51,7 @@ div {
 	text-align: center;
 }
 </style>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
 <body>
 <%
@@ -59,71 +60,69 @@ div {
 	response.addHeader("Cache-Control", "no-store");
 	response.setDateHeader("Expires", 1L);
 %>
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
 
-      	<div class="col-lg-12">
-   			<div class="card">
-   				<div class="card-header with-border">
-   					<h3 class="card-title">게시글 목록</h3>
-   				</div>
-				<span class="form-group">
-				    <select id="counts" name="pageUnit" onchange="Change(1)">   
-				        <option value="5" <c:if test="${ pageMaker.cri.amount == 5 }">selected="selected"</c:if>>5개씩 보기</option>
-				        <option value="10" <c:if test="${ pageMaker.cri.amount == 10 }">selected="selected"</c:if>>10개씩 보기</option>
-				        <option value="20" <c:if test="${ pageMaker.cri.amount == 20 }">selected="selected"</c:if>>20개씩 보기</option>
-				        <option value="30" <c:if test="${ pageMaker.cri.amount == 30 }">selected="selected"</c:if>>30개씩 보기</option>
-				        <option value="40" <c:if test="${ pageMaker.cri.amount == 40 }">selected="selected"</c:if>>40개씩 보기</option>
-				    </select>
-				</span>
-				
-				
-   				<div class="card-body">
-   					<table class="table table-bordered">
-   						<tbody>
-   						<tr>
-   							<th style="width: 30px">#</th>
-   							<th>제목</th>
-   							<th style="width: 150px">작성자</th>
-   							<th style="width: 300px">작성일</th>
-   							<th style="width: 60px">조회수</th>
-   						</tr>
-   						<c:if test="${ empty qlist }">			
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-header with-border">
+				<h3 class="card-title">게시글 목록</h3>
+			</div>
+			<span class="form-group">
+		    	<select id="counts" name="pageUnit" onchange="Change(1)">   
+		        	<option value="5" <c:if test="${ pageMaker.cri.amount == 5 }">selected="selected"</c:if>>5개씩 보기</option>
+			        <option value="10" <c:if test="${ pageMaker.cri.amount == 10 }">selected="selected"</c:if>>10개씩 보기</option>
+			        <option value="20" <c:if test="${ pageMaker.cri.amount == 20 }">selected="selected"</c:if>>20개씩 보기</option>
+			        <option value="30" <c:if test="${ pageMaker.cri.amount == 30 }">selected="selected"</c:if>>30개씩 보기</option>
+			        <option value="40" <c:if test="${ pageMaker.cri.amount == 40 }">selected="selected"</c:if>>40개씩 보기</option>
+	    		</select>
+			</span>
+
+			<div class="card-body">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<th style="width: 30px">#</th>
+							<th>제목</th>
+							<th style="width: 150px">작성자</th>
+							<th style="width: 300px">작성시간</th>
+							<th style="width: 60px">조회수</th>
+						</tr>
+					<c:if test="${ empty qlist }">			
+						<tr>
+							<td colspan="5">
+								등록된 게시글이 없습니다.
+							</td>
+						</tr>	
+					</c:if>
+					<c:if test="${ !empty qlist }">
+						<c:forEach items="${ qlist }" var="list">
 							<tr>
-								<td colspan="5">
-									등록된 게시글이 없습니다.
-								</td>
-							</tr>	
-						</c:if>
-						<c:if test="${ !empty qlist }">
-	   						<c:forEach items="${ qlist }" var="list">
-		   						<tr>
-		   							<td><c:out value="${list.bno}"/></td>
-		   							<td>
-					                	<a class="move" href='<c:out value="${list.bno}"/>'>
-					                        <c:out value="${list.title}"/>
-					                	</a>
-					                </td>
-		   							<td><c:out value="${list.writer}"/></td>
-		   							<td><fmt:formatDate pattern="yyyy/MM/dd a HH:mm" value="${list.regDate}"/></td>
-		   							<td><c:out value="${list.readCount}"/></td>
-		   						</tr>
-	   						</c:forEach>
-   						</c:if>
-   						</tbody>
-   					</table>
-   				</div>
-   				<div id="writeButton">
-   				<div class="card-footer">
-   					<div class="float-right">
-   						<button type="button" onclick="location.href='${ path }/qna/enroll'" class="btn-success" id="writeBtn">
-   							<i class="fa fa-pencil"></i> 글쓰기
-   						</button>
-   					</div>
-   				</div>
-   				</div>
-   			</div>
-      	</div>
-
+								<td><c:out value="${list.bno}"/></td>
+								<td>
+				                	<a class="move" href='<c:out value="${list.bno}"/>'>
+				                        <c:out value="${list.title}"/>
+				                	</a>
+	               				 </td>
+								<td><c:out value="${list.writer}"/></td>
+								<td><fmt:formatDate pattern="yyyy/MM/dd" value="${list.modifyDate}"/></td>
+								<td><c:out value="${list.readCount}"/></td>
+							</tr>
+						</c:forEach>
+					</c:if>
+					</tbody>
+				</table>
+			</div>
+			<div id="writeButton">
+				<div class="card-footer">
+					<div class="float-right">
+						<button type="button" onclick="location.href='${ path }/qna/enroll'" class="btn-success" id="writeBtn">
+							<i class="fa fa-pencil"></i> 글쓰기
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+   	</div>
+    
     <nav aria-label="Page navigation example">
 	  <ul class="pagination justify-content-center">
 	    <!-- 이전페이지 버튼 -->
@@ -141,8 +140,6 @@ div {
 	  </ul>
 	</nav>
     
-    
-    
     <div class="search_wrap">
         <div class="search_area">
         	<select name="type">
@@ -159,8 +156,6 @@ div {
         </div>
     </div>   
 	
-	
-	
 	<form id="moveForm" method="get">
 		<input type="text" name="pageNum" value="${pageMaker.cri.pageNum }" style='display:none;'>
         <input type="text" name="amount" value="${pageMaker.cri.amount }" style='display:none;'>
@@ -176,15 +171,15 @@ function Change(idx){
     var nowPaging = $("#counts option:selected").val();
     
     if(nowPaging == 5){
-        location.href="${path}/qna/option/qnaList5";    
+        location.href="${path}/qnatest/optionList/qnatestList5";    
     }else if(nowPaging == 10){
-        location.href="${path}/qna/option/qnaList10";    
+        location.href="${path}/qnatest/optionList/qnatestList10";    
     }else if(nowPaging == 20){
-        location.href="${path}/qna/option/qnaList20";    
+        location.href="${path}/qnatest/optionList/qnatestList20";    
     }else if(nowPaging == 30){
-        location.href="${path}/qna/option/qnaList30";    
+        location.href="${path}/qnatest/optionList/qnatestList30";    
     }else if(nowPaging == 40){
-        location.href="${path}/qna/option/qnaList40";    
+        location.href="${path}/qnatest/optionList/qnatestList40";    
     }
 }
 
