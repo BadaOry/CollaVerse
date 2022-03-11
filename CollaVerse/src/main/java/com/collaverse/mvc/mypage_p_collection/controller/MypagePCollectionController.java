@@ -51,9 +51,13 @@ public class MypagePCollectionController {
 		String noWriterId = null;
 		String writerNickname = null;
 		int writerNo = 0;
+		int fromMemNo = 0;
+
 		
 		
 		writerNo = service.getCollectionWriterNo(id);
+		int toMemNo = writerNo;
+		
 		writerNickname = service.getCollectionWriterNickname(id);
 		
 		log.info("[Controller] service 가 가져온 writerNickname 출력 : {}", writerNickname);
@@ -68,11 +72,35 @@ public class MypagePCollectionController {
 			log.info("[Controller] noCollectionList 출력 : {}", noCollectionList);
 		}
 		
+		
+		// 3. followCheck 처리하기
+		int followerCheck = 0;
+		int followingCheck = 0;
+		
+		// 로그인 여부에 따라 fromMemNo 에 값을 넣어주는 코드
+		if( loginMember != null) {
+			
+			fromMemNo = loginMember.getNo();
+			
+			
+			if( loginMember != null) {
+				followerCheck = service.followerCheck(toMemNo, fromMemNo);
+				followingCheck = service.followingCheck(fromMemNo, toMemNo);
+				
+				log.info("[Controller] followCheck & FollowingCheck : {} & {}", followerCheck, followingCheck);	
+				
+			}
+		} else {
+			
+		}
+		
 		model.addObject("collectionList", collectionList);
 		model.addObject("noCollectionList", noCollectionList);
 		model.addObject("noWriterId", noWriterId);
 		model.addObject("writerNickname", writerNickname);
 		model.addObject("writerNo", writerNo);
+		model.addObject("followerCheck", followerCheck);
+		model.addObject("followingCheck", followingCheck);
 		model.setViewName("mypage/collection/list");
 		
 
@@ -124,29 +152,7 @@ public class MypagePCollectionController {
 						location = resourceLoader.getResource("resources/upload/collection").getFile().getPath();						
 						renamedFileName = FileProcess.save(mf, location);
 						
-						log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
-						
-
-//						originalFileNameList.add(originalFileName);
-//						renamedFileNameList.add(renamedFileName);
-//						
-//						log.info("[Controller] originalFileNameList 정보 확인 : {}", originalFileNameList);
-//						log.info("[Controller] renamedFileNameList 정보 확인 : {}", renamedFileNameList);
-//						List<Map<String, String>> files = mypagePCollection.getFiles();
-//						
-//						Map<String, String> onrnMap = new HashMap<String, String>();
-//						onrnMap.put("original",originalFileName);
-//						onrnMap.put("rename", renamedFileName);
-//						files.add(onrnMap);
-////						String test = files.get(0).get("rename");
-//						log.info("[Controller] onrn 을 Map 에 저장 후, Map 내용 출력 : {}", onrnMap.toString());
-//						log.info("[Controller] VO 변수 files 의 Map 내용 출력 : {}",files.toString());
-//						// ▲ 이 Map 을 DB 에 저장하는 방법을 알아야겠는데... 맵 공부해야겟다
-//						
-//						// ornMap 을 vo 의 on01 에 to.String으로 set해보자
-//						mypagePCollection.setOriginalFileName01(files.toString());
-//						log.info("[Controller] files 맵 이 VO 에 잘 set 되었는지 확인 : {}",mypagePCollection.getOriginalFileName01());
-						
+						log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);									
 						
 						if (renamedFileName != null) {
 							mypagePCollection.setOriginalFileName01(originalFileName);
@@ -154,17 +160,7 @@ public class MypagePCollectionController {
 							
 							log.info("[Controller] originalFileNam 정보 확인 : {}", originalFileName);
 							log.info("[Controller] renamedFileName 정보 확인 : {}", renamedFileName);
-							// ▼ renamedFileName 이 왔으면, upfile 하나하나에 set 으로 or 이랑 rm 을 세팅해주자
-							//   : DB 의 ON, RN 컬럼을 하나로 하고 리스트를 그 값 안에 넣으면 된다...? 일단 돌려보고 해보자
-							//     ▷ 된다 !!! 이제 DB 에 컬럼은 하나씩만 남겨놓자
-							//     ▶ 안된다... 리스트가 아니라 마지막 하나만 저장됨
-							//        ▷ VO 값을 list 형태로 바꿔야하네.. 바꿨는데 List<String> 에 String 값을 못저장한다?
-							//          ▷ 그래서 list 형태로 넣어줘도 안되네
-							//     ▶ 자꾸 마지막 값만 저장된다..
-//							mypagePCollection.setOriginalFileName01(originalFileName);
-//							mypagePCollection.setOriginalFileName01(originalFileNameList.toString());
-//							mypagePCollection.setRenamedFileName01(renamedFileNameList.toString());
-//							log.info("[Controller] or,nr 이 VO 에 잘 set 되었는지 확인 : {}, {}", mypagePCollection.getOriginalFileName01(), mypagePCollection.getRenamedFileName01());
+							
 						}
 					} catch (IOException e) {
 						System.out.println("renamedFileName 불러오기 실패..");
@@ -178,9 +174,11 @@ public class MypagePCollectionController {
 			// 2. 작성한 게시글 내용을 VO 에 set
 			mypagePCollection.setCltContent(content);
 			
+			
 			// 3. 작성자의 아이디를 VO 에 set
 			mypagePCollection.setCltWriterId(loginMember.getId());
 			log.info("[Controller] VO 정보 확인 : {}", mypagePCollection.getCltWriterId());
+			
 			
 			// 4. 작성자의 회원번호를 VO 에 set
 			mypagePCollection.setCltMemberNo(loginMember.getNo());
@@ -189,7 +187,6 @@ public class MypagePCollectionController {
 			log.info("[Controller] content VO 에 잘 set 되었는지 확인 : {}", mypagePCollection);
 			
 			// 5. 작성한 게시글 데이터를 데이터베이스에 저장
-			
 			result = service.save(mypagePCollection);
 			
 			if(result > 0) {

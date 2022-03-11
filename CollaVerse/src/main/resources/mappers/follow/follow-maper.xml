@@ -52,7 +52,7 @@
 			F.FROM_MEM_NO, F.FOLLOWER_CREATE_DATE	<!-- 나중에 프로필 이미지도 추가해야함 -->
 		FROM FOLLOWER F
 		JOIN MEMBER M ON(M.MEMBER_NO = F.FROM_MEM_NO)
-		WHERE TO_MEM_NO = #{ toMemNo }
+		WHERE TO_MEM_NO = #{ toMemNo }		
 	</select>
 	
 	
@@ -69,9 +69,7 @@
 			F.FROM_MEM_NO, F.FOLLOWING_CREATE_DATE	<!-- 나중에 프로필 이미지도 추가해야함 -->
 		FROM FOLLOWING F
 		JOIN MEMBER M ON(M.MEMBER_NO = F.TO_MEM_NO)
-		WHERE F.TO_MEM_NO IN (SELECT TO_MEM_NO
-		                        FROM FOLLOWING
-		                        WHERE FROM_MEM_NO = #{ fromMemNo } )
+		WHERE F.FROM_MEM_NO = #{ fromMemNo }  
 	</select>
 
 
@@ -81,12 +79,33 @@
 		WHERE FROM_MEM_NO = #{ fromMemNo }
 	</select>
 	
+
+	<insert id="insertFollower" parameterType="map">
+		INSERT INTO FOLLOWER (
+			FOLLOWER_NO, TO_MEM_NO, FROM_MEM_NO, FOLLOWER_CREATE_DATE, FOLLOWERCHECK)
+		VALUES (
+			SEQ_FOLLOWER_NO.NEXTVAL, #{ toMemNo }, #{ fromMemNo }, DEFAULT, 1)
+	</insert>
 	
-	<select id="followerCheck" parameterType="_int" resultType="_int">
-		SELECT FOLLOWERCHECK
-		FROM FOLLOWER
-		WHERE TO_MEM_NO = #{ toMemNo }
-		    AND FROM_MEM_NO = #{ fromMemNo };
-	</select>
+	
+	<insert id="insertFollowing" parameterType="map">
+		INSERT INTO FOLLOWING ( 
+			FOLLOWING_NO, FROM_MEM_NO, TO_MEM_NO, FOLLOWING_CREATE_DATE, FOLLOWINGCHECK)
+		VALUES (
+			SEQ_FOLLOWING_NO.NEXTVAL, #{ fromMemNo }, #{ toMemNo }, DEFAULT, 1)
+	</insert>
+	
+	
+	<delete id="deleteFollower" parameterType="map">
+		DELETE FROM FOLLOWER
+		WHERE  TO_MEM_NO = #{ toMemNo }
+		    AND FROM_MEM_NO = #{ fromMemNo }
+	</delete>
+	
+	<delete id="deleteFollowing" parameterType="map">
+		DELETE FROM FOLLOWING 
+		WHERE FROM_MEM_NO =  #{ fromMemNo }
+		    AND TO_MEM_NO = #{ toMemNo }
+	</delete>
 	
 </mapper>

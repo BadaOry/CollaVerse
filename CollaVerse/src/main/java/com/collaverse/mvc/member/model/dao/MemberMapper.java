@@ -29,6 +29,10 @@ public interface MemberMapper {
 	int getWomenCount(); // 통계용 여 회원정보(테스트중)
 	
 	int getMenCount(); // 통계용 남 회원정보(테스트중)
+
+	int updateBusinessMember(Member member);
+
+	int insertBusinessMember(Member member);
 	
 	int updateBusinessMember(Member member); // 기업 회원가입???
 	

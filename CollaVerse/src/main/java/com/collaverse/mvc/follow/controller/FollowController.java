@@ -7,10 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.collaverse.mvc.follow.model.dao.FollowMapper;
 import com.collaverse.mvc.follow.model.service.FollowService;
 import com.collaverse.mvc.follow.model.vo.Follower;
 import com.collaverse.mvc.member.model.vo.Member;
@@ -20,10 +23,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
+@ResponseBody
 public class FollowController {
 
 	@Autowired
 	private FollowService service;
+	
+	@Autowired
+	private FollowMapper mapper;
 	
 	@GetMapping("mypage/myFollow/main") 
 	public ModelAndView followMain(ModelAndView model,
@@ -82,44 +89,46 @@ public class FollowController {
 		
 		log.info("[Controller] service 가 가져온 followingCount 출력 : {}", followingCount);
 		
-		
-		
 		model.addObject("followingList", followingList);	
-		model.addObject("followingCount", followingCount);	
+		model.addObject("followingCount", followingCount);		
 		model.setViewName("/mypage/myFollow/following");
 		
 		return model;
 	}
 	
 	
-	@GetMapping("mypage/follow/updateFollow") 
+	@PostMapping("mypage/follow/updateFollow") 
 	public int updateFollow(ModelAndView model,
 			@SessionAttribute("loginMember") Member loginMember,
 			@RequestParam("from_mem_no") int fromMemNo,
-			@RequestParam("to_mem_no") int toMemNo) {
+			@RequestParam("to_mem_no") int toMemNo,
+			@RequestParam("followerCheck") int followerCheck,
+			@RequestParam("followingCheck") int followingCheck) {
 			
-//			log.info("ajax 로 팔로우 요청에 성공하여 Controller 에 도착");
-//			log.info("[Controller] 요청으로 넘어온 파라미터 출력 : from {} ▶ to {}", fromMemNo, toMemNo);
-//			
-//			int FollowerHeartCheck = service.followerCheck(toMemNo, fromMemNo);
-//			int FollowingHeartCheck = service.followingCheck(fromMemNo, toMemNo);
-//			
-//			log.info("[Controller] followCheck : {} ▶ {}", FollowerHeartCheck, FollowingHeartCheck);
-//			
-//			if(heartCheck == 0) {
-//				// 하트를 처음 누름
-//				mapper.insertHeart(pmtNo, heartMemNo); // HEART 테이블에 삽입
-//				mapper.addHeartHit(pmtNo);	// PROMOTION 테이블의 HEART_HIT +1
-//				mapper.updateHeartCheck(pmtNo, heartMemNo); // HEART 테이블의 HEARTCHECK 를 1 으로 변경	
-//
-//			} else if (heartCheck == 1) {
-//				// 하트를 빼는 구문
-//				mapper.updateHeartCheckCancel(pmtNo, heartMemNo); // HEART 테이블의 HEARTCHECK 를 0 으로 변경		
-//				mapper.minusHeartHit(pmtNo);	// PROMOTION 테이블의 HEART_HIT -1
-//				mapper.deleteHeart(pmtNo, heartMemNo); // Heart 컬럼 한 개 삭제
-//			}
-//		
-//		return followCheck;
-		return 0;
+			log.info("ajax 로 팔로우 요청에 성공하여 Controller 에 도착");
+			log.info("[Controller] 요청으로 넘어온 파라미터 출력 : from {} ▶ to {}", fromMemNo, toMemNo);
+			log.info("[Controller] 요청으로 넘어온 파라미터 출력 : followerCheck [{}] ▶ followingCheck [{}]", followerCheck, followingCheck);
+			
+			int followCheck = 0;
+			
+			if((followerCheck == 0) && (followingCheck == 0)) {
+				// 팔로우를 처음 누름
+				mapper.insertFollower(toMemNo, fromMemNo); // FOLLOWER 테이블에 삽입
+				mapper.insertFollowing(fromMemNo, toMemNo); // FOLLOWING 테이블에 삽입
+				
+				followCheck = 0;
+
+			} else if((followerCheck == 1) && (followingCheck == 1)) {
+				// 팔로우를 취소하는 구문
+				mapper.deleteFollower(toMemNo, fromMemNo);	// FOLLWER 테이블의 삭제 
+				mapper.deleteFollowing(fromMemNo, toMemNo); // FOLLOWING 테이블에 삭제 
+				
+				followCheck = 1;
+			} else {
+				
+				log.info("followCheck 에러 ! : 둘 중 하나라도 값이 일치하지 않는 경우 출력");
+			}
+		
+		return followCheck;
 	}
 }

@@ -86,6 +86,7 @@
 					)
 	</insert>
 	
+
 	<!-- 기업 회원가입 -->
 	<insert id="insertBusinessMember" parameterType="com.collaverse.mvc.member.model.vo.Member"
 			 useGeneratedKeys="true" keyColumn="MEMBER_NO" keyProperty="no">

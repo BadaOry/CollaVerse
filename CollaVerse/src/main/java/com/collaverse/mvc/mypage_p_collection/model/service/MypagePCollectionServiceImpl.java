@@ -88,4 +88,20 @@ public class MypagePCollectionServiceImpl implements MypagePCollectionService {
 		return mapper.getCollectionWriterNo(id);
 	}
 
+	
+	// ▼ 팔로우 중복방지 : FOLLOWER 테이블에서 체크
+	@Override
+	public int followerCheck(int toMemNo, int fromMemNo) {
+		
+		return mapper.followerCheck(toMemNo, fromMemNo);
+	}
+
+	
+	// ▼ 팔로우 중복방지 : FOLLOWING 테이블에서 체크
+	@Override
+	public int followingCheck(int fromMemNo, int toMemNo) {
+		
+		return mapper.followingCheck(fromMemNo, toMemNo);
+	}
+
 }

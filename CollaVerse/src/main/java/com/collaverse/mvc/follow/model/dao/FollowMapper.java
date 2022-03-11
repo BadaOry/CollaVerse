@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.collaverse.mvc.follow.model.vo.Follower;
 
@@ -26,13 +27,21 @@ public interface FollowMapper {
 	int countFollowing(int fromMemNo);
 
 
-	// ▼ FOLLOWER 테이블에서 FOLLOWERCHECK 조회
-	int followerCheck(int toMemNo, int fromMemNo);
+	// ▼ FOLLOWER 테이블에 새로운 컬럼 삽입 + FOLLOWERCHEK 1로 변경
+	void insertFollower(@Param("toMemNo") int toMemNo,@Param("fromMemNo") int fromMemNo);
+
+
+	// ▼ FOLLOWING 테이블에 새로운 컬럼 삽입 + FOLLOWINGCHEK 1로 변경
+	void insertFollowing(@Param("fromMemNo") int fromMemNo,@Param("toMemNo") int toMemNo);
 
 	
-	// ▼ FOLLOWING 테이블에서 FOLLOWINGCHECK 조회
-	int followingCheck(int fromMemNo, int toMemNo);
-
+	// ▼ FOLLOWER 테이블에 컬럼 삭제 + FOLLOWERCHEK 0로 변경
+	void deleteFollower(@Param("toMemNo") int toMemNo,@Param("fromMemNo") int fromMemNo);
+	
+	
+	// ▼ FOLLOWING 테이블에 컬럼 삭제 + FOLLOWINGCHEK 0로 변경
+	void deleteFollowing(@Param("fromMemNo") int fromMemNo,@Param("toMemNo") int toMemNo);
+	
 
 
 }

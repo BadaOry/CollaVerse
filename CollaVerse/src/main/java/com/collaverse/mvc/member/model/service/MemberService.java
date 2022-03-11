@@ -44,9 +44,4 @@ public interface MemberService {
 	int getMenCount();
 
 
-
-
-	
-
-
 }
