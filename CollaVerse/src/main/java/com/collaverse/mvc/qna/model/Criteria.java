@@ -1,4 +1,4 @@
-package com.collaverse.mvc.qna.model.vo;
+package com.collaverse.mvc.qna.model;
 
 import java.util.Arrays;
 
@@ -76,6 +76,5 @@ public class Criteria {
 		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", keyword=" + keyword + ", type=" + type
 				+ ", typeArr=" + Arrays.toString(typeArr) + "]";
 	}
-    
     
 }
