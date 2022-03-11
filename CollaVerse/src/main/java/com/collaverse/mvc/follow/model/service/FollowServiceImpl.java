@@ -59,21 +59,5 @@ public class FollowServiceImpl implements FollowService {
 	}
 
 
-	// ▼ FOLLOWER 테이블에서 FOLLOWERCHECK 조회
-	@Override
-	public int followerCheck(int toMemNo, int fromMemNo) {
-		
-		return mapper.followerCheck(toMemNo, fromMemNo);
-	}
-
-
-	// ▼ FOLLOWING 테이블에서 FOLLOWERCHECK 조회
-	@Override
-	public int followingCheck(int fromMemNo, int toMemNo) {
-		
-		return mapper.followingCheck(fromMemNo, toMemNo);
-	}
-
-
 
 }

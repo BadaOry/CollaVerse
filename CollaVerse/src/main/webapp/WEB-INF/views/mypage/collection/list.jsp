@@ -27,43 +27,59 @@
     	<p id="collection_title">${ writerNickname } 의 컬렉션</p>
     	
     	<c:choose>
-	    		
+	    	<%-- 01. collectionList 가 있음 && loginMember 와 id 가 같음 
+	    	         ▶ 컬렉션 작성 버튼 --%>	
 	    	<c:when test="${ !empty collectionList && loginMember.id == collectionList.get(0).cltWriterId}">
 		    	<a onclick="location.href='${ path }/mypage/collection/write'">
 		     		<div id="writeCollection" >New Collection !</div>
 		     	</a>
 		    </c:when>
 		    
+		    <%-- 02. collectionList 가 없음 && loginMember 와 id 가 같음
+		    	     ▶ 컬렉션 작성 버튼 --%>	
 	    	<c:when test="${ noCollectionList == '없음' && loginMember.id == noWriterId }">
 		    	<a onclick="location.href='${ path }/mypage/collection/write'">
 		     		<div id="writeCollection" >New Collection !</div>
 		     	</a>
 		    </c:when>
 		     
-		    <c:when test="${ !empty collectionList &&  !empty loginMember && loginMember.id != collectionList.get(0).cltWriterId}">
+		     <%-- 03. collectionList 가 있음 && login 한 상태로 남의 컬렉션 봄 && followCheck 0
+		     		  ▶ 팔로우 버튼 --%>	
+		    <c:when test="${ !empty collectionList &&  !empty loginMember 
+		    && loginMember.id != collectionList.get(0).cltWriterId 
+		    && followerCheck == 0 && followingCheck == 0}">
 		        <button id="follow_btn" onclick="updateFollow()">Follow !!</button>
 		    </c:when>
 		    
-		    <c:when test="${ noCollectionList == '없음' &&  !empty loginMember && loginMember.id != noWriterId }">
+		    <%-- 04. collectionList 가 없음 && login 한 상태로 남의 컬렉션 봄 && followCheck 0
+		     		  ▶ 팔로우 버튼 --%>		    
+		    <c:when test="${ noCollectionList == '없음' &&  !empty loginMember 
+		    && loginMember.id != noWriterId 
+		    && followerCheck == 0 && followingCheck == 0}">
 		        <button id="follow_btn" onclick="updateFollow()">Follow !!</button>
 		    </c:when>
+		    
+		    <%-- 05. collectionList 가 있음 && login 한 상태로 남의 컬렉션 봄 && followCheck 1
+		     		  ▶ 팔로우 취소 버튼 --%>		    
+		    <c:when test="${ !empty collectionList &&  !empty loginMember 
+		    && loginMember.id != collectionList.get(0).cltWriterId 
+		    && followerCheck == 1 && followingCheck == 1}">
+		        <button id="unfollow_btn" onclick="updateFollow()">UnFollow..</button>
+		    </c:when>
+		   
+		    <%-- 05. collectionList 가 없음 && login 한 상태로 남의 컬렉션 봄 && followCheck 1
+	     		  ▶ 팔로우 취소 버튼 --%>		    
+		    <c:when test="${ noCollectionList == '없음' &&  !empty loginMember 
+		    && loginMember.id != noWriterId 
+		     && followerCheck == 1 && followingCheck == 1}">
+		        <button id="unfollow_btn" onclick="updateFollow()">UnFollow !!</button>
+		    </c:when>
+		    
+		    <c:otherwise>
+		    </c:otherwise>
 		    
 	     </c:choose>
 	     
-<%--	  
-
-    	<c:if test="${loginMember.id != collectionList.get(0).cltWriterId}">
-      				<button id="follow_btn" onclick="updateFollow()">Follow !!</button> 		
-      						
-      						<c:if test="${ followCheck == 0 }">				
-			        			<button id="follow_btn" onclick="updateFollow()">${ writerNickname } Follow 하기</button> 
-			        		</c:if>
-       						<c:if test="${ followCheck == 1 }">				
-			        			<button id="follow_btn" onclick="updateFollow()">Follow</button>
-			        		</c:if> 
-			        		   		
-	     </c:if>
---%> 
 
 	</div>
 	    
@@ -167,13 +183,16 @@
 		<%-- follow 신청 / 취소 --%>
 		var to_mem_no = ${ writerNo };
 		var from_mem_no = ${ loginMember.no };
+		var followerCheck = ${ followerCheck };
+		var followingCheck = ${ followingCheck };
 		
 		function updateFollow() {
 			$.ajax({
 				type : "POST",
 				url : "${ path }/mypage/follow/updateFollow",
 				dataType : "json",
-				data : {'to_mem_no' : TO_mem_no, 'from_mem_no' : from_mem_no },
+				data : {'to_mem_no' : to_mem_no, 'from_mem_no' : from_mem_no,
+						'followerCheck' : followerCheck, 'followingCheck' : followingCheck },
 				error : function() {
 					alert("팔로우 실패");
 				},

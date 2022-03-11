@@ -24,7 +24,7 @@
 	<section id="section">
 	
 		<div class="mini_title" id="mypage_follower_title">
-    		<p class="minimini_tilte">나의 팔로우</p><span id="count"> - ${ followerCount } 명</span>
+    		<p class="minimini_tilte">나의 팔로워</p><span id="count"> - ${ followerCount } 명</span>
 		</div>	
 		
  		

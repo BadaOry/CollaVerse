@@ -42,3 +42,12 @@
 	margin: 20px 10px 0 0;
 	display: inline-block;
 } 
+
+#followerList_nothing {
+    text-align : center;
+    margin: 150px 0 150px 0px;
+    font-family: 'Sam3KRFont';
+    font-size: 30px;
+    color: #dbeaf8;
+    text-shadow: 4px 4px 0px #faaf22;
+}

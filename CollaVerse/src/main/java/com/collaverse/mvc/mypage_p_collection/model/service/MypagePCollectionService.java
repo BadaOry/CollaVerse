@@ -27,5 +27,13 @@ public interface MypagePCollectionService {
 	int getCollectionWriterNo(String id);
 
 
+	// ▼ 팔로우 중복방지 : FOLLOWER 테이블에서 체크
+	int followerCheck(int toMemNo, int fromMemNo);
+
+
+	// ▼ 팔로우 중복방지 : FOLLOWING 테이블에서 체크
+	int followingCheck(int fromMemNo, int toMemNo);
+
+
 
 }

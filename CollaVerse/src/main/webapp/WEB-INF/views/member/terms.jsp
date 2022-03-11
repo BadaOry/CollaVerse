@@ -178,14 +178,35 @@
 				</textarea><br>
 				</div>
 				
+				<!-- 
 				<div align="center">
-					<p><input type="checkbox">동의합니다. (필수)</p>
+					<p><input type="checkbox" id="agree" required>동의합니다. (필수)</p>
 				</div>
 				<div align="center">
 					<input type="button" id="personal" value="동의 후 회원가입" onclick="location.href='${ path }/member/enroll'">
 				</div>
-				
+				 -->
+				<form action="${ path }/member/enroll" method="post">
+					<div align="center">
+						<p><input type="checkbox" id="agree" name="agree" required>동의합니다. (필수)</p>
+					</div>
+					<div align="center">
+						<input type="button" id="personal" name="checked" value="동의 후 회원가입" onclick="getCheckvalue()">
+					</div>
+				</form>
 		<br>
+		
+<!--  약관동의 체크박스 미동의 시 가입 불가 -->
+<script>
+function getCheckvalue(){
+
+	if(document.getElementById("agree").checked == false) {
+	  alert("이용약관에 동의 하십시오");
+	  } else {
+		  location.href='${ path }/member/enroll';
+	  }
+	}
+</script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>

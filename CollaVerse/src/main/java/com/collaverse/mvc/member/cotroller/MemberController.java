@@ -1,6 +1,7 @@
 package com.collaverse.mvc.member.cotroller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -145,7 +146,7 @@ public class MemberController {
 		
 		log.info(member.toString());
 				
-		int result = service.save(member);
+		int result = service.savebusiness(member);
 		
 		if(result > 0) {
 			model.addObject("msg", "회원가입 완료");
@@ -255,7 +256,7 @@ public class MemberController {
 		
 		if(result > 0) {
 			model.addObject("msg", "탈퇴 완료");
-			model.addObject("location", "/logout");
+			model.addObject("location", "/member/logout");
 		} else {
 			model.addObject("msg", "탈퇴 실패");
 			model.addObject("location", "/member/myPage");			
@@ -275,16 +276,24 @@ public class MemberController {
 		return "member/findId";
 	}
 	
-	@RequestMapping(value = "member/findId", method = {RequestMethod.POST})
+	@PostMapping("/member/findIdResult")
 	public ModelAndView findId(ModelAndView model, @RequestParam("email") String email) {
+		
+		String idfinded = null;
 		
 		log.info("{}", email);
 		
 		Member findId = service.findId(email);
 		
-		if(findId != null) {
-			model.addObject("findId", findId);
-			model.setViewName("redirect:/");
+		log.info("[Cotnroller]serivce가 가져온 Member객체인 findId 출력 : {} ", findId);
+		
+		idfinded = findId.getId();
+		
+		log.info("[Cotnroller]serivce가 가져온 id만 출력 : {} ", idfinded);
+		
+		if(idfinded != null) {
+			model.addObject("idfinded", idfinded);
+			model.setViewName("/member/findIdResult");
 			
 		} else {
 			model.addObject("msg", "등록된 이메일이 없습니다.");
@@ -313,19 +322,27 @@ public class MemberController {
 		return "member/findPw";
 	}
 	
-	@RequestMapping(value = "member/findPw", method = {RequestMethod.POST})
-	public ModelAndView findPw(ModelAndView model, @RequestParam("email") String email, @RequestParam("id") String id) {
+	@PostMapping("/member/findPwResult")
+	public ModelAndView findPw(ModelAndView model, @RequestParam("id") String id) {
 		
-		log.info(email, id);
+		String pwfinded = null;
 		
-		Member findPw = service.findPw(email, id);
+		log.info("{}", id);
 		
-		if(findPw != null) {
-			model.addObject("findPw", findPw);
-			model.setViewName("redirect:/");
+		Member findPw = service.findPw(id);
+		
+		log.info("[Cotnroller]serivce가 가져온 Member객체인 findPw 출력 : {} ", findPw);
+		
+		pwfinded = findPw.getPassword();
+		
+		log.info("[Cotnroller]serivce가 가져온 pw만 출력 : {} ", pwfinded);
+		
+		if(pwfinded != null) {
+			model.addObject("pwfinded", pwfinded);
+			model.setViewName("/member/findPwResult");
 			
 		} else {
-			model.addObject("msg", "등록된 이메일/아이디가 없습니다.");
+			model.addObject("msg", "등록된 아이디가 없습니다.");
 			model.addObject("location", "/");
 			model.setViewName("common/msg");
 		}
@@ -360,8 +377,30 @@ public class MemberController {
 		return new ResponseEntity<Map<String,Boolean>>(map, HttpStatus.OK);
 	}
 	
+	// 닉네임 중복확인
+	@GetMapping("/member/jsonTest2")
+	@ResponseBody
+	public Object jsonTest2() {
+		return new Member("양아쥐", "1111");
+	}
+	
+	@PostMapping("/member/nicknameCheck")
+	public ResponseEntity<Map<String, Boolean>> nicknameCheck(@RequestParam(value="nickname", required=false) String nickname) {
+		Map<String, Boolean> map = new HashMap<>();
+		
+		log.info("{}", nickname);
+		
+		map.put("duplicate", service.isDuplicateNickname(nickname));
+		
+		return new ResponseEntity<Map<String,Boolean>>(map, HttpStatus.OK);
+	}
+	
+	
 
 	
+
+	
+
 }
 
 

@@ -9,24 +9,14 @@
 <mapper namespace="com.collaverse.mvc.mypage_p_collection.model.dao.MypagePCollectionMapper">
 	<sql id="mypagePCollectionListSql">
 		SELECT MPC.CLT_NO,
-		       MPC.CLT_NO2,
 			   MPC.MEMBER_NO,
 			   MPC.CLT_CONTENT,
 			   MPC.CLT_CREATE_DATE,
 			   MPC.CLT_MODIFY_DATE,
 			   MPC.CLT_STATUS,
 			   MPC.CLT_IMG_01_ONAME,
-			   MPC.CLT_IMG_02_ONAME,
-			   MPC.CLT_IMG_03_ONAME,
-			   MPC.CLT_IMG_04_ONAME,
-			   MPC.CLT_IMG_05_ONAME,
-			   MPC.CLT_IMG_06_ONAME,
 			   MPC.CLT_IMG_01_RNAME,
-			   MPC.CLT_IMG_02_RNAME,
-			   MPC.CLT_IMG_03_RNAME,
-			   MPC.CLT_IMG_04_RNAME,
-			   MPC.CLT_IMG_05_RNAME,
-			   MPC.CLT_IMG_06_RNAME
+			   MPC.CLT_WRITER_ID
 		FROM MYPAGE_P_COLLECTION MPC
 		JOIN MEMBER M ON (MPC.MEMBER_NO = M.MEMBER_NO)	
 	</sql>
@@ -40,17 +30,7 @@
 		<result property="cltModifyDate" column="CLT_MODIFY_DATE"/>
 		<result property="cltStatus" column="CLT_STATUS"/>
 		<result property="OriginalFileName01" column="CLT_IMG_01_ONAME"/>
-		<result property="OriginalFileName02" column="CLT_IMG_02_ONAME"/>
-		<result property="OriginalFileName03" column="CLT_IMG_03_ONAME"/>
-		<result property="OriginalFileName04" column="CLT_IMG_04_ONAME"/>
-		<result property="OriginalFileName05" column="CLT_IMG_05_ONAME"/>
-		<result property="OriginalFileName06" column="CLT_IMG_06_ONAME"/>
 		<result property="RenamedFileName01" column="CLT_IMG_01_RNAME"/>
-		<result property="RenamedFileName02" column="CLT_IMG_02_RNAME"/>
-		<result property="RenamedFileName03" column="CLT_IMG_03_RNAME"/>
-		<result property="RenamedFileName04" column="CLT_IMG_04_RNAME"/>
-		<result property="RenamedFileName05" column="CLT_IMG_05_RNAME"/>
-		<result property="RenamedFileName06" column="CLT_IMG_06_RNAME"/>
 		<result property="cltWriterId" column="CLT_WRITER_ID"/>
 	</resultMap>
 
@@ -72,50 +52,19 @@
 		    MPC.CLT_CONTENT,
 		    MPC.CLT_CREATE_DATE,  MPC.CLT_MODIFY_DATE,
 		    MPC.CLT_STATUS,
-		    MPC.CLT_IMG_01_ONAME, MPC.CLT_IMG_02_ONAME,
-		    MPC.CLT_IMG_03_ONAME, MPC.CLT_IMG_04_ONAME,
-		    MPC.CLT_IMG_05_ONAME, MPC.CLT_IMG_06_ONAME,
-		    MPC.CLT_IMG_01_RNAME, MPC.CLT_IMG_02_RNAME,
-		    MPC.CLT_IMG_03_RNAME, MPC.CLT_IMG_04_RNAME,
-		    MPC.CLT_IMG_05_RNAME, MPC.CLT_IMG_06_RNAME,
+		    MPC.CLT_IMG_01_ONAME, 
+		    MPC.CLT_IMG_01_RNAME,
 		    MPC.CLT_WRITER_ID
 		) VALUES (
 			SEQ_MPC_CLT_NO.NEXTVAL, #{ cltMemberNo },
 			#{ cltContent },
 			DEFAULT, DEFAULT,
 			DEFAULT,
-			#{ originalFileName01 }, 'GONNA DELETE',
-			'GONNA DELETE', 'GONNA DELETE',
-			'GONNA DELETE', 'GONNA DELETE',
-			#{ renamedFileName01 }, 'GONNA DELETE',
-			'GONNA DELETE', 'GONNA DELETE',
-			'GONNA DELETE', 'GONNA DELETE',
+			#{ originalFileName01 },
+			#{ renamedFileName01 },
 			#{ cltWriterId }
 		)	
 	</insert>
-	
-	<!-- 다중 삽입 도전
-	<insert id="insertMypagePCollection" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection"
-		useGeneratedKeys="true" keyProperty="cltNo" keyColumn="CLT_NO">
-		<selectKey keyProperty="cltNo2" resultType="int" order="BEFORE">
-		    SELECT SEQ_MPC_CLT_NO.NEXTVAL FROM DUAL
-		</selectKey>
-		INSERT ALL
-		<foreach collection="files" item="i" separator=" "> 
-			INTO MYPAGE_P_COLLECTION(
-				CLT_NO, CLT_NO2, MEMBER_NO,
-			    CLT_CONTENT,
-			    CLT_IMG_01_ONAME,
-			    CLT_IMG_01_RNAME
-			) VALUES
-			(SEQ_MPC_CLT_NO.NEXTVAL, SEQ_MPC_CLT_NO.NEXTVAL, #{ cltMemberNo },
-			#{ cltContent },
-			#{ i.original },
-			#{ i.rename })	
-		</foreach>
-		SELECT 1 FROM DUAL
-	</insert>
-	 -->
 	
 	
 	<select id="findCollectionByNo" parameterType="_int" resultMap="MypagePCollectionResultMap">
@@ -126,7 +75,8 @@
 	
 	<update id="updateMypagePCollection" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection">
 		UPDATE MYPAGE_P_COLLECTION MPC
-		SET MPC.CLT_CONTENT = #{ cltContent }
+		SET MPC.CLT_CONTENT = #{ cltContent },
+			MPC.CLT_MODIFY_DATE = SYSDATE
 		WHERE MPC.CLT_NO = #{ cltNo }
 	</update>
 	
@@ -149,4 +99,24 @@
 		FROM MEMBER 
 		WHERE ID =  #{ id }
 	</select>
+	
+	
+	
+	<!-- 팔로우 관련 쿼리 -->
+
+	<select id="followerCheck" parameterType="map" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{ toMemNo }
+		    AND FROM_MEM_NO = #{ fromMemNo }
+	</select>
+	
+	
+	<select id="followingCheck" parameterType="map" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWING
+		WHERE FROM_MEM_NO = #{ fromMemNo }
+   			AND TO_MEM_NO = #{ toMemNo }
+	</select>
+	
 </mapper>

@@ -26,7 +26,7 @@
     padding: 10px 40px;
 }
 
-#checkDuplicate {
+#checkDuplicate, #checkDuplicateNickname {
     background-color: rgb(255, 255, 255);
     border-color: rgb(1, 0, 2);
     font-size: 14px;
@@ -62,3 +62,4 @@ input[type=radio] {
     font-size: 14px;
     cursor: pointer;
 }
+

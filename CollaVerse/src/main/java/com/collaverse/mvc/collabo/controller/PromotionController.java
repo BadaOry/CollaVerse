@@ -21,7 +21,7 @@ import com.collaverse.mvc.collabo.model.vo.Heart;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
 import com.collaverse.mvc.collabo.model.vo.WritePromotion;
-import com.collaverse.mvc.common.util.FileProcess;
+import com.collaverse.mvc.common.util.PromotionFileProcess;
 import com.collaverse.mvc.member.model.vo.Member;
 
 import lombok.extern.slf4j.Slf4j;
@@ -61,7 +61,13 @@ public class PromotionController {
 			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			System.out.println(location); 
 			
-			renamedFileName = FileProcess.save(promImg, location);
+			renamedFileName = PromotionFileProcess.promotionsave(promImg, location);
+			
+//			if(renamedFileName != null) {
+//				writepromotion.setOriginalFileName(promImg.getOriginalFilename());
+//				writepromotion.setRenamedFileName(renamedFileName);
+//			}
+			
 		}
 		
 		

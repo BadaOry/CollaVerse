@@ -1,4 +1,4 @@
-package com.collaverse.mvc.qna.model.vo;
+package com.collaverse.mvc.qna.model;
 
 public class PageMakerDTO {
 
@@ -41,6 +41,7 @@ public class PageMakerDTO {
         
         /* 마지막 페이지(endPage)값이 1보다 큰 경우 true */
         this.next = this.endPage < realEnd;
+        
     }
 
 	public int getStartPage() {
@@ -96,5 +97,6 @@ public class PageMakerDTO {
 		return "PageMakerDTO [startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
 				+ ", total=" + total + ", cri=" + cri + "]";
 	}
+    
     
 }
