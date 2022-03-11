@@ -34,14 +34,15 @@ public interface MemberService {
 	// 사업자등록번호 중복확인
 	Boolean isDuplicatedBusiness_no(String business_no);
 
+	// 닉네임 중복확인
+	Boolean isDuplicateNickname(String nickname);
+	
 	// 통계용 여 회원정보(테스트중)
 	int getWomenCount();
 	
 	// 통계용 남 회원정보(테스트중)
 	int getMenCount();
 
-	// 닉네임 중복확인
-	Boolean isDuplicatedNickname(String nickname);
 
 
 

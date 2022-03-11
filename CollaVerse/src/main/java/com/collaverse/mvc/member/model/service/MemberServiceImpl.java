@@ -37,7 +37,7 @@ public class MemberServiceImpl implements MemberService {
 		
 //		return member != null && 
 //				passwordEncoder.matches(password, member.getPassword()) ? member : null; //로그인 클릭 했을 때 암호화 비번이랑 맞는지 확인 (삼항연산자 사용)
-		return member; //암호화 하지 않으려면 이 코드를 넣고, 위 두줄은 막는다
+		return member; // 로그인 시 암호화가 되어있어 원래 비밀번호를 입력하려면 이 코드, 암호화 비번을 입력하려면 위 두 줄을 입력한다.
 	}
 
 	// 개인 회원가입
@@ -128,7 +128,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	// 닉네임 중복확인
 	@Override
-	public Boolean isDuplicatedNickname(String nickname) {
+	public Boolean isDuplicateNickname(String nickname) {
 		
 		return mapper.findMemberByNickname(nickname) != null;
 	}

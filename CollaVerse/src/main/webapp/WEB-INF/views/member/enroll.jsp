@@ -68,10 +68,14 @@
 	 			<tr>
 	 				<th>나이 *</th>
 	 				<td>
-						<select name="age" id="age"></select>
+						<select name="age" id="age" required>
+							<option>나이</option>
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+						</select>
 					</td>
 				</tr>
-
 	 			<tr>
 	 				<th>성별 *</th>
 	 				<td>
@@ -93,12 +97,12 @@
 					  <input type="checkbox" name="agree" value="2" id="agree2">(필수) 만 14세 이상입니다.<br>
 				</label>
 				<label for="agree">
-					  <input type="checkbox" name="agree" value="3">(선택) 이메일 및 SMS 마케팅 정보 수신에 동의합니다.<br>
+					  <input type="checkbox" name="agree" value="3" id="agree3">(선택) 이메일 및 SMS 마케팅 정보 수신에 동의합니다.<br>
 				</label>
 		 	</div>
 			<br>
 			<div class="btnAll" align="center">
- 				<input type="submit" id="enrollSubmit" value="가입" onclick="checkbox">	
+ 				<input type="submit" id="enrollSubmit" value="가입" onclick="checkbox()">	
  				<input type="reset" id="reset" value="취소" onclick="location.href='${ path }'">
 			</div>
 		</form>
@@ -137,6 +141,36 @@
 </script>
 
 <script>
+	// 닉네임 중복 확인
+	$(document).ready(() => {
+		$("#checkDuplicateNickname").on("click", () => {
+			let nickname = $("#nickname").val().trim();
+			
+			$.ajax({
+				type: "post",
+				url: "${ pageContext.request.contextPath }/member/nicknameCheck",
+				dataType: "json",
+				data: {
+					nickname
+				},
+				success: (data) => {
+					console.log(data);
+					
+					if(data.duplicate === true) {
+						alert("이미 사용중인 닉네임 입니다.");
+					} else {
+						alert("사용 가능한 닉네임 입니다.");						
+					}
+				},
+				error: (error) => {
+					console.log(error);
+				}
+			});
+		});		
+	});
+</script>
+
+<script>
 	// 약관 전체선택, 해제
 	const agreeChkAll = document.querySelector('input[name=agree_all]');
 	    agreeChkAll.addEventListener('change', (e) => {
@@ -148,33 +182,16 @@
 </script>
 
 <script>
-	// 나이
-	$(document).ready(function() {
-		
-		$("age").selectRange({
-			min: 0,
-			max: 100
-		});
-	})
+// 체크박스 필수 미선택 시 가입 불가
+function checkbox(){
 
-</script>
-
-<!--  체크박스 미선택 시 가입 불가 -->
-<script>
-function checkbox() {
-	var agree1 = document.getElementbyId("agree1");
-	var agree2 = document.getElementbyId("agree2");
-	
-	
-	if(!agree1.checked) {
-		
-		alert("필수 약관 선택이 되지 않았습니다");
-		
-		agree1.focus();
-		
-		return false;
+	if(document.getElementById("agree1", "agree2").checked == false) {
+	  alert("필수 약관 선택이 되지 않았습니다");
+	  	  
+	  } else {
+		  location.href='${ path }/member/enroll';
+	  }
 	}
-}
 </script>
 
 	

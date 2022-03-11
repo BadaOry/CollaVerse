@@ -381,7 +381,7 @@ public class MemberController {
 	@GetMapping("/member/jsonTest2")
 	@ResponseBody
 	public Object jsonTest2() {
-		return new Member("cxrew", "양아쥐");
+		return new Member("양아쥐", "1111");
 	}
 	
 	@PostMapping("/member/nicknameCheck")
@@ -390,10 +390,16 @@ public class MemberController {
 		
 		log.info("{}", nickname);
 		
-		map.put("duplicate", service.isDuplicatedNickname(nickname));
+		map.put("duplicate", service.isDuplicateNickname(nickname));
 		
 		return new ResponseEntity<Map<String,Boolean>>(map, HttpStatus.OK);
 	}
+	
+	
+
+	
+
+	
 
 }
 

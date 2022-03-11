@@ -97,18 +97,18 @@
 				<input type="checkbox" name="agree_all" id="agree_all"><b>모두 동의합니다</b><br>
 			</label>
 			<label for="agree">
-				  <input type="checkbox" name="agree" value="1">(필수) 이용약관과 개인정보 수집 및 이용에 동의합니다.<br>
+				  <input type="checkbox" name="agree" value="1" id="agree1">(필수) 이용약관과 개인정보 수집 및 이용에 동의합니다.<br>
 			</label>
 			<label for="agree">
-				  <input type="checkbox" name="agree" value="2">(필수) 만 14세 이상입니다.<br>
+				  <input type="checkbox" name="agree" value="2" id="agree2">(필수) 만 14세 이상입니다.<br>
 			</label>
 			<label for="agree">
-				  <input type="checkbox" name="agree" value="3">(선택) 이메일 및 SMS 마케팅 정보 수신에 동의합니다.<br>
+				  <input type="checkbox" name="agree" value="3" id="agree3">(선택) 이메일 및 SMS 마케팅 정보 수신에 동의합니다.<br>
 			</label>
 		</div>
 		<br>
 		<div class="btnAll" align="center">
- 			<input type="submit" id="enrollSubmit" value="가입">	
+ 			<input type="submit" id="enrollSubmit" value="가입" onclick="checkbox()">	
  			<input type="reset" id="reset" value="취소" onclick="location.href='${ path }'">
  		</div>
  	</form>
@@ -149,8 +149,8 @@
 <script>
 	// 닉네임 중복 확인
 	$(document).ready(() => {
-		$("#nicknameCheck").on("click", () => {
-			let nickname = $("#newnickname").val().trim();
+		$("#checkDuplicateNickname").on("click", () => {
+			let nickname = $("#nickname").val().trim();
 			
 			$.ajax({
 				type: "post",
@@ -174,17 +174,6 @@
 			});
 		});		
 	});
-</script>
-
-<script>
-	// 약관 전체선택, 해제
-	const agreeChkAll = document.querySelector('input[name=agree_all]');
-	    agreeChkAll.addEventListener('change', (e) => {
-	    	let agreeChk = document.querySelectorAll('input[name=agree]');
-	    		for(let i = 0; i < agreeChk.length; i++){
-	    			agreeChk[i].checked = e.target.checked;
-	    }
-});
 </script>
 
 <script>
@@ -215,6 +204,30 @@
 			});
 		});		
 	});
+</script>
+
+<script>
+	// 약관 전체선택, 해제
+	const agreeChkAll = document.querySelector('input[name=agree_all]');
+	    agreeChkAll.addEventListener('change', (e) => {
+	    	let agreeChk = document.querySelectorAll('input[name=agree]');
+	    		for(let i = 0; i < agreeChk.length; i++){
+	    			agreeChk[i].checked = e.target.checked;
+	    }
+});
+</script>
+
+<script>
+// 체크박스 필수 미선택 시 가입 불가
+function checkbox(){
+
+	if(document.getElementById("agree1", "agree2").checked == false) {
+	  alert("필수 약관 선택이 되지 않았습니다");
+	  	  
+	  } else {
+		  location.href='${ path }/member/enroll_business';
+	  }
+	}
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

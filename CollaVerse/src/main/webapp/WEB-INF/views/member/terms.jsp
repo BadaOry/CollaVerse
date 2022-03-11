@@ -202,6 +202,8 @@ function getCheckvalue(){
 
 	if(document.getElementById("agree").checked == false) {
 	  alert("이용약관에 동의 하십시오");
+	  } else {
+		  location.href='${ path }/member/enroll';
 	  }
 	}
 </script>
