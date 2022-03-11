@@ -724,6 +724,60 @@ COMMIT;
 
 
 
+
+--------------------------------------------------------------
+------------------------ QNA 관련 테이블 -----------------------
+--------------------------------------------------------------
+-- 01. QNA 테이블 생성 + 주석
+CREATE TABLE QNA(
+    BNO NUMBER,
+    TITLE VARCHAR2(150) NOT NULL,
+    CONTENT VARCHAR2(2000) NOT NULL,
+    WRITER VARCHAR2(50) NOT NULL,
+    REG_DATE DATE DEFAULT SYSDATE,
+    MODIFY_DATE DATE DEFAULT SYSDATE,
+    READCOUNT NUMBER DEFAULT 0,
+    CONSTRAINT PK_QNA PRIMARY KEY(BNO)
+);
+
+COMMENT ON COLUMN QNA.BNO IS 'QNA 번호';
+COMMENT ON COLUMN QNA.TITLE IS 'QNA 제목';
+COMMENT ON COLUMN QNA.CONTENT IS 'QNA 내용';
+COMMENT ON COLUMN QNA.WRITER IS 'QNA 작성자';
+COMMENT ON COLUMN QNA.REG_DATE IS 'QNA 등록일';
+COMMENT ON COLUMN QNA.MODIFY_DATE IS 'QNA 수정일';
+COMMENT ON COLUMN QNA.READCOUNT IS 'QNA 조회수';
+
+-- 02. 시퀀스 생성
+CREATE SEQUENCE SEQ_QNA_NO;
+
+
+COMMIT;
+
+
+
+--------------------------------------------------------------
+------------------------ QNA 관련 쿼리문 -----------------------
+--------------------------------------------------------------
+-- ★★★01. 테스트용
+
+--BEGIN
+--    FOR N IN 1..285
+--    LOOP
+--        INSERT INTO QNA VALUES(SEQ_QNA_NO.NEXTVAL, '질문 제목' || SEQ_QNA_NO.CURRVAL, '질문 내용 ' || SEQ_QNA_NO.CURRVAL , '작가' ||  SEQ_QNA_NO.CURRVAL, DEFAULT, DEFAULT, DEFAULT);
+--    END LOOP;
+--    
+--    COMMIT;
+--EXCEPTION
+--    WHEN OTHERS THEN ROLLBACK;
+--END;
+--/
+--
+--COMMIT;
+
+--DROP TABLE QNA;
+--DROP SEQUENCE SEQ_QNA_NO;
+
 --------------------------------------------------------------
 ------------------------- 삭제 쿼리 모음 ------------------------
 --------------------------------------------------------------
@@ -737,6 +791,7 @@ COMMIT;
 --DROP TABLE BRAND;
 --DROP TABLE MYPAGE_P_COLLECTION;
 --DROP TABLE MEMBER;
+--DROP TABLE QNA;
 --
 --
 --
@@ -749,3 +804,4 @@ COMMIT;
 --DROP SEQUENCE SEQ_PRODUCT_NO;
 --DROP SEQUENCE SEQ_PROMOTION_NO;
 --DROP SEQUENCE SEQ_MEM_MEMBER_NO;
+--DROP SEQUENCE SEQ_QNA_NO;
