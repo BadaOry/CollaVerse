@@ -17,7 +17,7 @@
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
     <div class="mini_title" id="mypage_mycollection_write_title">
-    	<p id="collection_write_title">My 컬렉션 작성</p>	
+    	<p id="collection_write_title">My 컬렉션 수정</p>	
     </div>
 	
 	<form name="collectionWriteFrm" action="${ path }/mypage/collection/update" method="post" enctype="multipart/form-data">
