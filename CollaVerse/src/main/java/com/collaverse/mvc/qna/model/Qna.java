@@ -1,4 +1,4 @@
-package com.collaverse.mvc.qna.model.vo;
+package com.collaverse.mvc.qna.model;
 
 import java.util.Date;
 
@@ -17,7 +17,7 @@ public class Qna {
     private String writer;
     
     /* 등록 날짜 */
-    private Date createDate;
+    private Date regDate;
     
     /* 수정 날짜 */
     private Date modifyDate;
@@ -57,12 +57,12 @@ public class Qna {
 		this.writer = writer;
 	}
 
-	public Date getCreateDate() {
-		return createDate;
+	public Date getRegDate() {
+		return regDate;
 	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 
 	public Date getModifyDate() {
@@ -83,7 +83,9 @@ public class Qna {
 
 	@Override
 	public String toString() {
-		return "Qna [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", createDate="
-				+ createDate + ", modifyDate=" + modifyDate + ", readCount=" + readCount + "]";
+		return "Qna [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regDate="
+				+ regDate + ", modifyDate=" + modifyDate + ", readCount=" + readCount + "]";
 	}
+    
+    
 }

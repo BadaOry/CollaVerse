@@ -48,7 +48,8 @@
  				<tr>
 					<th>닉네임 *</th>
 					<td>
-						<input type="text" name="nickname" id="nickname" size="25" required>				
+						<input type="text" name="nickname" id="nickname" size="25" required>
+						<input type="button" id="checkDuplicateNickname" value="중복검사" >				
 					</td> 			
  				</tr> 
  				<tr>
@@ -71,15 +72,17 @@
 					</td> 			
 	 			</tr>			
 	 			<tr>
-	 				<th>생년월일 *</th>
+	 				<th>나이 *</th>
 	 				<td>
-						<select name="yy" id="year"></select>년
-						<select name="mm" id="month"></select>월
-						<select name="dd" id="day"></select>일
+						<select name="age" id="age" required>
+							<option>나이</option>
+							<option value="01">1</option>
+							<option value="02">2</option>
+							<option value="03">3</option>
+						</select>
 					</td>
 				</tr>
-
-	 			<tr>
+				<tr>
 	 				<th>성별 *</th>
 	 				<td>
 						<input type="radio" name="gender" value="woman">여자
@@ -94,18 +97,18 @@
 				<input type="checkbox" name="agree_all" id="agree_all"><b>모두 동의합니다</b><br>
 			</label>
 			<label for="agree">
-				  <input type="checkbox" name="agree" value="1">(필수) 이용약관과 개인정보 수집 및 이용에 동의합니다.<br>
+				  <input type="checkbox" name="agree" value="1" id="agree1">(필수) 이용약관과 개인정보 수집 및 이용에 동의합니다.<br>
 			</label>
 			<label for="agree">
-				  <input type="checkbox" name="agree" value="2">(필수) 만 14세 이상입니다.<br>
+				  <input type="checkbox" name="agree" value="2" id="agree2">(필수) 만 14세 이상입니다.<br>
 			</label>
 			<label for="agree">
-				  <input type="checkbox" name="agree" value="3">(선택) 이메일 및 SMS 마케팅 정보 수신에 동의합니다.<br>
+				  <input type="checkbox" name="agree" value="3" id="agree3">(선택) 이메일 및 SMS 마케팅 정보 수신에 동의합니다.<br>
 			</label>
 		</div>
 		<br>
 		<div class="btnAll" align="center">
- 			<input type="submit" id="enrollSubmit" value="가입">	
+ 			<input type="submit" id="enrollSubmit" value="가입" onclick="checkbox()">	
  			<input type="reset" id="reset" value="취소" onclick="location.href='${ path }'">
  		</div>
  	</form>
@@ -144,44 +147,33 @@
 </script>
 
 <script>
-	// 약관 전체선택, 해제
-	const agreeChkAll = document.querySelector('input[name=agree_all]');
-	    agreeChkAll.addEventListener('change', (e) => {
-	    	let agreeChk = document.querySelectorAll('input[name=agree]');
-	    		for(let i = 0; i < agreeChk.length; i++){
-	    			agreeChk[i].checked = e.target.checked;
-	    }
-});
-</script>
-
-<script>
-	// 생년월일
-	$(document).ready(function(){            
-	    var now = new Date();
-	    var year = now.getFullYear();
-	    var mon = (now.getMonth() + 1) > 9 ? ''+(now.getMonth() + 1) : '0'+(now.getMonth() + 1); 
-	    var day = (now.getDate()) > 9 ? ''+(now.getDate()) : '0'+(now.getDate());           
-	    
-	    //년도 selectbox만들기               
-	    for(var i = 1900 ; i <= year ; i++) {
-	        $('#year').append('<option value="' + i + '">' + i + '</option>');    
-	    }
-	
-	    // 월별 selectbox 만들기            
-	    for(var i=1; i <= 12; i++) {
-	        var mm = i > 9 ? i : "0"+i ;            
-	        $('#month').append('<option value="' + mm + '">' + mm + '</option>');    
-	    }
-	    
-	    // 일별 selectbox 만들기
-	    for(var i=1; i <= 31; i++) {
-	        var dd = i > 9 ? i : "0"+i ;            
-	        $('#day').append('<option value="' + dd + '">' + dd+ '</option>');    
-	    }
-		    $("#year  > option[value="+year+"]").attr("selected", "true");        
-		    $("#month  > option[value="+mon+"]").attr("selected", "true");    
-		    $("#day  > option[value="+day+"]").attr("selected", "true");       
-		})
+	// 닉네임 중복 확인
+	$(document).ready(() => {
+		$("#checkDuplicateNickname").on("click", () => {
+			let nickname = $("#nickname").val().trim();
+			
+			$.ajax({
+				type: "post",
+				url: "${ pageContext.request.contextPath }/member/nicknameCheck",
+				dataType: "json",
+				data: {
+					nickname
+				},
+				success: (data) => {
+					console.log(data);
+					
+					if(data.duplicate === true) {
+						alert("이미 사용중인 닉네임 입니다.");
+					} else {
+						alert("사용 가능한 닉네임 입니다.");						
+					}
+				},
+				error: (error) => {
+					console.log(error);
+				}
+			});
+		});		
+	});
 </script>
 
 <script>
@@ -212,6 +204,30 @@
 			});
 		});		
 	});
+</script>
+
+<script>
+	// 약관 전체선택, 해제
+	const agreeChkAll = document.querySelector('input[name=agree_all]');
+	    agreeChkAll.addEventListener('change', (e) => {
+	    	let agreeChk = document.querySelectorAll('input[name=agree]');
+	    		for(let i = 0; i < agreeChk.length; i++){
+	    			agreeChk[i].checked = e.target.checked;
+	    }
+});
+</script>
+
+<script>
+// 체크박스 필수 미선택 시 가입 불가
+function checkbox(){
+
+	if(document.getElementById("agree1", "agree2").checked == false) {
+	  alert("필수 약관 선택이 되지 않았습니다");
+	  	  
+	  } else {
+		  location.href='${ path }/member/enroll_business';
+	  }
+	}
 </script>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

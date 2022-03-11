@@ -2,6 +2,7 @@ package com.collaverse.mvc.member.model.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.collaverse.mvc.member.model.dao.MemberMapper;
 import com.collaverse.mvc.member.model.vo.Member;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class MemberServiceImpl implements MemberService {
 	@Autowired
@@ -33,13 +37,29 @@ public class MemberServiceImpl implements MemberService {
 		
 //		return member != null && 
 //				passwordEncoder.matches(password, member.getPassword()) ? member : null; //로그인 클릭 했을 때 암호화 비번이랑 맞는지 확인 (삼항연산자 사용)
-		return member; //암호화 하지 않으려면 이 코드를 넣고, 위 두줄은 막는다
+		return member; // 로그인 시 암호화가 되어있어 원래 비밀번호를 입력하려면 이 코드, 암호화 비번을 입력하려면 위 두 줄을 입력한다.
 	}
 
-	// 회원가입
+	// 개인 회원가입
 	@Override
 	@Transactional
 	public int save(Member member) {
+		int result = 0;
+		
+		if(member.getNo() != 0) {
+			result = mapper.updateMember(member); // 회원정보수정
+		} else {
+			member.setPassword(passwordEncoder.encode(member.getPassword())); // 비밀번호 암호화
+			
+			result = mapper.insertMember(member);
+		}
+		return result;
+	}
+	
+	// 기업 회원가입
+	@Override
+	public int savebusiness(Member member) {
+		
 		int result = 0;
 		
 		if(member.getNo() != 0) {
@@ -70,26 +90,32 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member findId(String email) {
 		
+		log.info("[ServiceImpl] 까지 잘 오는지 확인 : {}", email);
+		
 		return mapper.findId(email);
 	}
 	
 	@Override
 	public Member findIdResult(String email) {
 		
+		log.info("[ServiceImpl] 까지 잘 오는지 확인 : {}", email);
+	
 		return mapper.findId(email);
 	}
 
 	// pw 찾기
 	@Override
-	public Member findPwResult(String email, String id) {
+	public Member findPw(String id) {
 		
-		return mapper.findPw(id, email);
+		log.info("[ServiceImpl] 까지 잘 오는지 확인 : {}", id);
+		
+		return mapper.findPw(id);
 	}
 
 	@Override
-	public Member findPw(String id, String email) {
+	public Member findPwResult(String id) {
 		
-		return mapper.findPw(id, email);
+		return mapper.findPw(id);
 	}
 
 	
@@ -98,6 +124,13 @@ public class MemberServiceImpl implements MemberService {
 	public Boolean isDuplicatedBusiness_no(String business_no) {
 		
 		return mapper.findMemberByBusiness_no(business_no) != null;
+	}
+	
+	// 닉네임 중복확인
+	@Override
+	public Boolean isDuplicateNickname(String nickname) {
+		
+		return mapper.findMemberByNickname(nickname) != null;
 	}
 	
 	// 통계용 여 회원정보(테스트중)
@@ -126,6 +159,7 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 	
+
 
 	
 }
