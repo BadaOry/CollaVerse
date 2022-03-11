@@ -38,12 +38,13 @@
        <div class="tech">
         <div class="tech1">
     	<c:forEach var="tlist" items="${ tlist }" begin="0" end="0">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ tlist.no }">
             <div class="t_img">
                  <img src="${ path }${ tlist.imgPath }${ tlist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div>              
             <p>          
             <strong>${ tlist.title }</strong>
+            </a>
             <p>${ tlist.content }</p>
 			</c:forEach>                       
             <p>
@@ -65,12 +66,13 @@
 			
        <div class="tech2">
     	<c:forEach var="tlist" items="${ tlist }" begin="1" end="1">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ tlist.no }">
             <div class="t_img">
                  <img src="${ path }${ tlist.imgPath }${ tlist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div>              
             <p>          
             <strong>${ tlist.title }</strong>
+            </a>
             <p>${ tlist.content }</p>
 			</c:forEach>                       
             <p>
@@ -92,12 +94,13 @@
 			
        <div class="tech3">
     	<c:forEach var="tlist" items="${ tlist }" begin="2" end="2">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ tlist.no }">
             <div class="t_img">
                  <img src="${ path }${ tlist.imgPath }${ tlist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div>              
             <p>          
             <strong>${ tlist.title }</strong>
+            </a>
             <p>${ tlist.content }</p>
 			</c:forEach>                       
             <p>

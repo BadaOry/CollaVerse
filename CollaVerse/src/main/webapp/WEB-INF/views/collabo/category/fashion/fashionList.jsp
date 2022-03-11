@@ -37,12 +37,13 @@
         <div class="fashion">
         <div class="fashion1">
     	<c:forEach var="fslist" items="${ fslist }" begin="0" end="0">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ fslist.no }">
             <div class="fs_img">
                  <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div>              
             <p>          
             <strong>${ fslist.title }</strong>
+            </a>
             <p>${ fslist.content }</p>
 			</c:forEach>                       
             <p>
@@ -64,12 +65,13 @@
 			
        <div class="fashion2">
     	<c:forEach var="fslist" items="${ fslist }" begin="1" end="1">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ fslist.no }">
             <div class="fs_img">
                  <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div> 
             <p>          
             <strong>${ fslist.title }</strong>
+            </a>
             <p>${ fslist.content }</p>
 			</c:forEach>                       
             <p>
@@ -91,12 +93,13 @@
 			
        <div class="fashion3">
     	<c:forEach var="fslist" items="${ fslist }" begin="2" end="2">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ fslist.no }">
             <div class="fs_img">
                  <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div>              
             <p>          
             <strong>${ fslist.title }</strong>
+            </a>
             <p>${ fslist.content }</p>
 			</c:forEach>                       
             <p>

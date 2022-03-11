@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
@@ -10,8 +11,10 @@
 <meta charset="UTF-8">
 <title>CollaVerse</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/collabo/promotion/detail.css">
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <script src="${ path }/resources/js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <style>
 	#product_box {
     width: 470px;
@@ -24,8 +27,24 @@
 <body>
 
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
-	
+
    <div class="frame">
+	
+				<div class="slide_content">
+				<div class="slide_div">
+				<c:forEach var="productInfo" items="${ productInfo }" begin="0" end="2">
+					<div>
+						<a>
+							<img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="550" height="400px">
+						</a>
+					</div>
+					</c:forEach>
+				</div>				
+				</div>	
+	
+<!--  	
+   <div class="frame">
+
         <nav class="colla_menu">
             <ul>
                 <li><a onclick="location.href='${ path }/collabo/category/living/livingList'" >리빙</a></li>
@@ -36,6 +55,7 @@
                 <li><a onclick="location.href='${ path }/collabo/brand/brand'" >브랜드</a></li>
             </ul>
         </nav>
+
     </div>
 
     <div class="frame">
@@ -63,6 +83,11 @@
         <label for="tab03"></label>
     </div>
 </div>
+-->
+
+
+
+
 
     <div class="p_title">
         <hr>
@@ -97,6 +122,16 @@
         	</div>
         <hr>
     </div>
+    
+    <div class="p_explain">
+        <p>프로모션 설명</p>
+    </div>
+
+    <div class="p_content">
+        <p>
+            ${ promotionInfo.content }
+        </p>
+    </div>    
 
     <div class="category_detail">
         <p>제품 정보</p>
@@ -116,18 +151,107 @@
     	</div>
     	--%>
     	
-        <div id="area1">
-            <div class="p_img">
-                <img src="${ pageContext.request.contextPath }/resources/images/product/product1_1.jpg" width="470px" height="350px">
-            </div>
-	
-			<div>
-	            <p>제품 이름</p>
-	            <p>제품 가격</p>
-	            <p>제품 설명</p>
-            </div>
+        <div class="proInfo">
+        
+        <div class="proList1">
+        <c:forEach var="productInfo" items="${ productInfo }" begin="0" end="0">
+        	
+        		<table>
+        		<tr>
+        		<td>
+                <img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="470px" height="350px">
+                </td>
+                </tr>
+                
+                <tr>
+                <td>
+	            <p>${ productInfo.proName }</p>
+	            </td>
+				</tr>
+
+				<tr>
+				<td>
+	            <p>${ productInfo.proPrice }</p>
+	            </td>
+				</tr>
+				
+				<tr>
+				<td>
+	            <p>${ productInfo.proContent }</p>
+	            </td>
+	            </tr>
+				</table>
+			
+        </c:forEach>
+        </div>
+        
+        <div class="proList2">
+        <c:forEach var="productInfo" items="${ productInfo }" begin="1" end="1">
+        	
+        		<table>
+        		<tr>
+        		<td>
+                <img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="470px" height="350px">
+                </td>
+                </tr>
+                
+                <tr>
+                <td>
+	            <p>${ productInfo.proName }</p>
+	            </td>
+				</tr>
+
+				<tr>
+				<td>
+	            <p>${ productInfo.proPrice }</p>
+	            </td>
+				</tr>
+				
+				<tr>
+				<td>
+	            <p>${ productInfo.proContent }</p>
+	            </td>
+	            </tr>
+				</table>
+			
+        </c:forEach>
+        </div>
+        
+        <div class="proList3">
+        <c:forEach var="productInfo" items="${ productInfo }" begin="2" end="2">
+        	
+        		<table>
+        		<tr>
+        		<td>
+                <img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="470px" height="350px">
+                </td>
+                </tr>
+                
+                <tr>
+                <td>
+	            <p>${ productInfo.proName }</p>
+	            </td>
+				</tr>
+
+				<tr>
+				<td>
+	            <p>${ productInfo.proPrice }</p>
+	            </td>
+				</tr>
+				
+				<tr>
+				<td>
+	            <p>${ productInfo.proContent }</p>
+	            </td>
+	            </tr>
+				</table>
+			
+        </c:forEach>
+        </div>
+                        
 		</div>
 
+<!--  
         <div id="area2">
         	<div class="p_img">
 	        	<img src="${ pageContext.request.contextPath }/resources/images/product/product1_2.jpg" width="470px" height="350px">
@@ -150,22 +274,10 @@
 	            <p>제품 설명</p>
            </div>
         </div>
-
+-->
     </div>
 
     <hr>
-
-    <div class="p_explain">
-        <p>프로모션 설명</p>
-    </div>
-
-    <div class="p_content">
-        <p>
-            ${ promotionInfo.content }
-        </p>
-    </div>
-
-	
 
 </div>
 
@@ -173,6 +285,20 @@
 	
 
 <script>
+	$(document).ready(function(){
+		$(".slide_div").slick(
+				{
+					dots: true,
+					autoplay : true,
+					autoplaySpeed: 5000
+				}		
+		)	
+	});
+
+</script>
+
+
+<script>	
 	var pmt_no = ${ promotionInfo.no };
 	var heart_mem_no = ${ loginMember.no };
 	
@@ -200,6 +326,6 @@
 		});
 	}
 </script>
-	
+
 </body>
 </html>

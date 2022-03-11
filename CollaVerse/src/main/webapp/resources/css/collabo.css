@@ -33,13 +33,24 @@
     margin: 3%;
 }
 
+.promotion_slide{
+	width: 620px; 
+	margin: 0 auto;
+	margin-top: 1%;
+	margin-bottom: 5%;	
+}
+
 .promotion{
-    font-family: 'Nanum Gothic', sans-serif;
-    margin: 3%;
+    	font-family: 'Sam3KRFont';
+    	font-size: 25px;
+    	text-align: left;
+    	color: #730e74;
+    	margin: 30px 0 30px 50px;
+    	width: 60%;
 }
 
 .p_new {
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'DOSGothic';
 	display: flex;
   	flex-direction: row;
   	justify-content: space-around;
@@ -53,16 +64,29 @@
 	text-align: center;
 }
 
+.p_new a {
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: inherit; /* 링크의 색상 제거 */
+  font-size: 20px;	
+}
+
 /* 카테고리 목록 */
 .category_list{
-    font-family: 'Nanum Gothic', sans-serif;
+/*    font-family: 'Nanum Gothic', sans-serif;
     margin: 3%;
     margin-top: 5%;
     margin-bottom: 3%;
+*/
+    	font-family: 'Sam3KRFont';
+    	font-size: 30px;
+    	text-align: left;
+    	color: #730e74;
+    	margin: 30px 0 30px 50px;
+    	width: 60%;
 }
 
 .living{
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'DOSGothic';
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -84,15 +108,21 @@
 }
 
 .lproduct{
-	font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'DOSGothic';
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     text-align: center;
 }
 
+.living a {
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: inherit; /* 링크의 색상 제거 */
+  font-size: 20px;	
+}
+
 .culture{
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'DOSGothic';
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -109,8 +139,14 @@
 	margin-bottom: 2%;
 }
 
+.culture a {
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: inherit; /* 링크의 색상 제거 */
+  font-size: 20px;	
+}
+
 .food{
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'DOSGothic';
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -127,8 +163,14 @@
 	margin-bottom: 2%;
 }
 
+.food a {
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: inherit; /* 링크의 색상 제거 */
+  font-size: 20px;	
+}
+
 .tech{
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'DOSGothic';
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -149,8 +191,14 @@
 	text-align: center;
 }
 
+.tech a {
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: inherit; /* 링크의 색상 제거 */
+  font-size: 20px;	
+}
+
 .fashion{
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'DOSGothic';
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -167,7 +215,25 @@
 	margin-bottom: 2%;
 }
 
+.fashion a {
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: inherit; /* 링크의 색상 제거 */
+  font-size: 20px;	
+}
+
 th, td {
   text-align: center;
 }
+
+/* 디테일 css에서 처리*/
+/*
+.proInfo{
+	font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center; 
+}
+*/
+
 

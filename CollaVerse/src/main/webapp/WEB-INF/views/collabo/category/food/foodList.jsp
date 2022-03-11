@@ -37,12 +37,13 @@
        <div class="food">
          <div class="food1">
     	<c:forEach var="flist" items="${ flist }" begin="0" end="0">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ flist.no }">  
             <div class="f_img">
                  <img src="${ path }${ flist.imgPath }${ flist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div>              
             <p>          
             <strong>${ flist.title }</strong>
+            </a>
             <p>${ flist.content }</p>
 			</c:forEach>                       
             <p>
@@ -64,12 +65,13 @@
 			
        <div class="food2">
     	<c:forEach var="flist" items="${ flist }" begin="1" end="1">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ flist.no }">
             <div class="f_img">
                  <img src="${ path }${ flist.imgPath }${ flist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div> 
             <p>          
             <strong>${ flist.title }</strong>
+            </a>
             <p>${ flist.content }</p>
 			</c:forEach>                       
             <p>
@@ -91,12 +93,13 @@
 			
        <div class="food3">
     	<c:forEach var="flist" items="${ flist }" begin="2" end="2">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ flist.no }">
             <div class="f_img">
                  <img src="${ path }${ flist.imgPath }${ flist.no }.jpg" alt="" width="550px" height="400px">
-            </div>
-              
+            </div>              
             <p>          
             <strong>${ flist.title }</strong>
+            </a>
             <p>${ flist.content }</p>
 			</c:forEach>                       
             <p>
