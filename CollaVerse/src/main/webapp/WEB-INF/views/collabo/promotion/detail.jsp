@@ -97,7 +97,7 @@
         				<td>
         					<c:if test="${ empty loginMember }">
 			        			<img src="${ path }/resources/images/promotion_deatil_heart/heart_empty.png" style="width:30px; hegith:30px"
-			        				onclick="updateHeart()"> 
+			        				onclick="cantUpdateHeart()"> 
         					</c:if>
         					<c:if test="${ !empty loginMember }">  		
         						<c:if test="${ heartCheck == 0 }">				
@@ -301,7 +301,7 @@
 <script>	
 	var pmt_no = ${ promotionInfo.no };
 	var heart_mem_no = ${ loginMember.no };
-	
+		
 	function updateHeart() {
 		$.ajax({
 			type : "POST",
@@ -323,9 +323,19 @@
 				}
 			}
 				
-		});
-	}
+		});		
+	}	
 </script>
+
+
+<script>
+
+	function cantUpdateHeart() {	
+			alert("로그인 후 이용해주세요.");	
+		}
+</script>	
+
+	
 
 </body>
 </html>
