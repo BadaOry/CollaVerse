@@ -87,5 +87,6 @@ public class Qna {
 				+ regDate + ", modifyDate=" + modifyDate + ", readCount=" + readCount + "]";
 	}
     
+	
     
 }

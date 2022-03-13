@@ -24,4 +24,5 @@ public class StatisticsController {
 		
 		return "/statistics/statistics";
 	}
+	
 }
