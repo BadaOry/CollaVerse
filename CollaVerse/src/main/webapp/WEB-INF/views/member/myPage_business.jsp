@@ -33,8 +33,7 @@
 			<tr>
                 <th>비밀번호</th>
 				<td>
-					<input type="password" name="password" id="pass1" 
-						value="${ loginMember.password }" required >
+					<input type="password" name="password" id="pass1" value="${ loginMember.password }" required >
 				</td> 	
             </tr>
      	    <tr>
