@@ -3,6 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<c:set var="path" value="${ pageContext.request.contextPath }"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,23 +17,19 @@
 <body>
 
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
-	
-   <div class="frame">
-        <nav class="colla_menu">
-            <ul>
-                <li><a onclick="location.href='${ path }/collabo/category/living/livingList'" >리빙</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/culture/cultureList'" >문화</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/food/foodList'" >식품</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/tech/techList'" >테크</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/fashion/fashionList'" >패션</a></li>
-                <li><a onclick="location.href='${ path }/collabo/brand/brand'" >브랜드</a></li>
-            </ul>
-        </nav>
-    </div>
     
-<div class="container">
 
-		<h2>BRAND</h2>
+    
+
+    <div class="brand_list">
+  
+		<p>BRAND</p>
+		
+	<div class="brand_logo">
+    		브랜드 리스트 (로고)
+    </div>
+		
+	</div>
 
 				<div class="brand_array">
 						<h3>ABC</h3> 
@@ -48,11 +47,7 @@
 				<div class="brand_list">
 					
 				</div>
-				
-			</form>
-		</div>
-	</div>
-</div>
+
 
     	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 
     	
