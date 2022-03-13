@@ -48,7 +48,7 @@
 }
 
 /* 팔로우 */
-#person #person-follow p {
+#person #person-follow .mini_title {
   font-size: 40px;
 }
 #person #person-follow #follow {
@@ -163,4 +163,35 @@
 */
 .more:hover {
 	background-color: #faae22;
+}
+
+#no_followernList {
+	text-align: left;
+	margin: 20px 0 20px 0px;
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #dbeaf8;
+	text-shadow: 4px 4px 0px #faaf22;
+	/* text-shadow: -4px -4px 0px #faaf22; */
+}
+
+#profile_image {
+	width: 150px;
+	height: 150px;
+}
+
+/*
+.member_container {
+	margin: 0 150px 80px 150px;
+}
+*/
+
+#member_nickname {
+	font-family: 'DOSGothic';
+	text-align: center;
+	font-size: 20px;
+}
+
+.member_info_container {
+	margin: 0 20px 0 0 ;
 }
