@@ -145,19 +145,6 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.getMenCount();
 	}
 
-	@Override
-	public int savebusiness(Member member) {
-		int result = 0;
-		
-		if(member.getNo() != 0) {
-			result = mapper.updateBusinessMember(member); // 회원정보수정
-		} else {
-			member.setPassword(passwordEncoder.encode(member.getPassword())); // 비밀번호 암호화
-			
-			result = mapper.insertBusinessMember(member);
-		}
-		return result;
-	}
 	
 
 

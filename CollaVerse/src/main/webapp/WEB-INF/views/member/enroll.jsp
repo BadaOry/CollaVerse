@@ -68,12 +68,7 @@
 	 			<tr>
 	 				<th>나이 *</th>
 	 				<td>
-						<select name="age" id="age" required>
-							<option>나이</option>
-							<option value="01">1</option>
-							<option value="02">2</option>
-							<option value="03">3</option>
-						</select>
+						<input type="text" name="age" id="age" size="25" placeholder="0~100까지 입력 가능" maxlength="100" required>
 					</td>
 				</tr>
 	 			<tr>
@@ -187,12 +182,32 @@ function checkbox(){
 
 	if(document.getElementById("agree1", "agree2").checked == false) {
 	  alert("필수 약관 선택이 되지 않았습니다");
-	  	  
+	  	  lacation.reload(); // 필수 미선택시 가입 불가 코드 다시 작성하기
 	  } else {
 		  location.href='${ path }/member/enroll';
 	  }
 	}
 </script>
+ 
+<script>
+// 아이디 조건 검사
+    function checkbox() {
+        let regExp;
+        let newId = document.getElementById('newId').value;
+
+        regExp = /^[a-z][a-z0-9]{3,11}$/;
+
+        if(!regExp.test(newId)) {
+            alert('4~12자 이내 영문, 숫자를 입력해 주세요.');
+
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+
 
 	
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>	

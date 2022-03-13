@@ -74,12 +74,7 @@
 	 			<tr>
 	 				<th>나이 *</th>
 	 				<td>
-						<select name="age" id="age" required>
-							<option>나이</option>
-							<option value="01">1</option>
-							<option value="02">2</option>
-							<option value="03">3</option>
-						</select>
+						<input type="text" name="age" id="age" size="25" placeholder="0~100까지 입력 가능" maxlength="100" required>
 					</td>
 				</tr>
 				<tr>
