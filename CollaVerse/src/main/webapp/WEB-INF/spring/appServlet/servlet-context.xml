@@ -19,6 +19,8 @@
 	<resources mapping="/dist/**" location="/resources/dist/"/>
 	<resources mapping="/plugins/**" location="/resources/plugins/"/>
 	<resources mapping="/js/**" location="/resources/js/" />
+	<resources mapping="/custom/**" location="/resources/custom/"/>
+	<resources mapping="/fullcalendar/**" location="/resources/fullcalendar/"/>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -1,5 +1,7 @@
 package com.collaverse.mvc.qna.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,8 @@ import com.collaverse.mvc.qna.model.Criteria;
 import com.collaverse.mvc.qna.model.PageMakerDTO;
 import com.collaverse.mvc.qna.model.Qna;
 import com.collaverse.mvc.qna.service.QnaService;
+import com.collaverse.mvc.reply.model.Reply;
+import com.collaverse.mvc.reply.service.ReplyService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,6 +26,9 @@ public class QnaController {
 
 	@Autowired
 	private QnaService qservice;
+	
+	@Autowired
+	private ReplyService rservice;
 	
 	/* 게시판 목록 페이지 접속(페이징 적용) */
     @GetMapping("/qnaList")
@@ -160,6 +167,11 @@ public class QnaController {
         model.addAttribute("cri", cri);
         
         System.out.println(qna.getBno());
+        
+        // 댓글 조회
+        List<Reply> replyList = rservice.readReply(qna.getBno());
+        
+        model.addAttribute("reply", replyList);
     }
     
     /* 수정 페이지 이동 */
@@ -192,4 +204,21 @@ public class QnaController {
         
         return "redirect:/qna/qnaList";
     }
+    
+    //댓글 작성
+  	@PostMapping("/replyWrite")
+  	public String replyWrite(Reply vo, Criteria cri, RedirectAttributes rttr) throws Exception {
+  		
+  		log.info("reply Write");
+  		
+  		rservice.writeReply(vo);
+  		
+  		rttr.addAttribute("bno", vo.getBno());
+  		rttr.addAttribute("page", cri.getPageNum());
+  		rttr.addAttribute("perPageNum", cri.getAmount());
+  		rttr.addAttribute("searchType", cri.getType());
+  		rttr.addAttribute("keyword", cri.getKeyword());
+  		
+  		return "redirect:/qna/read";
+  	}
 }

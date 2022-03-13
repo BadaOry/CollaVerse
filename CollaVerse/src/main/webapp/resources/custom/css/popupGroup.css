@@ -1,0 +1,156 @@
+@charset "UTF-8";
+ul {
+	list-style : none;
+}
+
+.all {
+	background-color: rgba( 0, 0, 0, 0.5 );
+
+}
+.zTree-h1 {
+	font-weight : 350;
+	font-size :21px;
+}
+.zTree-h3 {
+	font-size : 15px;
+	font-weight : 450;
+	margin : 0;
+}
+.group {
+	width : 580px;
+	box-shadow : 0 5px 15px rgba(0,0,0,.5);
+	margin : 0 auto;
+	border : 1px solid #ddd;
+	display : none;
+}
+
+.group-head {
+	height : 50px;
+	border-bottom : 1px solid #34aadc;
+	position : relative;
+	background-color : white;
+}
+.close-button {
+	position : absolute;
+	top: 12px;
+	right : 10px;
+	border: 0;
+    background: #34aadc;
+    width: 70px;
+    height: 27px;
+    cursor: pointer;
+    color: white;
+	border-radius: 6px;
+}
+.group-body {
+	height :483px;
+	position : relative;
+	background-color : white;
+}
+
+.dept {
+	width : 250px;
+	margin-left : 20px;
+	background-color : white;
+	padding-top : 20px;
+}
+.dept-head {
+	height : 30px;
+	background-color : #D6E3F4;
+	border: 1px solid #34aadc;
+	border-bottom : 0;
+	font-size : 14px;
+	text-align : center;
+	color: white;
+	font-weight : 600;
+}
+.dept-body {
+	border: 1px solid #34aadc;
+}
+.position {
+	width : 252px;
+	border: 1px solid #34aadc;
+	position : absolute;
+	top : 20px;
+	right : 20px;
+}
+.position-head {
+	height : 30px;
+	background-color : #D6E3F4;
+	font-size : 14px;
+	text-align : center;
+	color : white;
+	font-weight : 600;
+}
+.position-body {
+	height : 300px;
+	border-top: 1px solid #34aadc;
+}
+
+.position-button {
+	width : 250px;
+	border: none;
+   background: white;
+   border-bottom: 1px solid #34aadc;
+   height: 50px;
+   padding : 0px;
+   cursor: pointer;
+}
+.tree-button {
+	list-style: none;
+	border: none;
+	background: white;
+	line-height: 16px;
+	padding: 0;
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.tree-button-sub {
+	list-style: none;
+	border: none;
+	background: white;
+	line-height: 14px;
+	padding: 0;
+	cursor: pointer;
+	font-size : 13px;
+	font-weight: 100;
+}
+,group-foot {
+	height : 100px;
+}
+.result-view-zone {
+	width : 400px;
+	margin : 0 auto;
+	text-align : center;
+	position : relative;
+	margin-top : 20px;
+	font-size : 17px;
+}
+.result-view-zone button {
+	border: 0;
+	background: white;
+}
+.result-dept {
+	width : 100px;
+	margin-left : 100px;
+}
+.result-rank {
+	width : 100px;
+	position : absolute;
+	top : 0px;
+	right : 138px;
+}
+.ok-button {
+	width: 70px;
+	height: 27px;
+	float: right;
+    margin-right: 20px;
+    border: 0;
+    background: #34aadc;
+    margin-top: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    color: white;
+    border-radius: 6px;
+}
