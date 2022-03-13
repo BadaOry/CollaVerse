@@ -36,6 +36,9 @@ public class FollowController {
 	public ModelAndView followMain(ModelAndView model,
 			@SessionAttribute("loginMember") Member loginMember) {
 	
+		this.follow_follower(model, loginMember);
+		this.follow_following(model, loginMember);
+		
 		model.setViewName("/mypage/myFollow/main");
 		
 		return model;

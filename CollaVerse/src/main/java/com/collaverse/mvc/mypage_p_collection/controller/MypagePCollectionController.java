@@ -223,20 +223,67 @@ public class MypagePCollectionController {
 	// ▼ 모달에서 컬렉션 수정 버튼을 눌렀을 때 동작하는 메소드
 	@PostMapping("/mypage/collection/update")
 	public ModelAndView update(@SessionAttribute("loginMember") Member loginMember,
-			@RequestParam("cltNo") int cltNo, @RequestParam("content") String updatecontent, 
+			@RequestParam("cltNo") int cltNo, 
+			@RequestParam("content") String updatecontent, 
+			@RequestParam("upfile") List<MultipartFile> upfile,
 			ModelAndView model) {
-	
-		log.info("[Controller] update 할 컬렉션의 cltNo 를 잘 받아왔는지 출력 : {}", cltNo);
-		log.info("[Controller] update 할 컬렉션의 cltContent 를 잘 받아왔는지 출력 : {}", updatecontent);
-
+		
 		MypagePCollection mypagePCollection = service.findCollectionByNo(cltNo);
 		
 		log.info("[Controller] update 할 컬렉션의 정보 출력 : {}", mypagePCollection);
+	
+		log.info("[Controller] update 할 컬렉션의 cltNo 를 잘 받아왔는지 출력 : {}", cltNo);
+		log.info("[Controller] update 할 컬렉션의 cltContent 를 잘 받아왔는지 출력 : {}", updatecontent);
+		log.info("[Controller]  update 할 컬렉션의 cltNo 를 잘 받아왔는지 출력 : {}", upfile);
 		
+		if(upfile != null) {
+			log.info("upfile 이 생겨서 업데이트 하려고 함");
+			
+			for (MultipartFile mf : upfile) {
+				String originalFileName = mf.getOriginalFilename();
+				boolean upfileIsEmpty = mf.isEmpty();
+				
+				log.info("[Controller] originalFileName 확인 : {}", originalFileName);
+				log.info("[Controller] upfile is Empty 확인 : {}", upfileIsEmpty);
+				
+				
+				// 1. 파일을 업로드 했는지 확인 후, rename 하여 VO 에 set & 지정 위치에 upfile 저장
+				if (mf != null && !mf.isEmpty()) {
+					String location = null;
+					String renamedFileName = null;					
+					
+					try {
+						location = resourceLoader.getResource("resources/upload/collection").getFile().getPath();						
+						renamedFileName = FileProcess.save(mf, location);
+						
+						log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);									
+						
+						if (renamedFileName != null) {
+							mypagePCollection.setOriginalFileName01(originalFileName);
+							mypagePCollection.setRenamedFileName01(renamedFileName);
+							
+							log.info("[Controller] originalFileNam 정보 확인 : {}", originalFileName);
+							log.info("[Controller] renamedFileName 정보 확인 : {}", renamedFileName);
+							
+						}
+					} catch (IOException e) {
+						System.out.println("renamedFileName 불러오기 실패..");
+						e.printStackTrace();
+					}
+					
+				}
+			}
+			
+		}
+
+		
+		// 2. 업데이트 할 clt 내용 set
 		mypagePCollection.setCltContent(updatecontent);
 		
 		log.info("[Controller] content 내용이 update 된 컬렉션의 정보 출력 : {}", mypagePCollection);
 		
+		
+		// 3. update 된 내용의 mypagePCollection 저장
 		int result = 0;
 		
 		result= service.save(mypagePCollection);

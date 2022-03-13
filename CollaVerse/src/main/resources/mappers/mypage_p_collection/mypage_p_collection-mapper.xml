@@ -74,10 +74,12 @@
 	
 	
 	<update id="updateMypagePCollection" parameterType="com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection">
-		UPDATE MYPAGE_P_COLLECTION MPC
-		SET MPC.CLT_CONTENT = #{ cltContent },
-			MPC.CLT_MODIFY_DATE = SYSDATE
-		WHERE MPC.CLT_NO = #{ cltNo }
+		UPDATE MYPAGE_P_COLLECTION 
+		SET CLT_IMG_01_ONAME = #{ originalFileName01 }, 
+		    CLT_IMG_01_RNAME = #{ renamedFileName01 },
+		    CLT_CONTENT = #{ cltContent },
+			CLT_MODIFY_DATE = SYSDATE
+		WHERE CLT_NO = #{ cltNo }
 	</update>
 	
 	

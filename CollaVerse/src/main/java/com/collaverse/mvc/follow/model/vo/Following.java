@@ -21,6 +21,8 @@ public class Following {
 	
 	private String toMemNick;
 	
+	private String toMemId;
+	
 	private Date followingCreateDate;
 	
 	private int followerCheck;
