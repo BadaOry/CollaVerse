@@ -9,6 +9,7 @@ import org.apache.ibatis.session.RowBounds;
 import com.collaverse.mvc.collabo.model.vo.Heart;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
+import com.collaverse.mvc.collabo.model.vo.WritePromotion;
 
 @Mapper
 public interface CollaboMapper {
@@ -59,6 +60,8 @@ public interface CollaboMapper {
 	List<Product> selectTproduct();
 
 	List<Product> selectFsproduct();
+
+	int insertPromotion(WritePromotion writepromotion);
 
 
 

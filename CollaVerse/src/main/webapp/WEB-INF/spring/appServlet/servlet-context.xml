@@ -37,7 +37,7 @@
 			<mapping path="/member/myPage"/>
 			<mapping path="/member/myPage_business"/>
 			<mapping path="/member/update"/>
-			<mapping path="/collabo/promotion/writing_promotion"/>
+			<!-- <mapping path="/collabo/promotion/writing_promotion"/> -->
 			
 			<!-- 인터셉터를 제외시킬 요청(컨트롤러) 선택 -->
 			<exclude-mapping path="/member/enroll"/>
