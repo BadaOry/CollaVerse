@@ -28,22 +28,72 @@
 		</div>
 		
 		
-		<div id="following_container">
-			<p class="minimini_tilte" onclick="location.href='${ path }/mypage/myFollow/following'">나의 팔로우</p><p id="count"> - n 명</p>
+		<div class="follower_wrap" id="following_container">
+			<p class="minimini_tilte" onclick="location.href='${ path }/mypage/myFollow/following'">나의 팔로우</p><p id="count"> - ${ followingCount } 명</p>
 			
-			<div class="member_container">
+			<c:choose>
+			
+				<c:when test="${ !empty followingList }">
 				
-			</div>
+					<c:forEach var="followingList" items="${ followingList }">
+							
+						<div class="member_info_container">
+							<img id="profile_image" src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" 					
+								 onclick="location.href='${ path }/mypage/collection/list/${ followingList.toMemId }'" />
+								 
+							<p id="member_nickname">${ followingList.toMemNick }</p>	
+						</div>
+						
+					</c:forEach>
+				
+					<div class="plus_container">
+						<span onclick="location.href='${ path }/mypage/myFollow/follower'"> ▶ 더보기 </span>
+					</div>
+					
+				</c:when>
+				
+				<c:otherwise>
+				
+					<p id="no_followernList">팔로우가 존재하지 않습니다.</p>
+					
+				</c:otherwise>
+				
+			</c:choose>
+				
+				
+	
 		</div>
 		
 		
-		<div id="follower_container">
-			<p class="minimini_tilte" onclick="location.href='${ path }/mypage/myFollow/follower'">나의 팔로워</p><span id="count"> - n 명</span>
-			
-			<div class="member_container">
+		<div class="follower_wrap" id="follower_container">
+			<p class="minimini_tilte" onclick="location.href='${ path }/mypage/myFollow/follower'">나의 팔로워</p><span id="count"> - ${ followerCount } 명</span>
 				
-			</div>
+				<c:choose>
+					<c:when test="${ !empty followerList }">
+						<c:forEach var="followerList" items="${ followerList }" begin="0" end="6">
+						
+							<div class="member_info_container">
+								<img id="profile_image" src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG"
+									onclick="location.href='${ path }/mypage/collection/list/${ followerList.toMemId }'" />
+								<p id="member_nickname">${ followerList.toMemNick }</p>	
+							</div>
+						
+						</c:forEach>
+						
+						<div class="plus_container">
+							<span onclick="location.href='${ path }/mypage/myFollow/follower'"> ▶ 더보기 </span>
+						</div>
+						
+					</c:when>
 					
+					<c:otherwise>
+				
+						<p id="no_followernList">팔로워가 존재하지 않습니다.</p>
+					
+					</c:otherwise>
+				
+				</c:choose>
+											
 		</div>
     
     </section>    
