@@ -1,5 +1,6 @@
 package com.collaverse.mvc.member.cotroller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -22,8 +24,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.collaverse.mvc.common.util.FileProcess;
 import com.collaverse.mvc.member.model.service.MemberService;
 import com.collaverse.mvc.member.model.vo.Member;
 
@@ -37,6 +41,9 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private ResourceLoader resourceLoader;
 	
 	// 로그인 페이지로 이동
 	@GetMapping("/member/login")
@@ -190,11 +197,49 @@ public class MemberController {
 	public ModelAndView update(
 			ModelAndView model,
 			@SessionAttribute(name="loginMember") Member loginMember,
-			@ModelAttribute Member member) {
+			@ModelAttribute Member member,
+			@RequestParam("profile_img") MultipartFile upfile) {
 		
 		log.info("컨트롤러로 요청 오는지 확인");
 		
 		int result = 0;
+		
+		// 여기서부터 이미지 넣는 코드 작업
+	
+			String originalFileName = upfile.getOriginalFilename();
+			boolean upfileIsEmpty = upfile.isEmpty();
+			
+			log.info("[Controller] originalFileName 확인 : {}", originalFileName);
+			log.info("[Controller] upfile is Empty 확인 : {}", upfileIsEmpty);
+			
+			
+		// 1. 파일을 업로드 했는지 확인 후, rename 하여 VO 에 set & 지정 위치에 upfile 저장
+			if (upfile != null && !upfile.isEmpty()) {
+				String location = null;
+				String renamedFileName = null;					
+				
+				try {
+					location = resourceLoader.getResource("resources/upload/profile").getFile().getPath();						
+					renamedFileName = FileProcess.save(upfile, location);
+					
+					log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);									
+					
+					if (renamedFileName != null) {
+						member.setProfile_img(originalFileName);
+//						member.setRenamedFileName01(renamedFileName);
+						
+						log.info("[Controller] originalFileName 정보 확인 : {}", originalFileName);
+						log.info("[Controller] renamedFileName 정보 확인 : {}", renamedFileName);
+						
+					}
+				} catch (IOException e) {
+					System.out.println("renamedFileName 불러오기 실패..");
+					e.printStackTrace();
+				}
+				
+			}
+
+			/////
 		
 		member.setNo(loginMember.getNo());
 		
