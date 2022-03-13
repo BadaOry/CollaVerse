@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
+import com.collaverse.mvc.collabo.model.vo.WritePromotion;
 import com.collaverse.mvc.common.util.PageInfo;
 
 public interface PromotionService {
@@ -17,6 +18,8 @@ public interface PromotionService {
 	List<Product> getProductInfo(int pmtNo);
 
 	int heartCheck(int pmtNo, int heartMemNo);
+
+	int promotionsave(WritePromotion writepromotion);
 
 //	List<Promotion> pmtMainList();
 

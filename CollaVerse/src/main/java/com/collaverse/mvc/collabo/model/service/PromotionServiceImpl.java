@@ -5,10 +5,12 @@ import java.util.List;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.collaverse.mvc.collabo.model.dao.CollaboMapper;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
+import com.collaverse.mvc.collabo.model.vo.WritePromotion;
 import com.collaverse.mvc.common.util.PageInfo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -106,6 +108,22 @@ public class PromotionServiceImpl implements PromotionService {
 		log.info("[ServiceImpl] heartCheck 를 위해 heartMemNo 잘 가져오는지 확인 : {}", heartMemNo);
 	
 		return mapper.heartCheck(pmtNo, heartMemNo);
+	}
+
+
+	@Override
+	@Transactional
+	public int promotionsave(WritePromotion writepromotion) {
+		int result = 0;
+		
+		if (writepromotion.getRenamedFileName() != null) {
+			// update
+		} else {
+			// insert
+			result = mapper.insertPromotion(writepromotion);
+		}
+		
+		return result;
 	}
 
 }

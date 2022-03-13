@@ -1,10 +1,12 @@
 package com.collaverse.mvc.collabo.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,6 +23,8 @@ import com.collaverse.mvc.collabo.model.vo.Heart;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
 import com.collaverse.mvc.collabo.model.vo.WritePromotion;
+import com.collaverse.mvc.common.util.FileProcess;
+import com.collaverse.mvc.common.util.ProductFileProcess;
 import com.collaverse.mvc.common.util.PromotionFileProcess;
 import com.collaverse.mvc.member.model.vo.Member;
 
@@ -32,6 +36,10 @@ public class PromotionController {
 	@Autowired
 	private PromotionService service;
 	
+	
+	@Autowired
+	private ResourceLoader resourceLoader;
+	
 	// 프로모션 작성 페이지로 이동
 	@GetMapping("/collabo/promotion/writing_promotion")
 	public String writingpromotion() {
@@ -40,11 +48,15 @@ public class PromotionController {
 	}
 	
 	@PostMapping("/collabo/promotion/writing_promotion")
-	public ModelAndView writingpromotion(ModelAndView model, HttpServletRequest request,
+	public ModelAndView writingpromotion(ModelAndView model,/* HttpServletRequest request,*/
+			@SessionAttribute(name="loginMember") Member loginMember,
 			@ModelAttribute WritePromotion writepromotion,
 			@RequestParam("promImg") MultipartFile promImg, @RequestParam("prodImg") MultipartFile[] prodImg) {
+		int result = 0;
 		
-		log.info(writepromotion.toString());
+		log.info("[Controller] 요청이 오는지 확인 ");
+		
+		log.info("writepromotion 출력 {} ", writepromotion.toString());
 		
 		log.info("promImg Name : {}", promImg.getOriginalFilename());
 		log.info("promImg is Empty : {}", promImg.isEmpty());
@@ -56,22 +68,104 @@ public class PromotionController {
 		log.info("prodImg3 Name : {}", prodImg[2].getOriginalFilename());
 		log.info("prodImg3 is Empty : {}", prodImg[2].isEmpty());
 		
+		String location = null;
+		
+		// Promotion 이미지 파일명 바꾸기
 		if (promImg != null && !promImg.isEmpty()) {
-			String renamedFileName = null; 
-			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
-			System.out.println(location); 
 			
-			renamedFileName = PromotionFileProcess.promotionsave(promImg, location);
+			String renamedFileName = null;
+//			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
+			try {
+				location = resourceLoader.getResource("resources/upload/promotion").getFile().getPath();
+				renamedFileName = PromotionFileProcess.promotionsave(promImg, location);
+				
+				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}						
 			
-//			if(renamedFileName != null) {
-//				writepromotion.setOriginalFileName(promImg.getOriginalFilename());
-//				writepromotion.setRenamedFileName(renamedFileName);
-//			}
-			
+			if(renamedFileName != null) {
+				writepromotion.setOriginalFileName(promImg.getOriginalFilename());
+				writepromotion.setRenamedFileName(renamedFileName);
+			}
 		}
 		
+		// Product1 이미지 파일명 바꾸기
+		if (prodImg != null && !prodImg[0].isEmpty()) {
+			
+			String renamedFileName = null;
+//			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
+			try {
+				location = resourceLoader.getResource("resources/upload/promotion/product").getFile().getPath();
+				renamedFileName = ProductFileProcess.productsave(prodImg, location);
+				
+				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}						
+			
+			if(renamedFileName != null) {
+				writepromotion.setOriginalFileName(promImg.getOriginalFilename());
+				writepromotion.setRenamedFileName(renamedFileName);
+			}
+		}
 		
-		model.setViewName("/collabo/promotion/writing_promotion");
+		// Product2 이미지 파일명 바꾸기
+		if (prodImg != null && !prodImg[1].isEmpty()) {
+			
+			String renamedFileName = null;
+//			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
+			try {
+				location = resourceLoader.getResource("resources/upload/promotion/product").getFile().getPath();
+				renamedFileName = ProductFileProcess.productsave1(prodImg, location);
+				
+				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}						
+			
+			if(renamedFileName != null) {
+				writepromotion.setOriginalFileName(promImg.getOriginalFilename());
+				writepromotion.setRenamedFileName(renamedFileName);
+			}
+		}
+		// Product3 이미지 파일명 바꾸기
+		if (prodImg != null && !prodImg[2].isEmpty()) {
+			
+			String renamedFileName = null;
+//			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
+			try {
+				location = resourceLoader.getResource("resources/upload/promotion/product").getFile().getPath();
+				renamedFileName = ProductFileProcess.productsave2(prodImg, location);
+				
+				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}						
+			
+			if(renamedFileName != null) {
+				writepromotion.setOriginalFileName(promImg.getOriginalFilename());
+				writepromotion.setRenamedFileName(renamedFileName);
+			}
+		}
+		
+		// 작성한 프로모션 데이터를 DB에 저장
+		writepromotion.setWriterNo(loginMember.getNo());
+		result = service.promotionsave(writepromotion);
+		
+		if (result > 0) {
+			model.addObject("msg", "프로모션이 정상적으로 등록되었습니다.");
+			model.addObject("location", "/collabo/promotion/detail?pmtNo=");
+		} else {
+			model.addObject("msg", "프로모션 등록에 실패하였습니다.");
+			model.addObject("location", "/collabo/promotion/writing_promotion");
+		}
+		
+		model.setViewName("common/msg");
 		
 		return model;
 	}
@@ -165,4 +259,10 @@ public class PromotionController {
 	}
 
 
+	
+	@GetMapping("/collabo/promotion/writetest")
+	public String writetestpage() {
+		
+		return "/collabo/promotion/writetest";
+	}
 }
