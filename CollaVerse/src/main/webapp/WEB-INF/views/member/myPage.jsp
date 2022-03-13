@@ -21,7 +21,8 @@
 <h1 class="mini_title">개인 회원정보 수정</h1>
 <div id="view-container">
 	<div align="center">
-	<form id="memberFrm" action="${ path }/member/update" method="post">	
+	<form id="memberFrm" action="${ path }/member/update" method="post"
+		enctype="multipart/form-data">	
 		<table>
 			  <tr>
                 <th>아이디</th>
@@ -33,8 +34,7 @@
          <tr>
                 <th>비밀번호</th>
             <td>
-               <input type="password" name="password" id="pass1" 
-                  value="${ loginMember.password }" required >
+               <input type="password" name="password" id="pass1" value="${ loginMember.password }" required >
             </td>    
             </tr>
             <tr>

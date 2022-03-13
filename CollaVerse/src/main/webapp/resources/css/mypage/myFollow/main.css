@@ -12,7 +12,7 @@
 	font-size: 20px;
 	text-align: left;
 	color: #730e74;
-	margin: 50px 0 30px 150px;
+	margin: 50px 0 30px 0;
 	width: 15%;
 	display: inline-block;
 }
@@ -21,4 +21,73 @@
 	font-family: 'DOSGothic';
 	font-size: 20px;
 	display: inline-block;
+	width: 75%;
+	color: #86758c;
+}
+
+
+#profile_image{
+	width: 150px;
+	height: 150px;
+}
+
+/*
+.member_container {
+	margin: 0 150px 80px 150px;
+}
+*/
+
+#member_nickname {
+	text-align: center;
+}
+
+.member_info_container {
+	/* height: 200px; */
+	margin: 21px 10px 0 11px;
+	display: inline-block;
+	/* text-align: center; */
+} 
+
+#followerList_nothing {
+    text-align : center;
+    margin: 150px 0 150px 0px;
+    font-family: 'Sam3KRFont';
+    font-size: 30px;
+    color: #dbeaf8;
+    text-shadow: 4px 4px 0px #faaf22;
+}
+
+.follower_wrap {
+	margin: 0 0 -30px 150px;
+}
+.follower_wrap:last-of-type {
+	margin: 0 0 80px 150px;
+}
+
+.plus_container {
+	display : inline-block;
+	/* padding: 70px 0 70px 0; */
+	/* margin: auto; */
+}
+
+.plus_container {
+    font-family: 'DOSGothic';
+    padding: 0px 0 198px;
+    vertical-align: middle;
+    color: #730e74;
+    cursor: pointer;
+}
+
+.plus_container:hover{
+    color: #faae22;
+}
+
+#no_followernList {
+	text-align: left;
+	margin: 20px 0 20px 0px;
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #dbeaf8;
+	text-shadow: 4px 4px 0px #faaf22;
+	/* text-shadow: -4px -4px 0px #faaf22; */
 }

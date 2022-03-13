@@ -97,7 +97,7 @@
         				<td>
         					<c:if test="${ empty loginMember }">
 			        			<img src="${ path }/resources/images/promotion_deatil_heart/heart_empty.png" style="width:30px; hegith:30px"
-			        				onclick="cantUpdateHeart()"> 
+			        				onclick="updateHeart()"> 
         					</c:if>
         					<c:if test="${ !empty loginMember }">  		
         						<c:if test="${ heartCheck == 0 }">				
@@ -118,7 +118,7 @@
         		</table>
         	</div>     	
         	<div style="width: 90%; float: left">
-		        <p><strong>${ promotionInfo.title }</strong></p>
+		        <p><input type="text" name="promName" id="title"></p>
         	</div>
         <hr>
     </div>
@@ -128,9 +128,7 @@
     </div>
 
     <div class="p_content">
-        <p>
-            ${ promotionInfo.content }
-        </p>
+        <textarea name="promContent" cols="100" rows="15" ></textarea>
     </div>    
 
     <div class="category_detail">
@@ -301,7 +299,7 @@
 <script>	
 	var pmt_no = ${ promotionInfo.no };
 	var heart_mem_no = ${ loginMember.no };
-		
+	
 	function updateHeart() {
 		$.ajax({
 			type : "POST",
@@ -323,19 +321,9 @@
 				}
 			}
 				
-		});		
-	}	
+		});
+	}
 </script>
-
-
-<script>
-
-	function cantUpdateHeart() {	
-			alert("로그인 후 이용해주세요.");	
-		}
-</script>	
-
-	
 
 </body>
 </html>
