@@ -17,6 +17,8 @@ public class Follower {
 	
 	private String toMemNick;
 	
+	private String toMemId;
+	
 	private int fromMemNo;
 	
 	private String fromMemNick;

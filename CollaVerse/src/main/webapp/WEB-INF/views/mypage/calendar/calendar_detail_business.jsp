@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>calendar_detail</title>
+<title>CollaVerse</title>
 
 <link rel="stylesheet" href="${ path }/resources/css/mypage/calendar/calendar.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">

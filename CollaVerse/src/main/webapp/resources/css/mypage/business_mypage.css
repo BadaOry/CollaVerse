@@ -38,15 +38,17 @@
 	height: 600px;
 	margin-bottom: 40px;
 }
-#business #brand-follower p {
+#business #brand-follower>p {
   font-size: 40px;
 }
 #business #brand-follower #follower {
   display: flex;
   position: relative;
+  justify-content: center;
 }
 #business #brand-follower #follower article {
   margin-right: 25px;
+  height: 100px
 }
 #business #brand-follower article img {
   text-align:center;
@@ -61,16 +63,19 @@
   font-size: 20px;
 }
 #business #brand-follower #follower article .material-icons {
-  position: absolute;
+  /* position: absolute; */
   margin-top: 15px;
   font-size: 60px;
   left: 690px;
+  color: #730e74;
 }
 #business #brand-follower #follower article .text {
   font-size: 15px;
-  position: absolute;
+  /* position: absolute; */
   bottom: 40px;
   left: 695px;
+  color: #730e74;
+  /* padding: 0 0 30px 0; */
 }
 #business #statistics p {
   margin-top: 70px;
@@ -99,4 +104,124 @@
 #business #statistics #follower-statistic ul li {
   padding-left: -5px;
   font-size: 20px;
+}
+
+
+
+.mini_title {
+	/* 고정값 */
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #730e74;
+	/* 변경값 */
+	text-align: left;
+	margin: 50px 0 30px 150px; 
+	width: 60%;
+}
+
+#memebr_nickname {
+	text-shadow: 3px 3px 0px #faaf22;
+}
+
+#col {
+	color: #550c81;
+}
+
+#ver {
+	color: #8c116c;
+}
+
+#se {
+	color: #ae165f;
+}
+
+/*
+.arrow_right:hover {
+	background-color: #faae22;
+}
+*/
+.more:hover {
+	background-color: #faae22;
+}
+
+#no_followernList {
+	text-align: left;
+	margin: 20px 0 20px 150px;
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #dbeaf8;
+	text-shadow: 4px 4px 0px #faaf22;
+	display: inline-block;
+	/* text-shadow: -4px -4px 0px #faaf22; */
+}
+
+#profile_image {
+	width: 150px;
+	height: 150px;
+}
+
+/*
+.member_container {
+	margin: 0 150px 80px 150px;
+}
+*/
+
+#member_nickname {
+	font-family: 'DOSGothic';
+	text-align: center;
+	font-size: 20px;
+}
+
+.member_info_container {
+	margin: 0 20px 0 0 ;
+}
+
+/* 컬렉션 */
+#person #person-collection p {
+  margin-top: 70px;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+#person #person-collection #collection {
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+#brand #brand-collection #collection article {
+  margin-right: 25px;
+  height: 100px;
+}
+#brand #brand-collection article img {
+  text-align:center;
+  width: 90px;
+  height: 90px;
+  margin-bottom: 2px;
+}
+#brand #brand-collection #collection article div {
+  text-align: center;
+  font-size: 20px;
+}
+#brand #brand-collection #collection article .material-icons {
+  /* position: absolute; */
+  margin-top: 15px;
+  font-size: 60px;
+  left: 690px;
+  color: #730e74;
+}
+#brand #brand-collection #collection article .text {
+  font-size: 15px;
+  /* position: absolute; */
+  bottom: 40px;
+  left: 695px;
+  color: #730e74;
+}
+
+#collection  article .material-icons {
+  /* position: absolute; */
+  margin-top: 15px;
+  font-size: 60px;
+  left: 690px;
+  color: #730e74;
+  /* display: inline-block; */
+  width: 60px;
 }

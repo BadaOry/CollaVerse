@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+.add-button {
+    position: absolute;
+    top: 1px;
+    right: 230px;
+    background: #2C3E50;
+    border: 0;
+    color: white;
+    height: 35px;
+    border-radius: 3px;
+    width: 157px;
+}
+
+<!-- -->
+
+ul {
+	list-style : none;
+}
+
+.all {
+	background-color: rgba( 0, 0, 0, 0.5 );
+
+}
+.zTree-h1 {
+	font-weight : 350;
+	font-size :21px;
+}
+.zTree-h3 {
+	font-size : 15px;
+	font-weight : 450;
+	margin : 0;
+}
+.group {
+	width : 580px;
+	box-shadow : 0 5px 15px rgba(0,0,0,.5);
+	margin : 0 auto;
+	border : 1px solid #ddd;
+}
+
+.group-head {
+	height : 50px;
+	border-bottom : 1px solid #34aadc;
+	position : relative;
+	background-color : white;
+}
+.close-button {
+	position : absolute;
+	top: 12px;
+	right : 10px;
+	border: 0;
+    background: #34aadc;
+    width: 70px;
+    height: 27px;
+    cursor: pointer;
+    color: white;
+	border-radius: 6px;
+}
+
+.ok-button {
+	width: 70px;
+	height: 27px;
+	float: right;
+    margin-right: 20px;
+    border: 0;
+    background: #34aadc;
+    margin-top: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    color: white;
+    border-radius: 6px;
+}
+.group-body {
+	height :515px;
+	position : relative;
+	background-color : white;
+	margin-left: 40px;
+}
+
+.top {
+	height : 50px;
+	margin-top: 20px;
+}
+
+.subject {
+	border: 1px solid #34aadc;
+	border-radius: 5px;
+    width: 500px;
+    height: 30px;
+}
+
+.domain {
+	margin-top : 20px;
+}
+
+.date {
+	text-align: center;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid #34aadc;
+    width: 300px;
+    height: 25px;
+}
+
+.memo {
+	width : 500px;
+	resize : none;
+	border-radius : 5px;
+	border : 1px solid #34aadc;
+}

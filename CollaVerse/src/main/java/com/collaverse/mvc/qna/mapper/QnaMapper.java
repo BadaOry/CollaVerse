@@ -30,4 +30,5 @@ public interface QnaMapper {
     
     /* 게시판 총 갯수 */
     public int getTotal(Criteria cri);
+    
 }

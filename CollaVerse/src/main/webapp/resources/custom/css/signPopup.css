@@ -1,0 +1,201 @@
+@charset "UTF-8";
+ul {
+	list-style : none;
+}
+table {
+	border-collapse: collapse;
+}
+select {
+    width: 50px; /* 원하는 너비설정 */
+    padding: .3em .0em; /* 여백으로 높이 설정 */
+    border: 1px solid #999;
+	font-size : 12px;
+	background : white;
+}
+
+.all {
+	background-color: rgba( 0, 0, 0, 0.5 );
+
+}
+.zTree-h1 {
+	font-weight : 350;
+	font-size :21px;
+}
+.zTree-h3 {
+	font-size : 15px;
+	font-weight : 450;
+	margin : 0;
+}
+.group {
+	width : 945px;
+	box-shadow : 0 5px 15px rgba(0,0,0,.5);
+	margin : 0 auto;
+	border : 1px solid #ddd;
+}
+
+.group-head {
+	height : 50px;
+	border-bottom : 1px solid #34aadc;
+	position : relative;
+	background-color : white;
+}
+.close-button {
+	position : absolute;
+	top: 12px;
+	right : 10px;
+	border: 0;
+    background: #34aadc;
+    width: 70px;
+    height: 27px;
+    cursor: pointer;
+    color: white;
+	border-radius: 6px;
+}
+.group-body {
+	position : relative;
+	background-color : white;
+}
+
+.dept {
+	width : 250px;
+	margin-left : 20px;
+	background-color : white;
+	padding-top : 20px;
+}
+.dept-head {
+	height : 30px;
+	background-color : #D6E3F4;
+	border: 1px solid #34aadc;
+	border-bottom : 0;
+	font-size : 14px;
+	text-align : center;
+	color: white;
+	font-weight : 600;
+}
+.dept-body {
+	border: 1px solid #34aadc;
+}
+.rank {
+	width : 252px;
+	border: 1px solid #34aadc;
+	border-bottom: 0;
+	position : absolute;
+	top : 20px;
+	left : 320px;
+}
+.right-td {
+	border-right : 1px solid #34aadc;
+}
+.rank-head {
+	height : 30px;
+	background-color : #D6E3F4;
+	font-size : 14px;
+	text-align : center;
+	color : white;
+	font-weight : 600;
+	border-bottom: 1px solid #34aadc;
+}
+.rank-body {
+	height : 300px;
+	border-top: 1px solid #34aadc;
+}
+
+.rank-button {
+	width : 166px;
+	border: none;
+   background: white;
+   border-bottom: 1px solid #34aadc;
+   height: 25px;
+   padding : 0px;
+   cursor: pointer;
+}
+.rank-button-none {
+	width : 82px;
+	border: none;
+   background: white;
+   border-bottom: 1px solid #34aadc;
+   height: 25px;
+   padding : 0px;
+   cursor: default;
+}
+.rank-list {
+	
+}
+.final {
+	width : 300px;
+	border: 1px solid #34aadc;
+	border-bottom: 0;
+	position : absolute;
+	top : 20px;
+	left : 620px;	
+}
+.tree-button {
+	list-style: none;
+	border: none;
+	background: white;
+	line-height: 16px;
+	padding: 0;
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.tree-button-sub {
+	list-style: none;
+	border: none;
+	background: white;
+	line-height: 14px;
+	padding: 0;
+	cursor: pointer;
+	font-size : 13px;
+	font-weight: 100;
+}
+.signFinal {
+	
+}
+.signFinal tr {
+	border-bottom : 1px solid #34aadc;
+}
+.signFinal td {
+	padding : 0;
+	height : 25px;
+	font-size : 13px;
+	text-align : center;
+}
+.signFinal-dept {
+	width : 70px;
+	border-right : 1px solid #34aadc;
+	border-left : 1px solid #34aadc;
+}
+.signFinal-name {
+	width : 79px;
+	border-right : 1px solid #34aadc;
+}
+.signFinal-rank {
+	width : 50px;
+}
+
+.group-foot {
+	height : 100px;
+}
+.ok-button {
+	width: 70px;
+	height: 27px;
+	float: right;
+    margin-right: 20px;
+    border: 0;
+    background: #34aadc;
+    margin-top: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    color: white;
+    border-radius: 6px;
+}
+.cancle-button {
+	width : 48px;
+	color : white;
+	background: #394a59;
+}
+.path-button {
+	background :white;
+	border:0;
+}

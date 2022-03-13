@@ -236,4 +236,23 @@ th, td {
 }
 */
 
+/* 브랜드 */ 
+.brand_logo {
+    font-family: 'Nanum Gothic', sans-serif;
+    background-color: rgb(198, 182, 218);
+    height: 350px;
+    text-align: center;
+    margin: 3%;	
+}
+
+.brand_list p{
+    	font-family: 'Sam3KRFont';
+    	font-size: 30px;
+    	text-align: left;
+    	color: #730e74;
+    	margin: 30px 0 30px 50px;
+    	width: 60%;	
+}
+
+
 

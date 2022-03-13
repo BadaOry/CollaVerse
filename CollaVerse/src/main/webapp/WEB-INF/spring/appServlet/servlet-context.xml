@@ -19,6 +19,8 @@
 	<resources mapping="/dist/**" location="/resources/dist/"/>
 	<resources mapping="/plugins/**" location="/resources/plugins/"/>
 	<resources mapping="/js/**" location="/resources/js/" />
+	<resources mapping="/custom/**" location="/resources/custom/"/>
+	<resources mapping="/fullcalendar/**" location="/resources/fullcalendar/"/>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -37,13 +39,23 @@
 			<mapping path="/member/myPage"/>
 			<mapping path="/member/myPage_business"/>
 			<mapping path="/member/update"/>
+      
+      
+      <!-- Crystal Part -->
 			<mapping path="/collabo/promotion/writing_promotion"/>
-			
+			<mapping path="/mypage/collection/write"/>
+			<mapping path="/mypage/collection/update"/>
+			<mapping path="/mypage/collection/delete"/>
+			<mapping path="/collabo/promotion/detail/heart"/>
+			<mapping path="/mypage/follow/updateFollow"/>
+
+      
 			<!-- 인터셉터를 제외시킬 요청(컨트롤러) 선택 -->
 			<exclude-mapping path="/member/enroll"/>
 			<exclude-mapping path="/member/enroll_business"/>
 			<exclude-mapping path="/member/idCheck"/>
 		
+      
 			<!-- 인터셉터 등록 -->
 			<beans:bean id="loginCheckInterceptor" class="com.collaverse.mvc.common.interceptor.LoginCheckInterceptor"/>
 		</interceptor>

@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 public class WritePromotion {
 	private String promName;
 	
+	private int writerNo;
+	
 	private String writerId;
 	
 	private String prodName1;
@@ -31,4 +33,8 @@ public class WritePromotion {
 	private String prodContent3;
 	
 	private String promContent;
+
+	private String originalFileName;
+	
+	private String renamedFileName;
 }

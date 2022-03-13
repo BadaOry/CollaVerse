@@ -77,4 +77,5 @@ public class Criteria {
 				+ ", typeArr=" + Arrays.toString(typeArr) + "]";
 	}
     
+	
 }

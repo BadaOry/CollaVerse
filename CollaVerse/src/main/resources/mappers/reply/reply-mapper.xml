@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Mapper 설정 파일임을 선언 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.collaverse.mvc.reply.mapper.ReplyMapper">
+	<resultMap type="com.collaverse.mvc.reply.model.Reply" id="replyListResultMap">
+		<id property="rno" column="RNO" />
+		<result property="bno" column="BNO"/>
+		<result property="content" column="CONTENT"/>
+		<result property="writer" column="WRITER"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="modifyDate" column="MODIFY_DATE"/>
+	</resultMap>
+	
+	<!-- 댓글 조회 -->
+	<select id="readReply" parameterType="map" resultMap="replyListResultMap">
+    	select
+    		  RNO, CONTENT, WRITER, REG_DATE, MODIFY_DATE
+    	 FROM REPLY
+    	WHERE BNO = #{bno}
+	</select>
+	
+	<!-- 댓글 쓰기 -->
+	<insert id="writeReply">
+		INSERT INTO REPLY(
+			BNO, 
+			RNO, 
+			CONTENT,
+			WRITER
+		)
+		VALUES(    
+			#{bno}, 
+			SEQ_REPLY_NO.NEXTVAL,
+			#{content},
+			#{writer}	
+		)
+	</insert>
+</mapper>
+ 

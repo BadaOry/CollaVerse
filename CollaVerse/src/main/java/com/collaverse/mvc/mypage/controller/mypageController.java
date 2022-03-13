@@ -1,22 +1,161 @@
 package com.collaverse.mvc.mypage.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import java.util.List;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.collaverse.mvc.follow.controller.FollowController;
+import com.collaverse.mvc.follow.model.service.FollowService;
+import com.collaverse.mvc.member.model.vo.Member;
+import com.collaverse.mvc.mypage_p_collection.model.service.MypagePCollectionService;
+import com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class mypageController {
 
+	@Autowired
+	private FollowService fservice;
+	
+	@Autowired
+	private MypagePCollectionService cservice;
+	
+	
 	@GetMapping("/mypage/person_mypage")
-	public String person() {
+	public ModelAndView person(ModelAndView model, 
+			@SessionAttribute("loginMember") Member loginMember) {
+		// [ 팔로우 가져오기 ]
+		List<Map<String,String>> followingList = null;
+		int followingCount = 0;
+		int fromMemNo = loginMember.getNo();
 		
-		return "mypage/person_mypage";
+		// 1. Following 리스트 조회
+		followingList = fservice.getFollowingList(fromMemNo);
+		
+		log.info("[Controller] service 가 가져온 followingList 출력 : {}", followingList);
+		
+		// 2. Following 총 수 조회
+		followingCount = fservice.countFollowing(fromMemNo);
+		
+		log.info("[Controller] service 가 가져온 followingCount 출력 : {}", followingCount);
+		
+		model.addObject("followingList", followingList);	
+		model.addObject("followingCount", followingCount);		
+		
+		
+		
+		// [ 컬렉션 가져오기 ]
+		List<MypagePCollection> collectionList = null;
+		String noCollectionList = null;
+		String noWriterId = null;
+		String writerNickname = null;
+		int writerNo = 0;
+		String id = loginMember.getId();
+		fromMemNo = 0;
+
+		
+		
+		writerNo = cservice.getCollectionWriterNo(id);
+		int toMemNo = writerNo;
+		
+		writerNickname = cservice.getCollectionWriterNickname(id);
+		
+		log.info("[Controller] service 가 가져온 writerNickname 출력 : {}", writerNickname);
+
+		collectionList = cservice.getCollectionList(id);
+		
+		// list 에 아무것도 없는 경우, IndexOutOfBoundsException: Index 0 out of bounds for length 0 에러 방지
+		if (collectionList.size() == 0) { 
+			noCollectionList = "없음";
+			noWriterId = id;
+			
+			log.info("[Controller] noCollectionList 출력 : {}", noCollectionList);
+		}
+		
+	
+		model.addObject("collectionList", collectionList);
+		model.addObject("noCollectionList", noCollectionList);
+		model.addObject("noWriterId", noWriterId);
+		model.addObject("writerNickname", writerNickname);
+		model.addObject("writerNo", writerNo);
+		
+		model.setViewName("mypage/person_mypage");
+		
+		return model;
 	}
 	
+	
 	@GetMapping("/mypage/business_mypage")
-	public String business() {
+	public ModelAndView business(ModelAndView model, 
+			@SessionAttribute("loginMember") Member loginMember) {
+		// [ 팔로워 가져오기 ]
+		List<Map<String,String>> followerList = null;
+		int followerCount = 0;
+		int toMemNo = loginMember.getNo();
 		
-		return "mypage/business_mypage";
+		// 1. Follower 리스트 조회
+		followerList = fservice.getFollowerList(toMemNo);
+		
+		log.info("[Controller] service 가 가져온 followerList 출력 : {}", followerList);
+		
+		// 2. Follower 총 수 조회
+		followerCount = fservice.countFollower(toMemNo);
+		
+		log.info("[Controller] service 가 가져온 followerCount 출력 : {}", followerCount);
+		
+		
+		model.addObject("followerList", followerList);		
+		model.addObject("followerCount", followerCount);
+		
+		// [ 컬렉션 가져오기 ]
+		List<MypagePCollection> collectionList = null;
+		String noCollectionList = null;
+		String noWriterId = null;
+		String writerNickname = null;
+		int writerNo = 0;
+		String id = loginMember.getId();
+		toMemNo = 0;
+
+		
+		
+		writerNo = cservice.getCollectionWriterNo(id);
+		
+		int fromMemNo = writerNo;
+		
+		writerNickname = cservice.getCollectionWriterNickname(id);
+		
+		log.info("[Controller] service 가 가져온 writerNickname 출력 : {}", writerNickname);
+
+		collectionList = cservice.getCollectionList(id);
+		
+		// list 에 아무것도 없는 경우, IndexOutOfBoundsException: Index 0 out of bounds for length 0 에러 방지
+		if (collectionList.size() == 0) { 
+			noCollectionList = "없음";
+			noWriterId = id;
+			
+			log.info("[Controller] noCollectionList 출력 : {}", noCollectionList);
+		}
+		
+	
+		model.addObject("collectionList", collectionList);
+		model.addObject("noCollectionList", noCollectionList);
+		model.addObject("noWriterId", noWriterId);
+		model.addObject("writerNickname", writerNickname);
+		model.addObject("writerNo", writerNo);
+		
+		model.setViewName("mypage/business_mypage");
+		
+		return model;
 	}
+	
 	
 	@GetMapping("/mypage/calendar/calendar_detail")
 	public String calendar_person() {

@@ -1,5 +1,10 @@
 package com.collaverse.mvc.qna.controller;
 
+<<<<<<< HEAD
+import java.util.List;
+
+=======
+>>>>>>> bb100ce9c4e28f69b15119420be604e762653294
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +17,11 @@ import com.collaverse.mvc.qna.model.Criteria;
 import com.collaverse.mvc.qna.model.PageMakerDTO;
 import com.collaverse.mvc.qna.model.Qna;
 import com.collaverse.mvc.qna.service.QnaService;
+<<<<<<< HEAD
+import com.collaverse.mvc.reply.model.Reply;
+import com.collaverse.mvc.reply.service.ReplyService;
+=======
+>>>>>>> bb100ce9c4e28f69b15119420be604e762653294
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +33,12 @@ public class QnaController {
 	@Autowired
 	private QnaService qservice;
 	
+<<<<<<< HEAD
+	@Autowired
+	private ReplyService rservice;
+	
+=======
+>>>>>>> bb100ce9c4e28f69b15119420be604e762653294
 	/* 게시판 목록 페이지 접속(페이징 적용) */
     @GetMapping("/qnaList")
 	public void qnaListGET(Model model, Criteria cri) {
@@ -160,6 +176,14 @@ public class QnaController {
         model.addAttribute("cri", cri);
         
         System.out.println(qna.getBno());
+<<<<<<< HEAD
+        
+        // 댓글 조회
+        List<Reply> replyList = rservice.readReply(qna.getBno());
+        
+        model.addAttribute("reply", replyList);
+=======
+>>>>>>> bb100ce9c4e28f69b15119420be604e762653294
     }
     
     /* 수정 페이지 이동 */
@@ -192,4 +216,24 @@ public class QnaController {
         
         return "redirect:/qna/qnaList";
     }
+    
+<<<<<<< HEAD
+    //댓글 작성
+  	@PostMapping("/replyWrite")
+  	public String replyWrite(Reply vo, Criteria cri, RedirectAttributes rttr) throws Exception {
+  		
+  		log.info("reply Write");
+  		
+  		rservice.writeReply(vo);
+  		
+  		rttr.addAttribute("bno", vo.getBno());
+  		rttr.addAttribute("page", cri.getPageNum());
+  		rttr.addAttribute("perPageNum", cri.getAmount());
+  		rttr.addAttribute("searchType", cri.getType());
+  		rttr.addAttribute("keyword", cri.getKeyword());
+  		
+  		return "redirect:/qna/read";
+  	}
+=======
+>>>>>>> bb100ce9c4e28f69b15119420be604e762653294
 }

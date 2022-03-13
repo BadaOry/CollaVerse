@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>person_mypage</title>
+<title>CollaVerse</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
@@ -35,7 +35,7 @@
     </section>
 
 
-    <section id="person-calendar" 	>
+    <section id="person-calendar">
       <p class="mini_title">My 콜라보 캘린더</p>
       <a href="${ path }/mypage/calendar/calendar_detail">
       	<div id='calendar'></div>
@@ -43,70 +43,81 @@
     </section>
 
     <section id="person-follow">
-      <p class="mini_title">팔로우</p>
-      <div id="follow">
-        <article>
-          <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
-          <div>dd</div>
-        </article>
-        <article>
-          <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
-          <div>dd</div>
-        </article>
-        <article>
-          <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
-          <div>dd</div>
-        </article>
-        <article>
-          <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
-          <div>dd</div>
-        </article>
-        <article>
-          <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
-          <div>dd</div>
-        </article>
-        <article>
-          <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
-          <div>dd</div>
-        </article>
+   		<p class="mini_title">팔로우</p>
+    	<div id="follow">
+    	
+	    	<c:choose>
+				
+					<c:when test="${ !empty followingList }">
+					
+						<c:forEach var="followingList" items="${ followingList }"  begin="0" end="6">
+								
+							<div class="member_info_container">
+								<img id="profile_image" src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" 					
+									 onclick="location.href='${ path }/mypage/collection/list/${ followingList.toMemId }'" />
+									 
+								<p id="member_nickname">${ followingList.toMemNick }</p>	
+							</div>
+							
+						</c:forEach>
+
+						
+					</c:when>
+					
+					<c:otherwise>
+					
+						<p id="no_followernList">팔로우가 존재하지 않습니다.</p>
+						
+					</c:otherwise>
+					
+				</c:choose>
+
+        
         <article class="more">
-          <a href="####"><div class="material-icons arrow_right">arrow_right</div></a>
-          <%-- <a href="####"><div class="text">더보기</div></a> --%>
+        
+	        <a href="${ path }/mypage/myFollow/main">
+	        	<div class="material-icons arrow_right">arrow_right</div>
+	        </a>
+         
         </article>
+        
       </div>
     </section>
 
     <section id="person-collection" style="margin-bottom: 40px;">
-      <p class="mini_title">마이 컬렉션</p>
-      <div id="collection">
-        <article>
-          <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
-          <div>dd</div>
-        </article>
-        <article>
-          <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
-          <div>dd</div>
-        </article>
-        <article>
-          <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
-          <div>dd</div>
-        </article>
-        <article>
-          <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
-          <div>dd</div>
-        </article>
-        <article>
-          <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
-          <div>dd</div>
-        </article>
-        <article>
-          <a href="javascript:void(0)"><img src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" alt=""></a>
-          <div>dd</div>
-        </article>
+    	<p class="mini_title">마이 컬렉션</p>
+    	<div id="collection">
+	    	<c:choose>
+					
+						<c:when test="${ !empty collectionList }">
+						
+							<c:forEach var="collectionList" items="${ collectionList }" begin="0" end="6">
+									
+								<div class="member_info_container">
+									<img id="profile_image" src="${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }" />
+								</div>
+								
+							</c:forEach>
+							
+						</c:when>
+						
+						<c:otherwise>
+						
+							<p id="no_followernList">컬렉션이 존재하지 않습니다.</p>
+							
+						</c:otherwise>
+						
+					</c:choose>
+      
+        
         <article class="more">
-          <a href="####"><div class="material-icons arrow_right">arrow_right</div></a>
-          <%-- <a href="####"><div class="text">더보기</div></a> --%>
+          
+	        <a href="${ path }/mypage/collection/list/${ loginMember.id }">
+	        	<div class="material-icons arrow_right">arrow_right</div>
+	        </a>
+        
         </article>
+        
       </div>
     </section>
 

@@ -46,5 +46,13 @@
 	<context:component-scan base-package="com.collaverse.mvc.qna.model"></context:component-scan>
 	<context:component-scan base-package="com.collaverse.mvc.qna.service"></context:component-scan>
 	
+	<mybatis-spring:scan base-package="com.collaverse.mvc.reply.mapper"/>
+	<context:component-scan base-package="com.collaverse.mvc.reply.model"></context:component-scan>
+	<context:component-scan base-package="com.collaverse.mvc.reply.service"></context:component-scan>
+	
+	<mybatis-spring:scan base-package="com.collaverse.mvc.schedule.mapper"/>
+	<context:component-scan base-package="com.collaverse.mvc.schedule.model"></context:component-scan>
+	<context:component-scan base-package="com.collaverse.mvc.schedule.service"></context:component-scan>
+	
 </beans>
 

@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Collaverse</title>
+<title>CollaVerse</title>
 <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -53,6 +53,40 @@
    			</div>
    		</div>
    	</div>
+   	
+   	<!-- 댓글 -->
+	<p>댓글</p>
+	<div id="reply">
+	    <c:forEach items="${reply}" var="replyList">
+	        <p>
+	        작성자 : ${replyList.writer}<br />
+	        작성 날짜 :  <fmt:formatDate value="${replyList.regDate}" pattern="yyyy-MM-dd" />
+	        </p>
+	
+	        <p>${replyList.content}</p>
+	    </c:forEach>   
+	</div>
+   	
+   	
+   	<!-- 댓글작성 -->
+	<form name="replyForm" method="post">
+	  <input type="hidden" id="bno" name="bno" value="${pageInfo.bno}" />
+	  <input type="hidden" id="page" name="page" value="${cri.pageNum}"> 
+	  <input type="hidden" id="perPageNum" name="perPageNum" value="${cri.amount}"> 
+	  <input type="hidden" id="searchType" name="searchType" value="${cri.type}"> 
+	  <input type="hidden" id="keyword" name="keyword" value="${cri.keyword}"> 
+   	<p>
+	    <label>댓글 작성자</label>
+	    <input type="text" name="writer" />
+	</p>
+	<p>
+	  	<textarea rows="2" cols="100" name="content"></textarea>
+	</p>
+	<div>
+	 	 <button type="button" class="replyWriteBtn">작성</button>
+	</div>
+	</form>
+   	
 	<form id="infoForm" action="${ path }/qna/modify" method="get">
 		<input type="text" id="bno" name="bno" value='<c:out value="${pageInfo.bno}"/>' style='display:none;'>
 		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
@@ -85,5 +119,11 @@ $("#delete_btn").on("click", function(e){
     form.attr("method", "post");
     form.submit();
 });
+
+$(".replyWriteBtn").on("click", function(){
+	  var formObj = $("form[name='replyForm']");
+	  formObj.attr("action", "${ path }/qna/replyWrite");
+	  formObj.submit();
+	});
 </script>	
 </html>

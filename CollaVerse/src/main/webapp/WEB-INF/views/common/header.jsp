@@ -94,10 +94,11 @@
 					</c:if>
 					<c:if test="${ loginMember.role == '기업' }">
 						<li><a href="${ path }/mypage/business_mypage">My 콜라버스</a>
-							<ul>
+							<ul style="width: 600px; right:0px;">
 								<li><a class="header_nav1" href="${ path }/mypage/calendar/calendar_detail_business">My 콜라보 캘린더</a></li>
-								<li><a class="header_nav1" href="${ path }/statistics">팔로워 및 통계</a></li>
-								<li><a class="header_nav1" href="${ path }/mypage/memberinfo">회원 정보</a></li>
+								<li><a class="header_nav1" href="${ path }/statistics">통계</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/collection/list/${ loginMember.id }">MyCollection</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/myFollow/main">팔로우</a></li>
 							</ul>
 						</li>
 					</c:if>

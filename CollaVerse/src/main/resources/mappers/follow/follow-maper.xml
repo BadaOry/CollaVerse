@@ -31,16 +31,18 @@
 		<id property="followerNo" column="FOLLOWER_NO"/>
 		<result property="toMemNo" column="TO_MEM_NO"/>
 		<result property="toMemNick" column="NICKNAME"/>
+		<result property="toMemId" column="ID"/>
 		<result property="fromMemNo" column="FROM_MEM_NO"/>
 		<result property="followerCreateDate" column="FOLLOWER_CREATE_DATE"/>
 		<!-- 나중에 프로필 이미지도 추가해야함 -->
 	</resultMap>
 	
 		<resultMap type="com.collaverse.mvc.follow.model.vo.Following" id="FollowingMap">
-		<id property="followerNo" column="FOLLOWER_NO"/>
+		<id property="followingNo" column="FOLLOWING_NO"/>
 		<result property="fromMemNo" column="FROM_MEM_NO"/>
 		<result property="toMemNo" column="TO_MEM_NO"/>
 		<result property="toMemNick" column="NICKNAME"/>
+		<result property="toMemId" column="ID"/>
 		<result property="followingCreateDate" column="FOLLOWING_CREATE_DATE"/>
 		<!-- 나중에 프로필 이미지도 추가해야함 -->
 	</resultMap>
@@ -48,11 +50,16 @@
 	
 	<select id="getFollowerList" parameterType="_int" resultType="arrayList" 
 		resultMap="FollowerMap">
-		SELECT F.FOLLOWER_NO, F.TO_MEM_NO, M.NICKNAME,
-			F.FROM_MEM_NO, F.FOLLOWER_CREATE_DATE	<!-- 나중에 프로필 이미지도 추가해야함 -->
+		SELECT F.FOLLOWER_NO, F.TO_MEM_NO, F.TO_MEM_NO, M.NICKNAME, M.ID,
+			F.FROM_MEM_NO, F.FOLLOWER_CREATE_DATE <!-- 나중에 프로필 이미지도 추가해야함 -->
 		FROM FOLLOWER F
 		JOIN MEMBER M ON(M.MEMBER_NO = F.FROM_MEM_NO)
-		WHERE TO_MEM_NO = #{ toMemNo }		
+		WHERE F.FROM_MEM_NO IN (SELECT F.FROM_MEM_NO
+		                        FROM FOLLOWER F
+		                        JOIN MEMBER M ON(M.MEMBER_NO = F.TO_MEM_NO)
+		                        WHERE F.TO_MEM_NO = #{ toMemNo })
+			AND F.TO_MEM_NO = #{ toMemNo }	
+		ORDER BY FOLLOWER_CREATE_DATE DESC
 	</select>
 	
 	
@@ -65,11 +72,16 @@
 	
 	<select id="getFollowingList" parameterType="_int" resultType="arrayList" 
 		resultMap="FollowingMap">
-		SELECT F.TO_MEM_NO, M.NICKNAME,
-			F.FROM_MEM_NO, F.FOLLOWING_CREATE_DATE	<!-- 나중에 프로필 이미지도 추가해야함 -->
+		SELECT F.FOLLOWING_NO, F.TO_MEM_NO, M.NICKNAME, M.ID,
+			F.FROM_MEM_NO, F.FOLLOWING_CREATE_DATE <!-- 나중에 프로필 이미지도 추가해야함 -->
 		FROM FOLLOWING F
-		JOIN MEMBER M ON(M.MEMBER_NO = F.TO_MEM_NO)
-		WHERE F.FROM_MEM_NO = #{ fromMemNo }  
+		JOIN MEMBER M ON (F.TO_MEM_NO = M.MEMBER_NO)
+		WHERE F.TO_MEM_NO IN (SELECT F.TO_MEM_NO
+		                        FROM FOLLOWING F
+		                        JOIN MEMBER M ON(M.MEMBER_NO = F.TO_MEM_NO)
+		                        WHERE F.FROM_MEM_NO = #{ fromMemNo } ) 
+		    AND F.FROM_MEM_NO = #{ fromMemNo }
+		ORDER BY F.FOLLOWING_CREATE_DATE DESC
 	</select>
 
 
