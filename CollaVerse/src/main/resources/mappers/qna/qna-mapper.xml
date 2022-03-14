@@ -15,6 +15,12 @@
 		<result property="modifyDate" column="MODIFY_DATE"/>
 		<result property="readCount" column="READCOUNT"/>
 	</resultMap>
+      <result property="content" column="CONTENT"/>
+      <result property="writer" column="WRITER"/>
+      <result property="regDate" column="REG_DATE"/>
+      <result property="modifyDate" column="MODIFY_DATE"/>
+      <result property="readCount" column="READCOUNT"/>
+   </resultMap>
   
     <!-- 검색 조건문 -->
     <sql id="criteria">
@@ -56,6 +62,22 @@
 	</insert>
   
   	<!-- 게시판 목록 -->
+            BNO, 
+            TITLE, 
+            CONTENT, 
+            WRITER,
+            READCOUNT
+         ) 
+         values (
+            SEQ_QNA_NO.NEXTVAL, 
+            #{title}, 
+            #{content}, 
+            #{writer},
+            DEFAULT
+         )
+   </insert>
+  
+     <!-- 게시판 목록 -->
     <select id="getList" parameterType="map" resultMap="qnaListResultMap">
     
         SELECT * FROM QNA
