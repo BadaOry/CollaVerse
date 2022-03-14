@@ -222,3 +222,4 @@ public class QnaController {
         return "redirect:/qna/read";
      }
 }
+

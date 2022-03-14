@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 
+import com.collaverse.mvc.collabo.model.vo.Brand;
 import com.collaverse.mvc.collabo.model.vo.Heart;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
@@ -41,6 +42,10 @@ public interface CollaboMapper {
 	List<Product> selectCproduct();
 
 	List<Product> selectFproduct();
+	
+	List<Product> selectTproduct();
+
+	List<Product> selectFsproduct();
 
 	// 하트 관련 매퍼
 	void insertHeart(@Param("pmt_no") int pmtNo, @Param("heart_mem_no") int heartMemNo);
@@ -54,17 +59,15 @@ public interface CollaboMapper {
 	void minusHeartHit(@Param("pmt_no") int pmtNo);
 
 	void deleteHeart(@Param("pmt_no") int pmtNo, @Param("heart_mem_no") int heartMemNo);
-
-
-
-	List<Product> selectTproduct();
-
-	List<Product> selectFsproduct();
+	
 
 //	int insertPromotion(WritePromotion writepromotion);
 
 	// Promotion 테이블에 insert 돌릴 메소드 
 	int promotionSave(Promotion promotionVo);
+
+	// 브랜드 조회 
+	List<Brand> selectBrand();
 
 
 

@@ -15,22 +15,6 @@
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
-<!--  	
-   <div class="frame">
-        <nav class="colla_menu">
-            <ul>
-                <li><a onclick="location.href='${ path }/collabo/category/living/livingList'" >리빙</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/culture/cultureList'" >문화</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/food/foodList'" >식품</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/tech/techList'" >테크</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/fashion/fashionList'" >패션</a></li>
-                <li><a onclick="location.href='${ path }/collabo/brand/brand'" >브랜드</a></li>
-            </ul>
-        </nav>
-    </div>
--->    
-    
-
     <div class="category_list">
         <h3>문화</h3>
     </div>
