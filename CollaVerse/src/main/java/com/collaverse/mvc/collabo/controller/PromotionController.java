@@ -1,6 +1,7 @@
 package com.collaverse.mvc.collabo.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,8 +52,16 @@ public class PromotionController {
 	public ModelAndView writingpromotion(ModelAndView model,/* HttpServletRequest request,*/
 			@SessionAttribute(name="loginMember") Member loginMember,
 			@ModelAttribute WritePromotion writepromotion,
+			@RequestParam("promName") String promTitle,
+			@RequestParam("promContent") String promContent,
+			@RequestParam("startDate") Date startDate,
+			@RequestParam("endDate") Date endDate,
+			@RequestParam("c_no") String cNo,
 			@RequestParam("promImg") MultipartFile promImg, @RequestParam("prodImg") MultipartFile[] prodImg) {
 		int result = 0;
+		Promotion promotionVo = null;
+//		Product productVo = null;
+		String location  = null;
 		
 		log.info("[Controller] 요청이 오는지 확인 ");
 		
@@ -68,16 +77,45 @@ public class PromotionController {
 		log.info("prodImg3 Name : {}", prodImg[2].getOriginalFilename());
 		log.info("prodImg3 is Empty : {}", prodImg[2].isEmpty());
 		
-		String location = null;
 		
-		// Promotion 이미지 파일명 바꾸기
+		// [ Promotion 관련 내용 저장하기 ]
+		// 1. Promotion Vo 에 넣을 내용 set 하는 과정  
+		// pmt_no 는 쿼리에서 해결하자 시퀀스로 !
+		// pmt_title 은 받아와야함
+		promotionVo.setTitle(promTitle);
+		
+		// pmt_imgpath 는 쿼리에서 default 값으로 쓰자
+		// pmt_content 는 받아와야함
+		promotionVo.setContent(promContent);
+		
+		// pmt_status 는 쿼리에서 디콜트로 y
+		// start_date & end_date는 받아와야 함
+		// > 1. promotion/detail 페이지에서 start enddate 를 보여주는 공간이 없네요
+		//        > insert 문 구현 완료되면 지현님이랑 상의해서 어디넣을지 
+		promotionVo.setStartDate(startDate);
+		promotionVo.setEndDate(endDate);
+		
+		// readcount 는 쿼리문에서 0 부터 시작이니까
+		// c_no 는 받아와야함
+		promotionVo.setCNo(cNo);
+		// heart_hit 쿼리문에서 0 부터 시작 
+		
+		log.info("[Controller] promotionVo 에 내용이 잘 set 되었는지 확인 : {}", promotionVo);	
+		
+		result = service.promotionSave(promotionVo);		
+		
+		int promotionNo = promotionVo.getNo();
+		
+		log.info("[Controller] promotionVo 의 promotionNo 확 : {}", promotionNo);	
+		 
+		// 2. Promotion 이미지 파일명 바꾸기
 		if (promImg != null && !promImg.isEmpty()) {
 			
 			String renamedFileName = null;
 //			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			try {
-				location = resourceLoader.getResource("resources/upload/promotion").getFile().getPath();
-				renamedFileName = PromotionFileProcess.promotionsave(promImg, location);
+				location = resourceLoader.getResource("resources/images/promotion").getFile().getPath();
+				renamedFileName = PromotionFileProcess.promotionsave(promImg, location, promotionNo);
 				
 				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
 			} catch (IOException e) {
@@ -91,6 +129,12 @@ public class PromotionController {
 			}
 		}
 		
+				
+		
+		
+		
+		
+		// [ Product 관련 내용 저장하기 ] 
 		// Product1 이미지 파일명 바꾸기
 		if (prodImg != null && !prodImg[0].isEmpty()) {
 			
@@ -154,8 +198,8 @@ public class PromotionController {
 		}
 		
 		// 작성한 프로모션 데이터를 DB에 저장
-		writepromotion.setWriterNo(loginMember.getNo());
-		result = service.promotionsave(writepromotion);
+//		writepromotion.setWriterNo(loginMember.getNo());
+//		result = service.productSave(writepromotion);
 		
 		if (result > 0) {
 			model.addObject("msg", "프로모션이 정상적으로 등록되었습니다.");
@@ -217,7 +261,7 @@ public class PromotionController {
 			
 			log.info("[Controller] loginMember 의 no 와 heartcheck : {} ▶ {}", heartMemNo, heartCheck);
 			
-		}	
+		}
 		
 		model.addObject("promotionInfo", pmt);
 		model.addObject("productInfo", pdt);

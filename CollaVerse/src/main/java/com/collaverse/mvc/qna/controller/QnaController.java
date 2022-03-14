@@ -23,118 +23,119 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/qna/*")
 public class QnaController {
 
-	@Autowired
-	private QnaService qservice;
-	
-	@Autowired
-	private ReplyService rservice;
-	
-	/* 게시판 목록 페이지 접속(페이징 적용) */
+
+   @Autowired
+   private QnaService qservice;
+   
+   @Autowired
+   private ReplyService rservice;
+   
+   /* 게시판 목록 페이지 접속(페이징 적용) */
     @GetMapping("/qnaList")
-	public void qnaListGET(Model model, Criteria cri) {
-    	
-		log.info("qnaListGET");
-		
-		log.info("cri : " + cri);
-		
-		model.addAttribute("qlist", qservice.getListPaging(cri));
-		
-		int total = qservice.getTotal(cri);
-		
-		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
-		
-		model.addAttribute("pageMaker", pageMake);
-	}
+   public void qnaListGET(Model model, Criteria cri) {
+       
+      log.info("qnaListGET");
+      
+      log.info("cri : " + cri);
+      
+      model.addAttribute("qlist", qservice.getListPaging(cri));
+      
+      int total = qservice.getTotal(cri);
+      
+      PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+      
+      model.addAttribute("pageMaker", pageMake);
+   }
     
     @GetMapping("/option/qnaList5")
-	public void qna5ListGET(Model model, Criteria cri) {
-    	
-		log.info("qna5ListGET");
-		
-		cri.setAmount(5);
-		
-		log.info("cri : " + cri);
-		
-		model.addAttribute("qlist", qservice.getListPaging(cri));
-		
-		int total = qservice.getTotal(cri);
-		
-		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
-		
-		model.addAttribute("pageMaker", pageMake);
-	}
+   public void qna5ListGET(Model model, Criteria cri) {
+       
+      log.info("qna5ListGET");
+      
+      cri.setAmount(5);
+      
+      log.info("cri : " + cri);
+      
+      model.addAttribute("qlist", qservice.getListPaging(cri));
+      
+      int total = qservice.getTotal(cri);
+      
+      PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+      
+      model.addAttribute("pageMaker", pageMake);
+   }
     
     @GetMapping("/option/qnaList10")
-	public void qna10ListGET(Model model, Criteria cri) {
-    	
-		log.info("qna10ListGET");
-		
-		cri.setAmount(10);
-		
-		log.info("cri : " + cri);
-		
-		model.addAttribute("qlist", qservice.getListPaging(cri));
-		
-		int total = qservice.getTotal(cri);
-		
-		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
-		
-		model.addAttribute("pageMaker", pageMake);
-	}
+   public void qna10ListGET(Model model, Criteria cri) {
+       
+      log.info("qna10ListGET");
+      
+      cri.setAmount(10);
+      
+      log.info("cri : " + cri);
+      
+      model.addAttribute("qlist", qservice.getListPaging(cri));
+      
+      int total = qservice.getTotal(cri);
+      
+      PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+      
+      model.addAttribute("pageMaker", pageMake);
+   }
     
     @GetMapping("/option/qnaList20")
-	public void qna20ListGET(Model model, Criteria cri) {
-    	
-		log.info("qna20ListGET");
-		
-		cri.setAmount(20);
-		
-		log.info("cri : " + cri);
-		
-		model.addAttribute("qlist", qservice.getListPaging(cri));
-		
-		int total = qservice.getTotal(cri);
-		
-		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
-		
-		model.addAttribute("pageMaker", pageMake);
-	}
+   public void qna20ListGET(Model model, Criteria cri) {
+       
+      log.info("qna20ListGET");
+      
+      cri.setAmount(20);
+      
+      log.info("cri : " + cri);
+      
+      model.addAttribute("qlist", qservice.getListPaging(cri));
+      
+      int total = qservice.getTotal(cri);
+      
+      PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+      
+      model.addAttribute("pageMaker", pageMake);
+   }
     
     @GetMapping("/option/qnaList30")
-	public void qna30ListGET(Model model, Criteria cri) {
-    	
-		log.info("qna30ListGET");
-		
-		cri.setAmount(30);
-		
-		log.info("cri : " + cri);
-		
-		model.addAttribute("qlist", qservice.getListPaging(cri));
-		
-		int total = qservice.getTotal(cri);
-		
-		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
-		
-		model.addAttribute("pageMaker", pageMake);
-	}
+   public void qna30ListGET(Model model, Criteria cri) {
+       
+      log.info("qna30ListGET");
+      
+      cri.setAmount(30);
+      
+      log.info("cri : " + cri);
+      
+      model.addAttribute("qlist", qservice.getListPaging(cri));
+      
+      int total = qservice.getTotal(cri);
+      
+      PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+      
+      model.addAttribute("pageMaker", pageMake);
+   }
     
     @GetMapping("/option/qnaList40")
-	public void qna40ListGET(Model model, Criteria cri) {
-    	
-		log.info("qna40ListGET");
-		
-		cri.setAmount(40);
-		
-		log.info("cri : " + cri);
-		
-		model.addAttribute("qlist", qservice.getListPaging(cri));
-		
-		int total = qservice.getTotal(cri);
-		
-		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
-		
-		model.addAttribute("pageMaker", pageMake);
-	}
+   public void qna40ListGET(Model model, Criteria cri) {
+       
+      log.info("qna40ListGET");
+      
+      cri.setAmount(40);
+      
+      log.info("cri : " + cri);
+      
+      model.addAttribute("qlist", qservice.getListPaging(cri));
+      
+      int total = qservice.getTotal(cri);
+      
+      PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+      
+      model.addAttribute("pageMaker", pageMake);
+   }
     
     /* 게시판 등록 페이지 접속 */
     @GetMapping("/enroll")
@@ -159,8 +160,8 @@ public class QnaController {
     @GetMapping("/read")
     public void qnaReadPageGET(int bno, Model model, Criteria cri, Qna qna) {
         
-    	qservice.count(bno);
-    	
+       qservice.count(bno);
+       
         model.addAttribute("pageInfo", qservice.getPage(bno));
         
         model.addAttribute("cri", cri);
@@ -206,19 +207,20 @@ public class QnaController {
     }
     
     //댓글 작성
-  	@PostMapping("/replyWrite")
-  	public String replyWrite(Reply vo, Criteria cri, RedirectAttributes rttr) throws Exception {
-  		
-  		log.info("reply Write");
-  		
-  		rservice.writeReply(vo);
-  		
-  		rttr.addAttribute("bno", vo.getBno());
-  		rttr.addAttribute("page", cri.getPageNum());
-  		rttr.addAttribute("perPageNum", cri.getAmount());
-  		rttr.addAttribute("searchType", cri.getType());
-  		rttr.addAttribute("keyword", cri.getKeyword());
-  		
-  		return "redirect:/qna/read";
-  	}
+     @PostMapping("/replyWrite")
+     public String replyWrite(Reply vo, Criteria cri, RedirectAttributes rttr) throws Exception {
+        
+        log.info("reply Write");
+        
+        rservice.writeReply(vo);
+        
+        rttr.addAttribute("bno", vo.getBno());
+        rttr.addAttribute("page", cri.getPageNum());
+        rttr.addAttribute("perPageNum", cri.getAmount());
+        rttr.addAttribute("searchType", cri.getType());
+        rttr.addAttribute("keyword", cri.getKeyword());
+        
+        return "redirect:/qna/read";
+     }
 }
+
