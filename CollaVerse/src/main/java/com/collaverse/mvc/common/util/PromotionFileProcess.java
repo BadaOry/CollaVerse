@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class PromotionFileProcess {
-	public static String promotionsave(MultipartFile promImg, String location) {
+	public static String promotionsave(MultipartFile promImg, String location, int promotionNo) {
 			
 			String renamedFileName = null;
 			String originalFileName = promImg.getOriginalFilename();
@@ -42,12 +42,11 @@ public class PromotionFileProcess {
 			}
 			
 			// ▼ renamedFileName 명명 규칙 설정
-			renamedFileName = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmssSSS"))
-					+ originalFileName.substring(originalFileName.lastIndexOf("."));
-			log.info("[파일프로세스] 새로 만들어진 renamedFileName 출력 : {}", renamedFileName);
+			renamedFileName = String.valueOf(promotionNo);
+			
 			try {
 				// ▼ 업로드한 파일 데이터를 명명 규칙으로 지정한 파일에 저장
-				promImg.transferTo(new File(location + "/" + renamedFileName));
+				promImg.transferTo(new File(location + renamedFileName));
 			
 			} catch (IllegalStateException | IOException e) {
 				log.error("파일 전송 에러");
