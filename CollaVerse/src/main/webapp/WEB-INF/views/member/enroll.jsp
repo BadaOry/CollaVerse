@@ -97,7 +97,7 @@
 		 	</div>
 			<br>
 			<div class="btnAll" align="center">
- 				<input type="submit" id="enrollSubmit" value="가입" onclick="checkbox()">	
+ 				<input type="button" id="enrollSubmit" value="가입" onclick="enroll()">	
  				<input type="reset" id="reset" value="취소" onclick="location.href='${ path }'">
 			</div>
 		</form>
@@ -106,33 +106,46 @@
 </div>
 
 <script>
-	// 아이디 중복 확인
-	$(document).ready(() => {
-		$("#checkDuplicate").on("click", () => {
-			let userId = $("#newId").val().trim();
+// 아이디 중복검사
+$(document).ready(() => {
+	$("#checkDuplicate").on("click", () => {
+
+	      let newId = $("#newId").val().trim();
 			
-			$.ajax({
-				type: "post",
-				url: "${ pageContext.request.contextPath }/member/idCheck",
-				dataType: "json",
-				data: {
-					userId
-				},
-				success: (data) => {
-					console.log(data);
-					
-					if(data.duplicate === true) {
-						alert("이미 사용중인 아이디 입니다.");
-					} else {
-						alert("사용 가능한 아이디 입니다.");						
+	      // 아이디 조건 검사
+	      if(!newId.match(/^[a-z][a-z\d]{3,11}$/)) {
+	        
+	        alert("영문, 숫자를 포함한 4~12자리 아이디를 입력해주세요.");
+	      } else if (newId.match(/^[a-z][a-z\d]{3,11}$/)) {
+			
+	    	  $.ajax({
+					type: "post",
+					url: "${ path }/member/idCheck",
+					dataType: "json",
+					data: {
+						newId
+					},
+					success: (data) => {
+						console.log(data);
+						
+						if(data.duplicate === true) {
+							alert("이미 사용중인 아이디 입니다. 다른 아이디를 입력해주세요.");
+							$("#newId").val('');
+							$("#newId").focus();
+						}else {
+						
+							alert("사용 가능한 아이디 입니다.");
+						}
+					},
+					error: (error) => {
+						console.log(error);
 					}
-				},
-				error: (error) => {
-					console.log(error);
-				}
-			});
-		});		
-	});
+	  			});  
+	    	  
+			//
+	      }	
+  });
+});
 </script>
 
 <script>
@@ -177,39 +190,44 @@
 </script>
 
 <script>
-// 체크박스 필수 미선택 시 가입 불가
-function checkbox(){
-
-	if(document.getElementById("agree1", "agree2").checked == false) {
+// 체크박스 필수 미선택 시 가입 불가 & 비밀번호 조건 체크
+function enroll(){
+	// 1. 체크박스 확인여부 
+	if((document.getElementById("agree1").checked == false)
+				|| (document.getElementById("agree2").checked == false)) {
 	  alert("필수 약관 선택이 되지 않았습니다");
-	  	  lacation.reload(); // 필수 미선택시 가입 불가 코드 다시 작성하기
+	  return false;
+	  	  
 	  } else {
 		  location.href='${ path }/member/enroll';
 	  }
+	
+	// 2. 비밀번호 조건확인
+		var p1 = document.getElementById('pass1');
+		if (!p1.value.match(/^[\w\d]{4,12}$/)) {
+			alert('비밀번호는 영문, 숫자를 포함한 4~12자리 비밀번호를 입력해주세요.');
+	    	return false;
+	 	}
 	}
 </script>
- 
+
 <script>
-// 아이디 조건 검사
-    function checkbox() {
-        let regExp;
-        let newId = document.getElementById('newId').value;
+	// 나이 범위 입력
+	$(document).on("keyup", "input[name^=age]", function() {
+    	var val= $(this).val();
 
-        regExp = /^[a-z][a-z0-9]{3,11}$/;
+    	if(val.replace(/[0-9]/g, "").length > 0) {
+        	alert("숫자만 입력해 주십시오.");
+        	$(this).val('');
+   		}
 
-        if(!regExp.test(newId)) {
-            alert('4~12자 이내 영문, 숫자를 입력해 주세요.');
-
-            return false;
-        }
-
-        return true;
-    }
+    	if(val < 1 || val > 100) {
+        	alert("1~100 범위로 입력해 주십시오.");
+        	$(this).val('');
+    	}
+});
 </script>
 
-
-
-	
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>	
 </body>
 </html>

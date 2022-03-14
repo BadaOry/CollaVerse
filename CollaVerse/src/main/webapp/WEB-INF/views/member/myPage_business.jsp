@@ -21,11 +21,12 @@
 <h1 class="mini_title">사업자 회원정보 수정</h1>
 <div id="view-container">
 	<div align="center">
-	<form id="memberFrm" action="${ path }/member/update1" method="post">	
+	<form id="memberFrm" action="${ path }/member/update1" method="post" enctype="multipart/form-data">	
 		<table>
 			<tr>
                 <th>아이디</th>
 				<td>
+					<input type="hidden" name="no" value="${ loginMember.no }" />
 					<input type="text" name="id" id="newId" 
 						value="${ loginMember.id }" readonly required >
 				</td> 	
@@ -68,11 +69,12 @@
 				</td> 	
             </tr>
             <tr>
-                <th>프로필사진</th>
-				<td>
-					<input type="file" name="profile_img" id="profile_img"><span style="color: red">&nbsp; png, jpg만 첨부 가능</span>
-				</td> 	
-            </tr>
+			    <th rowspan="2">프로필사진</th>
+			    <td><img id="imagePreview" style="width:50px; height:50px;" src="${ path }/resources/upload/profile/${ loginMember.profile_img}" /></td>
+			</tr>
+			<tr>
+			    <td rowspan="2"><input type="file" name="file" id="profile_img"><span style="color: red;font-size: small;">png, jpg만 첨부 가능</span></td>
+			</tr>
         </table>
             <br>
         <div class="btnAll" align="center">
