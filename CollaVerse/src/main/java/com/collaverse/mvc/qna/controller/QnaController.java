@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/qna/*")
 public class QnaController {
 
+
    @Autowired
    private QnaService qservice;
    
@@ -222,3 +223,4 @@ public class QnaController {
         return "redirect:/qna/read";
      }
 }
+

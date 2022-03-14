@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,6 +16,8 @@ import com.collaverse.mvc.follow.model.service.FollowService;
 import com.collaverse.mvc.member.model.vo.Member;
 import com.collaverse.mvc.mypage_p_collection.model.service.MypagePCollectionService;
 import com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection;
+import com.collaverse.mvc.schedule.model.ScheduleVO;
+import com.collaverse.mvc.schedule.service.ScheduleService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,15 +26,28 @@ import lombok.extern.slf4j.Slf4j;
 public class mypageController {
 
 	@Autowired
+	private ScheduleService service;
+	
+	@Autowired
 	private FollowService fservice;
 	
 	@Autowired
 	private MypagePCollectionService cservice;
 	
-	
-	@GetMapping("/mypage/person_mypage")
-	public ModelAndView person(ModelAndView model, 
+	@GetMapping("/mypage/personMypage")
+	public ModelAndView person(ModelAndView model, Model models,
 			@SessionAttribute("loginMember") Member loginMember) {
+
+		// 일정 보이기
+		List<ScheduleVO> showSchedule = null;
+		
+		int memberNo = loginMember.getNo();
+		log.info("no : {}", memberNo);
+		
+		showSchedule = service.showSchedule(memberNo);
+		
+		models.addAttribute("showSchedule" , showSchedule);
+		
 		// [ 팔로우 가져오기 ]
 		List<Map<String,String>> followingList = null;
 		int followingCount = 0;
@@ -87,15 +103,26 @@ public class mypageController {
 		model.addObject("writerNickname", writerNickname);
 		model.addObject("writerNo", writerNo);
 		
-		model.setViewName("mypage/person_mypage");
+		model.setViewName("mypage/personMypage");
 		
 		return model;
 	}
 	
 	
-	@GetMapping("/mypage/business_mypage")
-	public ModelAndView business(ModelAndView model, 
+	@GetMapping("/mypage/businessMypage")
+	public ModelAndView business(ModelAndView model, Model models,
 			@SessionAttribute("loginMember") Member loginMember) {
+		
+		// 일정 보이기
+		List<ScheduleVO> showSchedule = null;
+		
+		int memberNo = loginMember.getNo();
+		log.info("no : {}", memberNo);
+		
+		showSchedule = service.showSchedule(memberNo);
+		
+		models.addAttribute("showSchedule" , showSchedule);
+		
 		// [ 팔로워 가져오기 ]
 		List<Map<String,String>> followerList = null;
 		int followerCount = 0;
@@ -151,7 +178,7 @@ public class mypageController {
 		model.addObject("writerNickname", writerNickname);
 		model.addObject("writerNo", writerNo);
 		
-		model.setViewName("mypage/business_mypage");
+		model.setViewName("mypage/businessMypage");
 		
 		return model;
 	}

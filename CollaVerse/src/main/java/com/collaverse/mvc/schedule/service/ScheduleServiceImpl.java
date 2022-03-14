@@ -14,10 +14,12 @@ public class ScheduleServiceImpl implements ScheduleService{
 	@Autowired
 	private ScheduleMapper mapper;
 	
-	@Override
-	public List<ScheduleVO> showSchedule() {
-		return mapper.showSchedule();
-	}
+//	@Override
+//	public List<ScheduleVO> showSchedule() {
+//		
+//		System.out.println();
+//		return mapper.showSchedule();
+//	}
 	
 	@Override
 	public void addSchedule(ScheduleVO vo) {
@@ -31,8 +33,16 @@ public class ScheduleServiceImpl implements ScheduleService{
 	}
 	
 	 @Override
-    public int deleteSchedule(int no) {
+    public ScheduleVO deleteSchedule(int no) {
         
         return mapper.deleteSchedule(no);
     }
+
+	@Override
+	public List<ScheduleVO> showSchedule(int memberNo) {
+		
+		System.out.println("[ServiceImpl] memberNo 잘 오는지 확인 : " + memberNo);
+		
+		return mapper.showSchedule(memberNo);
+	}
 }

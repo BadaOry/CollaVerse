@@ -188,14 +188,33 @@
 		WHERE NICKNAME = #{nickname} AND MEMBER_STATUS = 'Y'
 	</select>
 	
-	<!-- 통계용 여 회원정보(테스트중) -->
+	<!-- 통계용 여 팔로워 회원정보(테스트중) -->
 	<select id = "getWomenCount" resultType="_int">
-		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_GENDER = 'woman'
+		<!-- SELECT COUNT(*) FROM MEMBER WHERE MEMBER_GENDER = 'woman' -->
+		SELECT COUNT(*) FROM
+							(SELECT MEMBER_GENDER
+							FROM MEMBER
+							WHERE MEMBER_NO IN (
+							SELECT FROM_MEM_NO 
+							FROM FOLLOWER 
+							WHERE TO_MEM_NO = 5
+							))
+						WHERE MEMBER_GENDER = 'woman'
+		
 	</select>
 	
-	<!-- 통계용 남 회원정보(테스트중) -->
+	<!-- 통계용 남 팔로워 회원정보(테스트중) -->
 	<select id = "getMenCount" resultType="_int">
-		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_GENDER = 'man'
+		<!-- SELECT COUNT(*) FROM MEMBER WHERE MEMBER_GENDER = 'man' -->
+		SELECT COUNT(*) FROM
+							(SELECT MEMBER_GENDER
+							FROM MEMBER
+							WHERE MEMBER_NO IN (
+							SELECT FROM_MEM_NO 
+							FROM FOLLOWER 
+							WHERE TO_MEM_NO = 5
+							))
+						WHERE MEMBER_GENDER = 'man'
 	</select>
 
 </mapper>
