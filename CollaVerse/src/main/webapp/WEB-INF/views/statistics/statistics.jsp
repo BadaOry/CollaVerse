@@ -12,31 +12,39 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CollaVerse</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<link rel="stylesheet" href="${ path }/resources/css/mypage/business_mypage.css">
 <style>
-	div {
-		margin: auto;
+	#chart {
+	margin-top: 50px;
+	display: flex;
 	}
 </style>
-<title>통계</title>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
 <body>
-	<div style="width: 900px; height: 900px;">
-    <!--차트가 그려질 부분-->
-    <canvas id="genderChart"></canvas>
-  </div>
+
+
+	<div id="chart" style="width: 600px; height: 600px;">
+	    <!--차트가 그려질 부분-->
+	    <canvas id="genderChart"></canvas>
+
+  	</div>
+ 
+  
 </body>
 
 
 <script>
+
 var ctx = document.getElementById('genderChart').getContext('2d');
 var myChart = new Chart(ctx, {
 type: 'pie',
 data: {
-    labels: ['여성회원', '남성회원'],
+    labels: ['여성 비율', '남성 비율'],
     datasets: [{
-        label: '남녀 성별',
-        data:[${womenCount},${menCount}],
+        label: '남녀 비율',
+        data:[Math.round(${womenCount}/(${menCount}+${womenCount})*100),Math.round(${menCount}/(${menCount}+${womenCount})*100)],
         backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)'
@@ -52,7 +60,7 @@ options: {
     //그래프의 제목 옵션
     title: {
         display: true,
-        text: '남녀 성별',
+        text: '자사 팔로워 남녀 비율',
         fontSize: 20
     },
     //그래프의 항목 옵션
@@ -72,5 +80,9 @@ options: {
     */
 }
 });
+
+
+
 </script>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </html>

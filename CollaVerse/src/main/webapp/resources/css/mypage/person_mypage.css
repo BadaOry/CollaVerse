@@ -31,6 +31,8 @@
 }
 
 /* 캘린더 */
+.fc-sat { color:#0000FF; }    /* 토요일 */
+.fc-sun { color:#FF0000; }    /* 일요일 */
 #person #person-calendar p {
   font-size: 40px;
 }
@@ -43,8 +45,8 @@
 #person #person-calendar a #calendar {
 	width: 800px;
 	height: 600px;
-	/* margin-bottom: 40px; */
-	margin: auto;
+	margin-bottom: 40px;
+	/*margin: auto;*/
 }
 
 /* 팔로우 */

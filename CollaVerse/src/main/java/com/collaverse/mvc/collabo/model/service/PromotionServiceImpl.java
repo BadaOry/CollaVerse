@@ -111,19 +111,29 @@ public class PromotionServiceImpl implements PromotionService {
 	}
 
 
+//	@Override
+//	@Transactional
+//	public int promotionsave(WritePromotion writepromotion) {
+//		int result = 0;
+//		
+//		if (writepromotion.getRenamedFileName() != null) {
+//			// update
+//		} else {
+//			// insert
+//			result = mapper.insertPromotion(writepromotion);
+//		}
+//		
+//		return result;
+//	}
+
+
+	// [ Promotion 에 save 하는 메소드 ]
 	@Override
-	@Transactional
-	public int promotionsave(WritePromotion writepromotion) {
-		int result = 0;
+	public int promotionSave(Promotion promotionVo) {
+
+		log.info("[ServiceImpl] vo 객체가 잘 전달되었는지 확인 : {}", promotionVo);
 		
-		if (writepromotion.getRenamedFileName() != null) {
-			// update
-		} else {
-			// insert
-			result = mapper.insertPromotion(writepromotion);
-		}
-		
-		return result;
+		return mapper.promotionSave(promotionVo);
 	}
 
 }

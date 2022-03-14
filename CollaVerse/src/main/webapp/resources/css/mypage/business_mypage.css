@@ -24,6 +24,8 @@
   top: 55px;
   left: 200px;
 }
+.fc-sat { color:#0000FF; }    /* 토요일 */
+.fc-sun { color:#FF0000; }    /* 일요일 */
 #business #brand-calendar p {
   font-size: 40px;
 }
