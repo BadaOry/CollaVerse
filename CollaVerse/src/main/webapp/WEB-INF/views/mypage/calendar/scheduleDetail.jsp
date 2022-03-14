@@ -17,6 +17,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CollaVerse</title>
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <!-- datepicker -->
@@ -26,36 +27,38 @@
 <!-- custom -->
 <link href="${ path }/resources/custom/css/schedule.css" rel="stylesheet" />	
 <script src="${ path }/resources/custom/js/schedule.js" type="text/javascript"></script>
+
 <!-- fullcalendar -->
-<link href='${ path }/resources/fullcalendar/packages/core/main.css' rel='stylesheet' />
-<link href='${ path }/resources/fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
-<link href='${ path }/resources/fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
-<link href='${ path }/resources/fullcalendar/packages/list/main.css' rel='stylesheet' />
-<script src='${ path }/resources/fullcalendar/packages/core/main.js'></script>
-<script src='${ path }/resources/fullcalendar/packages/interaction/main.js'></script>
-<script src='${ path }/resources/fullcalendar/packages/daygrid/main.js'></script>
-<script src='${ path }/resources/fullcalendar/packages/timegrid/main.js'></script>
-<script src='${ path }/resources/fullcalendar/packages/list/main.js'></script>
+	<link href='${ path }/resources/fullcalendar/packages/core/main.css' rel='stylesheet' />
+	<link href='${ path }/resources/fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+	<link href='${ path }/resources/fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
+	<link href='${ path }/resources/fullcalendar/packages/list/main.css' rel='stylesheet' />
+	<script src='${ path }/resources/fullcalendar/packages/core/main.js'></script>
+	<script src='${ path }/resources/fullcalendar/packages/interaction/main.js'></script>
+	<script src='${ path }/resources/fullcalendar/packages/daygrid/main.js'></script>
+	<script src='${ path }/resources/fullcalendar/packages/timegrid/main.js'></script>
+	<script src='${ path }/resources/fullcalendar/packages/list/main.js'></script>
 
-
+<style>
+	.fc-sat { color:#0000FF; }     /* 토요일 */
+    .fc-sun { color:#FF0000; }    /* 일요일 */
+    
+    .add-button {
+    	right: 110px;
+    }
+</style>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/common/header.jsp" %>
-	<%-- ▼ 봉석님 원래 코드 
-		<div id="person-calendar"><strong>My 콜라보 캘린더</strong></div>
-	--%>
-	<div class="mini_title" id="person-calendar">My 콜라보 캘린더</div>
-
-	<div id='calendar' style="position : relative;">
-		<div>
-			<button class = "add-button" type = "button" 
-	        	onclick="click_add();">일정 추가</button>
-		</div>
+<div id='calendar' style="position : relative;">
+	<div>
+		<button class = "add-button" type = "button" 
+        	onclick="click_add();">일정 추가</button>
 	</div>
 
-   
-</body>
+</div>
 
+</body>
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -66,7 +69,7 @@
       header: {
         left: 'prev,next today',
         center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+        right: 'dayGridMonth,listMonth'
       },
       locale : "ko",
       navLinks: true, // can click day/week names to navigate views
@@ -86,7 +89,7 @@
       	   title : '<%= vo.getSubject() %>',
       	   start : '<%= vo.getStartDate()  %>',
       	   end : '<%= vo.getEndDate() %>',
-      	   color : '<%= vo.getCategory() %>'
+      	   color : '<%= vo.getColor() %>'
       	  },
     <%
     	}
@@ -113,24 +116,23 @@
     	    // 문제점 : 클릭한 놈의 pk 를 어케가져오냐?
     	    		// > 뿌려는 방식을 모르니까 모른다..
     	    
-    		var url = "scheduleModify2?no="+info.event.id
+    		var url = "scheduleModify?no="+info.event.id
        		var name = "scheduleDetail";
        		var option = "width = 700px,height=800px,left=100px,top=50px,location=no";
        		window.open(url,name,option)
-       		
-    	  
+
   	  }
  
     });
 
+
+    
     calendar.render();
   });
   
- 
-
   function click_add() {
-		var url = "schedulePopup2";
-		var name = "schedulePopup2";
+		var url = "scheduleAdd";
+		var name = "scheduleAdd";
 		var option = "width = 700px,height=800px,left=100px,top=50px,location=no";
 		window.open(url,name,option)
 	};
@@ -208,7 +210,7 @@
 		});
 	};
 	
-	function click_delete(){
+	function click_ddelete(){
 
 		var scheduleData = JSON.stringify($('form#scheduleData').serializeObject());
 		
@@ -224,8 +226,6 @@
 			}
 		});
 	};
-	
-	
 </script>
- <%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </html>

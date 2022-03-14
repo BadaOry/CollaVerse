@@ -4,17 +4,36 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.collaverse.mvc.schedule.model.ScheduleVO" %>
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
+
+<%
+	List<ScheduleVO> list = (ArrayList<ScheduleVO>)request.getAttribute("showSchedule");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>CollaVerse</title>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales-all.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- datepicker -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- fullcalendar -->
+	<link href='${ path }/resources/fullcalendar/packages/core/main.css' rel='stylesheet' />
+	<link href='${ path }/resources/fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+	<link href='${ path }/resources/fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
+	<link href='${ path }/resources/fullcalendar/packages/list/main.css' rel='stylesheet' />
+	<script src='${ path }/resources/fullcalendar/packages/core/main.js'></script>
+	<script src='${ path }/resources/fullcalendar/packages/interaction/main.js'></script>
+	<script src='${ path }/resources/fullcalendar/packages/daygrid/main.js'></script>
+	<script src='${ path }/resources/fullcalendar/packages/timegrid/main.js'></script>
+	<script src='${ path }/resources/fullcalendar/packages/list/main.js'></script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="${ path }/resources/css/mypage/person_mypage.css">
@@ -37,8 +56,8 @@
 
     <section id="person-calendar">
       <p class="mini_title">My 콜라보 캘린더</p>
-      <a href="${ path }/mypage/calendar/calendar_detail">
-      	<div id='calendar'></div>
+      <a href="${ path }/mypage/calendar/scheduleDetail">
+      	<div id='calendar' style="position : relative;"></div>
       </a>
     </section>
 
@@ -123,32 +142,62 @@
 
   </main>
 
-
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
-
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-		var calendarEl = document.getElementById('calendar');
-		var calendar = new FullCalendar.Calendar(calendarEl, {
-			initialView : 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-			headerToolbar : { // 헤더에 표시할 툴 바
-				start : '',
-				center : 'title',
-				end : ''
-			},
-			titleFormat : function(date) {
-				return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
-			},
-			//initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-			selectable : true, // 달력 일자 드래그 설정가능
-			droppable : true,
-			editable : true,
-			nowIndicator: true, // 현재 시간 마크
-			locale: 'ko' // 한국어 설정
-		});
-		calendar.render();
-	});
-	</script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
+      header: {
+        left: '',
+        center: 'title',
+        right: ''
+      },
+      locale : "ko",
+      navLinks: true, // can click day/week names to navigate views
+      businessHours: true, // display business hours
+      editable: true,
+      eventColor : '#669900',
+      nextDayThreshold: '24:00:00',
+      displayEventTime: true,
+      
+      events: [
+    <% 
+      	  for (int i = 0; i < list.size(); i++) {
+      	  	ScheduleVO vo = (ScheduleVO)list.get(i);
+    %>	
+      	  {
+      	   id : '<%= vo.getNo() %>',
+      	   title : '<%= vo.getSubject() %>',
+      	   start : '<%= vo.getStartDate()  %>',
+      	   end : '<%= vo.getEndDate() %>',
+      	   color : '<%= vo.getColor() %>'
+      	  },
+    <%
+    	}
+    %>
+    	  {
+    	  	start : '2022-01-31',
+    	  	end : '2022-02-02',
+    	  	color : '#FFCCE5',
+    	  	rendering : "background"
+    	  },
+    	  {
+      	  	start : '2022-05-05',
+      	  	end : '2022-05-05',
+      	  	color : '#FFCCE5',
+      	  	rendering : "background"
+      	  }
+      ]
+ 
+    });
+
+    calendar.render();
+  });
+</script>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+
 
 </html>

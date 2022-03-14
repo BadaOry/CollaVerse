@@ -84,18 +84,18 @@
 					</li>
 					
 					<c:if test="${ loginMember.role == '개인' }">
-						<li><a href="${ path }/mypage/person_mypage">My 콜라버스</a>
+						<li><a href="${ path }/mypage/personMypage">My 콜라버스</a>
 							<ul>
-								<li><a class="header_nav1" href="${ path }/mypage/calendar/calendar_detail">My 콜라보 캘린더</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/calendar/scheduleDetail">My 콜라보 캘린더</a></li>
 								<li><a class="header_nav1" href="${ path }/mypage/collection/list/${ loginMember.id }">MyCollection</a></li>
 								<li><a class="header_nav1" href="${ path }/mypage/myFollow/main">팔로우</a></li>
 							</ul>
 						</li>
 					</c:if>
 					<c:if test="${ loginMember.role == '기업' }">
-						<li><a href="${ path }/mypage/business_mypage">My 콜라버스</a>
+						<li><a href="${ path }/mypage/businessMypage">My 콜라버스</a>
 							<ul style="width: 600px; right:0px;">
-								<li><a class="header_nav1" href="${ path }/mypage/calendar/calendar_detail_business">My 콜라보 캘린더</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/calendar/scheduleDetail">My 콜라보 캘린더</a></li>
 								<li><a class="header_nav1" href="${ path }/statistics">통계</a></li>
 								<li><a class="header_nav1" href="${ path }/mypage/collection/list/${ loginMember.id }">MyCollection</a></li>
 								<li><a class="header_nav1" href="${ path }/mypage/myFollow/main">팔로우</a></li>
@@ -105,7 +105,7 @@
 					<c:if test="${ loginMember.role == '관리자' }">
 						<li><a class="menu_title"  href="${ path }/mypage/main">My 콜라버스</a>
 							<ul>
-								<li><a class="header_nav1" href="${ path }/mypage/calendar/calendar_detail">My 콜라보 캘린더</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/calendar/scheduleDetail">My 콜라보 캘린더</a></li>
 								<li><a class="header_nav1" href="${ path }/mypage/memberinfo">회원 정보</a></li>
 							</ul>
 						</li>
@@ -114,7 +114,7 @@
 					<li><a class="menu_title"  href="">FAQ</a>
 						<ul>
 							<li><a class="header_nav1" href="${ path }/qna/qnaList">에페큐</a></li>
-							<li><a class="header_nav1" href="${ path }/qnatest/qnatestList">에페큐</a></li>
+							<li><a class="header_nav1" href="#">에페큐</a></li>
 						</ul>
 					</li>
 				</ul>
