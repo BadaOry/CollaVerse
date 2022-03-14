@@ -18,7 +18,27 @@
 					FROM PROMOTION
   		</sql>
   		
-  		
+  		 <sql id="productListSql">
+  					SELECT PRO_NO, 
+  					PRO_NAME, 
+  					PRO_PRICE, 
+  					PRO_CONTENT, 
+  					PRO_QTY, 
+  					PRO_IMG_PATH, 
+  					C_NO,
+  					PMT_NO
+					FROM PRODUCT
+  		</sql>  		
+
+  		 <sql id="brandListSql">
+  					SELECT BR_MEMBER_NO, 
+  					BR_NAME, 
+  					BR_CONTENT, 
+  					BR_IMG_PATH, 
+  					BR_PMT_NO
+					FROM BRAND
+  		</sql>  	
+  				
   		<resultMap type="com.collaverse.mvc.collabo.model.vo.Promotion" id="promotionListResultMap">
   		<id property="no" column="PMT_NO"/>
   		<result property="title" column="PMT_TITLE"/>
@@ -48,6 +68,14 @@
   			<result property="heartMemNo" column="HEART_MEM_NO"/>
   			<result property="heartCheck" column="HEARTCHECK"/>
   		</resultMap>
+  		
+  		<resultMap type="com.collaverse.mvc.collabo.model.vo.Brand" id="brandListResultMap">
+	  		<id property="brMemberNo" column="BR_MEMBER_NO"/>
+	  		<result property="brName" column="BR_NAME"/>
+	  		<result property="brContent" column="BR_CONTENT"/>
+	  		<result property="brImgPath" column="BR_IMG_PATH"/>
+	  		<result property="brPmtNo" column="BR_PMT_NO"/>  		
+  		</resultMap>  		
   		
   		<select id="selectAll" parameterType="map" resultMap="promotionListResultMap">
   			<include refid="promotionListSql"/>
@@ -164,17 +192,6 @@
   			 WHERE C_NO = '5' 
   		</select> 
   		
-  		 <sql id="productListSql">
-  					SELECT PRO_NO, 
-  					PRO_NAME, 
-  					PRO_PRICE, 
-  					PRO_CONTENT, 
-  					PRO_QTY, 
-  					PRO_IMG_PATH, 
-  					C_NO,
-  					PMT_NO
-					FROM PRODUCT
-  		</sql>
   		
   		<select id="selectLproduct" parameterType="map" resultMap="productListResultMap">
   			<include refid="productListSql"/>
@@ -199,7 +216,13 @@
   		<select id="selectFsproduct" parameterType="map" resultMap="productListResultMap">
   			<include refid="productListSql"/>
   			 WHERE C_NO = '5' 
-  		</select>    	  	
+  		</select>
+  		
+  		<select id="selectBrand" parameterType="map" resultMap="brandListResultMap">
+  			<include refid="brandListSql"/>
+  		</select>	
+  		
+	    	  	
  <!-- 
    		<select id="selectAll" parameterType="String" resultType="promotionListResultMap">
   			<include refid="promotionListSql"/>

@@ -23,30 +23,100 @@
 
     <div class="brand_list">
   
-		<p>BRAND</p>
+	<p>BRAND</p>
 		
 	<div class="brand_logo">
-    		브랜드 리스트 (로고)
+    		<div class=area1>
+    		<c:forEach var="blist" items="${ blist }" begin="0" end="2">
+    			<table>
+    			<tr>
+    			<td>
+    				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="250px" height="150px">
+    				</a>
+    			</td>
+    			</tr>
+    			</table>
+    		</c:forEach>
+    		</div>
+    		
+    		<div class=area2>
+    		<c:forEach var="blist" items="${ blist }" begin="3" end="5">
+    			<table>
+    			<tr>
+    			<td>
+    				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="250px" height="150px">
+    				</a>
+    			</td>
+    			</tr>
+    			</table>
+    		</c:forEach>
+    		</div> 
+    		
+    		<div class=area3>
+    		<c:forEach var="blist" items="${ blist }" begin="6" end="8">
+    			<table>
+    			<tr>
+    			<td>
+    				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="250px" height="150px">
+    				</a>
+    			</td>
+    			</tr>
+    			</table>
+    		</c:forEach>
+    		</div>
+    		
+    		<div class=area4>
+    		<c:forEach var="blist" items="${ blist }" begin="9" end="11">
+    			<table>
+    			<tr>
+    			<td>
+    				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="250px" height="150px">
+    				</a>
+    			</td>
+    			</tr>
+    			</table>
+    		</c:forEach>
+    		</div>
+    		
+    		<div class=area5>
+    		<c:forEach var="blist" items="${ blist }" begin="12" end="14">
+    			<table>
+    			<tr>
+    			<td>
+    				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="250px" height="150px">
+    				</a>
+    			</td>
+    			</tr>
+    			</table>
+    		</c:forEach>
+    		</div>    	
+    					    		    		   		
     </div>
 		
-	</div>
-
-				<div class="brand_array">
-						<h3>ABC</h3> 
+			<div class="brand_array">
+			<p>ABC</p>
+			
+			<p> A B C D E F G H I J K L M N O P Q R S T U V W X Y Z </p>
+			 
+								
+			</div>
 						
-						<h3>가나다</h3>
-				</div>
-				
-				<div class="form-type">
-					<select id="select-type" name="type">
-						<option value="A">A</option>
-						<option value="가">가</option>
-					</select>
-				</div>
-
-				<div class="brand_list">
-					
-				</div>
+			<div class="form-type">
+			<select id="select-type" name="type">
+			<option value="A">A</option>
+			<option value="가">가</option>
+			</select>
+			</div>
+		
+			<div class="brand_list">
+							
+			</div>
+	</div>
 
 
     	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 
