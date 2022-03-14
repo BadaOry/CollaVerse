@@ -57,6 +57,7 @@ public class CategoryController {
 		return model;
 	}
 	
+	// 식품 카테고리
 	@GetMapping("/collabo/category/food/foodList")
 	public ModelAndView foodList(ModelAndView model) {
 		
@@ -73,6 +74,7 @@ public class CategoryController {
 		return model;
 	}
 	
+	// 전자제품 카테고리
 	@GetMapping("/collabo/category/tech/techList")
 	public ModelAndView techList(ModelAndView model) {
 		
@@ -89,6 +91,7 @@ public class CategoryController {
 		return model;
 	}
 	
+	// 패션 카테고리
 	@GetMapping("/collabo/category/fashion/fashionList")
 	public ModelAndView fashionList(ModelAndView model) {
 		
@@ -124,7 +127,7 @@ public class CategoryController {
 			
 			return model;
 		}
-	 */
+
 	
 
 	
@@ -133,4 +136,5 @@ public class CategoryController {
 		return "/collabo/brand/brand";
 	}
 	
+	 */	
 }

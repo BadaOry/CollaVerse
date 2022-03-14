@@ -80,6 +80,7 @@
 							<li><a class="header_nav1" href="${ path }/collabo/category/food/foodList">식품</a></li>
 							<li><a class="header_nav1" href="${ path }/collabo/category/tech/techList">테크</a></li>
 							<li><a class="header_nav1" href="${ path }/collabo/category/fashion/fashionList">패션</a></li>
+							<li><a class="header_nav1" href="${ path }/collabo/brand/brand">브랜드</a></li>
 						</ul>
 					</li>
 					
