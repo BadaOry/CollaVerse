@@ -216,6 +216,7 @@
   		<select id="selectFsproduct" parameterType="map" resultMap="productListResultMap">
   			<include refid="productListSql"/>
   			 WHERE C_NO = '5' 
+
   		</select>
   		
   		<select id="selectBrand" parameterType="map" resultMap="brandListResultMap">
@@ -223,6 +224,23 @@
   		</select>	
   		
 	    	  	
+        
+   
+  		
+  		
+  		<!-- Promotion VO 에 INSERT 하는 부분 -->
+  		<insert id="promotionSave" parameterType="com.collaverse.mvc.collabo.model.vo.Promotion">
+  			INSERT INTO PROMOTION (
+			    PMT_NO, PMT_TITLE, PMT_IMG_PATH, PMT_CONTENT,
+			    PMT_STATUS, START_DATE, END_DATE,
+			    READCOUNT, C_NO, HEART_HIT
+			) VALUES (
+			    SEQ_PROMOTION_NO.NEXTVAL, #{ title }, '/resources/images/promotion/promotion', #{ content },
+			    'Y', #{ startDate }, #{ endDate }, 
+			    0, #{ cNo }, 0
+			)
+  		</insert>	  	
+
  <!-- 
    		<select id="selectAll" parameterType="String" resultType="promotionListResultMap">
   			<include refid="promotionListSql"/>

@@ -61,7 +61,10 @@ public interface CollaboMapper {
 	void deleteHeart(@Param("pmt_no") int pmtNo, @Param("heart_mem_no") int heartMemNo);
 	
 
-	int insertPromotion(WritePromotion writepromotion);
+//	int insertPromotion(WritePromotion writepromotion);
+
+	// Promotion 테이블에 insert 돌릴 메소드 
+	int promotionSave(Promotion promotionVo);
 
 	// 브랜드 조회 
 	List<Brand> selectBrand();

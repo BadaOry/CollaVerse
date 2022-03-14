@@ -176,7 +176,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/member/idCheck")
-	public ResponseEntity<Map<String, Boolean>> idCheck(@RequestParam("userId") String userId) {
+	public ResponseEntity<Map<String, Boolean>> idCheck(@RequestParam("newId") String userId) {
 		Map<String, Boolean> map = new HashMap<>();
 		
 		log.info("{}", userId);
@@ -198,7 +198,7 @@ public class MemberController {
 			ModelAndView model,
 			@SessionAttribute(name="loginMember") Member loginMember,
 			@ModelAttribute Member member,
-			@RequestParam("profile_img") MultipartFile upfile) {
+			@RequestParam("file") MultipartFile upfile) {
 		
 		log.info("컨트롤러로 요청 오는지 확인");
 		
@@ -225,7 +225,7 @@ public class MemberController {
 					log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);									
 					
 					if (renamedFileName != null) {
-						member.setProfile_img(originalFileName);
+						member.setProfile_img(renamedFileName);
 //						member.setRenamedFileName01(renamedFileName);
 						
 						log.info("[Controller] originalFileName 정보 확인 : {}", originalFileName);
@@ -242,6 +242,7 @@ public class MemberController {
 			/////
 		
 		member.setNo(loginMember.getNo());
+		
 		
 		result = service.save(member);
 		

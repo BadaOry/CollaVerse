@@ -1444,6 +1444,36 @@ COMMIT;
 --DROP TABLE QNA;
 --DROP SEQUENCE SEQ_QNA_NO;
 
+
+
+--------------------------------------------------------------
+---------------------- QNA 댓글 관련 테이블 ---------------------
+--------------------------------------------------------------
+-- 01. QNA 댓글 테이블 생성 + 주석
+CREATE TABLE REPLY (
+    RNO NUMBER NOT NULL PRIMARY KEY,
+    BNO NUMBER NOT NULL,
+    CONTENT VARCHAR2(1000) NOT NULL,
+    WRITER VARCHAR2(50) NOT NULL,
+    REG_DATE DATE DEFAULT SYSDATE,
+    MODIFY_DATE DATE DEFAULT SYSDATE
+);
+
+ALTER TABLE REPLY ADD CONSTRAINT FK_QNA FOREIGN KEY(BNO) REFERENCES QNA(BNO);
+
+COMMENT ON COLUMN REPLY.RNO IS '댓글 번호';
+COMMENT ON COLUMN REPLY.BNO IS '게시글 번호';
+COMMENT ON COLUMN REPLY.WRITER IS '내용';
+COMMENT ON COLUMN REPLY.CONTENT IS '작성자';
+COMMENT ON COLUMN REPLY.REG_DATE IS '작성일';
+COMMENT ON COLUMN REPLY.MODIFY_DATE IS '수정일';
+
+
+-- 02. 시퀀스 생성
+CREATE SEQUENCE SEQ_REPLY_NO;
+
+
+COMMIT;
 --------------------------------------------------------------
 ------------------------- 삭제 쿼리 모음 ------------------------
 --------------------------------------------------------------
@@ -1458,6 +1488,7 @@ COMMIT;
 --DROP TABLE MYPAGE_P_COLLECTION;
 --DROP TABLE MEMBER;
 --DROP TABLE QNA;
+--DROP TABLE REPLY ;
 --
 --
 --
@@ -1471,3 +1502,4 @@ COMMIT;
 --DROP SEQUENCE SEQ_PROMOTION_NO;
 --DROP SEQUENCE SEQ_MEM_MEMBER_NO;
 --DROP SEQUENCE SEQ_QNA_NO;
+--DROP SEQUENCE SEQ_REPLY_NO;
