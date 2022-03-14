@@ -1447,7 +1447,7 @@ COMMIT;
 
 
 --------------------------------------------------------------
----------------------- QNA 댓글 관련 테이블 ---------------------
+-------------------- QNA - REPLY 관련 테이블 -------------------
 --------------------------------------------------------------
 -- 01. QNA 댓글 테이블 생성 + 주석
 CREATE TABLE REPLY (
@@ -1474,6 +1474,38 @@ CREATE SEQUENCE SEQ_REPLY_NO;
 
 
 COMMIT;
+
+
+
+
+--------------------------------------------------------------
+---------------------- SCHEDULE 관련 테이블 ---------------------
+--------------------------------------------------------------
+-- 01. SCHEDULE 테이블 생성 + 주석 
+CREATE TABLE SCHEDULE (
+    NO NUMBER PRIMARY KEY,
+    MEMBER_NO NUMBER,
+    SUBJECT VARCHAR2(50) NOT NULL,
+    START_DATE VARCHAR2(30) NOT NULL,
+    END_DATE VARCHAR2(30) NOT NULL,
+    MEMO VARCHAR2(1000) NOT NULL,
+    COLOR VARCHAR2(20) NOT NULL
+);
+
+ALTER TABLE SCHEDULE ADD CONSTRAINT FK_MEMBER FOREIGN KEY(MEMBER_NO) REFERENCES MEMBER(MEMBER_NO);
+
+COMMENT ON COLUMN SCHEDULE.NO IS '스케쥴 번호';
+COMMENT ON COLUMN SCHEDULE.MEMBER_NO IS '회원번호';
+COMMENT ON COLUMN SCHEDULE.SUBJECT IS '제목';
+COMMENT ON COLUMN SCHEDULE.START_DATE IS '시작하는 날';
+COMMENT ON COLUMN SCHEDULE.END_DATE IS '끝나는 날';
+COMMENT ON COLUMN SCHEDULE.MEMO IS '메모';
+COMMENT ON COLUMN SCHEDULE.COLOR IS '타입 색';
+
+-- 02. 시퀀스 생성
+CREATE SEQUENCE SEQ_SCHEDULE_NO;
+
+COMMIT;
 --------------------------------------------------------------
 ------------------------- 삭제 쿼리 모음 ------------------------
 --------------------------------------------------------------
@@ -1489,7 +1521,7 @@ COMMIT;
 --DROP TABLE MEMBER;
 --DROP TABLE QNA;
 --DROP TABLE REPLY ;
---
+--DROP TABLE SCHEDULE;
 --
 --
 ---- 02. 시퀀스
@@ -1503,3 +1535,4 @@ COMMIT;
 --DROP SEQUENCE SEQ_MEM_MEMBER_NO;
 --DROP SEQUENCE SEQ_QNA_NO;
 --DROP SEQUENCE SEQ_REPLY_NO;
+--DROP SEQUENCE SEQ_SCHEDULE_NO;
