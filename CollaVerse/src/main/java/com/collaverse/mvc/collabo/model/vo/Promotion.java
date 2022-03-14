@@ -2,6 +2,8 @@ package com.collaverse.mvc.collabo.model.vo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,8 +22,10 @@ public class Promotion {
 	
 	private String status;
 	
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date startDate;
 	
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date endDate;
 	
 	private int readCount;

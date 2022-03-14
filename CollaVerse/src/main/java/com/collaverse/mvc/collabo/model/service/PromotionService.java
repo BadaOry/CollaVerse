@@ -19,7 +19,9 @@ public interface PromotionService {
 
 	int heartCheck(int pmtNo, int heartMemNo);
 
-	int promotionsave(WritePromotion writepromotion);
+//	int promotionsave(WritePromotion writepromotion);
+
+	int promotionSave(Promotion promotionVo);
 
 //	List<Promotion> pmtMainList();
 

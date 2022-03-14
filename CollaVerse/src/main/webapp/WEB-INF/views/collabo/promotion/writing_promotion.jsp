@@ -29,6 +29,32 @@
 					<td><input type="text" name="writerId" value="${ loginMember.id }" readonly></td>
 				</tr>
 				<tr>
+					<th>카테고리</th>
+					<td>
+						<select name="c_no">
+							<option value="1">리빙</option>
+							<option value="2">문화</option>
+							<option value="3">식품</option>
+							<option value="4">테크</option>
+							<option value="5">패션</option>
+						</select>					
+					</td>
+				</tr>
+				<tr>
+					<th>시작일</th>
+					<td>
+						<%-- name="startDate" 달력에서 날짜 선택하게하는 --%>					
+						<input type="date" name="startDate">
+					</td>
+				</tr>
+				<tr>
+					<th>종료일</th>
+					<td>
+						<%-- name="endDate" 달력에서 날짜 선택하게하는 --%>					
+						<input type="date" name="endDate">
+					</td>
+				</tr>
+				<tr>
 					<th>대표 프로모션 이미지</th>
 					<td><input type="file" name="promImg"></td>
 				</tr>

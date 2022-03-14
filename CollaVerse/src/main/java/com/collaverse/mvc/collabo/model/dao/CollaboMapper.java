@@ -61,7 +61,10 @@ public interface CollaboMapper {
 
 	List<Product> selectFsproduct();
 
-	int insertPromotion(WritePromotion writepromotion);
+//	int insertPromotion(WritePromotion writepromotion);
+
+	// Promotion 테이블에 insert 돌릴 메소드 
+	int promotionSave(Promotion promotionVo);
 
 
 
