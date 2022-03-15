@@ -50,7 +50,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
 <body>
-<div id='calendar' style="position : relative;">
+<div id='calendar' style="position : relative; margin: 100px 100px 100px 100px;">
 	<div>
 		<button class = "add-button" type = "button" 
         	onclick="click_add();">일정 추가</button>
