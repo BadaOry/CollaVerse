@@ -11,18 +11,21 @@
 #business .mypage #brand-photo img {
   margin-top: 20px;
   text-align:center;
-  width: 160px;
-  height: 160px;
+  width: 100px;
+  height: 100px;
   border-style: solid;
   border-color: rgb(207, 205, 205);
   border-radius: 70%;
   overflow: hidden;
+  margin: 35px 0 0 80px;
 }
 #business .mypage #brand-name {
   font-size: 60px;
   position: absolute;
   top: 55px;
   left: 200px;
+  font-family: 'Sam3KRFont';
+  color: #730e74;
 }
 .fc-sat { color:#0000FF; }    /* 토요일 */
 .fc-sun { color:#FF0000; }    /* 일요일 */
@@ -38,7 +41,7 @@
 #business #brand-calendar a #calendar {
 	width: 800px;
 	height: 600px;
-	margin-bottom: 40px;
+	margin: auto;
 }
 #business #brand-follower>p {
   font-size: 40px;
@@ -160,6 +163,9 @@
 #profile_image {
 	width: 150px;
 	height: 150px;
+	border-style: solid;
+	border-color: rgb(207, 205, 205);
+	border-radius: 70%;
 }
 
 /*
@@ -226,4 +232,30 @@
   color: #730e74;
   /* display: inline-block; */
   width: 60px;
+}
+
+#brand-calendar {
+	margin: 0 0 120px 0 ;
+}
+
+#col {
+	color: #550c81;
+}
+
+#ver {
+	color: #8c116c;
+}
+
+#se {
+	color: #ae165f;
+}
+
+#brand .mypage #brand-name {
+  font-size: 60px;
+  position: absolute;
+  top: 55px;
+  left: 200px;
+  font-family: 'Sam3KRFont';
+  /* font-size: 30px; */
+  color: #730e74;
 }

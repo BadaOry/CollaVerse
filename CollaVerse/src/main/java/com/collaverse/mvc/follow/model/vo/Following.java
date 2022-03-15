@@ -27,4 +27,6 @@ public class Following {
 	
 	private int followerCheck;
 	
+	private String profileImg;
+	
 }
