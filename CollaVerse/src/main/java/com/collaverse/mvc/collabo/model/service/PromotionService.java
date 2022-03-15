@@ -2,6 +2,7 @@ package com.collaverse.mvc.collabo.model.service;
 
 import java.util.List;
 
+import com.collaverse.mvc.collabo.model.vo.Brand;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
 import com.collaverse.mvc.collabo.model.vo.WritePromotion;
@@ -23,7 +24,13 @@ public interface PromotionService {
 
 	int promotionSave(Promotion promotionVo);
 
+
+	List<Brand> selectBrandIntro();
+
+	List<Brand> selectBrandIntro(int pmtNo);
+
 	int productSave(Product productVo);
+
 
 //	List<Promotion> pmtMainList();
 

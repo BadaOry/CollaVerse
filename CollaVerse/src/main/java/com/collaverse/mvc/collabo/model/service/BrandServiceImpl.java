@@ -26,4 +26,10 @@ public class BrandServiceImpl implements BrandService {
 		return mapper.selectBrand();
 	}
 
+	@Override
+	public List<Brand> selectBrandB() {
+		
+		return mapper.selectBrandB();
+	}
+
 }

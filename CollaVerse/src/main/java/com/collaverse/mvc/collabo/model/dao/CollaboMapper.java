@@ -67,7 +67,14 @@ public interface CollaboMapper {
 	int promotionSave(Promotion promotionVo);
 
 	// 브랜드 조회 
+
+	List<Brand> selectBrandIntro();
+
+	List<Brand> selectBrandIntro(int pmtNo);
+
 	List<Brand> selectBrand();
+
+	List<Brand> selectBrandB();
 
 
 
