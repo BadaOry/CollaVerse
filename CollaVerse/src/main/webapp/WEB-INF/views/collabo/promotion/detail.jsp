@@ -41,53 +41,6 @@
 					</c:forEach>
 				</div>				
 				</div>	
-	
-<!--  	
-   <div class="frame">
-
-        <nav class="colla_menu">
-            <ul>
-                <li><a onclick="location.href='${ path }/collabo/category/living/livingList'" >리빙</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/culture/cultureList'" >문화</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/food/foodList'" >식품</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/tech/techList'" >테크</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/fashion/fashionList'" >패션</a></li>
-                <li><a onclick="location.href='${ path }/collabo/brand/brand'" >브랜드</a></li>
-            </ul>
-        </nav>
-
-    </div>
-
-    <div class="frame">
-
-    <div class="tab_content">
-            <input type="radio" name="tabmenu" id="tab01" checked>
-            <input type="radio" name="tabmenu" id="tab02">
-            <input type="radio" name="tabmenu" id="tab03">
-
-    <div class="conbox con1">
-        <img id="main_img1" src="${ pageContext.request.contextPath }/resources/images/promotion/promotion1.jpg" width="550px" height="350px">
-    </div>
-
-    <div class="conbox con2">
-        <img id="main_img2" src="${ pageContext.request.contextPath }/resources/images/promotion/promotion2.jpg" width="550px" height="350px">
-    </div>
-
-    <div class="conbox con3">
-        <img id="main_img3" src="${ pageContext.request.contextPath }/resources/images/promotion/promotion3.jpg" width="550px" height="350px">
-    </div>
-
-    <div class="btn">
-        <label for="tab01"></label>
-        <label for="tab02"></label>
-        <label for="tab03"></label>
-    </div>
-</div>
--->
-
-
-
-
 
     <div class="p_title">
         <hr>
@@ -251,33 +204,31 @@
                         
 		</div>
 
-<!--  
-        <div id="area2">
-        	<div class="p_img">
-	        	<img src="${ pageContext.request.contextPath }/resources/images/product/product1_2.jpg" width="470px" height="350px">
-	        </div>  
-	        
-	       <div>
-	            <p>제품 이름</p>
-	            <p>제품 가격</p>
-	            <p>제품 설명</p>
-           </div> 
-        </div>
-
-        <div id="area3">
-            <div class="p_img">
-                <img src="${ pageContext.request.contextPath }/resources/images/product/product1_3.jpg" width="470px" height="350px">
-            </div>
-			<div>
-	            <p>제품 이름</p>
-	            <p>제품 가격</p>
-	            <p>제품 설명</p>
-           </div>
-        </div>
--->
     </div>
 
     <hr>
+
+<!--       
+     <div class="brand_title">
+        <p>브랜드 소개</p>
+     </div>
+     
+     <div class="brand_introduction"> 
+     <c:forEach var="brandInfo" items="${ brandInfo }" begin="0" end="1">  
+        <table>
+        		<tr>
+        		<td>
+                <p>${ brandInfo.brName }</p>
+                </td>
+                <td>
+	            <p>${ brandInfo.brContent }</p>
+	            </td>                
+                </tr>
+                
+		</table>		
+        </c:forEach>
+    </div>
+-->
 
 </div>
 

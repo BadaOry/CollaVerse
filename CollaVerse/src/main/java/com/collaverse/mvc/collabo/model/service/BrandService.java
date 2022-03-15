@@ -11,4 +11,6 @@ public interface BrandService {
 
 	List<Brand> selectBrand();
 
+	List<Brand> selectBrandB();
+
 }

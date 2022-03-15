@@ -99,23 +99,41 @@
     </div>
 		
 			<div class="brand_array">
-			<p>ABC</p>
-			
-			<p> A B C D E F G H I J K L M N O P Q R S T U V W X Y Z </p>
-			 
+			<p>ABC</p>			 
 								
 			</div>
+			
+			<div class="brand_englist">
+			<ul>
+			
+			<li>A</li>			
+			<li>B</li>			
+			<li>C</li>
+			<li>D</li>
+			<li>E</li>
+			<li>F</li>
+			<li>G</li>
+			<li>H</li>
+			<li>I</li>
+			<li>J</li>
+			<li>K</li>
+			<li>L</li>
+			<li>M</li>
+			<li>N</li>
+			<li>O</li>
+			<li>Q</li>
+			<li>R</li>
+			<li>S</li>
+			<li>T</li>
+			<li>U</li>
+			<li>V</li>
+			<li>W</li>
+			<li>X</li>
+			<li>Y</li>
+			<li>Z</li>			
+			</ul>
+			</div>
 						
-			<div class="form-type">
-			<select id="select-type" name="type">
-			<option value="A">A</option>
-			<option value="가">가</option>
-			</select>
-			</div>
-		
-			<div class="brand_list">
-							
-			</div>
 	</div>
 
 

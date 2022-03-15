@@ -256,6 +256,18 @@ th, td {
 	padding: -10px;
 }
 
+.brand_englist ul, li{
+	list-style: none;
+	font-family: 'Sam3KRFont';
+	font-size: 35px;
+	display: inline;
+	margin-left: 23px;
+}
+
+.brand_englist li:hover{
+	background-color: rgb(198, 182, 218);	
+}
+
 
 
 

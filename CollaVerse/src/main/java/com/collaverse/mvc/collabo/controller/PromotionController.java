@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.collaverse.mvc.collabo.model.dao.CollaboMapper;
 import com.collaverse.mvc.collabo.model.service.PromotionService;
+import com.collaverse.mvc.collabo.model.vo.Brand;
 import com.collaverse.mvc.collabo.model.vo.Heart;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
@@ -242,6 +243,7 @@ public class PromotionController {
 		
 		Promotion pmt = null;
 		List<Product> pdt = null;
+		List<Brand> br = null;
 		
 		// 1. Promotion 정보 가져오기
 		pmt = service.getPromotionInfo(pmtNo);
@@ -253,7 +255,11 @@ public class PromotionController {
 		
 		log.info("[Controller] service 가 가져온 Product 정보 : {} ", pdt);
 		
-		// 3. heartCheck 처리하기
+		// 3. Brand 정보 가져오기 
+		br = service.selectBrandIntro(pmtNo);
+		log.info("[Controller] service 가 가져온 Brand 정보 : {} ", br);
+		
+		// 4. heartCheck 처리하기
 		int heartCheck = 0;
 		if(loginMember  != null){
 			int heartMemNo = loginMember.getNo();
@@ -265,6 +271,7 @@ public class PromotionController {
 		
 		model.addObject("promotionInfo", pmt);
 		model.addObject("productInfo", pdt);
+		model.addObject("brandInfo", br);
 		model.addObject("heartCheck", heartCheck);
 		model.setViewName("/collabo/promotion/detail");
 		return model;

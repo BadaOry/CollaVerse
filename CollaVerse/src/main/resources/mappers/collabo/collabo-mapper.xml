@@ -221,7 +221,19 @@
   		
   		<select id="selectBrand" parameterType="map" resultMap="brandListResultMap">
   			<include refid="brandListSql"/>
-  		</select>	
+  		</select>
+  		
+  		<select id="selectBrandIntro" parameterType="map" resultMap="brandListResultMap">
+  			SELECT BR_MEMBER_NO, BR_NAME, BR_CONTENT, BR_IMG_PATH, BR_PMT_NO 
+  			FROM PROMOTION P, BRAND B
+  			WHERE P.PMT_NO = B.BR_PMT_NO
+  		</select>
+  		
+  		<select id="selectBrandB" parameterType="map" resultMap="brandListResultMap">
+			SELECT *
+			FROM BRAND 
+			WHERE REGEXP_LIKE (BR_NAME, '^[B]')		
+  		</select>  		  			
   		
 	    	  	
         
