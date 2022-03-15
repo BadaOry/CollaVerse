@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.collaverse.mvc.follow.controller.FollowController;
 import com.collaverse.mvc.follow.model.service.FollowService;
+import com.collaverse.mvc.member.model.service.MemberService;
 import com.collaverse.mvc.member.model.vo.Member;
 import com.collaverse.mvc.mypage_p_collection.model.service.MypagePCollectionService;
 import com.collaverse.mvc.mypage_p_collection.model.vo.MypagePCollection;
@@ -27,6 +28,9 @@ public class mypageController {
 
 	@Autowired
 	private ScheduleService service;
+	
+	@Autowired
+	private MemberService mservice;
 	
 	@Autowired
 	private FollowService fservice;

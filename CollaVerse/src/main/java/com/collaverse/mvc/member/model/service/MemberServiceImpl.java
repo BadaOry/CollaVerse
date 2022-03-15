@@ -1,6 +1,5 @@
 package com.collaverse.mvc.member.model.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -133,21 +132,67 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.findMemberByNickname(nickname) != null;
 	}
 	
-	// 통계용 여 회원정보(테스트중)
+	// 통계용 여 회원정보
 	@Override
-	public int getWomenCount() {
-		return mapper.getWomenCount();
+	public int getWomenCount(int memberNo) {
+
+		return mapper.getWomenCount(memberNo);
 	}
 	
-	// 통계용 남 회원정보(테스트중)
+	// 통계용 남 회원정보
 	@Override
-	public int getMenCount() {
-		return mapper.getMenCount();
+	public int getMenCount(int memberNo) {
+
+		return mapper.getMenCount(memberNo);
 	}
 
+	// 통계용 10대 정보
+	@Override
+	public int getTeenagerCount(int memberNo) {
+		
+		return mapper.getTeenagerCount(memberNo);
+	}
 	
-
-
+	// 통계용 20대 정보
+	@Override
+	public int getTwentiesCount(int memberNo) {
+		
+		return mapper.getTwentiesCount(memberNo);
+	}
 	
+	// 통계용 30대 정보
+	@Override
+	public int getThirtiesCount(int memberNo) {
+		
+		return mapper.getThirtiesCount(memberNo);
+	}
+	
+	// 통계용 40대 정보
+	@Override
+	public int getFortiesCount(int memberNo) {
+		
+		return mapper.getFortiesCount(memberNo);
+	}
+	
+	// 통계용 50대 정보
+	@Override
+	public int getFiftiesCount(int memberNo) {
+		
+		return mapper.getFiftiesCount(memberNo);
+	}
+	
+	// 통계용 그 외 나이 정보
+	@Override
+	public int getEtcCount(int memberNo) {
+		
+		return mapper.getEtcCount(memberNo);
+	}
+	
+	// 통계용 토탈 합 정보
+	@Override
+	public int getTotalCount(int memberNo) {
+		
+		return mapper.getTotalCount(memberNo);
+	}
 }
 

@@ -26,10 +26,24 @@ public interface MemberMapper {
 	
 	Object findMemberByNickname(String nickname); // 닉네임 중복확인
 	
-	int getWomenCount(); // 통계용 여 회원정보(테스트중)
+	int getWomenCount(@Param("memberNo") int memberNo); // 통계용 여 회원정보
 	
-	int getMenCount(); // 통계용 남 회원정보(테스트중)
+	int getMenCount(@Param("memberNo") int memberNo); // 통계용 남 회원정보
 	
+	int getTeenagerCount(@Param("memberNo") int memberNo); // 통계용 10대 정보
+	
+	int getTwentiesCount(@Param("memberNo") int memberNo); // 통계용 20대 정보
+	
+	int getThirtiesCount(@Param("memberNo") int memberNo); // 통계용 30대 정보
+	
+	int getFortiesCount(@Param("memberNo") int memberNo); // 통계용 40대 정보
+	
+	int getFiftiesCount(@Param("memberNo") int memberNo); // 통계용 50대 정보
+	
+	int getEtcCount(@Param("memberNo") int memberNo); // 통계용 그 외 나이 정보
+	
+	int getTotalCount(@Param("memberNo") int memberNo); // 통계용 토탈 합 정보
+		
 	int updateBusinessMember(Member member); // 기업 회원가입???
 	
 	int insertBusinessMember(Member member); // 기업 회원가입
