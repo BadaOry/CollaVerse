@@ -540,7 +540,9 @@ COMMIT;
 --04. MEMBER 의 ID 로 회원정보를 조회하는 쿼리
 --SELECT * FROM MEMBER WHERE ID='admin' AND MEMBER_STATUS='Y';
 
-
+--05. 프로필 사진을 기본 이미지로 변경하는 쿼리
+UPDATE MEMBER 
+SET PROFILE_IMG = 'profile_basic.png';  
 
 
 --------------------------------------------------------------
@@ -1522,8 +1524,6 @@ COMMIT;
 --DROP TABLE REPLY ;
 --DROP TABLE SCHEDULE;
 --DROP TABLE MEMBER;
---
---
 --
 --
 ---- 02. 시퀀스
