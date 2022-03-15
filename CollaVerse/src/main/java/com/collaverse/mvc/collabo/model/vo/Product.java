@@ -23,6 +23,10 @@ public class Product {
 	// 외래키 (Category 참조)
 	private String cNo;
 	
-	private String pmtNo; 
+	private String pmtNo;
+	
+	private String originalFileName;
+	
+	private String renamedFileName;
 	
 }

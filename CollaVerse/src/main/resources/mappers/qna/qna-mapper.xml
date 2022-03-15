@@ -55,7 +55,6 @@
 	      )
 	</insert>
   
-  
      <!-- 게시판 목록 -->
     <select id="getList" parameterType="map" resultMap="qnaListResultMap">
     
