@@ -84,6 +84,9 @@
 						</ul>
 					</li>
 					
+					<li><a class="menu_title"  href="${ path }/collections/main">컬렉션</a>
+					</li>
+					
 					<c:if test="${ loginMember.role == '개인' }">
 						<li><a href="${ path }/mypage/personMypage">My 콜라버스</a>
 							<ul>
