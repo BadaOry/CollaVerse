@@ -144,6 +144,7 @@ public class PromotionController {
 		log.info("[Controller] insert 후에 다시 찾아온 promotion 입력내용 : {}", promotionVo);	
 		
 		int promotionNo = promotionVo.getNo();
+		int productNo = productVo.getProNo();
 		
 		log.info("[Controller] promotionVo 의 promotionNo 확 : {}", promotionNo);	
 		 
@@ -153,14 +154,14 @@ public class PromotionController {
 			String renamedFileName = null;
 //			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			try {
-				location = resourceLoader.getResource("resources/images/promotion").getFile().getPath();
+				location = resourceLoader.getResource("resources/images/promotion/promotion").getFile().getPath();
 				renamedFileName = PromotionFileProcess.promotionsave(promImg, location, promotionNo);
 				
 				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
 			} catch (IOException e) {
 				
 				e.printStackTrace();
-			}						
+			}
 			
 			if(renamedFileName != null) {
 				promotionVo.setOriginalFileName(promImg.getOriginalFilename());
@@ -175,13 +176,13 @@ public class PromotionController {
 		
 		// [ Product 관련 내용 저장하기 ] 
 		// Product1 이미지 파일명 바꾸기
-		if (promImg != null && !promImg.isEmpty()) {
+		if (prodImg != null && !prodImg.isEmpty()) {
 			
 			String renamedFileName = null;
 //			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			try {
-				location = resourceLoader.getResource("resources/images/promotion").getFile().getPath();
-				renamedFileName = PromotionFileProcess.promotionsave(promImg, location, promotionNo);
+				location = resourceLoader.getResource("resources/images/product/product").getFile().getPath();
+				renamedFileName = PromotionFileProcess.promotionsave(promImg, location, productNo);
 				
 				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
 			} catch (IOException e) {
@@ -190,7 +191,7 @@ public class PromotionController {
 			}						
 			
 			if(renamedFileName != null) {
-				productVo.setOriginalFileName(promImg.getOriginalFilename());
+				productVo.setOriginalFileName(prodImg.getOriginalFilename());
 				productVo.setRenamedFileName(renamedFileName);
 			}
 		}
