@@ -8,25 +8,6 @@
 
 <mapper namespace="com.collaverse.mvc.follow.model.dao.FollowMapper">
 
-	<resultMap type="com.collaverse.mvc.follow.model.vo.Follower" id="FollowerResultMap">
-		<id property="followerNo" column="FOLLOWER_NO"/>
-		<result property="toMemNo" column="TO_MEM_NO"/>
-		<result property="toMemNick" column="TO_MEM_NICK"/>
-		<result property="fromMemNo" column="FROM_MEM_NO"/>
-		<result property="fromMemNick" column="FROM_MEM_NICK"/>
-		<result property="followerCreateDate" column="FOLLOWER_CREATE_DATE"/>
-	</resultMap>
-	
-	<resultMap type="com.collaverse.mvc.follow.model.vo.Following" id="FollowingResultMap">
-		<id property="followingNo" column="FOLLOWING_NO"/>
-		<result property="fromMemNo" column="FROM_MEM_NO"/>
-		<result property="fromMemNick" column="FROM_MEM_NICK"/>
-		<result property="toMemNo" column="TO_MEM_NO"/>
-		<result property="toMemNick" column="TO_MEM_NICK"/>
-		<result property="followingCreateDate" column="FOLLOWING_CREATE_DATE"/>
-	</resultMap>
-
-
 	<resultMap type="com.collaverse.mvc.follow.model.vo.Follower" id="FollowerMap">
 		<id property="followerNo" column="FOLLOWER_NO"/>
 		<result property="toMemNo" column="TO_MEM_NO"/>
@@ -34,24 +15,24 @@
 		<result property="toMemId" column="ID"/>
 		<result property="fromMemNo" column="FROM_MEM_NO"/>
 		<result property="followerCreateDate" column="FOLLOWER_CREATE_DATE"/>
-		<!-- 나중에 프로필 이미지도 추가해야함 -->
+		<result property="profileImg" column="PROFILE_IMG" />
 	</resultMap>
 	
-		<resultMap type="com.collaverse.mvc.follow.model.vo.Following" id="FollowingMap">
+	<resultMap type="com.collaverse.mvc.follow.model.vo.Following" id="FollowingMap">
 		<id property="followingNo" column="FOLLOWING_NO"/>
 		<result property="fromMemNo" column="FROM_MEM_NO"/>
 		<result property="toMemNo" column="TO_MEM_NO"/>
 		<result property="toMemNick" column="NICKNAME"/>
 		<result property="toMemId" column="ID"/>
 		<result property="followingCreateDate" column="FOLLOWING_CREATE_DATE"/>
-		<!-- 나중에 프로필 이미지도 추가해야함 -->
+		<result property="profileImg" column="PROFILE_IMG" />
 	</resultMap>
 	
 	
 	<select id="getFollowerList" parameterType="_int" resultType="arrayList" 
 		resultMap="FollowerMap">
 		SELECT F.FOLLOWER_NO, F.TO_MEM_NO, F.TO_MEM_NO, M.NICKNAME, M.ID,
-			F.FROM_MEM_NO, F.FOLLOWER_CREATE_DATE <!-- 나중에 프로필 이미지도 추가해야함 -->
+			F.FROM_MEM_NO, F.FOLLOWER_CREATE_DATE, M.PROFILE_IMG 
 		FROM FOLLOWER F
 		JOIN MEMBER M ON(M.MEMBER_NO = F.FROM_MEM_NO)
 		WHERE F.FROM_MEM_NO IN (SELECT F.FROM_MEM_NO
@@ -73,7 +54,7 @@
 	<select id="getFollowingList" parameterType="_int" resultType="arrayList" 
 		resultMap="FollowingMap">
 		SELECT F.FOLLOWING_NO, F.TO_MEM_NO, M.NICKNAME, M.ID,
-			F.FROM_MEM_NO, F.FOLLOWING_CREATE_DATE <!-- 나중에 프로필 이미지도 추가해야함 -->
+			F.FROM_MEM_NO, F.FOLLOWING_CREATE_DATE, M.PROFILE_IMG <!-- 나중에 프로필 이미지도 추가해야함 -->
 		FROM FOLLOWING F
 		JOIN MEMBER M ON (F.TO_MEM_NO = M.MEMBER_NO)
 		WHERE F.TO_MEM_NO IN (SELECT F.TO_MEM_NO

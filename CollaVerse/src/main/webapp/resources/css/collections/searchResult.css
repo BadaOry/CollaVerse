@@ -1,0 +1,87 @@
+#searchContainer {margin: 50px 400px 50px 400px;}
+
+#searchCategory {
+	display: inline-block;
+	width: 100px;
+	height: 27px;
+}
+
+#searchUser {
+	display: inline-block;
+	width: 500px;
+	height: 27px;
+}
+
+#searchSubmit {
+	display: inline-block;
+	
+}
+
+.mini_title {
+	/* 고정값 */
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #730e74;
+	/* 변경값 */
+	text-align: left;
+	margin: 50px 0 30px 150px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 60%;
+}
+
+
+
+#searchSubmit  {
+ 	/* 고정값 */
+	background-color:#720e74;
+	border-radius:7px;
+	border: 2px solid  #faae22;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Sam3KRFont';
+	font-size:14px;
+	padding:10px 27px;
+	text-decoration:none;
+	text-shadow: 0px 0px 0px #faaf22;
+	/* 변경값 */
+	display:inline-block;
+	width: 80px;
+}
+
+#searchSubmit :hover {
+  	/* 고정값 */
+	background-color:#faae22;
+	color: #720e74;
+	border: 2px solid #720e74;
+	
+}
+#searchSubmit :active {
+	position:relative;
+	top:1px;
+}
+
+
+
+/* 반복문 */
+#profile_image{
+	width: 150px;
+	height: 150px;
+	border-style: solid;
+	border-color: rgb(207, 205, 205);
+	border-radius: 70%;
+}
+
+#userContainer {
+	margin: 0 150px 80px 150px;
+}
+
+#user_nickname {
+	font-family: 'DOSGothic';
+	text-align: center;
+}
+
+.user_info_container {
+	/* width: 140px; */
+	/* height: 200px; */
+	margin: 20px 40px 0 0;
+	display: inline-block;
+} 

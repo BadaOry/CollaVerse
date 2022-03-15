@@ -46,7 +46,7 @@
 <main id="person">
     <section class="mypage">
       <div id="person-photo">
-        <img src="${ loginMember.profile_img }" alt="">
+        <img src="${ path }/resources/upload/profile/${ loginMember.profile_img }">
       </div>
       <div id="person-name"><strong><span id="memebr_nickname">${ loginMember.nickname }</span> 님의 
 			<span id="col">콜</span><span id="la">라</span><span id="ver">버</span><span id="se">스</span></strong>
@@ -72,7 +72,7 @@
 						<c:forEach var="followingList" items="${ followingList }"  begin="0" end="6">
 								
 							<div class="member_info_container">
-								<img id="profile_image" src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" 					
+								<img id="profile_image" src="${ path }/resources/upload/profile/${ followingList.profileImg }"					
 									 onclick="location.href='${ path }/mypage/collection/list/${ followingList.toMemId }'" />
 									 
 								<p id="member_nickname">${ followingList.toMemNick }</p>	
