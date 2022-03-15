@@ -136,4 +136,14 @@ public class PromotionServiceImpl implements PromotionService {
 		return mapper.promotionSave(promotionVo);
 	}
 
+
+	@Override
+	public int productSave(Product productVo) {
+		
+		log.info("[ServiceImpl] vo 객체가 잘 전달되었는지 확인 : {}", productVo);
+		
+//		return mapper.productSave(productVo);
+		return 0;
+	}
+
 }

@@ -49,6 +49,10 @@
 	/*margin: auto;*/
 }
 
+#calendar {
+	margin: 20px 200px 0 200px;
+}
+
 /* 팔로우 */
 #person #person-follow .mini_title {
   font-size: 40px;
@@ -180,6 +184,9 @@
 #profile_image {
 	width: 150px;
 	height: 150px;
+	border-style: solid;
+	border-color: rgb(207, 205, 205);
+	border-radius: 70%;
 }
 
 /*
@@ -196,4 +203,8 @@
 
 .member_info_container {
 	margin: 0 20px 0 0 ;
+}
+
+#person-calendar {
+	margin: 0 0 120px 0 ;
 }

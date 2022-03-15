@@ -188,7 +188,7 @@
 		WHERE NICKNAME = #{nickname} AND MEMBER_STATUS = 'Y'
 	</select>
 	
-	<!-- 통계용 여 팔로워 회원정보(테스트중) -->
+	<!-- 통계용 여 팔로워 회원정보 -->
 	<select id = "getWomenCount" resultType="_int">
 		<!-- SELECT COUNT(*) FROM MEMBER WHERE MEMBER_GENDER = 'woman' -->
 		SELECT COUNT(*) FROM
@@ -197,24 +197,112 @@
 							WHERE MEMBER_NO IN (
 							SELECT FROM_MEM_NO 
 							FROM FOLLOWER 
-							WHERE TO_MEM_NO = 5
+							WHERE TO_MEM_NO = #{memberNo}
 							))
 						WHERE MEMBER_GENDER = 'woman'
-		
 	</select>
 	
-	<!-- 통계용 남 팔로워 회원정보(테스트중) -->
+	<!-- 통계용 남 팔로워 회원정보 -->
 	<select id = "getMenCount" resultType="_int">
-		<!-- SELECT COUNT(*) FROM MEMBER WHERE MEMBER_GENDER = 'man' -->
 		SELECT COUNT(*) FROM
 							(SELECT MEMBER_GENDER
 							FROM MEMBER
 							WHERE MEMBER_NO IN (
 							SELECT FROM_MEM_NO 
 							FROM FOLLOWER 
-							WHERE TO_MEM_NO = 5
+							WHERE TO_MEM_NO = #{memberNo}
 							))
 						WHERE MEMBER_GENDER = 'man'
+	</select>
+	
+	<!-- 통계용 10대 정보 -->
+	<select id = "getTeenagerCount" resultType="_int">
+		SELECT COUNT(*) FROM
+							(SELECT MEMBER_AGE
+							FROM MEMBER
+							WHERE MEMBER_NO IN (
+							SELECT FROM_MEM_NO 
+							FROM FOLLOWER 
+							WHERE TO_MEM_NO = #{memberNo}
+							))
+						WHERE MEMBER_AGE BETWEEN 10 AND 19
+	</select>
+	
+	<!-- 통계용 20대 정보 -->
+	<select id = "getTwentiesCount" resultType="_int">
+		SELECT COUNT(*) FROM
+							(SELECT MEMBER_AGE
+							FROM MEMBER
+							WHERE MEMBER_NO IN (
+							SELECT FROM_MEM_NO 
+							FROM FOLLOWER 
+							WHERE TO_MEM_NO = #{memberNo}
+							))
+						WHERE MEMBER_AGE BETWEEN 20 AND 29
+	</select>
+	
+	<!-- 통계용 30대 정보 -->
+	<select id = "getThirtiesCount" resultType="_int">
+		SELECT COUNT(*) FROM
+							(SELECT MEMBER_AGE
+							FROM MEMBER
+							WHERE MEMBER_NO IN (
+							SELECT FROM_MEM_NO 
+							FROM FOLLOWER 
+							WHERE TO_MEM_NO = #{memberNo}
+							))
+						WHERE MEMBER_AGE BETWEEN 0 AND 39
+	</select>
+	
+	<!-- 통계용 40대 정보 -->
+	<select id = "getFortiesCount" resultType="_int">
+		SELECT COUNT(*) FROM
+							(SELECT MEMBER_AGE
+							FROM MEMBER
+							WHERE MEMBER_NO IN (
+							SELECT FROM_MEM_NO 
+							FROM FOLLOWER 
+							WHERE TO_MEM_NO = #{memberNo}
+							))
+						WHERE MEMBER_AGE BETWEEN 40 AND 49
+	</select>
+	
+	<!-- 통계용 50대 정보 -->
+	<select id = "getFiftiesCount" resultType="_int">
+		SELECT COUNT(*) FROM
+							(SELECT MEMBER_AGE
+							FROM MEMBER
+							WHERE MEMBER_NO IN (
+							SELECT FROM_MEM_NO 
+							FROM FOLLOWER 
+							WHERE TO_MEM_NO = #{memberNo}
+							))
+						WHERE MEMBER_AGE BETWEEN 50 AND 59
+	</select>
+	
+	<!-- 통계용 그 외 나이 정보 -->
+	<select id = "getEtcCount" resultType="_int">
+		SELECT COUNT(*) FROM
+							(SELECT MEMBER_AGE
+							FROM MEMBER
+							WHERE MEMBER_NO IN (
+							SELECT FROM_MEM_NO 
+							FROM FOLLOWER 
+							WHERE TO_MEM_NO = #{memberNo}
+							))
+						WHERE MEMBER_AGE <![CDATA[<]]> 10 OR MEMBER_AGE <![CDATA[>=]]> 60
+	</select>
+	
+	<!-- 통계용 토탈 합 정보 -->
+	<select id = "getTotalCount" resultType="_int">
+		SELECT COUNT(*) FROM
+							(SELECT MEMBER_AGE
+							FROM MEMBER
+							WHERE MEMBER_NO IN (
+							SELECT FROM_MEM_NO 
+							FROM FOLLOWER 
+							WHERE TO_MEM_NO = #{memberNo}
+							))
 	</select>
 
 </mapper>

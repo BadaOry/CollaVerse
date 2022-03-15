@@ -2,8 +2,6 @@ package com.collaverse.mvc.common.util;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -46,7 +44,7 @@ public class PromotionFileProcess {
 			
 			try {
 				// ▼ 업로드한 파일 데이터를 명명 규칙으로 지정한 파일에 저장
-				promImg.transferTo(new File(location + renamedFileName));
+				promImg.transferTo(new File((location + renamedFileName) + ".jpg"));
 			
 			} catch (IllegalStateException | IOException e) {
 				log.error("파일 전송 에러");
