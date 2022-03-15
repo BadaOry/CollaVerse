@@ -1,6 +1,5 @@
 package com.collaverse.mvc.member.model.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,6 +36,7 @@ public class MemberServiceImpl implements MemberService {
 		
 //		return member != null && 
 //				passwordEncoder.matches(password, member.getPassword()) ? member : null; //로그인 클릭 했을 때 암호화 비번이랑 맞는지 확인 (삼항연산자 사용)
+//		-> null이 아니면서 매치함수를 사용하여 원문비번과, 사용자가 입력한 멤버객체에 저장된 비번과 비교해서 true를 리턴하면 멤버객체 false를 리턴하면 null값을 준다
 		return member; // 로그인 시 암호화가 되어있어 원래 비밀번호를 입력하려면 이 코드, 암호화 비번을 입력하려면 위 두 줄을 입력한다.
 	}
 
@@ -133,21 +133,67 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.findMemberByNickname(nickname) != null;
 	}
 	
-	// 통계용 여 회원정보(테스트중)
+	// 통계용 여 회원정보
 	@Override
-	public int getWomenCount() {
-		return mapper.getWomenCount();
+	public int getWomenCount(int memberNo) {
+
+		return mapper.getWomenCount(memberNo);
 	}
 	
-	// 통계용 남 회원정보(테스트중)
+	// 통계용 남 회원정보
 	@Override
-	public int getMenCount() {
-		return mapper.getMenCount();
+	public int getMenCount(int memberNo) {
+
+		return mapper.getMenCount(memberNo);
 	}
 
+	// 통계용 10대 정보
+	@Override
+	public int getTeenagerCount(int memberNo) {
+		
+		return mapper.getTeenagerCount(memberNo);
+	}
 	
-
-
+	// 통계용 20대 정보
+	@Override
+	public int getTwentiesCount(int memberNo) {
+		
+		return mapper.getTwentiesCount(memberNo);
+	}
 	
+	// 통계용 30대 정보
+	@Override
+	public int getThirtiesCount(int memberNo) {
+		
+		return mapper.getThirtiesCount(memberNo);
+	}
+	
+	// 통계용 40대 정보
+	@Override
+	public int getFortiesCount(int memberNo) {
+		
+		return mapper.getFortiesCount(memberNo);
+	}
+	
+	// 통계용 50대 정보
+	@Override
+	public int getFiftiesCount(int memberNo) {
+		
+		return mapper.getFiftiesCount(memberNo);
+	}
+	
+	// 통계용 그 외 나이 정보
+	@Override
+	public int getEtcCount(int memberNo) {
+		
+		return mapper.getEtcCount(memberNo);
+	}
+	
+	// 통계용 토탈 합 정보
+	@Override
+	public int getTotalCount(int memberNo) {
+		
+		return mapper.getTotalCount(memberNo);
+	}
 }
 

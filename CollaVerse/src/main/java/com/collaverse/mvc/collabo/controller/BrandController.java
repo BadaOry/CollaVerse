@@ -28,12 +28,17 @@ public class BrandController {
 		// Brand 정보 
 		List<Brand> blist = service.selectBrand();
 		
+		// 정규표현식 사용한 특정 Brand 정보 
+		List<Brand> blistb = service.selectBrandB();
+		
 		// 정상적으로 가져오는지 확인 
 		log.info(plist.toString());
 		log.info(blist.toString());
+		log.info(blistb.toString());
 		
 		model.addObject("plist", plist);
 		model.addObject("blist", blist);
+		model.addObject("blistb", blistb);
 		model.setViewName("/collabo/brand/brand");
 		
 		return model;

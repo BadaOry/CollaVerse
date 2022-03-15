@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.collaverse.mvc.collabo.model.dao.CollaboMapper;
+import com.collaverse.mvc.collabo.model.vo.Brand;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
 import com.collaverse.mvc.collabo.model.vo.WritePromotion;
@@ -138,12 +139,28 @@ public class PromotionServiceImpl implements PromotionService {
 
 
 	@Override
+	public List<Brand> selectBrandIntro() {
+		// TODO Auto-generated method stub
+		return mapper.selectBrandIntro();
+	}
+
+
+	@Override
+	public List<Brand> selectBrandIntro(int pmtNo) {
+		
+		log.info("[ServiceImpl] getBrandInfo 를 위해 pmtNo 잘 가져오는지 확인 : {}", pmtNo);
+		
+		return mapper.selectBrandIntro(pmtNo);
+  }
+  
+  @Override
 	public int productSave(Product productVo) {
 		
 		log.info("[ServiceImpl] vo 객체가 잘 전달되었는지 확인 : {}", productVo);
 		
 //		return mapper.productSave(productVo);
 		return 0;
+
 	}
 
 }
