@@ -35,7 +35,7 @@
 				<c:forEach var="followerList" items="${ followerList }">
 					
 					<div class="member_info_container">
-						<img id="profile_image" src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG"
+						<img id="profile_image" src="${ path }/resources/upload/profile/${ followerList.profileImg }"
 							onclick="location.href='${ path }/mypage/collection/list/${ followerList.toMemId }'" />
 						<p id="member_nickname">${ followerList.toMemNick }</p>	
 					</div>

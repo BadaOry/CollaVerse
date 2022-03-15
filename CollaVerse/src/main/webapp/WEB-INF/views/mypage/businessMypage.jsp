@@ -45,9 +45,9 @@
   <main id="business">
     <section class="mypage">
       <div id="brand-photo">
-        <img src="${ path }/resources/images/mypage_test/chanel.jpg" alt="">
+        <img src="${ path }/resources/upload/profile/${ loginMember.profile_img }">
       </div>
-      <div id="brand-name"><strong>${ loginMember.nickname }</strong></div>
+      <div id="brand-name"><strong>${ loginMember.nickname } <span id="col">브</span><span id="la">랜</span><span id="ver">드</span><span id="se"> 페이지</span></strong></div>
     </section>
 
 
@@ -69,7 +69,7 @@
 						<c:forEach var="followerList" items="${ followerList }"  begin="0" end="6">
 								
 							<div class="member_info_container">
-								<img id="profile_image" src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" 					
+								<img id="profile_image" src="${ path }/resources/upload/profile/${ followerList.profileImg }"					
 									 onclick="location.href='${ path }/mypage/collection/list/${ followerList.toMemId }'" />
 									 
 								<p id="member_nickname">${ followerList.toMemNick }</p>	
@@ -111,7 +111,7 @@
         <p>${ followerCount } 명</p>
         <div> 금일 +- 000 명</div>
         <ul>
-            <li>최고 팔로워 명 수</li>
+            <li>최고 팔로워 명 수 : </li>
             <li>금주 팔로워 변동 명 수</li>
             <li>직전 월 대비 +- 명</li>
             <li>직전 주 대비 +- 명</li>

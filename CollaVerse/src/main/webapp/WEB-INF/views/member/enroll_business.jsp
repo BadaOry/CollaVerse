@@ -74,7 +74,7 @@
 	 			<tr>
 	 				<th>나이 *</th>
 	 				<td>
-						<input type="text" name="age" id="age" size="25" placeholder="0~100까지 입력 가능" maxlength="100" required>
+						<input type="text" name="age" id="age" size="25" placeholder="14~100까지 입력 가능" maxlength="100" required>
 					</td>
 				</tr>
 				<tr>
@@ -95,7 +95,7 @@
 				  <input type="checkbox" name="agree" value="1" id="agree1">(필수) 이용약관과 개인정보 수집 및 이용에 동의합니다.<br>
 			</label>
 			<label for="agree">
-				  <input type="checkbox" name="agree" value="2" id="agree2">(필수) 만 14세 이상입니다.<br>
+				  <input type="checkbox" name="agree" value="2" id="agree2">(필수) 14세 이상입니다.<br>
 			</label>
 			<label for="agree">
 				  <input type="checkbox" name="agree" value="3" id="agree3">(선택) 이메일 및 SMS 마케팅 정보 수신에 동의합니다.<br>
@@ -103,7 +103,7 @@
 		</div>
 		<br>
 		<div class="btnAll" align="center">
- 			<input type="button" id="enrollSubmit" value="가입" onclick="enroll()">	
+ 			<button type="submit" id="enrollSubmit" onclick="enroll()" value="가입">가입</button>
  			<input type="reset" id="reset" value="취소" onclick="location.href='${ path }'">
  		</div>
  	</form>
@@ -257,8 +257,8 @@ function enroll(){
         	$(this).val('');
    		}
 
-    	if(val < 1 || val > 100) {
-        	alert("1~100 범위로 입력해 주십시오.");
+    	if(val < 14 || val > 100) {
+        	alert("14~100 범위로 입력해 주십시오.");
         	$(this).val('');
     	}
 });

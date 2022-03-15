@@ -1,5 +1,7 @@
 package com.collaverse.mvc.member.model.service;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.collaverse.mvc.member.model.vo.Member;
 
 public interface MemberService {
@@ -37,11 +39,31 @@ public interface MemberService {
 	// 닉네임 중복확인
 	Boolean isDuplicateNickname(String nickname);
 	
-	// 통계용 여 회원정보(테스트중)
-	int getWomenCount();
+	// 통계용 여 회원정보
+	int getWomenCount(int memberNo);
 	
-	// 통계용 남 회원정보(테스트중)
-	int getMenCount();
-
+	// 통계용 남 회원정보
+	int getMenCount(int memberNo);
+	
+	// 통계용 10대 정보
+	int getTeenagerCount(@Param("memberNo") int memberNo); 
+	
+	// 통계용 20대 정보
+	int getTwentiesCount(@Param("memberNo") int memberNo); 
+	
+	// 통계용 30대 정보
+	int getThirtiesCount(@Param("memberNo") int memberNo); 
+	
+	// 통계용 40대 정보
+	int getFortiesCount(@Param("memberNo") int memberNo); 
+	
+	// 통계용 50대 정보
+	int getFiftiesCount(@Param("memberNo") int memberNo); 
+	
+	// 통계용 그 외 나이 정보
+	int getEtcCount(@Param("memberNo") int memberNo); 
+	
+	// 통계용 토탈 합 정보
+	int getTotalCount(@Param("memberNo") int memberNo);
 
 }

@@ -241,7 +241,8 @@
   		
   		
   		<!-- Promotion VO 에 INSERT 하는 부분 -->
-  		<insert id="promotionSave" parameterType="com.collaverse.mvc.collabo.model.vo.Promotion">
+  		<insert id="promotionSave" parameterType="com.collaverse.mvc.collabo.model.vo.Promotion"
+  			useGeneratedKeys="true" keyProperty="no" keyColumn="PMT_NO">  			
   			INSERT INTO PROMOTION (
 			    PMT_NO, PMT_TITLE, PMT_IMG_PATH, PMT_CONTENT,
 			    PMT_STATUS, START_DATE, END_DATE,
@@ -251,7 +252,22 @@
 			    'Y', #{ startDate }, #{ endDate }, 
 			    0, #{ cNo }, 0
 			)
-  		</insert>	  	
+			<!-- <selectKey keyProperty="pmtNo" resultType="String" order="AFTER">
+				select max(pmtNo) from promotion
+			</selectKey>  -->
+  		</insert>
+  		
+  		<!-- ProductVo에 INSERT 하는 부분 -->  	
+  		<insert id="productSave" parameterType="com.collaverse.mvc.collabo.model.vo.Product"
+  			useGeneratedKeys="true" keyProperty="proNo" keyColumn="PRO_NO">
+  			INSERT INTO PRODUCT (
+  				PRO_NO, PRO_NAME, PRO_PRICE, PRO_CONTENT,
+  				PRO_QTY, PRO_IMG_PATH, C_NO, PMT_NO
+  			) VALUES (
+  				SEQ_PRODUCT_NO.NEXTVAL, #{ proName }, #{ proPrice }, #{ proContent }, #{ proQty }, '/resources/images/product/product',
+  				#{ cNo }, #{ pmtNo }
+  			)
+  		</insert>
 
  <!-- 
    		<select id="selectAll" parameterType="String" resultType="promotionListResultMap">

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -38,7 +39,6 @@ public class PromotionController {
 	@Autowired
 	private PromotionService service;
 	
-	
 	@Autowired
 	private ResourceLoader resourceLoader;
 	
@@ -55,18 +55,31 @@ public class PromotionController {
 			@ModelAttribute WritePromotion writepromotion,
 			@RequestParam("promName") String promTitle,
 			@RequestParam("promContent") String promContent,
-			@RequestParam("startDate") Date startDate,
-			@RequestParam("endDate") Date endDate,
+			@RequestParam("startDate") @DateTimeFormat(pattern="yyyy-MM-dd") Date startDate,
+			@RequestParam("endDate") @DateTimeFormat(pattern="yyyy-MM-dd") Date endDate,
 			@RequestParam("c_no") String cNo,
+			@RequestParam("prodName1") String prodName1,
+			@RequestParam("prodName2") String prodName2,
+			@RequestParam("prodName3") String prodName3,
+			@RequestParam("prodPrice1") String prodPrice1,
+			@RequestParam("prodPrice2") String prodPrice2,
+			@RequestParam("prodPrice3") String prodPrice3,
+			@RequestParam("prodContent1") String prodContent1,
+			@RequestParam("prodContent2") String prodContent2,
+			@RequestParam("prodContent3") String prodContent3,
+			@RequestParam("prodQty1") String prodQty1,
+			@RequestParam("prodQty2") String prodQty2,
+			@RequestParam("prodQty3") String prodQty3,
 			@RequestParam("promImg") MultipartFile promImg, @RequestParam("prodImg") MultipartFile[] prodImg) {
 		int result = 0;
-		Promotion promotionVo = null;
-//		Product productVo = null;
+		Promotion promotionVo = new Promotion();
+		Product productVo = new Product();
 		String location  = null;
 		
 		log.info("[Controller] 요청이 오는지 확인 ");
+		System.out.println("나오냐? " + promTitle + promContent +  startDate + endDate);
 		
-		log.info("writepromotion 출력 {} ", writepromotion.toString());
+//		log.info("writepromotion 출력 {} ", writepromotion.toString());
 		
 		log.info("promImg Name : {}", promImg.getOriginalFilename());
 		log.info("promImg is Empty : {}", promImg.isEmpty());
@@ -80,7 +93,8 @@ public class PromotionController {
 		
 		
 		// [ Promotion 관련 내용 저장하기 ]
-		// 1. Promotion Vo 에 넣을 내용 set 하는 과정  
+		// ★ Promotion Vo 에 넣을 내용 set 하는 과정  
+		
 		// pmt_no 는 쿼리에서 해결하자 시퀀스로 !
 		// pmt_title 은 받아와야함
 		promotionVo.setTitle(promTitle);
@@ -101,9 +115,34 @@ public class PromotionController {
 		promotionVo.setCNo(cNo);
 		// heart_hit 쿼리문에서 0 부터 시작 
 		
+		
+		// [ Product 관련 내용 저장하기 ]
+		// ★ ProductVo에 넣을 내용 set 하는 과정
+		
+		// pro_no는 쿼리에서 해결
+		// pro_name은 받아오기
+		productVo.setProName(prodName1);
+		// pro_price는 받아오기
+		productVo.setProPrice(prodPrice1);
+		// pro_content는 받아오기
+		productVo.setProContent(prodContent1);
+		// pro_qty는 받아오기
+		productVo.setProQty(prodQty1);
+		// pro_img_path는 쿼리에서 default 값으로 쓰기
+		// c_no는 받아오기
+		productVo.setCNo(cNo);
+		// pmt_no는 promotion에서 받아오기?
+		
 		log.info("[Controller] promotionVo 에 내용이 잘 set 되었는지 확인 : {}", promotionVo);	
 		
-		result = service.promotionSave(promotionVo);		
+		result = service.promotionSave(promotionVo);
+		result = service.productSave(productVo);
+		
+		// promTitle 을 파라미터로 넘겨서 mapper.xml 까지 가서 where = #{promTitle} 로 방금 insert한 promotion의 정보를 빼온다
+//		promotionVo = service.findPromotionInfo(promTitle);
+		// select * from promotion where = #{promTitle}
+		
+		log.info("[Controller] insert 후에 다시 찾아온 promotion 입력내용 : {}", promotionVo);	
 		
 		int promotionNo = promotionVo.getNo();
 		
@@ -125,8 +164,8 @@ public class PromotionController {
 			}						
 			
 			if(renamedFileName != null) {
-				writepromotion.setOriginalFileName(promImg.getOriginalFilename());
-				writepromotion.setRenamedFileName(renamedFileName);
+				promotionVo.setOriginalFileName(promImg.getOriginalFilename());
+				promotionVo.setRenamedFileName(renamedFileName);
 			}
 		}
 		
@@ -137,13 +176,13 @@ public class PromotionController {
 		
 		// [ Product 관련 내용 저장하기 ] 
 		// Product1 이미지 파일명 바꾸기
-		if (prodImg != null && !prodImg[0].isEmpty()) {
+		if (promImg != null && !promImg.isEmpty()) {
 			
 			String renamedFileName = null;
 //			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			try {
-				location = resourceLoader.getResource("resources/upload/promotion/product").getFile().getPath();
-				renamedFileName = ProductFileProcess.productsave(prodImg, location);
+				location = resourceLoader.getResource("resources/images/promotion").getFile().getPath();
+				renamedFileName = PromotionFileProcess.promotionsave(promImg, location, promotionNo);
 				
 				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
 			} catch (IOException e) {
@@ -152,8 +191,8 @@ public class PromotionController {
 			}						
 			
 			if(renamedFileName != null) {
-				writepromotion.setOriginalFileName(promImg.getOriginalFilename());
-				writepromotion.setRenamedFileName(renamedFileName);
+				productVo.setOriginalFileName(promImg.getOriginalFilename());
+				productVo.setRenamedFileName(renamedFileName);
 			}
 		}
 		
@@ -204,7 +243,7 @@ public class PromotionController {
 		
 		if (result > 0) {
 			model.addObject("msg", "프로모션이 정상적으로 등록되었습니다.");
-			model.addObject("location", "/collabo/promotion/detail?pmtNo=");
+			model.addObject("location", "/collabo/promotion/detail?pmtNo=" + promotionVo.getNo());
 		} else {
 			model.addObject("msg", "프로모션 등록에 실패하였습니다.");
 			model.addObject("location", "/collabo/promotion/writing_promotion");
