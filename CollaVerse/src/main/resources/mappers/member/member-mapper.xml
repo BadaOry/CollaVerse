@@ -75,7 +75,7 @@
 						#{email},
 						#{phone},
 						#{nickname},
-						#{profile_img},
+						#{profile_basic.png},
 						#{business_no},
 						#{business_name},
 						DEFAULT,
@@ -114,7 +114,7 @@
 						#{email},
 						#{phone},
 						#{nickname},
-						#{profile_img},
+						#{profile_basic.png},
 						#{business_no},
 						#{business_name},
 						DEFAULT,
@@ -140,7 +140,7 @@
 
 	</update>
 	
-	<!-- 사업자 회원정보수정 -->
+	<!-- 기업 회원정보수정 -->
 	<update id="updateMember_business" parameterType="com.collaverse.mvc.member.model.vo.Member">
 		UPDATE MEMBER 
 		SET 

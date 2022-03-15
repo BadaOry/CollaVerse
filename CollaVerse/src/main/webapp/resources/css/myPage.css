@@ -12,19 +12,6 @@
     box-shadow: 1px 1px 5px rgba(113, 6, 175, 0.1), -1px -1px 5px rgba(132, 8, 148, 0.1);
 }
 
-/*
-▼ 서연님 예전 작업물 (확인하시고 필요없으면 지우셔도 됩니다!)
-#btn1, #btn2, #btnDelete {
-    background-color: rgb(255, 255, 255);
-    border-color: blueviolet;
-    box-shadow: 1px 1px 1px 1px rgb(175, 46, 201, 0.5);
-    font-size: 13px;
-    padding: 5px 10px 10px;
-    cursor: pointer;
-    width: 90px;
-}
-*/
-
 /* --- ▼ Crystal Edited ▼ --- */
 #btn1, #btn2, #btnDelete {
  	/* 고정값 */
@@ -54,10 +41,6 @@
 	top:1px;
 }
 
-/* (주석은 확인하고 지워주세요)
-서연님 레이아웃은 미니 타이틀이 가운데 있는게 예쁘더라구요 !
-font-family, font-size, color 요 세개만 이 값 쓰시고
-나머지는 상황에 맞게 설정값 사용하시면 될것같습니다.  */
 .mini_title {
 	/* 고정값 */
 	font-family: 'Sam3KRFont';
@@ -93,4 +76,9 @@ input[type=file] {
     border-color: rgb(1, 0, 2);
     font-size: 14px;
     cursor: pointer;
+}
+
+#imagePreview {
+	width: 50px;
+	height: 50px;
 }

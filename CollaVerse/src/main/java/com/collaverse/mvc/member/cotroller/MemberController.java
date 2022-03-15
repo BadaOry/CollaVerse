@@ -1,17 +1,20 @@
 package com.collaverse.mvc.member.cotroller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -204,7 +207,7 @@ public class MemberController {
 		
 		int result = 0;
 		
-		// 여기서부터 이미지 넣는 코드 작업
+		// 프로필 사진 첨부
 	
 			String originalFileName = upfile.getOriginalFilename();
 			boolean upfileIsEmpty = upfile.isEmpty();
@@ -213,7 +216,7 @@ public class MemberController {
 			log.info("[Controller] upfile is Empty 확인 : {}", upfileIsEmpty);
 			
 			
-		// 1. 파일을 업로드 했는지 확인 후, rename 하여 VO 에 set & 지정 위치에 upfile 저장
+		// 파일을 업로드 했는지 확인 후, rename 하여 VO 에 set & 지정 위치에 upfile 저장
 			if (upfile != null && !upfile.isEmpty()) {
 				String location = null;
 				String renamedFileName = null;					
@@ -441,8 +444,6 @@ public class MemberController {
 		return new ResponseEntity<Map<String,Boolean>>(map, HttpStatus.OK);
 	}
 	
-	
-
 	
 
 	
