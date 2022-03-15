@@ -15,7 +15,6 @@
 		<result property="modifyDate" column="MODIFY_DATE"/>
 		<result property="readCount" column="READCOUNT"/>
 	</resultMap>
-      
   
     <!-- 검색 조건문 -->
     <sql id="criteria">
@@ -55,7 +54,6 @@
 	      	DEFAULT
 	      )
 	</insert>
-  
   
      <!-- 게시판 목록 -->
     <select id="getList" parameterType="map" resultMap="qnaListResultMap">

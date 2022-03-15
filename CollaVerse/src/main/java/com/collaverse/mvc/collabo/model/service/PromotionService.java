@@ -23,6 +23,8 @@ public interface PromotionService {
 
 	int promotionSave(Promotion promotionVo);
 
+	int productSave(Product productVo);
+
 //	List<Promotion> pmtMainList();
 
 //	Promotion selectAll();

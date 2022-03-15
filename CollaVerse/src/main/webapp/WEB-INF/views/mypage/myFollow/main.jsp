@@ -38,7 +38,7 @@
 					<c:forEach var="followingList" items="${ followingList }">
 							
 						<div class="member_info_container">
-							<img id="profile_image" src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG" 					
+							<img id="profile_image" src="${ path }/resources/upload/profile/${ followingList.profileImg }"				
 								 onclick="location.href='${ path }/mypage/collection/list/${ followingList.toMemId }'" />
 								 
 							<p id="member_nickname">${ followingList.toMemNick }</p>	
@@ -47,7 +47,7 @@
 					</c:forEach>
 				
 					<div class="plus_container">
-						<span onclick="location.href='${ path }/mypage/myFollow/follower'"> ▶ 더보기 </span>
+						<span onclick="location.href='${ path }/mypage/myFollow/following'"> ▶ 더보기 </span>
 					</div>
 					
 				</c:when>
@@ -73,7 +73,7 @@
 						<c:forEach var="followerList" items="${ followerList }" begin="0" end="6">
 						
 							<div class="member_info_container">
-								<img id="profile_image" src="${ path }/resources/images/mypage_test/아이슬란드 링로드.PNG"
+								<img id="profile_image" src="${ path }/resources/upload/profile/${ followerList.profileImg }"
 									onclick="location.href='${ path }/mypage/collection/list/${ followerList.toMemId }'" />
 								<p id="member_nickname">${ followerList.toMemNick }</p>	
 							</div>

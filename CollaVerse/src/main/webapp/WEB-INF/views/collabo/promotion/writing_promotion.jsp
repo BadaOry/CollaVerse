@@ -71,6 +71,10 @@
 					<td><textarea name="prodPrice1" cols="30" rows="1" ></textarea></td>
 				</tr>
 				<tr>
+					<th>제품1 구매가능 수량</th>
+					<td><textarea name="prodQty1" cols="30" rows="1" ></textarea></td>
+				</tr>
+				<tr>
 					<th>제품1 설명 / 획득 조건</th>
 					<td><textarea name="prodContent1" cols="50" rows="15" ></textarea></td>
 				</tr>
@@ -87,6 +91,10 @@
 					<td><textarea name="prodPrice2" cols="30" rows="1" ></textarea></td>
 				</tr>
 				<tr>
+					<th>제품2 구매가능 수량</th>
+					<td><textarea name="prodQty2" cols="20" rows="1" ></textarea></td>
+				</tr>
+				<tr>
 					<th>제품2 설명 / 획득 조건</th>
 					<td><textarea name="prodContent2" cols="50" rows="15" ></textarea></td>
 				</tr>
@@ -101,6 +109,10 @@
 				<tr>
 					<th>제품3 가격</th>
 					<td><textarea name="prodPrice3" cols="30" rows="1" ></textarea></td>
+				</tr>
+				<tr>
+					<th>제품3 구매가능 수량</th>
+					<td><textarea name="prodQty3" cols="30" rows="1" ></textarea></td>
 				</tr>
 				<tr>
 					<th>제품3 설명 / 획득 조건</th>
