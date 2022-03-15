@@ -29,6 +29,9 @@
 #profile_image{
 	width: 150px;
 	height: 150px;
+	border-style: solid;
+	border-color: rgb(207, 205, 205);
+	border-radius: 70%;
 }
 
 /*
