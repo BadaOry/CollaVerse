@@ -57,7 +57,7 @@
             </tr>
             <tr>
 			    <th rowspan="2">프로필사진</th>
-			    <td><img id="imagePreview" style="width:50px; height:50px;" src="${ path }/resources/upload/profile/${ loginMember.profile_img}" /></td>
+			    <td><img id="imagePreview" src="${ path }/resources/upload/profile/${ loginMember.profile_img}" /></td>
 			</tr>
 			<tr>
 			    <td rowspan="2"><input type="file" name="file" id="profile_img"><span style="color: red;font-size: small;">png, jpg만 첨부 가능</span></td>
