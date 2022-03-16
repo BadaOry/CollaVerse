@@ -38,6 +38,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="${ path }/resources/css/mypage/business_mypage.css">
 
+<style>
+	#follower-result {
+		right: 100px;
+	}
+</style>
 </head>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <body>
@@ -102,23 +107,30 @@
 
     <section id="statistics">
       <p class="mini_title">통계</p>
-      <div id="statistic">
-      	
-        <img src="${ path }/resources/images/mypage_test/gender_statistics.PNG" width="500px" height="300px">
-        <img src="${ path }/resources/images/mypage_test/age_statistics.PNG" width="600px" height="300px">
-      </div>
       <div id="follower-statistic">
-        <p>${ followerCount } 명</p>
-        <div> 금일 +- 000 명</div>
-        <ul>
-            <li>최고 팔로워 명 수 : </li>
-            <li>금주 팔로워 변동 명 수</li>
-            <li>직전 월 대비 +- 명</li>
-            <li>직전 주 대비 +- 명</li>
-            <li>작일 대비 +- 명</li>
-            <li>남녀 성비</li>
+        <p>총 팔로워 ${ followerCount } 명</p>
+        <div> 금일 ${ todayCount } 명</div>
+        <ul id="follower-result">
+            <li>남녀 성비 : 남성 - ${ Math.round(menCount / totalCount*100) }%, 여성 - ${ Math.round(womenCount / totalCount*100) }%</li>
+            <c:if test="${ thismonthCount - lastmonthCount > '0'}">
+				<li>직전 주 대비 ${ thismonthCount - lastmonthCount } 명 증가</li>
+			</c:if>
+			<c:if test="${ thismonthCount - lastmonthCount < '0'}">
+				<li>직전 주 대비 ${ thismonthCount - lastmonthCount } 명 감소</li>
+			</c:if>
+            <c:if test="${ thisweekCount - lastweekCount > '0'}">
+				<li>직전 주 대비 ${ thisweekCount - lastweekCount } 명 증가</li>
+			</c:if>
+			<c:if test="${ thisweekCount - lastweekCount < '0'}">
+				<li>직전 주 대비 ${ thisweekCount - lastweekCount } 명 감소</li>
+			</c:if>
+			<c:if test="${ todayCount - yesterdayCount > '0'}">
+				<li>작일 대비 ${ todayCount - yesterdayCount } 명 증가</li>
+			</c:if>
+			<c:if test="${ todayCount - yesterdayCount < '0'}">
+				<li>작일 대비 ${ todayCount - yesterdayCount } 명 감소</li>
+			</c:if>
         </ul>
-
       </div>
     </section>
 

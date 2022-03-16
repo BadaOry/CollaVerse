@@ -171,15 +171,15 @@ function Change(idx){
     var nowPaging = $("#counts option:selected").val();
     
     if(nowPaging == 5){
-        location.href="${path}/qnatest/optionList/qnatestList5";    
+        location.href="${path}/qna/option/qnaList5";    
     }else if(nowPaging == 10){
-        location.href="${path}/qnatest/optionList/qnatestList10";    
+        location.href="${path}/qna/option/qnaList10";    
     }else if(nowPaging == 20){
-        location.href="${path}/qnatest/optionList/qnatestList20";    
+        location.href="${path}/qna/option/qnaList20";    
     }else if(nowPaging == 30){
-        location.href="${path}/qnatest/optionList/qnatestList30";    
+        location.href="${path}/qna/option/qnaList30";    
     }else if(nowPaging == 40){
-        location.href="${path}/qnatest/optionList/qnatestList40";    
+        location.href="${path}/qna/option/qnaList40";    
     }
 }
 
