@@ -15,7 +15,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 		<div class="enroll" align="center">
-			<h1>회원가입</h1>
+			<p class="mini-title">회원가입</p>
 			<div class="enroll2" align="center">
 				<input type="button" id="personal" value="개인회원가입" onclick="location.href='${ path }/member/terms'">
 				<input type="button" id="business" value="사업자회원가입" onclick="location.href='${ path }/member/terms_business'">
