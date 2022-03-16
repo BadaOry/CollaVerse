@@ -75,7 +75,7 @@
 						#{email},
 						#{phone},
 						#{nickname},
-						#{profile_basic.png},
+						#{profile_img},
 						#{business_no},
 						#{business_name},
 						DEFAULT,
@@ -114,7 +114,7 @@
 						#{email},
 						#{phone},
 						#{nickname},
-						#{profile_basic.png},
+						#{profile_img},
 						#{business_no},
 						#{business_name},
 						DEFAULT,
@@ -134,7 +134,7 @@
 			PHONE = #{phone},
 			NICKNAME = #{nickname},
 			EMAIL = #{email},
-			PROFILE_IMG = #{profile_img},
+			PROFILE_IMG = #{profile_basic.png},
 			MODIFY_DATE = SYSDATE 
 		WHERE MEMBER_NO = #{no}
 
@@ -151,8 +151,8 @@
 			BUSINESS_NO = #{business_no},
 			NICKNAME = #{nickname},
 			EMAIL = #{email},
-			PROFILE_IMG = #{profile_img},
-			MODIFY_DATE = SYSDATE 
+			PROFILE_IMG = #{profile_basic.png},
+			MODIFY_DATE = SYSDATE
 		WHERE MEMBER_NO = #{no}
 	</update>
 

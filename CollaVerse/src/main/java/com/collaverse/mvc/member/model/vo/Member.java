@@ -40,6 +40,8 @@ public class Member {
 	private int age;
 	
 	private String gender;
+	
+	private String profile_basic;
 
 	public Member(String id, String password) {
 		this.id = id;
