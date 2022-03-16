@@ -89,21 +89,26 @@
 }
 #business #statistics #follower-statistic {
   width: 800px;
-  height: 600px;
+  height: 330px;
 }
 #business #statistics #follower-statistic p {
   font-size: 60px;
   text-align: center;
+  margin-left: 200px;
 }
 #business #statistics #follower-statistic div {
   font-size: 20px;
   text-align: center;
   margin-bottom: 30px;
+  margin-left: 200px;
 }
 #business #statistics #follower-statistic ul {
   column-count: 2;
   background-color: rgba(149, 178, 142, 0.5);
-  line-height: 2;
+  line-height: 3;
+  width: 700px;
+  margin-left: 160px;
+  margin-right: auto;
 
 }
 #business #statistics #follower-statistic ul li {

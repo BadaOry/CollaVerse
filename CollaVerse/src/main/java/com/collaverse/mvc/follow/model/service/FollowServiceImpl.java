@@ -58,6 +58,46 @@ public class FollowServiceImpl implements FollowService {
 		return mapper.countFollowing(fromMemNo);
 	}
 
-
+	// 금일 팔로우 수
+	@Override
+	public int getTodayCount(int memberNo) {
+		
+		return mapper.getTodayCount(memberNo);
+	}
+	
+	// 작일 팔로우 수
+	@Override
+	public int getYesterdayCount(int memberNo) {
+		
+		return mapper.getYesterdayCount(memberNo);
+	}
+	
+	// 금주 팔로우 토탈 수
+	@Override
+	public int getThisweekCount(int memberNo) {
+		
+		return mapper.getThisweekCount(memberNo);
+	}
+	
+	// 금주 팔로우 토탈 수
+	@Override
+	public int getLastweekCount(int memberNo) {
+		
+		return mapper.getLastweekCount(memberNo);
+	}
+	
+	// 이번달 팔로우 토탈 수
+	@Override
+	public int getThismonthCount(int memberNo) {
+		
+		return mapper.getThismonthCount(memberNo);
+	}
+	
+	// 지난달 팔로우 토탈 수
+	@Override
+	public int getLastmonthCount(int memberNo) {
+		
+		return mapper.getLastmonthCount(memberNo);
+	}
 
 }
