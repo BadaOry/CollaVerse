@@ -14,6 +14,8 @@ public interface MemberMapper {
 	
 	int updateMember(Member member); // 개인 회원정보수정
 	
+	int insertBusinessMember(Member member); // 사업자 회원가입
+	
 	int updateMember_business(Member member); // 사업자 회원정보수정
 
 	int deleteMember(int no); // 회원탈퇴
@@ -44,9 +46,7 @@ public interface MemberMapper {
 	
 	int getTotalCount(@Param("memberNo") int memberNo); // 통계용 토탈 합 정보
 		
-	int updateBusinessMember(Member member); // 기업 회원가입???
-	
-	int insertBusinessMember(Member member); // 기업 회원가입
+
 
 	
 	
