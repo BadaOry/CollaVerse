@@ -15,7 +15,7 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
 <br>
-		<h2 align="center">이용 약관</h2>
+		<p class="mini_title" align="center">이용 약관</p>
 			<div class="terms" align="center">
 				<textarea name="terms" cols="180" rows="20" style="resize: none;">			    
  제 1장 총칙
