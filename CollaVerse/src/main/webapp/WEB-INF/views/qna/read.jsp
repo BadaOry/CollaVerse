@@ -18,28 +18,157 @@
   <link rel="stylesheet" href="${ path }/css/bootstrap.min.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 <style>
-	html {
-		width: 1200px;
-		margin: auto;
-	}
+/* 헤더 */
+#header1 {
+	height: 80px;
+	margin: -20px 0 0 0; 
+}
+
+#header3 {
+	margin: 35px 0 0 0;
+}
+
+
+body {
+	margin: 8px;
+}
+	
+h2 {
+	text-align: center;
+	font-size: 100px;
+}
+
+/* --------- */
+
+.mini-title {
+	/* 고정값 */
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #730e74;
+	/* 변경값 */
+	text-align: left;
+	margin: 50px 0 30px 50px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 60%;
+}
+
+.card-title {
+	/* 고정값 */
+	font-family: 'Sam3KRFont';
+	font-size: 23px;
+	color: white;
+	/* 변경값 */
+	text-align: left;
+	margin: 10px 0 10px 50px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 60%;
+}
+
+.card-body{
+	height: auto;
+	padding: 60px 0 60px 80px;
+	text-align: left;
+}
+
+.card-header{
+	background-color: #730e74;
+	border-bottom : 0px solid rgba(0,0,0);
+}
+
+.card-body{
+	height: 300px;
+	font-family: 'DOSGothic';
+}
+
+.card-footer {
+	height: 50px;
+	background-color: #ececec;
+}
+
+.user-block {
+	font-family : 'DOSGothic';
+}
+
+.user-block .username{
+	font-size: 20px;
+}
+
+a {
+	color: #730e74;
+}
+
+#list_btn, #modify_btn, .replyWriteBtn {
+	font-family: 'Sam3KRFont';
+	font-size: 15px;
+	color: white;
+	/* 변경값 */
+	margin: 0px 0 0px 30px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 80px;
+	background-color : #730e74;
+	border-color: #faae22;	
+}
+
+#delete_btn {
+	font-family: 'Sam3KRFont';
+	font-size: 15px;
+	color: #730e74;
+	/* 변경값 */
+	margin: 0px 0 0px 0px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 80px;
+	background-color : #faae22;
+	border-color: #730e74;
+}
+
+#reply_title {
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #730e74;
+	margin: 20px 0 0 150px;
+}
+
+form {
+	margin: 20px 0 0 150px;
+	font-family: 'DOSGothic';
+}
+
+input, textarea{
+	border-color:  #730e74;
+	font-family: 'DOSGothic';
+	height: auto;
+}
+
+#reply {
+	margin: 10px 0 0 180px;
+	background-color: antiquewhite;
+	width: 1150px;
+	font-family:'DOSGothic';
+	padding: 10px 0 0px 0;
+}
+
+#reply_content{ 
+	margin: 0 0 30px 50px;
+}
+
+#reply_info {
+	margin: 0px 0 0px 30px;
+}
 </style>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
 <body>
-	<div class="col-lg-12">
-   		<div class="card">
+	<div class="col-lg-12" style="padding: 0 130px 0 130px;">
+		<h3 class="mini-title">QNA 게시판</h3>
+   		<div class="cardd">
    			<div class="card-header">
-   				<h3 class="card-title">글제목 : <c:out value="${pageInfo.title}"/></h3>
+   				<h3 class="card-title"><c:out value="${pageInfo.title}"/></h3>
   			</div>
-   			<div class="card-body" style="height: 300px">
+   			<div class="card-body">
    				<c:out value="${pageInfo.content}"/>
    			</div>
    			<div class="card-footer">
    				<div class="user-block">
-   					<img class="img-circle img-bordered-sm" src="${path}/dist/img/user1-128x128.jpg" alt="user image">
-   					<span class="username"> <a href="#"><c:out value="${pageInfo.writer}"/>
-   						</a>
-   					</span>
+   					<%--
+   					 <img class="img-circle img-bordered-sm" src="${path}/dist/img/user1-128x128.jpg" alt="user image">
+   					 --%>
+   					<span class="username"> <a href="#"><c:out value="${pageInfo.writer}"/></a></span>
    					<span class="description"><fmt:formatDate pattern="yyyy-MM-dd a HH:mm" value="${pageInfo.modifyDate}"/></span>
    				</div>
    			</div>
@@ -55,15 +184,15 @@
    	</div>
    	
    	<!-- 댓글 -->
-	<p>댓글</p>
+	<p id="reply_title">댓글</p>
 	<div id="reply">
 	    <c:forEach items="${reply}" var="replyList">
-	        <p>
+	        <p id="reply_info">
 	        작성자 : ${replyList.writer}<br />
 	        작성 날짜 :  <fmt:formatDate value="${replyList.regDate}" pattern="yyyy-MM-dd" />
 	        </p>
 	
-	        <p>${replyList.content}</p>
+	        <p id="reply_content">${replyList.content}</p>
 	    </c:forEach>   
 	</div>
    	
@@ -80,10 +209,10 @@
 	    <input type="text" name="writer" />
 	</p>
 	<p>
-	  	<textarea rows="2" cols="100" name="content"></textarea>
+	  	<textarea rows="2" cols="100" name="content" style="margin: 0 0 0 100px;"></textarea>
 	</p>
 	<div>
-	 	 <button type="button" class="replyWriteBtn">작성</button>
+	 	 <button type="button" class="replyWriteBtn" style="margin: 0 0 0 840px;">작성</button>
 	</div>
 	</form>
    	

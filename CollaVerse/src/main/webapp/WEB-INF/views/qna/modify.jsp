@@ -18,18 +18,103 @@
   <link rel="stylesheet" href="${ path }/css/bootstrap.min.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 <style>
-	html {
-		width: 1200px;
-		margin: auto;
-	}
+/* 헤더 */
+#header1 {
+	height: 80px;
+	margin: -20px 0 0 0; 
+}
+
+#header3 {
+	margin: 35px 0 0 0;
+}
+
+
+body {
+	margin: 8px;
+}
+	
+h2 {
+	text-align: center;
+	font-size: 100px;
+}
+
+/* --------- */
+
+.card-title {
+	/* 고정값 */
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #730e74;
+	/* 변경값 */
+	text-align: left;
+	margin: 50px 0 30px 50px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 60%;
+}
+
+.card-body {
+	padding: 0 200px 0 200px;
+}
+
+label {
+	font-family: 'DOSGothic';
+	font-size: 20px;
+}
+
+input, textarea {
+	font-family: 'DOSGothic';
+	height: 40px;
+}
+
+#list_btn {
+	font-family: 'Sam3KRFont';
+	font-size: 15px;
+	color: white;
+	/* 변경값 */
+	width: 80px;
+	background-color : #730e74;
+	border-color: #faae22;	
+}
+
+#modify_btn {
+	font-family: 'Sam3KRFont';
+	font-size: 15px;
+	color: white;
+	/* 변경값 */
+	width: 130px;
+	background-color : #730e74;
+	border-color: #faae22;	
+}
+
+#cancel_btn {
+	font-family: 'Sam3KRFont';
+	font-size: 15px;
+	color: #730e74;
+	/* 변경값 */
+	width: 80px;
+	background-color : #faae22;
+	border-color: #730e74;
+}
+
+.card-header with-border {
+	border-bottom: 0px solid rgba(0,0,0);
+}
+
+.cardd {
+	margin: 0 0 30px 0 ;
+}
+
+.card-footer {
+	background-color: white;
+}
+
 </style>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
 <body>
 	<form id="modifyForm" action="${ path }/qna/modify" method="post">
 		<div class="col-lg-12">
-			<div class="card">
-				<div class="card-header">
+			<div class="cardd">
+				<div class="card-headerr">
 					<h3 class="card-title">게시글 수정</h3>
 				</div>
 				<div class="card-body">
@@ -51,10 +136,10 @@
 					</div>
 				</div>		
 				<div class="card-footer">
-					<button type="button" class="btn-primary" id="list_btn"><i class="fa fa-list"></i> 목록</button>
+					<button type="button" class="btn-primary" id="list_btn" style="margin: 0 0 0 180px;"><i class="fa fa-list"></i> 목록</button>
 					<div class="float-right">
 						<button type="button" class="btn-warning cancelBtn" id="cancel_btn"><i class="fa fa-trash"></i> 취소</button>
-						<button type="submit" class="btn-success modBtn" id="modify_btn"><i class="fa fa-save"></i> 수정 저장</button>
+						<button type="submit" class="btn-success modBtn" id="modify_btn" style="margin: 0 180px 0 0;"><i class="fa fa-save"></i> 수정 저장</button>
 					</div>
 				</div>
 			</div>
