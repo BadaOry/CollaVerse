@@ -261,7 +261,7 @@ th, td {
 	font-family: 'Sam3KRFont';
 	font-size: 35px;
 	display: inline;
-	margin-left: 23px;
+	/*margin-left: 23px;*/
 }
 
 .brand_englist li:hover{

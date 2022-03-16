@@ -27,8 +27,10 @@
     </div>
     
     <div class="frame">
-   <div class="colla_img">콜라보 소개이미지</div> 
+    
 <!--
+   <div class="colla_img">콜라보 소개이미지</div> 
+
 	<div class="promotion_slide">
 		
 					<div>
