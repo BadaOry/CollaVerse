@@ -92,7 +92,7 @@
 				</tr>
 				<tr>
 					<th>제품2 구매가능 수량</th>
-					<td><textarea name="prodQty2" cols="20" rows="1" ></textarea></td>
+					<td><textarea name="prodQty2" cols="30" rows="1" ></textarea></td>
 				</tr>
 				<tr>
 					<th>제품2 설명 / 획득 조건</th>

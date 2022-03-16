@@ -40,7 +40,7 @@ public class PromotionFileProcess {
 			}
 			
 			// ▼ renamedFileName 명명 규칙 설정
-			renamedFileName = String.valueOf(promotionNo);
+			renamedFileName = "/promotion" + String.valueOf(promotionNo);
 			
 			try {
 				// ▼ 업로드한 파일 데이터를 명명 규칙으로 지정한 파일에 저장

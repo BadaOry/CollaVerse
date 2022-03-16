@@ -5,8 +5,6 @@ import java.util.List;
 import com.collaverse.mvc.collabo.model.vo.Brand;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
-import com.collaverse.mvc.collabo.model.vo.WritePromotion;
-import com.collaverse.mvc.common.util.PageInfo;
 
 public interface PromotionService {
 
@@ -20,16 +18,17 @@ public interface PromotionService {
 
 	int heartCheck(int pmtNo, int heartMemNo);
 
-//	int promotionsave(WritePromotion writepromotion);
-
 	int promotionSave(Promotion promotionVo);
 
+	int productSave1(Product productVo1);
+	int productSave2(Product productVo2);
+	int productSave3(Product productVo3);
 
 	List<Brand> selectBrandIntro();
 
 	List<Brand> selectBrandIntro(int pmtNo);
 
-	int productSave(Product productVo);
+
 
 
 //	List<Promotion> pmtMainList();

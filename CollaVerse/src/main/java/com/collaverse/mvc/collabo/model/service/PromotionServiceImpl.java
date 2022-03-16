@@ -2,17 +2,13 @@ package com.collaverse.mvc.collabo.model.service;
 
 import java.util.List;
 
-import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.collaverse.mvc.collabo.model.dao.CollaboMapper;
 import com.collaverse.mvc.collabo.model.vo.Brand;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
-import com.collaverse.mvc.collabo.model.vo.WritePromotion;
-import com.collaverse.mvc.common.util.PageInfo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -112,22 +108,6 @@ public class PromotionServiceImpl implements PromotionService {
 	}
 
 
-//	@Override
-//	@Transactional
-//	public int promotionsave(WritePromotion writepromotion) {
-//		int result = 0;
-//		
-//		if (writepromotion.getRenamedFileName() != null) {
-//			// update
-//		} else {
-//			// insert
-//			result = mapper.insertPromotion(writepromotion);
-//		}
-//		
-//		return result;
-//	}
-
-
 	// [ Promotion 에 save 하는 메소드 ]
 	@Override
 	public int promotionSave(Promotion promotionVo) {
@@ -136,7 +116,32 @@ public class PromotionServiceImpl implements PromotionService {
 		
 		return mapper.promotionSave(promotionVo);
 	}
-
+	
+	// [ Product 에 save 하는 메소드]
+	@Override
+	public int productSave1(Product productVo1) {
+		
+		log.info("[ServiceImpl] vo 객체가 잘 전달되었는지 확인 : {}", productVo1);
+		
+		return mapper.productSave(productVo1);
+		
+	}
+	@Override
+	public int productSave2(Product productVo2) {
+		
+		log.info("[ServiceImpl] vo 객체가 잘 전달되었는지 확인 : {}", productVo2);
+		
+		return mapper.productSave(productVo2);
+		
+	}
+	@Override
+	public int productSave3(Product productVo3) {
+		
+		log.info("[ServiceImpl] vo 객체가 잘 전달되었는지 확인 : {}", productVo3);
+		
+		return mapper.productSave(productVo3);
+		
+	}
 
 	@Override
 	public List<Brand> selectBrandIntro() {
@@ -152,15 +157,7 @@ public class PromotionServiceImpl implements PromotionService {
 		
 		return mapper.selectBrandIntro(pmtNo);
   }
-  
-  @Override
-	public int productSave(Product productVo) {
-		
-		log.info("[ServiceImpl] vo 객체가 잘 전달되었는지 확인 : {}", productVo);
-		
-//		return mapper.productSave(productVo);
-		return 0;
 
-	}
+  
 
 }
