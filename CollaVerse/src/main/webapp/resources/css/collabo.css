@@ -256,6 +256,8 @@ th, td {
 	padding: -10px;
 }
 
+/* Crystal Edited : 원래 코드도 남겨놓습니다.
+
 .brand_englist ul, li{
 	list-style: none;
 	font-family: 'Sam3KRFont';
@@ -263,6 +265,25 @@ th, td {
 	display: inline;
 	margin-left: 23px;
 }
+*/
+
+.brand_englist ul{
+	list-style: none;
+	font-family: 'Sam3KRFont';
+	font-size: 35px;
+	display: inline;
+	margin-left: 23px;
+}
+
+.brand_englist li{
+	list-style: none;
+	font-family: 'Sam3KRFont';
+	font-size: 35px;
+	display: inline;
+	margin-left: 23px;
+}
+
+/* ----------- */
 
 .brand_englist li:hover{
 	background-color: rgb(198, 182, 218);	

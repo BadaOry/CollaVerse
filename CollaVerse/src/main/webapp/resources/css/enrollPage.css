@@ -9,41 +9,86 @@
     margin-bottom: 100px;
     padding: 30px 40px 40px 30px;
     border-radius: 20px;
-    box-shadow: 1px 1px 5px rgba(113, 6, 175, 0.1), -1px -1px 5px rgba(132, 8, 148, 0.1);
+    /* box-shadow: 1px 1px 5px rgba(113, 6, 175, 0.1), -1px -1px 5px rgba(132, 8, 148, 0.1); */
 }
 
-#personal, #business {
-    background-color: rgb(255, 255, 255);
-    box-shadow: 1px 1px 5px rgba(113, 6, 175, 0.1), -1px -1px 5px rgba(132, 8, 148, 0.1);
-    border-color: blueviolet;
-    font-size: 15px;
+
+/* Crystal Edited */
+.mini-title {
+	/* 고정값 */
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #730e74;
+	/* 변경값 */
+	text-align: left;
+	margin: 50px 0 30px 150px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 60%;
+}
+
+#personal {
+	/* 고정값 */
+	background-color:#720e74;
+	border-radius:7px;
+	border: 2px solid  #faae22;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Sam3KRFont';
+	font-size:14px;
+	padding:10px 27px;
+	text-decoration:none;
+	text-shadow: 0px 0px 0px #faaf22;
+
     padding: 5px 10px 7px;
     cursor: pointer;
     width: 130px;
     height: 60px;
-    border-radius: 5px;
     margin: 0px auto;
     margin-left: 10px;
     display: inline-block;
-    color:#333; 
     transition:all 0.9s, color 0.3;
 }
 
-#personal:hover{ 
-    /*box-shadow: 0 80px 0 0 rgba(136,67,242,1) inset;*/
-    background: linear-gradient(180deg, rgba(85,12,129,1) 0%, rgba(115,14,116,1) 29%, rgba(140,17,108,1) 57%, rgba(174,22,95,1) 87%);
+#personal:hover {
+	color: #faae22;
+	border: 2px solid #720e74;
+	
+}
+#personal:active {
+	position:relative;
+	top:1px;
 }
 
-#business:hover{ 
-    /*box-shadow: 0 80px 0 0 rgba(239,47,136,1) inset;*/
-    background: linear-gradient(180deg, rgba(174,22,95,1) 0%, rgba(140,17,108,1) 29%, rgba(115,14,116,1) 57%, rgba(85,12,129,1) 87%);
+#business {
+	/* 고정값 */
+	background-color:#faae22;
+	border-radius:7px;
+	border: 2px solid  #720e74;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Sam3KRFont';
+	font-size:14px;
+	padding:10px 27px;
+	text-decoration:none;
+	text-shadow: 0px 0px 0px #faaf22;
+
+    padding: 5px 10px 7px;
+    cursor: pointer;
+    width: 130px;
+    height: 60px;
+    margin: 0px auto;
+    margin-left: 10px;
+    display: inline-block;
+    transition:all 0.9s, color 0.3;
 }
 
-#personal:hover, #business:hover{
-    color: white;
+#business:hover {
+  	/* 고정값 */
+	color: #720e74;
+	border: 2px solid #faae22;
+	
 }
-
-
-
-
+#business:active {
+	position:relative;
+	top:1px;
+}
 

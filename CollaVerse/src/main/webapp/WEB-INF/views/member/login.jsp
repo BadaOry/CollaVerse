@@ -16,10 +16,10 @@
 			<form action="login" method="post">
 			  <table class="login">
 			    <tr>
-			      <td colspan="2"><h1>로그인</h1></td>
+			      <td colspan="2"><p class="mini-title">로그인</p></td>
 			    </tr>
 			    <tr>
-			      <td class="id">아이디<br>
+			      <td class="id"><p class="title-text">아이디</p>
 			        <input type="text" name="id" required/><br><br>
 			      </td>
 			      <td rowspan="2" class="btnAll" align="center">
@@ -29,7 +29,7 @@
 			      </td>
 			    </tr>
 			    <tr>
-			      <td class="pw">비밀번호<br>
+			      <td class="pw"><p class="title-text">비밀번호</p>
 			        <input type="password" name="password" required/>
 			      </td>
 			    </tr>

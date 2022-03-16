@@ -63,7 +63,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '관리자', 
     'admin', '1111','admin@collaverse.co.kr', '01041132023',
-    '콜라버스관리자', NULL, NULL, '(주)COLLAVERSE',
+    '콜라버스관리자', 'ADMIN.png', NULL, '(주)COLLAVERSE',
     DEFAULT, DEFAULT,
     DEFAULT, '20', 'woman'
 );
@@ -79,7 +79,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '개인', 
     'member01', '1111', 'member01@collaverse.co.kr', '01011111111',
-    '개인회원01', NULL, NULL, NULL,
+    '개인회원01', 'MEMBER01.jpg', NULL, NULL,
     DEFAULT, DEFAULT,
     DEFAULT, '10', 'woman'
 );
@@ -93,7 +93,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '개인', 
     'member02', '1111', 'member02@collaverse.co.kr', '01022222222',
-    '개인회원02', NULL, NULL, NULL,
+    '개인회원02', 'MEMBER02.jpg', NULL, NULL,
     DEFAULT, DEFAULT,
     DEFAULT, '20', 'woman'
 );
@@ -107,7 +107,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '개인', 
     'member03', '1111', 'member03@collaverse.co.kr', '01033333333',
-    '개인회원03', NULL, NULL, NULL,
+    '개인회원03', 'MEMBER03.jpg', NULL, NULL,
     DEFAULT, DEFAULT,
     DEFAULT, '30', 'man'
 );
@@ -122,7 +122,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'BIRTHDAYSUIT', '1111', 'BIRTHDAYSUIT@collaverse.co.kr', '11111111111',
-    'BIRTHDAYSUIT', NULL, '11111111', 'BIRTHDAYSUIT(벌스데이수트)',
+    'BIRTHDAYSUIT', 'BIRTHDAYSUIT.png', '11111111', 'BIRTHDAYSUIT(벌스데이수트)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -136,7 +136,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'CAPITALRADIOTUNES', '1111', 'CAPITALRADIOTUNES@collaverse.co.kr', '22222222222',
-    'CAPITALRADIOTUNES', NULL, '22222222', 'CAPITAL RADIO TUNES(캐피탈라디오튠즈)',
+    'CAPITALRADIOTUNES', 'CAPITALRADIOTUNES.jpg', '22222222', 'CAPITAL RADIO TUNES(캐피탈라디오튠즈)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -150,7 +150,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'CASETIFY', '1111', 'CASETIFY@collaverse.co.kr', '33333333333',
-    'CASETIFY', NULL, '33333333', 'CASETIFY(케이스티파이)',
+    'CASETIFY', 'CASETIFY.png', '33333333', 'CASETIFY(케이스티파이)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -164,7 +164,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'CHEONHAJANGSA', '1111', 'CHEONHAJANGSA@collaverse.co.kr', '44444444444',
-    'CHEONHAJANGSA', NULL, '44444444', 'CHEONHAJANGSA(천하장사)',
+    'CHEONHAJANGSA', 'CHEONHAJANGSA.png', '44444444', 'CHEONHAJANGSA(천하장사)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -178,7 +178,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'CRAYONSHINCHAN', '1111', 'CRAYONSHINCHAN@collaverse.co.kr', '55555555555',
-    'CRAYONSHINCHAN', NULL, '55555555', 'CRAYON SHIN CHAN(짱구)',
+    'CRAYONSHINCHAN', 'CRAYONSHINCHAN.png', '55555555', 'CRAYON SHIN CHAN(짱구)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -192,7 +192,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'DAEGU1988', '1111', 'DAEGU1988@collaverse.co.kr', '66666666666',
-    'DAEGU1988', NULL, '66666666', 'DAEGU 1988(대구 1988)',
+    'DAEGU1988', 'DAEGU1988.png', '66666666', 'DAEGU 1988(대구 1988)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -206,7 +206,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'DISNEY', '1111', 'DISNEY@collaverse.co.kr', '77777777777',
-    'DISNEY', NULL, '77777777', 'DISNEY(디즈니)',
+    'DISNEY', 'DISNEY.jpg', '77777777', 'DISNEY(디즈니)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -220,7 +220,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'DOFFJASON', '1111', 'DOFFJASON@collaverse.co.kr', '88888888888',
-    'DOFFJASON', NULL, '88888888', 'DOFFJASON(도프제이슨)',
+    'DOFFJASON', 'DOFFJASON.png', '88888888', 'DOFFJASON(도프제이슨)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -234,7 +234,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'ESTHERBUNNY', '1111', 'ESTHERBUNNY@collaverse.co.kr', '99999999999',
-    'ESTHERBUNNY', NULL, '99999999', 'ESTHER BUNNY(에스더버니)',
+    'ESTHERBUNNY', 'ESTHERBUNNY.jpg', '99999999', 'ESTHER BUNNY(에스더버니)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -248,7 +248,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'KAKAOFRIENDS', '1111', 'KAKAOFRIENDS@collaverse.co.kr', '10101010101',
-    'KAKAOFRIENDS', NULL, '10101010', 'KAKAO FRIENDS(카카오프렌즈)',
+    'KAKAOFRIENDS', 'KAKAOFRIENDS.png', '10101010', 'KAKAO FRIENDS(카카오프렌즈)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -263,7 +263,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'KARTRIDER', '1111', 'KARTRIDER@collaverse.co.kr', '1111111111',
-    'KARTRIDER', NULL, '1111111111', 'KARTRIDER(카트라이더)',
+    'KARTRIDER', 'KARTRIDER.jpg', '1111111111', 'KARTRIDER(카트라이더)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -277,7 +277,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'KELLOGG', '1111', 'KELLOGG@collaverse.co.kr', '12121212121',
-    'KELLOGG', NULL, '12121212', 'KELLOGG(켈로그)',
+    'KELLOGG', 'KELLOGG.png', '12121212', 'KELLOGG(켈로그)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -291,7 +291,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'LEXON', '1111', 'LEXON@collaverse.co.kr', '13131313131',
-    'LEXON', NULL, '13131313', 'LEXON(렉슨)',
+    'LEXON', 'LEXON.png', '13131313', 'LEXON(렉슨)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -305,7 +305,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'LLOYD', '1111', 'LLOYD@collaverse.co.kr', '14141414141',
-    'LLOYD', NULL, '13131313', 'LLOYD(로이드)',
+    'LLOYD', 'LLOYD.png', '13131313', 'LLOYD(로이드)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -319,7 +319,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'LOCHCARRON', '1111', 'LOCHCARRON@collaverse.co.kr', '15151515151',
-    'LOCHCARRON', NULL, '15151515', 'LOCHCARRON(로캐론)',
+    'LOCHCARRON', 'LOCHCARRON.png', '15151515', 'LOCHCARRON(로캐론)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -333,7 +333,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'LOTTECONF', '1111', 'LOTTECONF@collaverse.co.kr', '16161616161',
-    'LOTTECONF', NULL, '16161616', 'LOTTE CONF(롯데제과)',
+    'LOTTECONF', 'LOTTECONF.png', '16161616', 'LOTTE CONF(롯데제과)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -347,7 +347,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'MAISONKITSUNE', '1111', 'MAISONKITSUNE@collaverse.co.kr', '17171717171',
-    'MAISONKITSUNE', NULL, '17171717', 'MAISON KITSUNE(메종키츠네)',
+    'MAISONKITSUNE', 'MAISONKITSUNE.png', '17171717', 'MAISON KITSUNE(메종키츠네)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -361,7 +361,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'MAPLESTORY', '1111', 'MAPLESTORY@collaverse.co.kr', '18181818181',
-    'MAPLESTORY', NULL, '18181818', 'MAPLE STORY(메이플스토리)',
+    'MAPLESTORY','MAPLESTORY.png', '18181818', 'MAPLE STORY(메이플스토리)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -375,7 +375,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'NONGSHIM', '1111', 'NONGSHIM@collaverse.co.kr', '19191919191',
-    'NONGSHIM', NULL, '19191919', 'NONGSHIM(농심)',
+    'NONGSHIM', 'NONGSHIM.png', '19191919', 'NONGSHIM(농심)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -389,7 +389,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'NOROOPAINT', '1111', 'NOROOPAINT@collaverse.co.kr', '20202020202',
-    'NOROOPAINT', NULL, '20202020', 'NOROOPAINT(노루페인트)',
+    'NOROOPAINT', 'NOROOPAINT.jpg', '20202020', 'NOROOPAINT(노루페인트)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -403,7 +403,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'PEANUTS', '1111', 'PEANUTS@collaverse.co.kr', '21212121212',
-    'PEANUTS', NULL, '21212121', 'PEANUTS(피너츠)',
+    'PEANUTS', 'PEANUTS.jpg', '21212121', 'PEANUTS(피너츠)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -417,7 +417,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'PIZZAHUTS', '1111', 'PIZZAHUTS@collaverse.co.kr', '22222222222',
-    'PIZZAHUTS', NULL, '22222222', 'PIZZA HUTS(피자헛)',
+    'PIZZAHUTS', 'PIZZAHUTS.png', '22222222', 'PIZZA HUTS(피자헛)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -431,7 +431,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'SAMSUNG', '1111', 'SAMSUNG@collaverse.co.kr', '23232323232',
-    'SAMSUNG', NULL, '23232323', 'SAMSUNG(삼성)',
+    'SAMSUNG', 'SAMSUNG.jpg', '23232323', 'SAMSUNG(삼성)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -445,7 +445,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'SONY', '1111', 'SONY@collaverse.co.kr', '24242424242',
-    'SONY', NULL, '24242424', 'SONY(소니)',
+    'SONY', 'SONY.jpg', '24242424', 'SONY(소니)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -459,7 +459,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'SPAO', '1111', 'SPAO@collaverse.co.kr', '25252525252',
-    'SPAO', NULL, '25252525', 'SPAO(스파오)',
+    'SPAO', 'SPAO.jpg', '25252525', 'SPAO(스파오)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -473,7 +473,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'SULBING', '1111', 'SULBING@collaverse.co.kr', '26262626262',
-    'SULBING', NULL, '26262626', 'SULBING(설빙)',
+    'SULBING', 'SULBING.png', '26262626', 'SULBING(설빙)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -487,7 +487,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'TERESAFREITAS', '1111', 'TERESAFREITAS@collaverse.co.kr', '27272727272',
-    'TERESAFREITAS', NULL, '24242424', 'TERESA FREITAS(테레사 프레이타스)',
+    'TERESAFREITAS', 'TERESAFREITAS.jpg', '24242424', 'TERESA FREITAS(테레사 프레이타스)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -501,7 +501,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'TOUSLESJOURS', '1111', 'TOUSLESJOURS@collaverse.co.kr', '28282828282',
-    'TOUSLESJOURS', NULL, '28282828', 'TOUSLESJOURS(뚜레쥬르)',
+    'TOUSLESJOURS', 'TOUSLESJOURS.png', '28282828', 'TOUSLESJOURS(뚜레쥬르)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -515,7 +515,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'WADIZ', '1111', 'WADIZ@collaverse.co.kr', '29292929292',
-    'WADIZ', NULL, '29292929', 'WADIZ(와디즈)',
+    'WADIZ', 'WADIZ.png', '29292929', 'WADIZ(와디즈)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -529,7 +529,7 @@ INSERT INTO MEMBER (
 ) VALUES(
     SEQ_MEM_MEMBER_NO.NEXTVAL, '기업', 
     'YALE', '1111', 'YALE@collaverse.co.kr', '30303030303',
-    'YALE', NULL, '30303030', 'YALE(예일)',
+    'YALE', 'YALE.png', '30303030', 'YALE(예일)',
     DEFAULT, DEFAULT,
     DEFAULT, '0', 'woman'
 );
@@ -1508,6 +1508,68 @@ COMMENT ON COLUMN SCHEDULE.COLOR IS '타입 색';
 CREATE SEQUENCE SEQ_SCHEDULE_NO;
 
 COMMIT;
+
+----------------------------------------------------------------
+-------------------------- NOTICE 관련 테이블 -----------------------
+----------------------------------------------------------------
+---- 01. NOTICE 테이블 생성 + 주석
+--CREATE TABLE NOTICE(
+--    BNO NUMBER,
+--    TITLE VARCHAR2(150) NOT NULL,
+--    CONTENT VARCHAR2(2000) NOT NULL,
+--    WRITER VARCHAR2(50) NOT NULL,
+--    REG_DATE DATE DEFAULT SYSDATE,
+--    MODIFY_DATE DATE DEFAULT SYSDATE,
+--    READCOUNT NUMBER DEFAULT 0,
+--    CONSTRAINT PK_QNA PRIMARY KEY(BNO)
+--);
+--
+--COMMENT ON COLUMN NOTICE.BNO IS 'NOTICE 번호';
+--COMMENT ON COLUMN NOTICE.TITLE IS 'NOTICE 제목';
+--COMMENT ON COLUMN NOTICE.CONTENT IS 'NOTICE 내용';
+--COMMENT ON COLUMN NOTICE.WRITER IS 'NOTICE 작성자';
+--COMMENT ON COLUMN NOTICE.REG_DATE IS 'NOTICE 등록일';
+--COMMENT ON COLUMN NOTICE.MODIFY_DATE IS 'NOTICE 수정일';
+--COMMENT ON COLUMN NOTICE.READCOUNT IS 'NOTICE 조회수';
+--
+---- 02. 시퀀스 생성
+--CREATE SEQUENCE SEQ_NOTICE_NO;
+--
+--
+--COMMIT;
+--
+--
+--
+----------------------------------------------------------------
+---------------------- NOTICE REPLY 관련 테이블 -------------------
+----------------------------------------------------------------
+---- 01. QNA 댓글 테이블 생성 + 주석
+--CREATE TABLE NOTICE_REPLY (
+--    RNO NUMBER NOT NULL PRIMARY KEY,
+--    BNO NUMBER NOT NULL,
+--    CONTENT VARCHAR2(1000) NOT NULL,
+--    WRITER VARCHAR2(50) NOT NULL,
+--    REG_DATE DATE DEFAULT SYSDATE,
+--    MODIFY_DATE DATE DEFAULT SYSDATE
+--);
+--
+--ALTER TABLE NOTICE_REPLY ADD CONSTRAINT FK_QNA FOREIGN KEY(BNO) REFERENCES NOTICE(BNO);
+--
+--COMMENT ON COLUMN NOTICE_REPLY.RNO IS '댓글 번호';
+--COMMENT ON COLUMN NOTICE_REPLY.BNO IS '게시글 번호';
+--COMMENT ON COLUMN NOTICE_REPLY.WRITER IS '내용';
+--COMMENT ON COLUMN NOTICE_REPLY.CONTENT IS '작성자';
+--COMMENT ON COLUMN NOTICE_REPLY.REG_DATE IS '작성일';
+--COMMENT ON COLUMN NOTICE_REPLY.MODIFY_DATE IS '수정일';
+--
+--
+---- 02. 시퀀스 생성
+--CREATE SEQUENCE SEQ_REPLY_NO;
+--
+--
+--COMMIT;
+
+
 --------------------------------------------------------------
 ------------------------- 삭제 쿼리 모음 ------------------------
 --------------------------------------------------------------
