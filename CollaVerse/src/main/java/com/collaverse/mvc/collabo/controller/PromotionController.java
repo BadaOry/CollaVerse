@@ -1,6 +1,7 @@
 package com.collaverse.mvc.collabo.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public class PromotionController {
 	@PostMapping("/collabo/promotion/writing_promotion")
 	public ModelAndView writingpromotion(ModelAndView model,/* HttpServletRequest request,*/
 			@SessionAttribute(name="loginMember") Member loginMember,
-			@ModelAttribute WritePromotion writepromotion,
+//			@ModelAttribute WritePromotion writepromotion,
 			@RequestParam("promName") String promTitle,
 			@RequestParam("promContent") String promContent,
 			@RequestParam("startDate") @DateTimeFormat(pattern="yyyy-MM-dd") Date startDate,
@@ -71,9 +72,14 @@ public class PromotionController {
 			@RequestParam("prodQty2") String prodQty2,
 			@RequestParam("prodQty3") String prodQty3,
 			@RequestParam("promImg") MultipartFile promImg, @RequestParam("prodImg") MultipartFile[] prodImg) {
-		int result = 0;
+		int promresult = 0;
+		int prodresult1 = 0;
+		int prodresult2 = 0;
+		int prodresult3 = 0;
 		Promotion promotionVo = new Promotion();
-		Product productVo = new Product();
+		Product productVo1 = new Product();
+		Product productVo2 = new Product();
+		Product productVo3 = new Product();
 		String location  = null;
 		
 		log.info("[Controller] 요청이 오는지 확인 ");
@@ -121,22 +127,34 @@ public class PromotionController {
 		
 		// pro_no는 쿼리에서 해결
 		// pro_name은 받아오기
-		productVo.setProName(prodName1);
+		productVo1.setProName(prodName1);
+		productVo2.setProName(prodName2);
+		productVo3.setProName(prodName3);
 		// pro_price는 받아오기
-		productVo.setProPrice(prodPrice1);
+		productVo1.setProPrice(prodPrice1);
+		productVo2.setProPrice(prodPrice2);
+		productVo3.setProPrice(prodPrice3);
 		// pro_content는 받아오기
-		productVo.setProContent(prodContent1);
+		productVo1.setProContent(prodContent1);
+		productVo2.setProContent(prodContent2);
+		productVo3.setProContent(prodContent3);
 		// pro_qty는 받아오기
-		productVo.setProQty(prodQty1);
+		productVo1.setProQty(prodQty1);
+		productVo2.setProQty(prodQty2);
+		productVo3.setProQty(prodQty3);
 		// pro_img_path는 쿼리에서 default 값으로 쓰기
 		// c_no는 받아오기
-		productVo.setCNo(cNo);
+		productVo1.setCNo(cNo);
+		productVo2.setCNo(cNo);
+		productVo3.setCNo(cNo);
 		// pmt_no는 promotion에서 받아오기?
+//		productVo1.setPmtNo();
+//		productVo2.setPmtNo();
+//		productVo3.setPmtNo();
 		
 		log.info("[Controller] promotionVo 에 내용이 잘 set 되었는지 확인 : {}", promotionVo);	
 		
-		result = service.promotionSave(promotionVo);
-		result = service.productSave(productVo);
+		promresult = service.promotionSave(promotionVo);
 		
 		// promTitle 을 파라미터로 넘겨서 mapper.xml 까지 가서 where = #{promTitle} 로 방금 insert한 promotion의 정보를 빼온다
 //		promotionVo = service.findPromotionInfo(promTitle);
@@ -144,10 +162,11 @@ public class PromotionController {
 		
 		log.info("[Controller] insert 후에 다시 찾아온 promotion 입력내용 : {}", promotionVo);	
 		
+		
 		int promotionNo = promotionVo.getNo();
-		int productNo = productVo.getProNo();
 		
 		log.info("[Controller] promotionVo 의 promotionNo 확 : {}", promotionNo);	
+		
 		 
 		// 2. Promotion 이미지 파일명 바꾸기
 		if (promImg != null && !promImg.isEmpty()) {
@@ -155,7 +174,7 @@ public class PromotionController {
 			String renamedFileName = null;
 //			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			try {
-				location = resourceLoader.getResource("resources/images/promotion/promotion").getFile().getPath();
+				location = resourceLoader.getResource("resources/images/promotion").getFile().getPath();
 				renamedFileName = PromotionFileProcess.promotionsave(promImg, location, promotionNo);
 				
 				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
@@ -164,26 +183,41 @@ public class PromotionController {
 				e.printStackTrace();
 			}
 			
+			// 파일네임 두개를 다시 세팅해서 완벽한 Vo 를 저장하는 과정
 			if(renamedFileName != null) {
 				promotionVo.setOriginalFileName(promImg.getOriginalFilename());
 				promotionVo.setRenamedFileName(renamedFileName);
 			}
 		}
-		
 				
+		log.info("[Controller] 파일명 두개 잘 set했는지 promotion 최종 확인 : {}", promotionVo);
 		
+		prodresult1 = service.productSave1(productVo1);
+		prodresult2 = service.productSave2(productVo2);
+		prodresult3 = service.productSave3(productVo3);
 		
+		log.info("[Controller] insert 후에 다시 찾아온 product 입력내용 : {}", productVo1);	
+		log.info("[Controller] insert 후에 다시 찾아온 product 입력내용 : {}", productVo2);	
+		log.info("[Controller] insert 후에 다시 찾아온 product 입력내용 : {}", productVo3);	
+		
+		int productNo1 = productVo1.getProNo();
+		int productNo2 = productVo2.getProNo();
+		int productNo3 = productVo3.getProNo();
+		
+		log.info("[Controller] productVo 의 productNo 확 : {}", productNo1);	
+		log.info("[Controller] productVo 의 productNo 확 : {}", productNo2);	
+		log.info("[Controller] productVo 의 productNo 확 : {}", productNo3);	
 		
 		
 		// [ Product 관련 내용 저장하기 ] 
 		// Product1 이미지 파일명 바꾸기
-		if (prodImg != null && !prodImg.isEmpty()) {
+		if (prodImg != null && !prodImg[0].isEmpty()) {
 			
 			String renamedFileName = null;
 //			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			try {
-				location = resourceLoader.getResource("resources/images/product/product").getFile().getPath();
-				renamedFileName = PromotionFileProcess.promotionsave(promImg, location, productNo);
+				location = resourceLoader.getResource("resources/images/product").getFile().getPath();
+				renamedFileName = ProductFileProcess.productsave1(prodImg, location, productNo1);
 				
 				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
 			} catch (IOException e) {
@@ -192,8 +226,8 @@ public class PromotionController {
 			}						
 			
 			if(renamedFileName != null) {
-				productVo.setOriginalFileName(prodImg.getOriginalFilename());
-				productVo.setRenamedFileName(renamedFileName);
+				productVo1.setOriginalFileName(prodImg[0].getOriginalFilename());
+				productVo1.setRenamedFileName(renamedFileName);
 			}
 		}
 		
@@ -203,8 +237,8 @@ public class PromotionController {
 			String renamedFileName = null;
 //			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			try {
-				location = resourceLoader.getResource("resources/upload/promotion/product").getFile().getPath();
-				renamedFileName = ProductFileProcess.productsave1(prodImg, location);
+				location = resourceLoader.getResource("resources/images/product").getFile().getPath();
+				renamedFileName = ProductFileProcess.productsave2(prodImg, location, productNo2);
 				
 				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
 			} catch (IOException e) {
@@ -213,8 +247,8 @@ public class PromotionController {
 			}						
 			
 			if(renamedFileName != null) {
-				writepromotion.setOriginalFileName(promImg.getOriginalFilename());
-				writepromotion.setRenamedFileName(renamedFileName);
+				productVo2.setOriginalFileName(prodImg[1].getOriginalFilename());
+				productVo2.setRenamedFileName(renamedFileName);
 			}
 		}
 		// Product3 이미지 파일명 바꾸기
@@ -223,8 +257,8 @@ public class PromotionController {
 			String renamedFileName = null;
 //			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			try {
-				location = resourceLoader.getResource("resources/upload/promotion/product").getFile().getPath();
-				renamedFileName = ProductFileProcess.productsave2(prodImg, location);
+				location = resourceLoader.getResource("resources/images/product").getFile().getPath();
+				renamedFileName = ProductFileProcess.productsave3(prodImg, location, productNo3);
 				
 				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
 			} catch (IOException e) {
@@ -233,17 +267,40 @@ public class PromotionController {
 			}						
 			
 			if(renamedFileName != null) {
-				writepromotion.setOriginalFileName(promImg.getOriginalFilename());
-				writepromotion.setRenamedFileName(renamedFileName);
+				productVo3.setOriginalFileName(prodImg[2].getOriginalFilename());
+				productVo3.setRenamedFileName(renamedFileName);
 			}
 		}
 		
-		// 작성한 프로모션 데이터를 DB에 저장
-//		writepromotion.setWriterNo(loginMember.getNo());
-//		result = service.productSave(writepromotion);
+		// pmtNo 받아오는 setting
+		productVo1.setPmtNo(String.valueOf(promotionNo));
+		productVo2.setPmtNo(String.valueOf(promotionNo));
+		productVo3.setPmtNo(String.valueOf(promotionNo));
 		
-		if (result > 0) {
+		log.info("[Controller] productVo 에 내용이 잘 set 되었는지 확인 : {}", productVo1);	
+		log.info("[Controller] productVo 에 내용이 잘 set 되었는지 확인 : {}", productVo2);	
+		log.info("[Controller] productVo 에 내용이 잘 set 되었는지 확인 : {}", productVo3);	
+		
+		// ★ PRODUCTVO 123 에 PMTNO UPDATE 쿼리를 돌려야돼요 
+		
+		log.info("[Controller] productVo1 최종 확인 : {}", productVo1);	
+		log.info("[Controller] productVo2 최종 확인 : {}", productVo2);	
+		log.info("[Controller] productVo3 최종 확인 : {}", productVo3);	
+		
+		
+		// 완성ㅇ한 productVo 123 을 List 에 집어넣는 짓
+		List<Product> productList = new ArrayList();
+		
+		productList.add(productVo1);
+		productList.add(productVo2);
+		productList.add(productVo3);
+		
+		log.info("[Controller] productList 최종 확인 : {}", productList);	
+		
+		if (promresult > 0 && prodresult1 > 0 && prodresult2 > 0 && prodresult3 > 0) {
 			model.addObject("msg", "프로모션이 정상적으로 등록되었습니다.");
+			model.addObject("promotionInfo", promotionVo);
+			model.addObject("productInfo", productList);
 			model.addObject("location", "/collabo/promotion/detail?pmtNo=" + promotionVo.getNo());
 		} else {
 			model.addObject("msg", "프로모션 등록에 실패하였습니다.");
