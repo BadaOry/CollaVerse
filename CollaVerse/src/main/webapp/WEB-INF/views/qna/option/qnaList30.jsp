@@ -18,22 +18,37 @@
   <link rel="stylesheet" href="${ path }/css/bootstrap.min.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 <style>
+/* 헤더 */
+#header1 {
+	height: 80px;
+	margin: -20px 0 0 0; 
+}
+
+#header3 {
+	margin: 35px 0 0 0;
+}
+
+
+body {
+	margin: 8px;
+}
+	
 h2 {
 	text-align: center;
 	font-size: 100px;
 }
+
+/* --------- */
 div {
-	width: 1200px;
-	margin: auto;
+	/*width: 1200px;
+	 margin: auto; */
 }
 #writeButton {
 	text-align: right;
 }
 .form-group {
 	margin-top: 15px;
-	margin-bottom: -5px;
-	margin-right: 25px;
-	text-align: right;
+	margin-left: 1180px;
 }
 .pageInfo{
 	list-style : none;
@@ -50,6 +65,129 @@ div {
 .search_area {
 	text-align: center;
 }
+
+.col-lg-12 {
+	margin : 0px 50px 20px 0px;
+	
+}
+
+.card-title {
+	/* 고정값 */
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #730e74;
+	/* 변경값 */
+	text-align: left;
+	margin: 50px 0 30px 50px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 60%;
+}
+
+.card-header {
+	border-bottom : 0px solid rgba(0,0,0);
+}
+
+table {
+	border-color : white;
+}
+
+tr th {
+	color: white;
+	background-color: #730e74;
+	font-family: 'Sam3KRFont';
+	text-align: center;
+}
+
+tr td {
+	font-family: 'DOSGothic';
+	text-align: center;
+}
+
+.btn-successs {
+	margin: 0 220px 0 0;/* 고정값 */
+	background-color:#720e74;
+	border-radius:7px;
+	border: 2px solid  #faae22;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Sam3KRFont';
+	font-size:14px;
+	padding:10px 27px;
+	text-decoration:none;
+	text-shadow: 0px 0px 0px #faaf22;
+	/* 변경값 */
+	display:inline-block;
+	width: 200px;	
+}
+
+.btn-successs:hover {
+  	/* 고정값 */
+	background-color:#faae22;
+	color: #720e74;
+	border: 2px solid #720e74;
+	
+}
+.btn-successs:active {
+	position:relative;
+	top:1px;
+}
+
+.paginationn {
+	display : flex;
+	list-style: none;
+	
+}
+
+.search_wrapp{ 
+	margin: 30px 0 50px 0;
+}
+
+a {
+	color: black;
+}
+
+.page-item active{
+	background-color: #faae22;
+	color: #730e74;
+}
+
+.card-body {
+	padding: 20px 200px 50px 200px;
+}
+
+
+#searchbtn{
+ 	/* 고정값 */
+	background-color:#720e74;
+	border-radius:7px;
+	border: 2px solid  #faae22;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Sam3KRFont';
+	font-size:14px;
+	padding:10px 27px;
+	text-decoration:none;
+	text-shadow: 0px 0px 0px #faaf22;
+	/* 변경값 */
+	display:inline-block;
+	width: 120px;
+}
+#searchbtn:hover {
+  	/* 고정값 */
+	background-color:#faae22;
+	color: #720e74;
+	border: 2px solid #720e74;
+	
+}
+#searchbtn:active {
+	position:relative;
+	top:1px;
+}
+
+#keyword, #category, #counts {
+	border-color:  #730e74;
+	font-family: 'DOSGothic';
+	height: 40px;
+}
 </style>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
@@ -62,7 +200,7 @@ div {
 %>
 
 	<div class="col-lg-12">
-		<div class="card">
+		<div class="cardd">
 			<div class="card-header with-border">
 				<h3 class="card-title">게시글 목록</h3>
 			</div>
@@ -84,7 +222,7 @@ div {
 							<th>제목</th>
 							<th style="width: 150px">작성자</th>
 							<th style="width: 300px">작성시간</th>
-							<th style="width: 60px">조회수</th>
+							<th style="width: 80px">조회수</th>
 						</tr>
 					<c:if test="${ empty qlist }">			
 						<tr>
@@ -112,9 +250,9 @@ div {
 				</table>
 			</div>
 			<div id="writeButton">
-				<div class="card-footer">
+				<div class="card-footerr">
 					<div class="float-right">
-						<button type="button" onclick="location.href='${ path }/qna/enroll'" class="btn-success" id="writeBtn">
+						<button type="button" onclick="location.href='${ path }/qna/enroll'" class="btn-successs" id="writeBtn">
 							<i class="fa fa-pencil"></i> 글쓰기
 						</button>
 					</div>
@@ -123,7 +261,7 @@ div {
 		</div>
    	</div>
     
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example" style="margin-left: 400px;">
 	  <ul class="pagination justify-content-center">
 	    <!-- 이전페이지 버튼 -->
         <c:if test="${pageMaker.prev}">
@@ -140,9 +278,9 @@ div {
 	  </ul>
 	</nav>
     
-    <div class="search_wrap">
+    <div class="search_wrapp">
         <div class="search_area">
-        	<select name="type">
+        	<select name="type" id="category">
                 <option value="" <c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>옵션을 선택해주세요</option>
                 <option value="T" <c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목</option>
                 <option value="C" <c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용</option>
@@ -151,8 +289,8 @@ div {
                 <option value="TW" <c:out value="${pageMaker.cri.type eq 'TW'?'selected':'' }"/>>제목 + 작성자</option>
                 <option value="TCW" <c:out value="${pageMaker.cri.type eq 'TCW'?'selected':'' }"/>>제목 + 내용 + 작성자</option>
             </select>
-            <input type="text" name="keyword" value="${pageMaker.cri.keyword }">
-            <button>Search</button>
+            <input type="text" name="keyword" id="keyword" value="${pageMaker.cri.keyword }">
+            <button id="searchbtn">Search</button>
         </div>
     </div>   
 	
