@@ -135,9 +135,32 @@
 			</div>
 						
 	</div>
-
+	
+	
+	<div>
+	<c:forEach var="blistc" items="${ blistc}">
+	<c:out value="${blistc.brName }"></c:out>
+	<button type="button" id="btnC" onclick="${blistc.brName }">C</button>
+	</c:forEach>	
+		
+	</div>
+	
+	<div>
+	<c:forEach var="blistk" items="${ blistk }">
+	<p>${ blistk.brName }</p>
+	</c:forEach>
+	</div>	
+	
 
     	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 
+    <script>
+	$(document).ready(() => {
+		$("#btnC").on("click", () => {
+
+		});
+	});
+    </script>	
+
     	
 </body>
 </html>
