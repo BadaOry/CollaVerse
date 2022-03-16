@@ -274,8 +274,49 @@ public class MemberController {
 	public ModelAndView update1(
 			ModelAndView model,
 			@SessionAttribute(name="loginMember") Member loginMember,
-			@ModelAttribute Member member) {
+			@ModelAttribute Member member,
+			@RequestParam("file") MultipartFile upfile) {
+				
+			log.info("컨트롤러로 요청 오는지 확인");
+
 		int result = 0;
+		
+		// 프로필 사진 첨부
+		
+		String originalFileName = upfile.getOriginalFilename();
+		boolean upfileIsEmpty = upfile.isEmpty();
+		
+		log.info("[Controller] originalFileName 확인 : {}", originalFileName);
+		log.info("[Controller] upfile is Empty 확인 : {}", upfileIsEmpty);
+		
+		
+	// 파일을 업로드 했는지 확인 후, rename 하여 VO 에 set & 지정 위치에 upfile 저장
+		if (upfile != null && !upfile.isEmpty()) {
+			String location = null;
+			String renamedFileName = null;					
+			
+			try {
+				location = resourceLoader.getResource("resources/upload/profile").getFile().getPath();						
+				renamedFileName = FileProcess.save(upfile, location);
+				
+				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);									
+				
+				if (renamedFileName != null) {
+					member.setProfile_img(renamedFileName);
+					
+					log.info("[Controller] originalFileName 정보 확인 : {}", originalFileName);
+					log.info("[Controller] renamedFileName 정보 확인 : {}", renamedFileName);
+					
+				}
+			} catch (IOException e) {
+				System.out.println("renamedFileName 불러오기 실패..");
+				e.printStackTrace();
+			}
+			
+		}
+
+		/////
+
 		
 		member.setNo(loginMember.getNo());
 		
@@ -293,6 +334,7 @@ public class MemberController {
 		model.setViewName("common/msg");
 		
 		return model;
+		
 	}
 	
 	// 회원탈퇴

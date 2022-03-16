@@ -11,23 +11,24 @@
     margin-bottom: 100px;
     padding: 30px 40px 40px 30px;
     border-radius: 20px;
-    box-shadow: 1px 1px 5px rgba(113, 6, 175, 0.1), -1px -1px 5px rgba(132, 8, 148, 0.1);
+    /*box-shadow: 1px 1px 5px rgba(113, 6, 175, 0.1), -1px -1px 5px rgba(132, 8, 148, 0.1);*/
 }
 
 input[type=text] {
     width: 200px;
     height: 30px;
-    font-size: 13px;
+    font-size: 23;
 }
 
 input[type=password] {
     width: 200px;
     height: 30px;
-    font-size: 13px;
+    font-size: 23px;
 }
 
 .id, .pw{
-    padding: 10px 50px;
+    padding: 10px 50px 0 50px;
+    font-family: 'DOSGothic';
 }
 
 .findAll {
@@ -43,15 +44,70 @@ input[type=password] {
     font-size: 14px;
     cursor: pointer;
     text-decoration: underline;
+    font-family: 'DOSGothic';
 }
 
+/* Crystal Edited */
 #btn1 {
-    background-color: rgb(255, 255, 255);
-    border-color: blueviolet;
+	/* 고정값 */
+	background-color:#720e74;
+	border-radius:7px;
+	border: 2px solid  #faae22;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Sam3KRFont';
+	padding:10px 27px;
+	text-decoration:none;
+	text-shadow: 0px 0px 0px #faaf22;
+	/* 변경값 */
+	
     box-shadow: 1px 1px 1px 1px rgb(175, 46, 201, 0.5);
     font-size: 20px;
     cursor: pointer;
     width: 150px;
     height: 75px;
     font-weight: bolder;
+}
+
+#btn1:hover {
+  	/* 고정값 */
+	background-color:#faae22;
+	color: #720e74;
+	border: 2px solid #720e74;
+	
+}
+#btn1:active {
+	position:relative;
+	top:1px;
+}
+
+
+.mini-title {
+	/* 고정값 */
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #730e74;
+	/* 변경값 */
+	text-align: left;
+	margin: 50px 0 30px 220px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 60%;
+}
+
+input {
+	border-color:  #730e74;
+	font-family: 'DOSGothic';
+	height: 40px;
+	font-size: 23px;
+}
+
+.title-text {
+	margin: 0 0 10px 0;
+}
+
+#findid:hover {
+	color:  #ae165f;
+}
+
+#findpw:hover {
+	color:  #ae165f;
 }

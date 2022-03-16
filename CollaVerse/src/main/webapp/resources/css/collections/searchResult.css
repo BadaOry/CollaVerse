@@ -85,3 +85,11 @@
 	margin: 20px 40px 0 0;
 	display: inline-block;
 } 
+
+} 
+
+#searchUser, #searchCategory {
+	border-color:  #730e74;
+	font-family: 'DOSGothic';
+	height: 33px;
+}

@@ -182,6 +182,31 @@ public class mypageController {
 		model.addObject("writerNickname", writerNickname);
 		model.addObject("writerNo", writerNo);
 		
+		// 팔로우 수 종류별
+		int todayCount = fservice.getTodayCount(memberNo); // 금일 팔로우 수
+		int yesterdayCount = fservice.getYesterdayCount(memberNo); // 작일 팔로우 수
+		int thisweekCount = fservice.getThisweekCount(memberNo); // 금주 팔로우 토탈 수
+		int lastweekCount = fservice.getLastweekCount(memberNo); // 지난주 팔로우 토탈 수
+		int thismonthCount = fservice.getThismonthCount(memberNo); // 이번달 팔로우 토탈 수
+		int lastmonthCount = fservice.getLastmonthCount(memberNo); // 지난달 팔로우 토탈 수
+		
+		// 마지막 표 성비 사용용도
+		int womenCount = mservice.getWomenCount(memberNo);
+  		int menCount = mservice.getMenCount(memberNo);
+  		int totalCount = mservice.getTotalCount(memberNo);
+		
+		models.addAttribute("todayCount", todayCount);
+		models.addAttribute("yesterdayCount", yesterdayCount);
+		models.addAttribute("thisweekCount", thisweekCount);
+		models.addAttribute("lastweekCount", lastweekCount);
+		models.addAttribute("thismonthCount", thismonthCount);
+		models.addAttribute("lastmonthCount", lastmonthCount);
+		
+		// 마지막 표 성비 사용용도
+		models.addAttribute("womenCount", womenCount);
+  		models.addAttribute("menCount", menCount);
+  		models.addAttribute("totalCount", totalCount);
+		
 		model.setViewName("mypage/businessMypage");
 		
 		return model;

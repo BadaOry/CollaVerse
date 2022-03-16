@@ -8,7 +8,7 @@ header{
 	background-size: 100% 100%;
 }
 
-#title{margin: 0;/* padding: 0px 0 0 50px; *//* text-align: center; */color: #730e74;font-family: 'Sam3KRFont';font-size: 30px;}
+#title{margin: 0;/* padding: 0px 0 0 50px; *//* text-align: center; */color: #730e74;font-family: 'Sam3KRFont';font-size: 30px;margin: 20px 0 0 0;}
 
 #header1 a{
 	color: white;
@@ -21,7 +21,7 @@ header{
 }
 
 #header2{
-	height: 30px;
+	/* height: 30px; */
 	/* position: relative; */
 	/* background-color: black; */
 	padding: 10px 0 0 0;

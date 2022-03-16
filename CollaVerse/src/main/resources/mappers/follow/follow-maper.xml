@@ -101,4 +101,50 @@
 		    AND TO_MEM_NO = #{ toMemNo }
 	</delete>
 	
+	<!-- 금일 팔로우 수 -->
+	<select id = "getTodayCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} AND TO_CHAR(FOLLOWER_CREATE_DATE) = TO_CHAR(SYSDATE)
+	</select>
+	
+	<!-- 작일 팔로우 수 -->
+	<select id = "getYesterdayCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} AND TO_CHAR(FOLLOWER_CREATE_DATE) = TO_CHAR(SYSDATE - 1)
+	</select>
+	
+	<!-- 금주 팔로우 토탈 수 기준(월-일) -->
+	<select id = "getThisweekCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} 
+			AND TO_CHAR(FOLLOWER_CREATE_DATE) BETWEEN TO_CHAR(TO_DATE(TRUNC(SYSDATE, 'IW')), 'YY/MM/DD') AND TO_CHAR(TO_DATE(TRUNC(SYSDATE, 'D')+7), 'YY/MM/DD')
+	</select>
+	
+	<!-- 지난주 팔로우 토탈 수 기준(월-일) -->
+	<select id = "getLastweekCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} 
+			AND TO_CHAR(FOLLOWER_CREATE_DATE) BETWEEN TO_CHAR(TO_DATE(TRUNC(SYSDATE, 'IW')-7), 'YY/MM/DD') AND TO_CHAR(TO_DATE(TRUNC(SYSDATE, 'D')), 'YY/MM/DD')
+	</select>
+	
+	<!-- 이번달 팔로우 토탈 수 기준 -->
+	<select id = "getThismonthCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} 
+			AND TO_CHAR(FOLLOWER_CREATE_DATE) BETWEEN TO_CHAR(TO_DATE(TRUNC(SYSDATE, 'MM')), 'YY/MM/DD') AND TO_CHAR(LAST_DAY(SYSDATE), 'YY/MM/DD')
+	</select>
+	
+	<!-- 지난달 팔로우 토탈 수 기준 -->
+	<select id = "getLastmonthCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} 
+			AND TO_CHAR(FOLLOWER_CREATE_DATE) BETWEEN TO_CHAR(ADD_MONTHS(TRUNC(SYSDATE, 'MM'),-1), 'YY/MM/DD') AND TO_CHAR(TO_DATE(TRUNC(SYSDATE, 'MM')-1), 'YY/MM/DD')
+	</select>
+	
 </mapper>

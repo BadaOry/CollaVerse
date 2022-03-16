@@ -235,6 +235,7 @@
 			WHERE REGEXP_LIKE (BR_NAME, '^[B]')		
   		</select>
   		
+
   		<select id="selectBrandC" parameterType="map" resultMap="brandListResultMap">
 			SELECT *
 			FROM BRAND 
@@ -308,6 +309,11 @@
   		</select>  		
   		
   		<!-- Promotion VO 에 INSERT 하는 부분 -->
+
+	     	
+        
+  		<!-- Promotion VO 에 pmtNo 받아올라고 첫 번째 INSERT 하는 부분 -->
+
   		<insert id="promotionSave" parameterType="com.collaverse.mvc.collabo.model.vo.Promotion"
   			useGeneratedKeys="true" keyProperty="no" keyColumn="PMT_NO">  			
   			INSERT INTO PROMOTION (
@@ -319,10 +325,8 @@
 			    'Y', #{ startDate }, #{ endDate }, 
 			    0, #{ cNo }, 0
 			)
-			<!-- <selectKey keyProperty="pmtNo" resultType="String" order="AFTER">
-				select max(pmtNo) from promotion
-			</selectKey>  -->
   		</insert>
+  		
   		
   		<!-- ProductVo에 INSERT 하는 부분 -->  	
   		<insert id="productSave" parameterType="com.collaverse.mvc.collabo.model.vo.Product"

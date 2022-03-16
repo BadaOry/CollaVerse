@@ -15,7 +15,7 @@ public class StatisticsController {
 	@Autowired
 	private MemberService service;
 	
-	@GetMapping("/statistics")
+	@GetMapping("/ageGenderStatistics")
 	public String getStatistics(Model model,
 			@SessionAttribute("loginMember") Member loginMember) {
 		
@@ -41,6 +41,6 @@ public class StatisticsController {
   		model.addAttribute("etcCount", etcCount);
   		model.addAttribute("totalCount", totalCount);
 		
-		return "/statistics/statistics";
+		return "/statistics/ageGenderStatistics";
 	}
 }

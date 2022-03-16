@@ -4,13 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.session.RowBounds;
 
 import com.collaverse.mvc.collabo.model.vo.Brand;
-import com.collaverse.mvc.collabo.model.vo.Heart;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
-import com.collaverse.mvc.collabo.model.vo.WritePromotion;
 
 @Mapper
 public interface CollaboMapper {
@@ -60,12 +57,12 @@ public interface CollaboMapper {
 
 	void deleteHeart(@Param("pmt_no") int pmtNo, @Param("heart_mem_no") int heartMemNo);
 	
-
-//	int insertPromotion(WritePromotion writepromotion);
-
 	// Promotion 테이블에 insert 돌릴 메소드 
 	int promotionSave(Promotion promotionVo);
 
+	// Product 테이블에 insert 돌릴 메소드
+	int productSave(Product productVo);
+	
 	// 브랜드 조회 
 
 	List<Brand> selectBrandIntro();
@@ -100,5 +97,6 @@ public interface CollaboMapper {
 	List<Brand> selectBrandW();
 
 	List<Brand> selectBrandY();
+
 
 }
