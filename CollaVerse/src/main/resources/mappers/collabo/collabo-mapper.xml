@@ -228,86 +228,13 @@
   			FROM PROMOTION P, BRAND B
   			WHERE P.PMT_NO = B.BR_PMT_NO
   		</select>
-  		
-  		<select id="selectBrandB" parameterType="map" resultMap="brandListResultMap">
+  	
+  		<select id="selectBrandDetail2" parameterType="String" resultMap="brandListResultMap">
 			SELECT *
 			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[B]')		
+			WHERE REGEXP_LIKE (BR_NAME, '^[ ${ alphabet } ]')		
   		</select>
-  		
-
-  		<select id="selectBrandC" parameterType="map" resultMap="brandListResultMap">
-			SELECT *
-			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[C]')		
-  		</select>
-
-  		<select id="selectBrandD" parameterType="map" resultMap="brandListResultMap">
-			SELECT *
-			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[D]')		
-  		</select>  		  		  		  			
-
-  		<select id="selectBrandE" parameterType="map" resultMap="brandListResultMap">
-			SELECT *
-			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[E]')		
-  		</select>  		
-
-  		<select id="selectBrandK" parameterType="map" resultMap="brandListResultMap">
-			SELECT *
-			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[K]')		
-  		</select>	    	  	
-
-  		<select id="selectBrandL" parameterType="map" resultMap="brandListResultMap">
-			SELECT *
-			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[L]')		
-  		</select>
-
-  		<select id="selectBrandM" parameterType="map" resultMap="brandListResultMap">
-			SELECT *
-			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[M]')		
-  		</select>
-
-  		<select id="selectBrandN" parameterType="map" resultMap="brandListResultMap">
-			SELECT *
-			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[N]')		
-  		</select>  		  		        
-
-  		<select id="selectBrandP" parameterType="map" resultMap="brandListResultMap">
-			SELECT *
-			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[P]')		
-  		</select>
- 
-  		<select id="selectBrandS" parameterType="map" resultMap="brandListResultMap">
-			SELECT *
-			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[S]')		
-  		</select>
-  		
-  		<select id="selectBrandT" parameterType="map" resultMap="brandListResultMap">
-			SELECT *
-			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[T]')		
-  		</select>
-
-  		<select id="selectBrandW" parameterType="map" resultMap="brandListResultMap">
-			SELECT *
-			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[W]')		
-  		</select>  		  		   
-
-  		<select id="selectBrandY" parameterType="map" resultMap="brandListResultMap">
-			SELECT *
-			FROM BRAND 
-			WHERE REGEXP_LIKE (BR_NAME, '^[Y]')		
-  		</select>  		
-  		
+  		 		
   		<!-- Promotion VO 에 INSERT 하는 부분 -->
 
 	     	
