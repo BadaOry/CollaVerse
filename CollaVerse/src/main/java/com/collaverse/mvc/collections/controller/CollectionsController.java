@@ -52,8 +52,16 @@ public class CollectionsController {
 		log.info("[Controller] jsp 에서 가져온 searchOption : {} / keyword : {}", searchOption, keyword);
 		
 		List<Collections> findList = service.findUser(searchOption, keyword);
+		String noFindList = null;
 		
 		log.info("[Controller] mapper 돌리고 온 findList 출력 : {}", findList);
+		
+		if(findList.size() == 0) {
+			
+			noFindList = "없음";
+			
+			log.info("내용이 없으면 출력 : {}", noFindList);
+		}
 		
 		Map<String, Object> map = new HashMap<>();
 		
@@ -65,7 +73,8 @@ public class CollectionsController {
 		
 		
 		model.addObject("map", map);
-		model.addObject("findList", findList);
+		model.addObject("findList", findList);		
+		model.addObject("noFindList", noFindList);		
 		model.setViewName("/collections/searchResult");
 		
 		return model;
