@@ -60,11 +60,12 @@
 			    <td><img id="imagePreview" src="${ path }/resources/upload/profile/${ loginMember.profile_img}" /></td>
 			</tr>
 			<tr>
-			    <td rowspan="2"><input type="file" name="file" id="profile_img"><span style="color: red;font-size: small;">png, jpg만 첨부 가능</span></td>
+			    <td rowspan="2"><input type="file" name="file" id="profile_img"><span style="color: red;">png, jpg만 첨부 가능</span></td>
 			</tr>
         </table>
             <br>
         <div class="btnAll" align="center">
+        	<button type="button" id="updatePwd">비밀번호변경</button>
         	<input type="submit" id="btn1" value="정보 수정">
         	<input type="button" id="btnDelete" value="탈퇴">
         	<input type="reset" id="btn2" value="취소" onclick="location.href='${ path }'">
@@ -97,6 +98,21 @@
 	});
 
 </script>
+
+<!-- 
+<script>
+// 비밀번호 변경(작성중)
+	$(document).ready(() => {
+		$("#updatePwd").on("click", () => {
+			const url = "${ pageContext.request.contextPath }/member/updatePwd";
+			const status = "left=500px,top=200px,width=400px,height=200px";
+			
+			open(url, "", status);
+		});
+	});
+</script>
+ -->
+
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>	
 </body>

@@ -15,11 +15,12 @@ public class StatisticsController {
 	@Autowired
 	private MemberService service;
 	
-	@GetMapping("/ageGenderStatistics")
+	@GetMapping("/statisticsCount")
 	public String getStatistics(Model model,
 			@SessionAttribute("loginMember") Member loginMember) {
 		
 		int memberNo = loginMember.getNo();
+		
 		
 		int womenCount = service.getWomenCount(memberNo);
   		int menCount = service.getMenCount(memberNo);
@@ -30,6 +31,13 @@ public class StatisticsController {
   		int fiftiesCount = service.getFiftiesCount(memberNo);
   		int etcCount = service.getEtcCount(memberNo);
   		int totalCount = service.getTotalCount(memberNo);
+  		int yesterday1Count = service.getYesterday1Count(memberNo);
+  		int yesterday2Count = service.getYesterday2Count(memberNo);
+  		int yesterday3Count = service.getYesterday3Count(memberNo);
+  		int yesterday4Count = service.getYesterday4Count(memberNo);
+  		int yesterday5Count = service.getYesterday5Count(memberNo);
+  		int yesterday6Count = service.getYesterday6Count(memberNo);
+  		int yesterday7Count = service.getYesterday7Count(memberNo);
 
   		model.addAttribute("womenCount", womenCount);
   		model.addAttribute("menCount", menCount);
@@ -40,7 +48,14 @@ public class StatisticsController {
   		model.addAttribute("fiftiesCount", fiftiesCount);
   		model.addAttribute("etcCount", etcCount);
   		model.addAttribute("totalCount", totalCount);
-		
-		return "/statistics/ageGenderStatistics";
+  		model.addAttribute("yesterday1Count", yesterday1Count);
+  		model.addAttribute("yesterday2Count", yesterday2Count);
+  		model.addAttribute("yesterday3Count", yesterday3Count);
+  		model.addAttribute("yesterday4Count", yesterday4Count);
+  		model.addAttribute("yesterday5Count", yesterday5Count);
+  		model.addAttribute("yesterday6Count", yesterday6Count);
+  		model.addAttribute("yesterday7Count", yesterday7Count);
+  		
+		return "/statistics/statisticsCount";
 	}
 }

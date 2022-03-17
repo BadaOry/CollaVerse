@@ -137,7 +137,6 @@
 			PROFILE_IMG = #{profile_basic.png},
 			MODIFY_DATE = SYSDATE 
 		WHERE MEMBER_NO = #{no}
-
 	</update>
 	
 	<!-- 기업 회원정보수정 -->
@@ -303,6 +302,64 @@
 							FROM FOLLOWER 
 							WHERE TO_MEM_NO = #{memberNo}
 							))
+	</select>
+	
+	<!-- 비밀번호 변경 (작성중) -->
+	<update id="updatePwd" parameterType="com.collaverse.mvc.member.model.vo.Member">
+		UPDATE MEMBER SET PASSWORD = #{password} WHERE MEMBER_NO = #{no}
+	</update>
+	
+	<select id="findMemberByPw" parameterType="string" resultMap="memberResultMap">
+		<include refid="selectMemberSql" />
+		WHERE PASSWORD = #{password} AND MEMBER_STATUS = 'Y'
+
+	<!-- 1일 전 팔로우 -->
+	<select id = "getYesterday1Count" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} AND TO_CHAR(FOLLOWER_CREATE_DATE) = TO_CHAR(SYSDATE - 1)
+	</select>
+	
+	<!-- 2일 전 팔로우 -->
+	<select id = "getYesterday2Count" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} AND TO_CHAR(FOLLOWER_CREATE_DATE) = TO_CHAR(SYSDATE - 2)
+	</select>
+	
+	<!-- 3일 전 팔로우 -->
+	<select id = "getYesterday3Count" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} AND TO_CHAR(FOLLOWER_CREATE_DATE) = TO_CHAR(SYSDATE - 3)
+	</select>
+	
+	<!-- 4일 전 팔로우 -->
+	<select id = "getYesterday4Count" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} AND TO_CHAR(FOLLOWER_CREATE_DATE) = TO_CHAR(SYSDATE - 4)
+	</select>
+	
+	<!-- 5일 전 팔로우 -->
+	<select id = "getYesterday5Count" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} AND TO_CHAR(FOLLOWER_CREATE_DATE) = TO_CHAR(SYSDATE - 5)
+	</select>
+	
+	<!-- 6일 전 팔로우 -->
+	<select id = "getYesterday6Count" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} AND TO_CHAR(FOLLOWER_CREATE_DATE) = TO_CHAR(SYSDATE - 6)
+	</select>
+	
+	<!-- 7일 전 팔로우 -->
+	<select id = "getYesterday7Count" resultType="_int">
+		SELECT COUNT(*)
+		FROM FOLLOWER
+		WHERE TO_MEM_NO = #{memberNo} AND TO_CHAR(FOLLOWER_CREATE_DATE) = TO_CHAR(SYSDATE - 7)
 	</select>
 
 </mapper>

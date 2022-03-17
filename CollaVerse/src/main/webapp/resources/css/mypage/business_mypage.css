@@ -51,6 +51,39 @@
   position: relative;
   justify-content: center;
 }
+
+
+#memebr_nickname {
+	text-shadow: 3px 3px 0px #faaf22;
+}
+
+#col {
+	color: #550c81;
+}
+
+#ver {
+	color: #8c116c;
+}
+
+#se {
+	color: #ae165f;
+}
+
+/*
+.arrow_right:hover {
+	background-color: #faae22;
+}
+*/
+.more:hover {
+	background-color: #faae22;
+}
+
+#no_followernList {
+	text-align: left;
+	margin: 20px 0 20px 150px;
+	/* padding: 0 0 30px 0; */
+}
+
 #business #brand-follower #follower article {
   margin-right: 25px;
   height: 100px
@@ -95,16 +128,18 @@
   font-size: 60px;
   text-align: center;
   margin-left: 200px;
+   font-family: 'Sam3KRFont';
 }
 #business #statistics #follower-statistic div {
   font-size: 20px;
   text-align: center;
   margin-bottom: 30px;
   margin-left: 200px;
+   font-family: 'Sam3KRFont';
 }
 #business #statistics #follower-statistic ul {
   column-count: 2;
-  background-color: rgba(149, 178, 142, 0.5);
+  background-color: #faae22;
   line-height: 3;
   width: 700px;
   margin-left: 160px;
@@ -114,50 +149,13 @@
 #business #statistics #follower-statistic ul li {
   padding-left: -5px;
   font-size: 20px;
+   font-family: 'Sam3KRFont';
 }
 
 
 
 .mini_title {
 	/* 고정값 */
-	font-family: 'Sam3KRFont';
-	font-size: 30px;
-	color: #730e74;
-	/* 변경값 */
-	text-align: left;
-	margin: 50px 0 30px 150px; 
-	width: 60%;
-}
-
-#memebr_nickname {
-	text-shadow: 3px 3px 0px #faaf22;
-}
-
-#col {
-	color: #550c81;
-}
-
-#ver {
-	color: #8c116c;
-}
-
-#se {
-	color: #ae165f;
-}
-
-/*
-.arrow_right:hover {
-	background-color: #faae22;
-}
-*/
-.more:hover {
-	background-color: #faae22;
-}
-
-#no_followernList {
-	text-align: left;
-	margin: 20px 0 20px 150px;
-	/* padding: 0 0 30px 0; */
 	font-family: 'Sam3KRFont';
 	font-size: 30px;
 	color: #dbeaf8;
@@ -292,7 +290,10 @@
 }
 
 #collection {
-	margin: 0px 0px 0px 200px;
-	/* width: auto; */
-	/* padding: 30px; */
+	
+margin: 0px 0px 0px 200px;
+	
+/* width: auto; */
+	
+/* padding: 30px; */
 }

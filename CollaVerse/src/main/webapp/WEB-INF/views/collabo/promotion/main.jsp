@@ -21,10 +21,9 @@
 
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
     
-    <div>
-    	<c:if test="${ loginMember.role == '기업'}">
-    		<a onclick="location.href='${ path }/collabo/promotion/writing_promotion'">프로모션 작성하기</a></c:if>
-    </div>
+    <!-- <div class="write_pro"> -->
+    	
+    <!-- </div> -->
     
     <div class="frame">
     
@@ -52,13 +51,16 @@
 					</div>					
 	</div>
 -->
-    <div class="promotion">
+    <div id="promotion">
+    <c:if test="${ loginMember.role == '관리자'}">
+    		<button id="write_pro" onclick="location.href='${ path }/collabo/promotion/writing_promotion'">프로모션 작성하기</button></c:if>
         <h3 class="mini_title">최신 프로모션</h3>
 <!--          
         <a onclick="location.href='${ path }/collabo/promotion/detail?pmtNo=1'">
         	클릭해서 테스트용 pmt_no=1 으로 이동
         </a>
 -->
+    		
     </div>
         
     <div class="p_new">
