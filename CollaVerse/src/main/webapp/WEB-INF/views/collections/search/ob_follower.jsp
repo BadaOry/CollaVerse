@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CollaVerse</title>
-<link rel="stylesheet" type="text/css" href="${path}/resources/css/collections/searchResult.css">
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/collections/search/result.css">
 <script src="${ path }/resources/js/jquery-3.6.0.js"></script>
 </head>
 
@@ -21,10 +21,33 @@
     	<p id="search_user_title_text">컬렉션 검색</p>	
     	
     </div>
+    
+	<div id="order_container">
+	
+   			<p id="orderby">컬렉션 정렬 방식 </p>    	
+    	
+	    	<p id="orderby1">
+	    		<a onclick="location.href='${ path }/collections/search/ob_follower'">팔로워순  
+	    	</p>   	
+    		
+    		<p id="orderby">│</p>   
+    		 
+    		<p id="orderby2">
+    			<a onclick="location.href='${ path }/collections/search/only_brand'">브랜드  </a>	
+    		</p>
+
+ 			<p id="orderby">│</p> 
+ 			
+	    	<p id="orderby3">
+	    		<a onclick="location.href='${ path }/collections/search/only_user'">콜라버스 유저</a>
+			</p>
+	
+	</div>
+	
 	
 	<div id="searchContainer">
 	
-		 <form name="collectionWriteFrm" action="${ path }/collections/search" method="POST">
+		 <form name="collectionWriteFrm" action="${ path }/collections/search/result" method="POST">
 
 			<select name="searchCategory" id="searchCategory">
 				<option value="id">ID</option>
@@ -40,17 +63,16 @@
 	
 	</div>
 	
-		
 	<div id="userContainer">
-		<c:if test="${ !empty findList }">
+		<c:if test="${ !empty brandUserList }">
 		
-			<c:forEach var="findList"  items="${ findList }">
+			<c:forEach var="brandUserList"  items="${ brandUserList }">
 			
 				<div class="user_info_container">
-					<img id="profile_image" src="${ path }/resources/upload/profile/${ findList.profile_img }"
-						onclick="location.href='${ path }/mypage/collection/list/${ findList.id }'" />
+					<img id="profile_image" src="${ path }/resources/upload/profile/${brandUserList.profile_img }"
+						onclick="location.href='${ path }/mypage/collection/list/${ brandUserList.id }'" />
 				
-					<p id="user_nickname"> ${ findList.nickname } </p>
+					<p id="user_nickname"> ${ brandUserList.nickname } </p>
 				</div>
 						
 			</c:forEach>

@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CollaVerse</title>
-<link rel="stylesheet" type="text/css" href="${path}/resources/css/collections/main.css">
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/collections/search/result_brand.css">
 <script src="${ path }/resources/js/jquery-3.6.0.js"></script>
 </head>
 
@@ -33,7 +33,7 @@
     		<p id="orderby">│</p>   
     		 
     		<p id="orderby2">
-    			<a onclick="location.href='${ path }/collections/search/only_brand'">브랜드  </a>	
+    			<a onclick="location.href='${ path }/collections/search/only_brand'"><strong>브랜드  </strong></a>	
     		</p>
 
  			<p id="orderby">│</p> 
@@ -47,7 +47,7 @@
 	
 	<div id="searchContainer">
 
-		 <form name="collectionWriteFrm" action="${ path }/collections/search/result" method="POST">
+		 <form name="collectionWriteFrm" action="${ path }/collections/search/result_brand" method="POST">
 
 			
 			<select name="searchCategory" id="searchCategory">
@@ -67,13 +67,13 @@
 		
 	<div id="userContainer">
 	
-		<c:forEach var="userList"  items="${ userList }">
+		<c:forEach var="findList"  items="${ findList }">
 		
 			<div class="user_info_container">
-				<img id="profile_image" src="${ path }/resources/upload/profile/${ userList.profile_img }"
-					onclick="location.href='${ path }/mypage/collection/list/${ userList.id }'" />
+				<img id="profile_image" src="${ path }/resources/upload/profile/${ findList.profile_img }"
+					onclick="location.href='${ path }/mypage/collection/list/${ findList.id }'" />
 			
-				<p id="user_nickname"> ${ userList.nickname } </p>
+				<p id="user_nickname"> ${ findList.nickname } </p>
 			</div>
 					
 		</c:forEach>

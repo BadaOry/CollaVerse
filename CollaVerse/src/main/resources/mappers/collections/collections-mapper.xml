@@ -32,11 +32,13 @@
 		<result property="profile_img" column="PROFILE_IMG"/>
 	</resultMap>
 		
+		
 	<select id="getAllUserIdList" resultMap="listResultMap" resultType="arrayList">
 		SELECT ID, NICKNAME, PROFILE_IMG
 		FROM MEMBER
 		WHERE MEMBER_ROLE IN ('개인', '기업')
 	</select>
+		
 		 
 	<select id="findUserById" parameterType="String" resultMap="listResultMap" resultType="map">
 		SELECT ID, NICKNAME, PROFILE_IMG
@@ -44,11 +46,68 @@
 		WHERE ID LIKE '%' || #{ keyword } || '%' 
 	</select>
 	
+	
 	<select id="findUserByNickname" parameterType="String" resultMap="listResultMap" resultType="arrayList">
 		SELECT ID, NICKNAME, PROFILE_IMG
 		FROM MEMBER 
 		WHERE NICKNAME LIKE '%' || #{ keyword } || '%' 
 	</select>
 	
+	<select id="findBrandUserById" parameterType="String" resultMap="listResultMap" resultType="map">
+		SELECT ID, NICKNAME, PROFILE_IMG
+		FROM MEMBER 
+		WHERE ID LIKE '%' || #{ keyword } || '%' 
+			AND MEMBER_ROLE = '기업'
+	</select>
+	
+	<select id="findBrandUserByNickname" parameterType="String" resultMap="listResultMap" resultType="arrayList">
+		SELECT ID, NICKNAME, PROFILE_IMG
+		FROM MEMBER 
+		WHERE NICKNAME LIKE '%' || #{ keyword } || '%' 
+			AND MEMBER_ROLE = '기업'
+	</select>
+	
+	<select id="findOnlyUserById" parameterType="String" resultMap="listResultMap" resultType="map">
+		SELECT ID, NICKNAME, PROFILE_IMG
+		FROM MEMBER 
+		WHERE ID LIKE '%' || #{ keyword } || '%' 
+			AND MEMBER_ROLE = '개인'
+	</select>
+	
+	<select id="finOnlyUserByNickname" parameterType="String" resultMap="listResultMap" resultType="arrayList">
+		SELECT ID, NICKNAME, PROFILE_IMG
+		FROM MEMBER 
+		WHERE NICKNAME LIKE '%' || #{ keyword } || '%' 
+			AND MEMBER_ROLE = '개인'
+	</select>
+	
+	
+	<select id="getuserListByFollower" resultMap="listResultMap" resultType="arrayList">
+		SELECT TO_MEM_NO, ROWNUM 
+		FROM (
+			SELECT COUNT(*), TO_MEM_NO
+			FROM FOLLOWER
+			GROUP BY TO_MEM_NO
+			ORDER BY COUNT(*) DESC )
+		WHERE ROWNUM BETWEEN 1 AND 100
+	</select>
+	
+	<select id="getuserListByFollowerId" parameterType="arrayList" resultMap="listResultMap" resultType="arrayList">
+		SELECT ID, NICKNAME, PROFILE_IMG
+		FROM MEMBER
+		WHERE MEMBER_NO IN #{ userListByFollowerMemNo }
+	</select>
+	
+	<select id="getBrandUserIdList" resultMap="listResultMap" resultType="arrayList">
+		SELECT ID, NICKNAME, PROFILE_IMG
+		FROM MEMBER
+		WHERE MEMBER_ROLE IN ('기업')
+	</select>
+	
+	<select id="getOnlyUserIdList" resultMap="listResultMap" resultType="arrayList">
+		SELECT ID, NICKNAME, PROFILE_IMG
+		FROM MEMBER
+		WHERE MEMBER_ROLE IN ('개인')
+	</select>
 	
 </mapper>

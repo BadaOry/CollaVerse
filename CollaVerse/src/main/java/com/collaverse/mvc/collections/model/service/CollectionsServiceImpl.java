@@ -38,4 +38,40 @@ public class CollectionsServiceImpl implements CollectionsService {
 		return list;
 	}
 
+	@Override
+	public List<Collections> findBrandUserByKeyword(String searchOption, String keyword) {
+		log.info("[ServiceImpl] 까지 파라미터가 잘 넘어오는지 확인 : {}, {}", searchOption, keyword);
+		
+		List<Collections> list; 
+		
+		if(searchOption.equals("id")) {
+			
+			list = mapper.findBrandUserById(keyword);
+			
+		} else {
+			
+			list = mapper.findBrandUserByNickname(keyword);
+		}
+		
+		return list;
+	}
+	
+	@Override
+	public List<Collections> findOnlyUserByKeyword(String searchOption, String keyword) {
+		log.info("[ServiceImpl] 까지 파라미터가 잘 넘어오는지 확인 : {}, {}", searchOption, keyword);
+		
+		List<Collections> list; 
+		
+		if(searchOption.equals("id")) {
+			
+			list = mapper.findOnlyUserById(keyword);
+			
+		} else {
+			
+			list = mapper.findOnlyUserByNickname(keyword);
+		}
+		
+		return list;
+	}
+
 }
