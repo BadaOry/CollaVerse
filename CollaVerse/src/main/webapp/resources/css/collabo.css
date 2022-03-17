@@ -291,17 +291,6 @@ th, td {
 	padding: -10px;
 }
 
-/* Crystal Edited : 원래 코드도 남겨놓습니다.
-
-.brand_englist ul, li{
-	list-style: none;
-	font-family: 'Sam3KRFont';
-	font-size: 35px;
-	display: inline;
-	/*margin-left: 23px;*/
-}
-*/
-
 .brand_englist ul{
 	list-style: none;
 	font-family: 'Sam3KRFont';
@@ -318,13 +307,34 @@ th, td {
 	margin-left: 23px;
 }
 
-/* ----------- */
-
 .brand_englist li:hover{
 	background-color: rgb(198, 182, 218);	
 }
 
+.brand_englist a {
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: inherit; /* 링크의 색상 제거 */
+	font-family: 'Sam3KRFont';
+	font-size: 35px;
+}
 
+/* 브랜드 Detail*/
+
+.select_brand{
+    font-family: 'Sam3KRFont';
+    font-size: 40px;
+    text-align: left;
+    color: #730e74;
+    margin: 30px 0 30px 50px;
+    width: 60%;		
+}
+
+.alpha_list {
+	display: flex;
+  	flex-direction: row;
+  	justify-content: space-around;
+  	font-family: 'DOSGothic';		
+}
 
 
 

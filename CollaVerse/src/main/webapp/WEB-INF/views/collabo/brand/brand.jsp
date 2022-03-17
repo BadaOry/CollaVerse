@@ -98,68 +98,171 @@
     					    		    		   		
     </div>
 		
-			<div class="brand_array">
+	<div class="brand_array">
 			<p>ABC</p>			 
 								
-			</div>
+	</div>
 			
-			<div class="brand_englist">
+	<div class="brand_englist">
 			<ul>
 			
-			<li>A</li>			
-			<li>B</li>			
-			<li>C</li>
-			<li>D</li>
-			<li>E</li>
-			<li>F</li>
-			<li>G</li>
-			<li>H</li>
-			<li>I</li>
-			<li>J</li>
-			<li>K</li>
-			<li>L</li>
-			<li>M</li>
-			<li>N</li>
-			<li>O</li>
-			<li>Q</li>
-			<li>R</li>
-			<li>S</li>
-			<li>T</li>
-			<li>U</li>
-			<li>V</li>
-			<li>W</li>
-			<li>X</li>
-			<li>Y</li>
-			<li>Z</li>			
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=A">
+			A
+			</a>
+			</li>	
+					
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=B">
+			B
+			</a>
+			</li>
+					
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=C">
+			C
+			</a>
+			</li>
+						
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=D">
+			D
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=E">
+			E
+			</a>
+			</li>
+			
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=F">
+			F
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=G">
+			G
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=H">
+			H
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=I">
+			I
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=J">
+			J
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=K">
+			K
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=L">
+			L
+			</a>
+			</li>
+			
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=M">
+			M
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=N">
+			N
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=O">
+			O
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=Q">
+			Q
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=R">
+			R
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=S">
+			S
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=T">
+			T
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=U">
+			U
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=V">
+			V
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=W">
+			W
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=X">
+			X
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=Y">
+			Y
+			</a>
+			</li>
+
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=Z">
+			Z
+			</a>
+			</li>		
 			</ul>
 			</div>
 						
 	</div>
 	
-	
-	<div>
-	<c:forEach var="blistc" items="${ blistc}">
-	<c:out value="${blistc.brName }"></c:out>
-	<button type="button" id="btnC" onclick="${blistc.brName }">C</button>
-	</c:forEach>	
-		
-	</div>
-	
-	<div>
-	<c:forEach var="blistk" items="${ blistk }">
-	<p>${ blistk.brName }</p>
-	</c:forEach>
-	</div>	
-	
 
     	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 
-    <script>
-	$(document).ready(() => {
-		$("#btnC").on("click", () => {
-
-		});
-	});
-    </script>	
+	
 
     	
 </body>

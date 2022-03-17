@@ -17,4 +17,5 @@ public class Brand {
 	private String brImgPath;
 	
 	private int brPmtNo;
+	
 }
