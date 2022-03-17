@@ -195,5 +195,55 @@ public class MemberServiceImpl implements MemberService {
 		
 		return mapper.getTotalCount(memberNo);
 	}
+	
+	// 1일 전 팔로우
+	@Override
+	public int getYesterday1Count(int memberNo) {
+		
+		return mapper.getYesterday1Count(memberNo);
+	}
+	
+	// 2일 전 팔로우
+	@Override
+	public int getYesterday2Count(int memberNo) {
+		
+		return mapper.getYesterday2Count(memberNo);
+	}
+	
+	// 3일 전 팔로우
+	@Override
+	public int getYesterday3Count(int memberNo) {
+		
+		return mapper.getYesterday3Count(memberNo);
+	}
+	
+	// 4일 전 팔로우
+	@Override
+	public int getYesterday4Count(int memberNo) {
+		
+		return mapper.getYesterday4Count(memberNo);
+	}
+	
+	// 5일 전 팔로우
+	@Override
+	public int getYesterday5Count(int memberNo) {
+		
+		return mapper.getYesterday5Count(memberNo);
+	}
+	
+	// 6일 전 팔로우
+	@Override
+	public int getYesterday6Count(int memberNo) {
+		
+		return mapper.getYesterday6Count(memberNo);
+	}
+	
+	// 7일 전 팔로우
+	@Override
+	public int getYesterday7Count(int memberNo) {
+		
+		return mapper.getYesterday7Count(memberNo);
+	}
+	
 }
 

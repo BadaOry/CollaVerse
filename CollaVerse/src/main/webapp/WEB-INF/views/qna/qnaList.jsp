@@ -15,8 +15,7 @@
   <link rel="stylesheet" href="${ path }/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="${ path }/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="${ path }/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="${ path }/resources/css/bootstrap.min.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 <style>
 /* 헤더 */
