@@ -36,7 +36,7 @@
 				<option value="nickname">닉네임</option>	
 				 --%>				
 			</select>
-			<input type="text" name="keyword" id="searchUser" placeholder="아이디를 입력해주세요">
+			<input type="text" name="keyword" id="searchUser" placeholder="아이디를 입력해주세요" required>
 			<input type="submit" id="searchSubmit" value="검색">
 
 		</form>

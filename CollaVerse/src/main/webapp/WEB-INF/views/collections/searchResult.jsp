@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>CollaVerse</title>
-<link rel="stylesheet" type="text/css" href="${path}/resources/css/collections/main.css">
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/collections/searchResult.css">
 <script src="${ path }/resources/js/jquery-3.6.0.js"></script>
 </head>
 
@@ -32,7 +32,7 @@
 					<c:if test="${ map.searchOption == 'nickname' }">selected</c:if>
 		        >닉네임</option>			
 			</select>
-			<input type="text" name="keyword" id="searchUser" placeholder="아이디를 입력해주세요" value=" ${ map.keyword }">
+			<input type="text" name="keyword" id="searchUser" placeholder="아이디를 입력해주세요" value=" ${ map.keyword }" required>
 			<input type="submit" id="searchSubmit" value="검색">
 
 		</form>
@@ -42,17 +42,26 @@
 	
 		
 	<div id="userContainer">
-	
-		<c:forEach var="findList"  items="${ findList }">
+		<c:if test="${ !empty findList }">
 		
-			<div class="user_info_container">
-				<img id="profile_image" src="${ path }/resources/upload/profile/${ findList.profile_img }"
-					onclick="location.href='${ path }/mypage/collection/list/${ findList.id }'" />
+			<c:forEach var="findList"  items="${ findList }">
 			
-				<p id="user_nickname"> ${ findList.nickname } </p>
-			</div>
-					
-		</c:forEach>
+				<div class="user_info_container">
+					<img id="profile_image" src="${ path }/resources/upload/profile/${ findList.profile_img }"
+						onclick="location.href='${ path }/mypage/collection/list/${ findList.id }'" />
+				
+					<p id="user_nickname"> ${ findList.nickname } </p>
+				</div>
+						
+			</c:forEach>
+		
+		</c:if>
+		
+		<c:if test="${ noFindList == '없음' }">
+		
+			<p id="noSerachList"> 검색 결과가 존재하지 않습니다. </p>
+			
+		</c:if>
 		
 	</div>
 	

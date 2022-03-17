@@ -35,6 +35,7 @@
 	<select id="getAllUserIdList" resultMap="listResultMap" resultType="arrayList">
 		SELECT ID, NICKNAME, PROFILE_IMG
 		FROM MEMBER
+		WHERE MEMBER_ROLE IN ('개인', '기업')
 	</select>
 		 
 	<select id="findUserById" parameterType="String" resultMap="listResultMap" resultType="map">
