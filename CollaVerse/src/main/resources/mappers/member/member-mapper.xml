@@ -137,7 +137,6 @@
 			PROFILE_IMG = #{profile_basic.png},
 			MODIFY_DATE = SYSDATE 
 		WHERE MEMBER_NO = #{no}
-
 	</update>
 	
 	<!-- 기업 회원정보수정 -->
@@ -305,6 +304,15 @@
 							))
 	</select>
 	
+	<!-- 비밀번호 변경 (작성중) -->
+	<update id="updatePwd" parameterType="com.collaverse.mvc.member.model.vo.Member">
+		UPDATE MEMBER SET PASSWORD = #{password} WHERE MEMBER_NO = #{no}
+	</update>
+	
+	<select id="findMemberByPw" parameterType="string" resultMap="memberResultMap">
+		<include refid="selectMemberSql" />
+		WHERE PASSWORD = #{password} AND MEMBER_STATUS = 'Y'
+
 	<!-- 1일 전 팔로우 -->
 	<select id = "getYesterday1Count" resultType="_int">
 		SELECT COUNT(*)

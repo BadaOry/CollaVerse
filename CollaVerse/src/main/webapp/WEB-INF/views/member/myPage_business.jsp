@@ -73,7 +73,7 @@
 			    <td><img id="imagePreview" src="${ path }/resources/upload/profile/${ loginMember.profile_img}" /></td>
 			</tr>
 			<tr>
-			    <td rowspan="2"><input type="file" name="file" id="profile_img"><span style="color: red;font-size: small;">png, jpg만 첨부 가능</span></td>
+			    <td rowspan="2"><input type="file" name="file" id="profile_img"><span style="color: red;">png, jpg만 첨부 가능</span></td>
 			</tr>
         </table>
             <br>

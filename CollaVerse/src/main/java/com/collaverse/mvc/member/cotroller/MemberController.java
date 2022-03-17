@@ -486,9 +486,42 @@ public class MemberController {
 		return new ResponseEntity<Map<String,Boolean>>(map, HttpStatus.OK);
 	}
 	
+	// 비밀번호 변경(작성중)
+	@GetMapping(value="/member/updatePwd")
+	public String updatePwd() {
+		
+		log.info("비밀번호 변경하기");
+		
+		return "member/updatePwd";
+	}
 	
-
-	
+	@PostMapping("/member/updatePwd")
+	public ModelAndView updatePwd(
+			ModelAndView model,
+			@SessionAttribute(name="loginMember") Member loginMember,
+			@ModelAttribute Member member) {
+		
+		int result = 0;
+		
+		member.setNo(loginMember.getNo());
+		
+		System.out.println(member);
+		
+		result = service.save(member);
+		
+		if(result > 0) {
+			model.addObject("loginMember", service.findMemberByPw(loginMember.getPassword()));
+			model.addObject("msg", "비밀번호 변경 완료");
+			model.addObject("location", "/member/updatePwd");
+		} else {
+			model.addObject("msg", "비밀번호 변경 실패");
+			model.addObject("location", "/member/updatePwd");
+		}
+		
+		model.setViewName("common/msg");
+		
+		return model;
+	}
 
 }
 

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+#btn1, #btn2 {
+    background-color: rgb(255, 255, 255);
+    border-color: blueviolet;
+    box-shadow: 1px 1px 1px 1px rgb(175, 46, 201, 0.5);
+    font-size: 13px;
+    cursor: pointer;
+    width: 55px;
+    padding: 2px 5px 5px 5px;
+}
+
+input[type=password] {
+    width: 200px;
+    height: 20px;
+    font-size: 13px;
+}
