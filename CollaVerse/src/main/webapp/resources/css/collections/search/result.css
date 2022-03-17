@@ -1,15 +1,21 @@
-#searchContainer {margin: 20px 400px 50px 400px;}
+#searchContainer {margin: 50px 400px 50px 400px;}
 
 #searchCategory {
 	display: inline-block;
 	width: 100px;
 	height: 27px;
+	border-color: #730e74;
+	font-family:'DOSGothic';
+	height: 33px;
 }
 
 #searchUser {
 	display: inline-block;
 	width: 500px;
 	height: 27px;
+	border-color: #730e74;
+	font-family:'DOSGothic';
+	height: 33px;
 }
 
 #searchSubmit {
@@ -68,7 +74,6 @@
 	border-style: solid;
 	border-color: rgb(207, 205, 205);
 	border-radius: 70%;
-	cursor: pointer;
 }
 
 #userContainer {
@@ -87,10 +92,14 @@
 	display: inline-block;
 } 
 
-#searchUser, #searchCategory {
-	border-color:  #730e74;
-	font-family: 'DOSGothic';
-	height: 33px;
+
+#noSerachList {
+    text-align : center;
+    margin: 150px 0 150px 0px;
+    font-family: 'Sam3KRFont';
+    font-size: 30px;
+    color: #dbeaf8;
+    text-shadow: 4px 4px 0px #faaf22;	
 }
 
 /* 정렬 옵션 선택 */

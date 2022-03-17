@@ -110,10 +110,10 @@
 					
 						<c:when test="${ !empty collectionList }">
 						
-							<c:forEach var="collectionList" items="${ collectionList }" begin="0" end="6">
+							<c:forEach var="collectionList" items="${ collectionList }" begin="0" end="5">
 									
 								<div class="member_info_container">
-									<img id="profile_image" src="${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }" />
+									<img id="collection_image" src="${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }" />
 								</div>
 								
 							</c:forEach>

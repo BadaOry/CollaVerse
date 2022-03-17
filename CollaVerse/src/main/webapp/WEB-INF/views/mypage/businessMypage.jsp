@@ -144,23 +144,19 @@
 					
 						<c:when test="${ !empty collectionList }">
 						
-							<c:forEach var="collectionList" items="${ collectionList }" begin="0" end="6">
+							<c:forEach var="collectionList" items="${ collectionList }" begin="0" end="5">
 									
 								<div class="member_info_container">
-									<img id="profile_image" src="${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }" />
+									<img id="collection_image" src="${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }" />
 								</div>
 								
-							</c:forEach>
-						
-							<div class="plus_container">
-								<span onclick="location.href='${ path }/mypage/myFollow/follower'"> ▶ 더보기 </span>
-							</div>
+							</c:forEach>			
 							
 						</c:when>
 						
 						<c:otherwise>
 						
-							<p id="no_followernList">컬렉션이 존재하지 않습니다.</p>
+							<p id="no_collectionList">컬렉션이 존재하지 않습니다.</p>
 							
 						</c:otherwise>
 						

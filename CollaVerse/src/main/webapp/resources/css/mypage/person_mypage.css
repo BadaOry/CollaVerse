@@ -96,8 +96,8 @@
 }
 
 /* 컬렉션 */
-#person #person-collection p {
-  margin-top: 70px;
+#person #person-collection  {
+  margin-top: 20px;
   font-size: 40px;
   margin-bottom: 20px;
 }
@@ -138,11 +138,11 @@
 .mini_title {
 	/* 고정값 */
 	font-family: 'Sam3KRFont';
-	font-size: 30px;
+	font-size: 40px;
 	color: #730e74;
 	/* 변경값 */
 	text-align: left;
-	margin: 50px 0 30px 150px; 
+	margin: 50px 0 30px 150px;
 	width: 60%;
 }
 
@@ -187,6 +187,7 @@
 	border-style: solid;
 	border-color: rgb(207, 205, 205);
 	border-radius: 70%;
+	cursor: pointer;
 }
 
 /*
@@ -207,4 +208,14 @@
 
 #person-calendar {
 	margin: 0 0 120px 0 ;
+}
+
+#collection_image {
+	width: 150px;
+	height: 150px;
+	
+}
+
+#no_followernList {
+	font-size: 30px;
 }

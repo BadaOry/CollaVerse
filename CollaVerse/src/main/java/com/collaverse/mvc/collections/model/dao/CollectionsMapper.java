@@ -17,4 +17,20 @@ public interface CollectionsMapper {
 
 	List<Collections> findUserByNickname(String keyword);
 
+	List<Collections> getuserListByFollower();
+
+//	List<Collections> getuserListByFollowerId(List<Collections> userListByFollowerMemNo);
+
+	List<Collections> getBrandUserIdList();
+
+	List<Collections> getOnlyUserIdList();
+
+	List<Collections> findBrandUserById(String keyword);
+
+	List<Collections> findBrandUserByNickname(String keyword);
+	
+	List<Collections> findOnlyUserById(String keyword);
+	
+	List<Collections> findOnlyUserByNickname(String keyword);
+
 }

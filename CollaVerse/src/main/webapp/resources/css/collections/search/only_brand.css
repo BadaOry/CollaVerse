@@ -4,12 +4,18 @@
 	display: inline-block;
 	width: 100px;
 	height: 27px;
+	border-color: #730e74;
+	font-family:'DOSGothic';
+	height: 33px;
 }
 
 #searchUser {
 	display: inline-block;
 	width: 500px;
 	height: 27px;
+	border-color: #730e74;
+	font-family:'DOSGothic';
+	height: 33px;
 }
 
 #searchSubmit {
@@ -44,7 +50,7 @@
 	text-shadow: 0px 0px 0px #faaf22;
 	/* 변경값 */
 	display:inline-block;
-	width: 80px;
+	width: 90px;
 }
 
 #searchSubmit :hover {
@@ -86,10 +92,51 @@
 	display: inline-block;
 } 
 
+
+#noSerachList {
+    text-align : center;
+    margin: 150px 0 150px 0px;
+    font-family: 'Sam3KRFont';
+    font-size: 30px;
+    color: #dbeaf8;
+    text-shadow: 4px 4px 0px #faaf22;	
+}
+
+/* 정렬 옵션 선택 */
+#order_container {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 10px 0;
+}
+
+#orderby {
+	 font-family: 'Sam3KRFont';
+	 /* display: inline-block; */
+	 margin: 13px 20px 10px 10px;
+	 color: #730e74; 
+	 font-size: 20px;
+}
+
+#orderby1:hover{
+	color: #faae22;	
+}
+
+#orderby2:hover{
+	color: #faae22;	
+}
+
+#orderby3:hover{
+	color: #faae22;	
+}
+
+ #orderby1, #orderby2, #orderby3 {
+	font-family: 'DOSGothic';
+	display: inline-block;
+	color: #8e6e6e; 
 } 
 
-#searchUser, #searchCategory {
-	border-color:  #730e74;
+#orderby2 {
 	font-family: 'DOSGothic';
-	height: 33px;
-}
+	display: inline-block;
+	color: #faae22; 
+} 
