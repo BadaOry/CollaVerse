@@ -157,11 +157,25 @@
 #no_followernList {
 	text-align: left;
 	margin: 20px 0 20px 150px;
+	/* padding: 0 0 30px 0; */
 	font-family: 'Sam3KRFont';
 	font-size: 30px;
 	color: #dbeaf8;
 	text-shadow: 4px 4px 0px #faaf22;
 	display: inline-block;
+	float: left;
+	/* text-shadow: -4px -4px 0px #faaf22; */
+}
+#no_collectionList {
+	text-align: left;
+	margin: 20px 0 20px 150px;
+	/* padding: 0 0 30px 0; */
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #dbeaf8;
+	text-shadow: 4px 4px 0px #faaf22;
+	display: inline-block;
+	float: left;
 	/* text-shadow: -4px -4px 0px #faaf22; */
 }
 
@@ -263,4 +277,22 @@
   font-family: 'Sam3KRFont';
   /* font-size: 30px; */
   color: #730e74;
+}
+
+#collection_image {
+	width: 150px;
+	height: 150px;
+	
+}
+
+.member_info_container {
+	margin: 0 20px 0 0;
+	width: auto;
+	display: inline-block;
+}
+
+#collection {
+	margin: 0px 0px 0px 200px;
+	/* width: auto; */
+	/* padding: 30px; */
 }
