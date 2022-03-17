@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,8 +24,6 @@ import com.collaverse.mvc.collabo.model.vo.Brand;
 import com.collaverse.mvc.collabo.model.vo.Heart;
 import com.collaverse.mvc.collabo.model.vo.Product;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
-import com.collaverse.mvc.collabo.model.vo.WritePromotion;
-import com.collaverse.mvc.common.util.FileProcess;
 import com.collaverse.mvc.common.util.ProductFileProcess;
 import com.collaverse.mvc.common.util.PromotionFileProcess;
 import com.collaverse.mvc.member.model.vo.Member;
@@ -148,9 +144,6 @@ public class PromotionController {
 		productVo2.setCNo(cNo);
 		productVo3.setCNo(cNo);
 		// pmt_no는 promotion에서 받아오기?
-//		productVo1.setPmtNo();
-//		productVo2.setPmtNo();
-//		productVo3.setPmtNo();
 		
 		log.info("[Controller] promotionVo 에 내용이 잘 set 되었는지 확인 : {}", promotionVo);	
 		
@@ -281,7 +274,10 @@ public class PromotionController {
 		log.info("[Controller] productVo 에 내용이 잘 set 되었는지 확인 : {}", productVo2);	
 		log.info("[Controller] productVo 에 내용이 잘 set 되었는지 확인 : {}", productVo3);	
 		
-		// ★ PRODUCTVO 123 에 PMTNO UPDATE 쿼리를 돌려야돼요 
+		// ★ PRODUCTVO 123 에 PMTNO UPDATE 쿼리를 돌려야돼요
+		prodresult1 = service.productUpdate1(productVo1);
+		prodresult2 = service.productUpdate2(productVo2);
+		prodresult3 = service.productUpdate3(productVo3);
 		
 		log.info("[Controller] productVo1 최종 확인 : {}", productVo1);	
 		log.info("[Controller] productVo2 최종 확인 : {}", productVo2);	

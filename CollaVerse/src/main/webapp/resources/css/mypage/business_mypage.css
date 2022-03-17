@@ -95,16 +95,18 @@
   font-size: 60px;
   text-align: center;
   margin-left: 200px;
+   font-family: 'Sam3KRFont';
 }
 #business #statistics #follower-statistic div {
   font-size: 20px;
   text-align: center;
   margin-bottom: 30px;
   margin-left: 200px;
+   font-family: 'Sam3KRFont';
 }
 #business #statistics #follower-statistic ul {
   column-count: 2;
-  background-color: rgba(149, 178, 142, 0.5);
+  background-color: #faae22;
   line-height: 3;
   width: 700px;
   margin-left: 160px;
@@ -114,6 +116,7 @@
 #business #statistics #follower-statistic ul li {
   padding-left: -5px;
   font-size: 20px;
+   font-family: 'Sam3KRFont';
 }
 
 

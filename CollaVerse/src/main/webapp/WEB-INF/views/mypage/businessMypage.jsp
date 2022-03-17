@@ -110,27 +110,28 @@
       <div id="follower-statistic">
         <p>총 팔로워 ${ followerCount } 명</p>
         <div> 금일 ${ todayCount } 명</div>
-        <ul id="follower-result">
-            <li>남녀 성비 : 남성 - ${ Math.round(menCount / totalCount*100) }%, 여성 - ${ Math.round(womenCount / totalCount*100) }%</li>
-            <c:if test="${ thismonthCount - lastmonthCount > '0'}">
-				<li>직전 주 대비 ${ thismonthCount - lastmonthCount } 명 증가</li>
-			</c:if>
-			<c:if test="${ thismonthCount - lastmonthCount < '0'}">
-				<li>직전 주 대비 ${ thismonthCount - lastmonthCount } 명 감소</li>
-			</c:if>
-            <c:if test="${ thisweekCount - lastweekCount > '0'}">
-				<li>직전 주 대비 ${ thisweekCount - lastweekCount } 명 증가</li>
-			</c:if>
-			<c:if test="${ thisweekCount - lastweekCount < '0'}">
-				<li>직전 주 대비 ${ thisweekCount - lastweekCount } 명 감소</li>
-			</c:if>
-			<c:if test="${ todayCount - yesterdayCount > '0'}">
-				<li>작일 대비 ${ todayCount - yesterdayCount } 명 증가</li>
-			</c:if>
-			<c:if test="${ todayCount - yesterdayCount < '0'}">
-				<li>작일 대비 ${ todayCount - yesterdayCount } 명 감소</li>
-			</c:if>
-        </ul>
+        <a href="${ path }/statisticsCount" style="text-decoration: none;">
+	        <ul id="follower-result">
+	            <c:if test="${ todayCount - yesterdayCount > '0'}">
+					<li>작일 대비 ${ todayCount - yesterdayCount } 명 증가</li>
+				</c:if>
+				<c:if test="${ todayCount - yesterdayCount < '0'}">
+					<li>작일 대비 ${ todayCount - yesterdayCount } 명 감소</li>
+				</c:if>
+				<c:if test="${ thismonthCount - lastmonthCount > '0'}">
+					<li>저번달 대비 ${ thismonthCount - lastmonthCount } 명 증가</li>
+				</c:if>
+				<c:if test="${ thismonthCount - lastmonthCount < '0'}">
+					<li>이번달 대비 ${ thismonthCount - lastmonthCount } 명 감소</li>
+				</c:if>
+				<c:if test="${ thisweekCount - lastweekCount > '0'}">
+					<li>직전 주 대비 ${ thisweekCount - lastweekCount } 명 증가</li>
+				</c:if>
+				<c:if test="${ thisweekCount - lastweekCount < '0'}">
+					<li>직전 주 대비 ${ thisweekCount - lastweekCount } 명 감소</li>
+				</c:if>	
+	        </ul>
+        </a>
       </div>
     </section>
 

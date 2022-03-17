@@ -339,6 +339,13 @@
   				#{ cNo }, #{ pmtNo }
   			)
   		</insert>
+  		
+  		<!-- ProductVo에 UPDATE 하는 부분 -->
+  		<update id="productUpdate" parameterType="com.collaverse.mvc.collabo.model.vo.Product">
+  			UPDATE PRODUCT
+  			SET PMT_NO = #{ pmtNo }
+  			WHERE PRO_NO = #{ proNo }
+  		</update>
 
  <!-- 
    		<select id="selectAll" parameterType="String" resultType="promotionListResultMap">
