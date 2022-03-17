@@ -195,5 +195,12 @@ public class MemberServiceImpl implements MemberService {
 		
 		return mapper.getTotalCount(memberNo);
 	}
+
+	// 비밀번호 변경(작성중)
+	@Override
+	public Object findMemberByPw(String password) {
+		
+		return null;
+	}
 }
 

@@ -66,4 +66,7 @@ public interface MemberService {
 	// 통계용 토탈 합 정보
 	int getTotalCount(@Param("memberNo") int memberNo);
 
+	// 비밀번호변경(작성중)
+	Object findMemberByPw(String password);
+
 }

@@ -45,6 +45,8 @@ public interface MemberMapper {
 	int getEtcCount(@Param("memberNo") int memberNo); // 통계용 그 외 나이 정보
 	
 	int getTotalCount(@Param("memberNo") int memberNo); // 통계용 토탈 합 정보
+	
+	int updatePwd(Member member); // 비밀번호 변경(작성중)
 		
 
 
