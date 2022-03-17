@@ -63,6 +63,9 @@ public interface CollaboMapper {
 	// Product 테이블에 insert 돌릴 메소드
 	int productSave(Product productVo);
 	
+	// Product 테이블에 update 돌릴 메소드
+	int productUpdate(Product productVo);
+	
 	// 브랜드 조회 
 
 	List<Brand> selectBrandIntro();
@@ -97,6 +100,7 @@ public interface CollaboMapper {
 	List<Brand> selectBrandW();
 
 	List<Brand> selectBrandY();
+
 
 
 }

@@ -24,9 +24,14 @@ public interface PromotionService {
 	int productSave2(Product productVo2);
 	int productSave3(Product productVo3);
 
+	int productUpdate1(Product productVo1);
+	int productUpdate2(Product productVo2);
+	int productUpdate3(Product productVo3);
+	
 	List<Brand> selectBrandIntro();
 
 	List<Brand> selectBrandIntro(int pmtNo);
+
 
 
 
