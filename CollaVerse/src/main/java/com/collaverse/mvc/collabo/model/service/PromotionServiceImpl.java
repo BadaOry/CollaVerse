@@ -158,6 +158,19 @@ public class PromotionServiceImpl implements PromotionService {
 		return mapper.selectBrandIntro(pmtNo);
   }
 
+
+	@Override
+	public int productUpdate1(Product productVo1) {
+		return mapper.productUpdate(productVo1);
+	}
+	@Override
+	public int productUpdate2(Product productVo2) {
+		return mapper.productUpdate(productVo2);
+	}
+	@Override
+	public int productUpdate3(Product productVo3) {
+		return mapper.productUpdate(productVo3);
+	}
   
 
 }
