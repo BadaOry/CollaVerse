@@ -231,15 +231,15 @@ a {
 							<th id="t" style="width: 300px">작성시간</th>
 							<th id="t" style="width: 80px">조회수</th>
 						</tr>
-					<c:if test="${ empty qlist }">			
+					<c:if test="${ empty nlist }">			
 						<tr>
 							<td colspan="5">
 								등록된 게시글이 없습니다.
 							</td>
 						</tr>	
 					</c:if>
-					<c:if test="${ !empty qlist }">
-						<c:forEach items="${ qlist }" var="list">
+					<c:if test="${ !empty nlist }">
+						<c:forEach items="${ nlist }" var="list">
 							<tr>
 								<td><c:out value="${list.bno}"/></td>
 								<td>
@@ -259,7 +259,7 @@ a {
 			<div id="writeButton">
 				<div class="card-footerr">
 					<div class="float-right">
-						<button type="button" onclick="location.href='${ path }/qna/enroll'" class="btn-successs" id="writeBtn">
+						<button type="button" onclick="location.href='${ path }/notice/enroll'" class="btn-successs" id="writeBtn">
 							<i class="fa fa-pencil"></i> 글쓰기
 						</button>
 					</div>
@@ -316,15 +316,15 @@ function Change(idx){
     var nowPaging = $("#counts option:selected").val();
     
     if(nowPaging == 5){
-        location.href="${path}/qna/option/qnaList5";    
+        location.href="${path}/notice/option/noticeList5";    
     }else if(nowPaging == 10){
-        location.href="${path}/qna/option/qnaList10";    
+        location.href="${path}/notice/option/noticeList10";    
     }else if(nowPaging == 20){
-        location.href="${path}/qna/option/qnaList20";    
+        location.href="${path}/notice/option/noticeList20";    
     }else if(nowPaging == 30){
-        location.href="${path}/qna/option/qnaList30";    
+        location.href="${path}/notice/option/noticeList30";    
     }else if(nowPaging == 40){
-        location.href="${path}/qna/option/qnaList40";    
+        location.href="${path}/notice/option/noticeList40";    
     }
 }
 
@@ -361,7 +361,7 @@ $(".move").on("click", function(e){
 	e.preventDefault();
 
 	moveForm.append("<input type= 'hidden' name='bno' value= '"+$(this).attr("href")+"'>");
-	moveForm.attr("action", "${ path }/qna/read");
+	moveForm.attr("action", "${ path }/notice/read");
 	moveForm.submit();
 });
 
@@ -369,7 +369,7 @@ $(".page-link").on("click", function(e){
 	 
 	e.preventDefault();
     moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-    moveForm.attr("action", "${ path }/qna/qnaList");
+    moveForm.attr("action", "${ path }/notice/noticeList");
     moveForm.submit();
 	
 });

@@ -54,5 +54,9 @@
 	<context:component-scan base-package="com.collaverse.mvc.schedule.model"></context:component-scan>
 	<context:component-scan base-package="com.collaverse.mvc.schedule.service"></context:component-scan>
 	
+	<mybatis-spring:scan base-package="com.collaverse.mvc.notice.mapper"/>
+	<context:component-scan base-package="com.collaverse.mvc.notice.model"></context:component-scan>
+	<context:component-scan base-package="com.collaverse.mvc.notice.service"></context:component-scan>
+	
 </beans>
 

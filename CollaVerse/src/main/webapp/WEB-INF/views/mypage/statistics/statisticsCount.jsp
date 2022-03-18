@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
+<%@ page import="java.util.Date" %>
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
@@ -19,26 +19,43 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 <style>
-	#cu {
-		width: 798.68px;
+#header1 {
+	height: 80px;
+	margin: -20px 0 0 0; 
+}
+
+#header3 {
+	margin: 35px 0 0 0;
+}
+
+
+body {
+	margin: 8px;
+}
+	.container #cu {
+		width: 886px;
 		margin-bottom: 30px;
 		font-family: 'Sam3KRFont';
-		background-color: #faae22;
+		background-color: #fff;
 		
 	}
-	#cu .active {
-		color: #faae22;
+	.container #cu .active {
+		color: #fff;
 		background-color: #730e74;
 	}
-	p { 
+	.container p { 
 		margin:20px 0px; 
 	}
-	a { 
+	.container a { 
 		color: #730e74;
 		font-size: 30px;
 	}
+	.container a:hover {
+		background-color: #faae22;
+		color: #730e74;
+	}
 	.container {
-	  width: 800px;
+	  width: 900px;
 	  height: 600px;
 	}
 	</style>
@@ -50,13 +67,13 @@
     <div class="col">
         <ul class="nav nav-tabs" id="cu">
           <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#followerCount">연령대 비율</a>
+            <a class="nav-link active" data-toggle="tab" href="#followerCount">1주간 팔로워 증감량</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#genderPercent">성별 비율</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#peopleCount">회원수 수치</a>
+            <a class="nav-link" data-toggle="tab" href="#peopleCount">팔로워 수치</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#agePercent">연령대 비율</a>
@@ -83,6 +100,28 @@
     </div>
   </div>
 </div>
+
+<c:set var="weekAgo" value="<%=new Date(new Date().getTime() - 60*60*24*1000*7)%>"/>
+<fmt:formatDate value="${weekAgo}" pattern="yyyy.MM.dd" var="weekAgo"/>
+<c:set var="sixdaysAgo" value="<%=new Date(new Date().getTime() - 60*60*24*1000*6)%>"/>
+<fmt:formatDate value="${sixdaysAgo}" pattern="yyyy.MM.dd" var="sixdaysAgo"/>
+<c:set var="fivedaysAgo" value="<%=new Date(new Date().getTime() - 60*60*24*1000*5)%>"/>
+<fmt:formatDate value="${fivedaysAgo}" pattern="yyyy.MM.dd" var="fivedaysAgo"/>
+<c:set var="fourdaysAgo" value="<%=new Date(new Date().getTime() - 60*60*24*1000*4)%>"/>
+<fmt:formatDate value="${fourdaysAgo}" pattern="yyyy.MM.dd" var="fourdaysAgo"/>
+<c:set var="threedaysAgo" value="<%=new Date(new Date().getTime() - 60*60*24*1000*3)%>"/>
+<fmt:formatDate value="${threedaysAgo}" pattern="yyyy.MM.dd" var="threedaysAgo"/>
+<c:set var="twodaysAgo" value="<%=new Date(new Date().getTime() - 60*60*24*1000*2)%>"/>
+<fmt:formatDate value="${twodaysAgo}" pattern="yyyy.MM.dd" var="twodaysAgo"/>
+<c:set var="yesterday" value="<%=new Date(new Date().getTime() - 60*60*24*1000*1)%>"/>
+<fmt:formatDate value="${yesterday}" pattern="yyyy.MM.dd" var="yesterday"/>
+
+
+
+<jsp:useBean id="referDate" class="java.util.Date" />
+<jsp:setProperty name="referDate" property="time" value="${referDate.time - 60*60*24*1000*30}"/>
+<fmt:formatDate var="lastMonthDate" value="${referDate}" pattern="yyyy-MM-dd"/>
+
 </body>
 <script>
 var canvas;
@@ -96,17 +135,17 @@ myChart = new Chart(ctx, {
     type: 'line',
     plugins:[ChartDataLabels],
     data: {
-        labels: ['10대', '20대', '30대', '40대', '50대', '그 외'],
+        labels: ['${weekAgo}', '${sixdaysAgo}', '${fivedaysAgo}', '${fourdaysAgo}', '${threedaysAgo}', '${twodaysAgo}', '${yesterday}'],
         datasets: [
             {
-                label: '연령 분포 비율',
+                label: '팔로워 증감량',
                 type : 'line',
                 fill : false,
                 lineTension : 0.2,  // 0이면 꺾은선 그래프, 숫자가 높을수록 둥글해짐
                 pointRadius : 6,    // 각 지점에 포인트 설정 (0 이면 일자선)                            
                 backgroundColor: '#730e74',
                 borderColor: '#730e74',
-                data: [18, 13, 18, 3, 1, 2, 40],
+                data: [${yesterday7Count}, ${yesterday6Count}, ${yesterday5Count}, ${yesterday4Count}, ${yesterday3Count}, ${yesterday2Count}, ${yesterday1Count}],
                 borderWidth: 1,
                 datalabels:{
                     color:'#faae22',                                 
@@ -145,7 +184,7 @@ myChart = new Chart(ctx, {
         scales: {
             y: {
                 min: 0,
-                max: 50,
+                max: 30,
                 grid: { // [y 축 데이터 시트 배경 선색 표시]
                     drawBorder: false,
                     color: function(context) {
@@ -192,12 +231,12 @@ myChart = new Chart(ctx, {
     type: 'bar', 
     plugins:[ChartDataLabels],
     data: {
-        labels: ['남성 비율', '여성 비율'], // [X 축 데이터 라벨 (제목)]
+        labels: ['남성', '여성'], // [X 축 데이터 라벨 (제목)]
         datasets: [{
                   label: '남녀 비율',
                   // barPercentage: 0.2,
                   barThickness: 100,
-                  data:[60, 40],
+                  data:[Math.round(${menCount}/${totalCount}*100), Math.round(${womenCount}/${totalCount}*100)],
                   backgroundColor: [
                     'rgba(54, 162, 235, 0.5)',
                     'rgba(255, 99, 132, 0.5)'
@@ -226,8 +265,24 @@ myChart = new Chart(ctx, {
                   y: { // [y 축 관련 설정] 
                       ticks: {
                         stepSize: 10, //y축 간격 
-                        min: 0
+                        min: 0,
+                        font: { 
+                            family: 'Helvetica Neue',
+                            size: 15,
+                            weight: 'bold',
+                            lineHeight: 1.2,   
+                        } 
                       }
+                  },
+                  x: {
+                	  ticks: {
+	               		  font: { 
+	                             family: 'Helvetica Neue',
+	                             size: 15,
+	                             weight: 'bold',
+	                             lineHeight: 1.2,   
+	                         } 
+                	  }
                   }
               }     
     }
@@ -240,21 +295,23 @@ myChart = new Chart(ctx, {
     type: 'bar', 
     plugins:[ChartDataLabels],
     data: {
-        labels: ['남성 비율', '여성 비율'], // [X 축 데이터 라벨 (제목)]
+        labels: ['남성', '여성', '총원'], // [X 축 데이터 라벨 (제목)]
         datasets: [{
                   axis: 'y',
-                  label: '남녀 비율',
+                  label: '남녀 수치',
                   // barPercentage: 0.2,
                   barThickness: 100,
-                  data:[60, 40],
+                  data:[${menCount}, ${womenCount}, ${totalCount}],
                   backgroundColor: [
                     'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 99, 132, 0.5)'
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(153, 102, 255, 0.5)'
                       
                   ],
                   borderColor: [
                     'rgba(54, 162, 235, 1)',
-                      'rgba(255, 99, 132, 1)'
+                     'rgba(255, 99, 132, 1)',
+                     'rgba(153, 102, 255, 1)'
                   ],
                   borderWidth: 1
                 }]
@@ -273,10 +330,26 @@ myChart = new Chart(ctx, {
         },
         indexAxis: 'y',
         scales: {
+        		  y: {
+        			ticks: {
+        				font: { 
+                            family: 'Helvetica Neue',
+                            size: 15,
+                            weight: 'bold',
+                            lineHeight: 1.2,   
+                        } 
+        			}  
+        		  },
                   x: { // [y 축 관련 설정] 
                     ticks: {
                       stepSize: 5, //y축 간격 
-                      min: 0
+                      min: 0,
+                      font: { 
+                          family: 'Helvetica Neue',
+                          size: 15,
+                          weight: 'bold',
+                          lineHeight: 1.2,   
+                      } 
                     }
                   }
         }   
@@ -296,7 +369,9 @@ myChart = new Chart(ctx, {
                   label: '연령 분포',
                   // barPercentage: 0.2,
                   barThickness: 30,
-                  data:[20, 20, 30, 20, 9, 1],
+                  data:[Math.round(${teenagerCount}/${totalCount}*100), Math.round(${twentiesCount}/${totalCount}*100), 
+                	  Math.round(${thirtiesCount}/${totalCount}*100), Math.round(${fortiesCount}/${totalCount}*100), 
+                	  Math.round(${fiftiesCount}/${totalCount}*100), Math.round(${etcCount}/${totalCount}*100)],
                   backgroundColor: [
                   'rgba(255, 99, 132, 0.5)',
                   'rgba(54, 162, 235, 0.5)',
@@ -331,10 +406,26 @@ myChart = new Chart(ctx, {
         },
         indexAxis: 'y',
         scales: {
+        		  y: {
+        			  ticks: {
+        				  font: { 
+                              family: 'Helvetica Neue',
+                              size: 15,
+                              weight: 'bold',
+                              lineHeight: 1.2,   
+                          } 
+        			  }
+        		  },
                   x: { // [y 축 관련 설정] 
                     ticks: {
                       stepSize: 10, //y축 간격 
-                      min: 0
+                      min: 0,
+                      font: { 
+                          family: 'Helvetica Neue',
+                          size: 15,
+                          weight: 'bold',
+                          lineHeight: 1.2,   
+                      } 
                     }
                   }
         }   

@@ -102,10 +102,10 @@ input, textarea {
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
 <body class="hold-transition sidebar-mini">
-	<form role="form" id="writeForm" method="post" action="${ path }/qna/enroll">
+	<form role="form" id="writeForm" method="post" action="${ path }/notice/enroll">
 		<div class="cardd">
 			<div class="card-headerr with-border">
-				<h3 class="card-title">FAQ 작성</h3>
+				<h3 class="card-title">공지사항 작성</h3>
 			</div>
 			<div class="card-body">
 				<div class="form-group">

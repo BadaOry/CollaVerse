@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="${ path }/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="${ path }/dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="${ path }/css/bootstrap.min.css">
+  <link rel="stylesheet" href="${ path }/resources/css/bootstrap.min.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 <style>
 /* 헤더 */
@@ -47,7 +47,6 @@ div {
 	text-align: right;
 }
 .form-group {
-	margin-top: 15px;
 	margin-left: 1180px;
 }
 .pageInfo{
@@ -74,23 +73,28 @@ div {
 .card-title {
 	/* 고정값 */
 	font-family: 'Sam3KRFont';
-	font-size: 30px;
+	font-size: 40px;
 	color: #730e74;
+	position: relative;
+	left: 150px;
 	/* 변경값 */
 	text-align: left;
 	margin: 50px 0 30px 50px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
-	width: 60%;
 }
 
 .card-header {
 	border-bottom : 0px solid rgba(0,0,0);
 }
-
+#bo {
+	background-color: #fff;
+	height: 10px;
+	margin: 0;
+}
 table {
 	border-color : white;
 }
 
-tr th {
+tr #t {
 	color: white;
 	background-color: #730e74;
 	font-family: 'Sam3KRFont';
@@ -100,6 +104,9 @@ tr th {
 tr td {
 	font-family: 'DOSGothic';
 	text-align: center;
+}
+tr td a {
+	text-decoration: none;
 }
 
 .btn-successs {
@@ -201,10 +208,10 @@ a {
 
 	<div class="col-lg-12">
 		<div class="cardd">
-			<div class="card-header with-border">
-				<h3 class="card-title">게시글 목록</h3>
+			<div id="bo" class="card-header with-border">
+				<h3 class="card-title">FAQ 게시판</h3>
 			</div>
-			<span class="form-group">
+			<span id="se" class="form-group">
 		    	<select id="counts" name="pageUnit" onchange="Change(1)">   
 		        	<option value="5" <c:if test="${ pageMaker.cri.amount == 5 }">selected="selected"</c:if>>5개씩 보기</option>
 			        <option value="10" <c:if test="${ pageMaker.cri.amount == 10 }">selected="selected"</c:if>>10개씩 보기</option>
@@ -218,11 +225,11 @@ a {
 				<table class="table table-borderedd">
 					<tbody>
 						<tr>
-							<th style="width: 30px">#</th>
-							<th>제목</th>
-							<th style="width: 150px">작성자</th>
-							<th style="width: 300px">작성시간</th>
-							<th style="width: 80px">조회수</th>
+							<th id="t" style="width: 30px">#</th>
+							<th id="t">제목</th>
+							<th id="t" style="width: 150px">작성자</th>
+							<th id="t" style="width: 300px">작성시간</th>
+							<th id="t" style="width: 80px">조회수</th>
 						</tr>
 					<c:if test="${ empty qlist }">			
 						<tr>
@@ -236,7 +243,7 @@ a {
 							<tr>
 								<td><c:out value="${list.bno}"/></td>
 								<td>
-				                	<a class="move" href='<c:out value="${list.bno}"/>'>
+				                	<a id="l" class="move" href='<c:out value="${list.bno}"/>'>
 				                        <c:out value="${list.title}"/>
 				                	</a>
 	               				 </td>
