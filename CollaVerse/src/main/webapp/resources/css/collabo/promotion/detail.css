@@ -88,6 +88,12 @@ input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
     	width: 60%;
 }
 
+#promotion_explain{
+    	text-align: center;
+    	color: #730e74;
+    	margin: 30px 0 30px 50px;
+}
+
 .p_content{
     font-family: 'DOSGothic';
     text-align: center;
@@ -134,8 +140,94 @@ input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
 	margin-bottom: 5%;
 }
 
+.promotion_input {
+	width: 550px; 
+	height: 250px; /* 정렬하려는 요소의 넓이를 반드시 지정 */ 
+	margin: 0 auto;
+	margin-top: 1%;
+	margin-bottom: 5%;
+}
 
+#middle {
+	margin-top:60px;
+	margin-right:20px;
+	float: right;
+}
 
+.promName {
+	margin-bottom: 20px; 
+	text-align: center;
+}
+
+#promotion_enroll {
+	background-color:#720e74;
+	border-radius:7px;
+	border: 2px solid  #faae22;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Sam3KRFont';
+	font-size:14px;
+	padding:10px 27px;
+	text-decoration:none;
+	text-shadow: 0px 0px 0px #faaf22;
+}
+
+#promotion_enroll:hover {
+	background-color:#faae22;
+	color: #720e74;
+	border: 2px solid #720e74;
+}
+
+#promotion_enroll:active {
+	position:relative;
+   	top:1px;
+}
+
+#cancel {
+	background-color:#720e74;
+	border-radius:7px;
+	border: 2px solid  #faae22;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Sam3KRFont';
+	font-size:14px;
+	padding:10px 27px;
+	text-decoration:none;
+	text-shadow: 0px 0px 0px #faaf22;
+}
+
+#cancel:hover {
+	background-color:#faae22;
+	color: #720e74;
+	border: 2px solid #720e74;
+}
+
+#cancel:active {
+	position:relative;
+   	top:1px;
+}
+
+#promName {
+	border-color: #730e74;
+   	font-family:'DOSGothic';
+   	width: 400px;
+   	height: 50px;
+   	text-align: center;
+}
+
+#promContent {
+	border-color: #730e74;
+   	font-family:'DOSGothic';
+   	width: 600px;
+   	height: 200px;
+   	text-align: center;
+}
+
+#product {
+	border-color: #730e74;
+   	font-family:'DOSGothic';
+   	text-align: center;
+}
 
 
 

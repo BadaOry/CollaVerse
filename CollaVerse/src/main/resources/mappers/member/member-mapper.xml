@@ -312,6 +312,7 @@
 	<select id="findMemberByPw" parameterType="string" resultMap="memberResultMap">
 		<include refid="selectMemberSql" />
 		WHERE PASSWORD = #{password} AND MEMBER_STATUS = 'Y'
+	</select>
 
 	<!-- 1일 전 팔로우 -->
 	<select id = "getYesterday1Count" resultType="_int">
