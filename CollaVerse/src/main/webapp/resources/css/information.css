@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+/* -- 이미지 들어가는 부분 -- */
+#welcomImgContainer {
+		display: flex;
+		margin: 100px 65px 20px 65px;
+		justify-content: center;
+}
+
+#welcomeImg {
+		width: 100%;			display: flex;			justify-content: center;		
+}
+
+
+/* -- 내용 부분 -- */
+#contentContainer {
+		/* background-color: aqua; */
+		width: 90%;
+		height: auto;
+		/* display: flex; */
+		justify-content: center;
+		margin: 20px 65px 20px 65px;
+		/* font-size: 50px; */
+		/* padding: 0 0 30px 0; */
+}
+
+#miniTitle {
+	margin: 50px 0 0 0;
+	font-size: 70px;
+	display: flex;
+	justify-content: center;
+}
+.purple {
+	font-family: 'DOSGothic';
+	color: #730e74;
+}
+
+
+
+.gray {
+	font-family: 'DOSGothic';
+	color: #dacccc;
+}
+
+.yellow {
+	font-family: 'DOSGothic';
+	color: #faae22;		
+}
+
+
+/* -- 가이드 -- */
+#content {
+	margin: 80px 0 80px 0;
+}
+
+.content_text {
+	text-align: center;
+	font-family: 'DOSGothic';
+	font-size: 30px;
+}
+
+#infoContainer {
+	display: flex;
+	justify-content: center;
+	margin: 0 0 100px 0;
+}
+
+#forUserContainer {
+	display: inline-block;
+	width: 40%;
+	margin: 0px 30px;
+}
+
+#forBrandContainer {
+	display: inline-block;
+	width: 40%;
+}
+
+#guide_title_user {		color: white;		font-size: 25px;		font-family: 'Sam3KRFont';		text-align: center;		background-color: #730e74;		height: 40px;		padding: 16px 0 0 0;		border-radius: 7px;		border: 2px solid  #faae22;
+}
+
+#guide_title_brand {		color: #730e74;		font-size: 25px;		font-family: 'Sam3KRFont';		text-align: center;		background-color: #faae22;		height: 40px;		padding: 16px 0 0 0;		border-radius: 7px;		border: 2px solid  #730e74;
+}
+
+.guide_content {
+	font-size: 20px;
+	font-family: 'DOSGothic';
+	text-align: center;
+	margin: 20px 0 40px 0;
+}
+
+.brand_li {
+	font-family: 'DOSGothic';
+	text-align: center;
+	margin: 10px 0;
+	font-size: 23px;
+	border: solid 0.5px #faae22;
+	list-style: none;
+	padding: 10px 0;
+}
+
+.user_li {
+	font-family: 'DOSGothic';
+	text-align: center;
+	margin: 10px 0;
+	font-size: 23px;
+	border: solid 0.5px #730e74;
+	list-style: none;
+	padding: 10px 0;
+}

@@ -38,11 +38,12 @@
 						<tr style="height: 30px"> 
 							<c:if test="${ loginMember.role == '개인'}">
 								<td style="text-align: center;"><span class="myinfo" onclick="location.href='${ path }/member/myPage'">내정보</span></td>
+								<td style="color: white; font-size:12px; font-family: 'Sam3KRFont';"> │ </td>
 							</c:if>
 							<c:if test="${ loginMember.role == '기업'}">
 								<td style="text-align: center;"><span class="myinfo" onclick="location.href='${ path }/member/myPage_business'">내정보</span></td>
+								<td style="color: white; font-size:12px; font-family: 'Sam3KRFont';"> │ </td>
 							</c:if>
-							<td style="color: white; font-size:12px; font-family: 'Sam3KRFont';"> │ </td>
 							<td><span id="logout" onclick="location.href='${ path }/member/logout'">로그아웃</span></td>
 						</tr>
 					</thead>

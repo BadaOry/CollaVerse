@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+
+
+footer{
+	position: relative;
+	width: 100%;
+	height: 100px;
+	background: linear-gradient(360deg, rgba(85,12,129,1) 0%, rgba(115,14,116,1) 29%, rgba(140,17,108,1) 57%, rgba(174,22,95,1) 87%);
+	background-size: 100% 100%;
+}
+
+
+
+#cp_container, #info_container {
+	color: white;
+	font-family: 'DOSGothic';
+	display: flex;
+	justify-content: center;
+}
+
+#cp {
+	color: white;
+	margin: 17px 0 0 0;
+}
+
+#serviceInfo {
+	color: white;
+	cursor: pointer;	
+}
+
+#serviceInfo:hover {
+	color: #faae22;	
+}
+
+
+#gitHub {
+	color: white;
+	cursor: pointer;
+}
+
+#gitHub:hover {
+	color: #faae22;	
+}
+
+#cp_container {
+	color: white;
+	display: flex;
+	justify-content: center;
+	/* margin: 0; */
+}
+
+#nothing {
+	margin: 11px 20px 11px 20px;
+}
+

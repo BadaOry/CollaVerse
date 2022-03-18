@@ -26,10 +26,6 @@
 	
    			<p id="orderby">컬렉션 정렬 방식 </p>    	
     	
-	    	<p id="orderby1">
-	    		<a onclick="location.href='${ path }/collections/search/ob_follower'">팔로워순  
-	    	</p>   	
-    		
     		<p id="orderby">│</p>   
     		 
     		<p id="orderby2">
