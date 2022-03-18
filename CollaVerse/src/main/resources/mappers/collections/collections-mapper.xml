@@ -104,12 +104,12 @@
 	
 	<!--  home.jsp 랜덤 유저 받아오기 -->
 	<select id="getRandomUserList" resultMap="listResultMap" resultType="arrayList">
-		SELECT ROWNUM, RESULT.*
-		FROM (SELECT ROWNUM, RANDOM.* 
+		SELECT RESULT.* 
+		FROM (SELECT ROWNUM NUMROW, RANDOM.* 
 		        FROM (MEMBER SAMPLE(30)) RANDOM
 		        ORDER BY MEMBER_NO) RESULT
-		WHERE ROWNUM <![CDATA[<]]>=5		    
-		AND MEMBER_ROLE IN ('개인', '기업')
+		WHERE RESULT.NUMROW IN (2, 4, 7)
+		    AND MEMBER_ROLE IN ('개인', '기업')
 	</select>
 	
 	

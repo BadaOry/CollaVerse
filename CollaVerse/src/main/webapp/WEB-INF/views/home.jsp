@@ -18,7 +18,7 @@
 	<section id="section">
 		
 		<div class="logo">
-			<img id="logoimage" src="${ path }/resources/images/home/그림2.png">
+			<img id="logoimage" src="${ path }/resources/images/home/main_image.png">
 		</div>
 		
 		<div class="noticeandrank">
