@@ -38,8 +38,18 @@
 			
 				<p id="mini_title">지금 뜨는 콜라보<p>
 				
-				<div class="content"> 
-					내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 
+				<div class="content" id="top3ListContainer">  
+					<c:forEach var="top3List" items="${ top3List }">
+					
+						<div class="pmt_info_container">
+							
+							<img id="promotion_image" src="${ path }${ top3List.imgPath }${ top3List.no }.jpg"
+								onclick="location.href='${ path }/collabo/promotion/detail?pmtNo=${ top3List.no }'" />
+							
+							<p id="pmt_title">${ top3List.title }</p>	
+						
+						</div>
+					</c:forEach>					
 				</div>
 
 			

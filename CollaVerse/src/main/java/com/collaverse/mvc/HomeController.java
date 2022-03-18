@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.collaverse.mvc.collabo.model.dao.CollaboMapper;
+import com.collaverse.mvc.collabo.model.vo.Promotion;
 import com.collaverse.mvc.collections.model.dao.CollectionsMapper;
 import com.collaverse.mvc.collections.model.vo.Collections;
 
@@ -29,8 +31,12 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	
 	@Autowired
 	private CollectionsMapper collectionsMapper;
+	
+	@Autowired
+	private CollaboMapper collaboMapper;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -45,8 +51,19 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		
-		// 3. 컬렉션 랜덤 추천
+		// 1. 공지사항 가져오기
 		
+		
+		// 2. 프로모션 좋아요 top 3 리스트
+		List<Promotion> top3List = collaboMapper.selectTop3();
+		
+		// 정상적으로 가져오는지 확인 
+		System.out.println(top3List.toString());
+		
+		model.addAttribute("top3List", top3List);
+
+		
+		// 3. 컬렉션 랜덤 추천
 		List<Collections> randomUserList = null;
 		
 		randomUserList = collectionsMapper.getRandomUserList();

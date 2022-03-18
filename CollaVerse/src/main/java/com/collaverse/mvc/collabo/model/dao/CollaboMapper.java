@@ -74,6 +74,9 @@ public interface CollaboMapper {
 	List<Brand> selectBrand();
 
 	List<Brand> selectBrandDetail2(String alphabet);
+	
+	// home.jsp 에 좋아요 Top3 돌릴 ㅔㅁ소드
+	List<Promotion> selectTop3();
 
 
 
