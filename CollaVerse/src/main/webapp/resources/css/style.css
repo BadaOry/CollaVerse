@@ -131,10 +131,10 @@ header{
 }
 
 .eventbanner{
-	background: green;
-	margin: 5%;
-	height: 400px;
-	text-align: center;
+	/* background: green; */
+	/* margin: 5%; */
+	/* height: 400px; */
+	/* text-align: center; */
 }
 
 .calendar{
@@ -144,6 +144,7 @@ header{
 	text-align: center;
 }
 
+/*
 .noticeandrank {
 	margin: 5%;
 	height: 600px;
@@ -153,20 +154,22 @@ header{
     float: left;
     width:48%;
 	background: red;
-/*	margin: 5%; */
+//	margin: 5%; 
 	height: 600px;
 	text-align: center;
 }
+
+
 
 .rank{
     float: right;
     width:48%;
 	background: blue;
-/*	margin: 5%; */
+//	margin: 5%; 
 	height: 600px;
 	text-align: center;
 }
-
+*/
 
 /*
 html, body {margin:0; overflow:;}
