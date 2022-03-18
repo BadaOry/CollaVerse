@@ -209,7 +209,7 @@ a {
 	<div class="col-lg-12">
 		<div class="cardd">
 			<div id="bo" class="card-header with-border">
-				<h3 class="card-title">FAQ 게시판</h3>
+				<h3 class="card-title">공지사항</h3>
 			</div>
 			<span id="se" class="form-group">
 		    	<select id="counts" name="pageUnit" onchange="Change(1)">   
