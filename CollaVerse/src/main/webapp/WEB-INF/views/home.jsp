@@ -25,7 +25,7 @@
 		
 			<div class="notice">
 			
-				<p id="mini_title">공지사항<p>
+				<p id="mini_title">서비스 공지사항<p>
 				
 				<div class="content"> 
 					내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 
@@ -38,18 +38,32 @@
 			
 				<p id="mini_title">지금 뜨는 콜라보<p>
 				
-				<div class="content" id="top3ListContainer">  
-					<c:forEach var="top3List" items="${ top3List }">
+				<div class="content" id="top3ListContainer"> 
 					
-						<div class="pmt_info_container">
-							
-							<img id="promotion_image" src="${ path }${ top3List.imgPath }${ top3List.no }.jpg"
-								onclick="location.href='${ path }/collabo/promotion/detail?pmtNo=${ top3List.no }'" />
-							
-							<p id="pmt_title">${ top3List.title }</p>	
-						
-						</div>
-					</c:forEach>					
+					<div class="top3" id="top3List_1">
+						<p class="prize" id="first">1위 </p>
+						<p class="pmtHearHit"> 좋아요 수 : ${ top3List[0].heartHit }</p>
+						<img id="promotion_image" src="${ path }${ top3List[0].imgPath }${ top3List[0].no }.jpg"
+								onclick="location.href='${ path }/collabo/promotion/detail?pmtNo=${ top3List[0].no }'" />
+						<p id="pmt_title">${ top3List[0].title }</p>	
+					</div>
+					
+					<div class="top3" id="top3List_2">
+						<p class="prize" id="second">2위</p>
+						<p class="pmtHearHit"> 좋아요 수 : ${ top3List[1].heartHit }</p>
+						<img id="promotion_image" src="${ path }${ top3List[1].imgPath }${ top3List[1].no }.jpg"
+								onclick="location.href='${ path }/collabo/promotion/detail?pmtNo=${ top3List[1].no }'" />
+						<p id="pmt_title">${ top3List[1].title }</p>
+					</div>
+					
+					<div class="top3" id="top3List_3">
+						<p class="prize" id="third">3위</p>
+						<p class="pmtHearHit"> 좋아요 수 : ${ top3List[2].heartHit }</p>
+						<img id="promotion_image" src="${ path }${ top3List[2].imgPath }${ top3List[2].no }.jpg"
+								onclick="location.href='${ path }/collabo/promotion/detail?pmtNo=${ top3List[2].no }'" />
+						<p id="pmt_title">${ top3List[2].title }</p>
+					</div>
+
 				</div>
 
 			

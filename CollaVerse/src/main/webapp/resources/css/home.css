@@ -14,11 +14,13 @@
 	/* background-color: red; */
 	width: 30%;
 	height: 900px;
+	border-radius: 6px;
 }
 
 #logoimage {
 	width: 100%;
 	height: 100%;
+	border-radius: 6px;
 }
 
 
@@ -41,19 +43,20 @@
 
 .notice {
 	/* background-color: red; */
-	
+	height: 20%;
 }
 
 /* -- 프로모션 좋아요 Top3 파트 -- */
 .brandRank {
 	/* background-color: green; */
+	height: 44%;
 }
 
 #promotion_image{
 	width: 125px;
 	height: 150px;
 	cursor: pointer;
-	margin: 0 0 0 27px;
+	margin: 0 0 0 20px;
 	justify-content: center;
 } 
 
@@ -65,8 +68,10 @@
 }
 
 #top3ListContainer {
-	
-	margin: 0 0 0 0;
+	margin: 0 0 0 0;
+	display: flex;
+	justify-content: center;
+	/* text-align: center; */
 }
 
 .pmt_info_container {
@@ -74,6 +79,56 @@
 	display: inline-block;
 	margin: 0 0 0 10px;
 }
+
+.top3 {
+	display: inline-block;
+	width: 160px;
+	height: 245px;
+	margin: 30px 10px 0 10px;
+}
+
+#top3List_1 {
+	/* background-color: red; */
+}
+
+#first {
+	color: #730e74;
+	text-shadow: 2px 2px 0px #faaf22;
+}
+
+#top3List_2 {
+	/* background-color: blue; */
+}
+
+#second {
+	color : #8c116c;
+	text-shadow: 2px 2px 0px #cebcbc;
+}
+
+#top3List_3 {
+	/* background-color: green; */
+}
+
+#third {
+	color : #ae165f;
+	text-shadow: 2px 2px 0px #ececec;
+}
+
+.prize {
+	margin: 0;
+	font-family: 'DOSGothic';
+	text-align: center;
+	font-size: 30px;
+}
+
+.pmtHearHit {
+	font-family: 'DOSGothic';
+	font-size: 13px;
+	text-align: center;
+	margin: 5px 0 10px 0;
+	color: #9f9eac;
+}
+
 
 
 /* -- 컬렉션 랜덤 추천 파트 -- */
