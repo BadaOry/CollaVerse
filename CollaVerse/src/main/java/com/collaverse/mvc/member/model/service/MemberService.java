@@ -91,4 +91,5 @@ public interface MemberService {
 	// 비밀번호변경(작성중)
 	Object findMemberByPw(String password);
 
+
 }

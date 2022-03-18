@@ -507,7 +507,9 @@ public class MemberController {
 		
 		System.out.println(member);
 		
-		result = service.save(member);
+		result = service.save(loginMember);
+		
+		System.out.println(loginMember);
 		
 		if(result > 0) {
 			model.addObject("loginMember", service.findMemberByPw(loginMember.getPassword()));
@@ -515,13 +517,14 @@ public class MemberController {
 			model.addObject("location", "/member/updatePwd");
 		} else {
 			model.addObject("msg", "비밀번호 변경 실패");
-			model.addObject("location", "/member/updatePwd");
+			model.addObject("location", "/member/mypage");
 		}
 		
 		model.setViewName("common/msg");
 		
 		return model;
 	}
+	
 
 }
 
