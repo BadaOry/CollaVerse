@@ -3,7 +3,7 @@
 #section {
 	/* display : inline-block; */
 	width: 85%;
-	padding: 20px 100px 20px 100px;
+	padding: 50px 100px 50px 100px;
 	display: flex;
 	justify-content: center;
 }

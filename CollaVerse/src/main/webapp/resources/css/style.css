@@ -33,7 +33,7 @@ header{
 }
 
 .header_nav {
-	font-family: 'Sam3KRFont';
+	font-family: 'DOSGothic';
 }
 
 #header3 ul {
@@ -84,8 +84,7 @@ header{
 	font-size: 15px;
 }
 
-#section{
-}
+#section{height: auto;}
 
 #table{
 	/* padding: 25px 50px 0 0; */
