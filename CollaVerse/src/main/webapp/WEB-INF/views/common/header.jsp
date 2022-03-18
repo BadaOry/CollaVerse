@@ -65,13 +65,7 @@
 		<div id="header3">
 			<nav class="header_nav">
 				<ul>
-					<li><a class="menu_title" href="">공지사항</a>
-						<ul>
-							<li><a class="header_nav1" href="">공지</a></li>
-							<li><a class="header_nav1" href="">공지</a></li>
-							<li><a class="header_nav1" href="">공지</a></li>
-						</ul>
-					</li>
+					<li><a class="menu_title" href="${ path }/notice/noticeList">공지사항</a></li>
 
 					<li><a class="menu_title"  href="${ path }/collabo/promotion/main">콜라보</a>
 						<ul>
@@ -100,7 +94,7 @@
 						<li><a href="${ path }/mypage/businessMypage">My 콜라버스</a>
 							<ul style="width: 600px; right:0px;">
 								<li><a class="header_nav1" href="${ path }/mypage/calendar/scheduleDetail">My 콜라보 캘린더</a></li>
-								<li><a class="header_nav1" href="${ path }/statisticsCount">통계</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/statisticsCount">통계</a></li>
 								<li><a class="header_nav1" href="${ path }/mypage/collection/list/${ loginMember.id }">MyCollection</a></li>
 								<li><a class="header_nav1" href="${ path }/mypage/myFollow/main">팔로우</a></li>
 							</ul>

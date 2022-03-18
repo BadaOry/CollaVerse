@@ -5,8 +5,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.collaverse.mvc.qna.mapper.QnaMapper">
-  	<resultMap type="com.collaverse.mvc.qna.model.Qna" id="qnaListResultMap">
+  <mapper namespace="com.collaverse.mvc.notice.mapper.NoticeMapper">
+  	<resultMap type="com.collaverse.mvc.notice.model.Notice" id="noticeListResultMap">
 		<id property="bno" column="BNO" />
 		<result property="title" column="TITLE"/>
 		<result property="content" column="CONTENT"/>
@@ -39,7 +39,7 @@
 
 	<!-- 게시판 등록 -->  
 	<insert id="enroll">
-	      INSERT INTO QNA(
+	      INSERT INTO NOTICE(
 	      	BNO, 
 	      	TITLE, 
 	      	CONTENT, 
@@ -47,7 +47,7 @@
 	      	READCOUNT
 	      ) 
 	      values (
-	      	SEQ_QNA_NO.NEXTVAL, 
+	      	SEQ_NOTICE_NO.NEXTVAL, 
 	      	#{title}, 
 	      	#{content}, 
 	      	#{writer},
@@ -56,28 +56,28 @@
 	</insert>
   
      <!-- 게시판 목록 -->
-    <select id="getList" parameterType="map" resultMap="qnaListResultMap">
+    <select id="getList" parameterType="map" resultMap="noticeListResultMap">
     
-        SELECT * FROM QNA
+        SELECT * FROM NOTICE
     
     </select>
     
     <!-- 게시판 조회 -->
-    <select id="getPage" parameterType="map" resultMap="qnaListResultMap" >
+    <select id="getPage" parameterType="map" resultMap="noticeListResultMap" >
     
-        SELECT * FROM QNA WHERE BNO = #{bno}
+        SELECT * FROM NOTICE WHERE BNO = #{bno}
     
     </select>
     
     <!-- 게시물 목록(페이징) -->
-    <select id="getListPaging" parameterType="map" resultMap="qnaListResultMap">
+    <select id="getListPaging" parameterType="map" resultMap="noticeListResultMap">
   
     <![CDATA[
         SELECT BNO, TITLE, CONTENT, WRITER, REG_DATE, MODIFY_DATE, READCOUNT FROM(
         
-                SELECT /*+INDEX_DESC(QNA PK_QNA) */ ROWNUM  AS RN, BNO, TITLE, CONTENT, WRITER, REG_DATE, MODIFY_DATE, READCOUNT
+                SELECT /*+INDEX_DESC(NOTICE PK_NOTICE) */ ROWNUM  AS RN, BNO, TITLE, CONTENT, WRITER, REG_DATE, MODIFY_DATE, READCOUNT
                   
-                FROM QNA WHERE ROWNUM <= #{pageNum} * #{amount}         
+                FROM NOTICE WHERE ROWNUM <= #{pageNum} * #{amount}         
     ]]>            
                 <if test="keyword != null">
                 	<include refid="criteria"></include>
@@ -93,23 +93,23 @@
     
     <!-- 조회수 증가 -->
     <update id="count" parameterType="_int">
-    	UPDATE QNA SET READCOUNT = READCOUNT + 1 WHERE BNO = #{bno}
+    	UPDATE NOTICE SET READCOUNT = READCOUNT + 1 WHERE BNO = #{bno}
     </update>
     
     <!-- 게시판 수정 -->
     <update id="modify">
-        UPDATE QNA SET TITLE = #{title}, CONTENT = #{content}, MODIFY_DATE = SYSDATE WHERE BNO = #{bno}
+        UPDATE NOTICE SET TITLE = #{title}, CONTENT = #{content}, MODIFY_DATE = SYSDATE WHERE BNO = #{bno}
     </update>
     
     <!-- 게시판 삭제 -->
     <delete id="delete">
-        DELETE FROM QNA WHERE BNO = #{bno}
+        DELETE FROM NOTICE WHERE BNO = #{bno}
     </delete>
     
     <!-- 게시물 총 갯수 -->
     <select id="getTotal" resultType="_int">
     
-        SELECT COUNT(*) FROM QNA
+        SELECT COUNT(*) FROM NOTICE
 
  		<if test="keyword != null">
             WHERE BNO > 0 <include refid="criteria"></include>

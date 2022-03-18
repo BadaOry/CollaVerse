@@ -156,7 +156,7 @@ input, textarea{
 </head>
 <body>
 	<div class="col-lg-12" style="padding: 0 130px 0 130px;">
-		<h3 class="mini-title">FAQ 게시판</h3>
+		<h3 class="mini-title">공지사항</h3>
    		<div class="cardd">
    			<div class="card-header">
    				<h3 class="card-title"><c:out value="${pageInfo.title}"/></h3>
@@ -184,40 +184,7 @@ input, textarea{
    		</div>
    	</div>
    	
-   	<!-- 댓글 -->
-	<p id="reply_title">댓글</p>
-	<div id="reply">
-	    <c:forEach items="${reply}" var="replyList">
-	        <p id="reply_info">
-	        작성자 : ${replyList.writer}<br />
-	        작성 날짜 :  <fmt:formatDate value="${replyList.regDate}" pattern="yyyy-MM-dd" />
-	        </p>
-	
-	        <p id="reply_content">${replyList.content}</p>
-	    </c:forEach>   
-	</div>
-   	
-   	
-   	<!-- 댓글작성 -->
-	<form name="replyForm" method="post">
-	  <input type="hidden" id="bno" name="bno" value="${pageInfo.bno}" />
-	  <input type="hidden" id="page" name="page" value="${cri.pageNum}"> 
-	  <input type="hidden" id="perPageNum" name="perPageNum" value="${cri.amount}"> 
-	  <input type="hidden" id="searchType" name="searchType" value="${cri.type}"> 
-	  <input type="hidden" id="keyword" name="keyword" value="${cri.keyword}"> 
-   	<p>
-	    <label>댓글 작성자</label>
-	    <input type="text" name="writer" />
-	</p>
-	<p>
-	  	<textarea rows="2" cols="100" name="content" style="margin: 0 0 0 100px;"></textarea>
-	</p>
-	<div>
-	 	 <button type="button" class="replyWriteBtn" style="margin: 0 0 0 840px;">작성</button>
-	</div>
-	</form>
-   	
-	<form id="infoForm" action="${ path }/qna/modify" method="get">
+	<form id="infoForm" action="${ path }/notice/modify" method="get">
 		<input type="text" id="bno" name="bno" value='<c:out value="${pageInfo.bno}"/>' style='display:none;'>
 		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
 		<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
@@ -233,27 +200,22 @@ let form = $("#infoForm");
 /* 목록 버튼 */
 $("#list_btn").on("click", function(e){
 	form.find("#bno").remove();
-	form.attr("action", "${ path }/qna/qnaList");
+	form.attr("action", "${ path }/notice/noticeList");
 	form.submit();
 });
 
 /* 수정 버튼 */
 $("#modify_btn").on("click", function(e){
-	form.attr("action", "${ path }/qna/modify");
+	form.attr("action", "${ path }/notice/modify");
 	form.submit();
 });
 
 /* 삭제 버튼 */
 $("#delete_btn").on("click", function(e){
-    form.attr("action", "${ path }/qna/delete");
+    form.attr("action", "${ path }/notice/delete");
     form.attr("method", "post");
     form.submit();
 });
 
-$(".replyWriteBtn").on("click", function(){
-	  var formObj = $("form[name='replyForm']");
-	  formObj.attr("action", "${ path }/qna/replyWrite");
-	  formObj.submit();
-	});
 </script>	
 </html>

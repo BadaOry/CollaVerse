@@ -112,7 +112,7 @@ input, textarea {
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
 <body>
-	<form id="modifyForm" action="${ path }/qna/modify" method="post">
+	<form id="modifyForm" action="${ path }/notice/modify" method="post">
 		<div class="col-lg-12">
 			<div class="cardd">
 				<div class="card-headerr">
@@ -145,7 +145,7 @@ input, textarea {
 			</div>
 		</div>
 	</form>
-	<form id="infoForm" action="${ path }/qna/modify" method="get">
+	<form id="infoForm" action="${ path }/notice/modify" method="get">
 		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}"/>'>
 		<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
 		<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
@@ -159,7 +159,7 @@ let mForm = $("#modifyForm");    // 페이지 데이터 수정 from
 /* 목록 페이지 이동 버튼 */
 $("#list_btn").on("click", function(e){
     form.find("#bno").remove();
-    form.attr("action", "${ paht }/qna/qnaList");
+    form.attr("action", "${ paht }/notice/noticeList");
     form.submit();
 });
 
@@ -170,13 +170,13 @@ $("#modify_btn").on("click", function(e){
 
 /* 취소 버튼 */
 $("#cancel_btn").on("click", function(e){
-    form.attr("action", "${ path }/qna/read");
+    form.attr("action", "${ path }/notice/read");
     form.submit();
 });
 
 /* 삭제 버튼 */
 $("#delete_btn").on("click", function(e){
-    form.attr("action", "${ path }/qna/delete");
+    form.attr("action", "${ path }/notice/delete");
     form.attr("method", "post");
     form.submit();
 });

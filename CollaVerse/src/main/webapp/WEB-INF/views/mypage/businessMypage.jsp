@@ -71,7 +71,7 @@
 				
 					<c:when test="${ !empty followerList }">
 					
-						<c:forEach var="followerList" items="${ followerList }"  begin="0" end="6">
+						<c:forEach var="followerList" items="${ followerList }"  begin="0" end="5">
 								
 							<div class="member_info_container">
 								<img id="profile_image" src="${ path }/resources/upload/profile/${ followerList.profileImg }"					
@@ -108,27 +108,27 @@
     <section id="statistics">
       <p class="mini_title">통계</p>
       <div id="follower-statistic">
-        <p>총 팔로워 ${ followerCount } 명</p>
-        <div> 금일 ${ todayCount } 명</div>
-        <a href="${ path }/statisticsCount" style="text-decoration: none;">
+        <p>총 팔로워 ${ followerCount }명</p>
+        <div> 금일 ${ todayCount }명</div>
+        <a href="${ path }/mypage/statisticsCount" style="text-decoration: none;">
 	        <ul id="follower-result">
 	            <c:if test="${ todayCount - yesterdayCount > '0'}">
-					<li>작일 대비 ${ todayCount - yesterdayCount } 명 증가</li>
+					<li>어제 대비 ${ todayCount - yesterdayCount }명 증가</li>
 				</c:if>
 				<c:if test="${ todayCount - yesterdayCount < '0'}">
-					<li>작일 대비 ${ todayCount - yesterdayCount } 명 감소</li>
+					<li>어제 대비 ${ todayCount - yesterdayCount }명 감소</li>
 				</c:if>
 				<c:if test="${ thismonthCount - lastmonthCount > '0'}">
-					<li>저번달 대비 ${ thismonthCount - lastmonthCount } 명 증가</li>
+					<li>저번달 대비 ${ thismonthCount - lastmonthCount }명 증가</li>
 				</c:if>
 				<c:if test="${ thismonthCount - lastmonthCount < '0'}">
-					<li>이번달 대비 ${ thismonthCount - lastmonthCount } 명 감소</li>
+					<li>이번달 대비 ${ thismonthCount - lastmonthCount }명 감소</li>
 				</c:if>
 				<c:if test="${ thisweekCount - lastweekCount > '0'}">
-					<li>직전 주 대비 ${ thisweekCount - lastweekCount } 명 증가</li>
+					<li>저번주 대비 ${ thisweekCount - lastweekCount }명 증가</li>
 				</c:if>
 				<c:if test="${ thisweekCount - lastweekCount < '0'}">
-					<li>직전 주 대비 ${ thisweekCount - lastweekCount } 명 감소</li>
+					<li>저번주 대비 ${ thisweekCount - lastweekCount }명 감소</li>
 				</c:if>	
 	        </ul>
         </a>

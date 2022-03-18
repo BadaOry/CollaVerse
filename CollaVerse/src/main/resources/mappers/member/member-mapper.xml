@@ -250,7 +250,7 @@
 							FROM FOLLOWER 
 							WHERE TO_MEM_NO = #{memberNo}
 							))
-						WHERE MEMBER_AGE BETWEEN 0 AND 39
+						WHERE MEMBER_AGE BETWEEN 30 AND 39
 	</select>
 	
 	<!-- 통계용 40대 정보 -->
@@ -312,6 +312,7 @@
 	<select id="findMemberByPw" parameterType="string" resultMap="memberResultMap">
 		<include refid="selectMemberSql" />
 		WHERE PASSWORD = #{password} AND MEMBER_STATUS = 'Y'
+	</select>
 
 	<!-- 1일 전 팔로우 -->
 	<select id = "getYesterday1Count" resultType="_int">
