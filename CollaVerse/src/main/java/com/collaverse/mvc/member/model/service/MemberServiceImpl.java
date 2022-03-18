@@ -196,14 +196,6 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.getTotalCount(memberNo);
 	}
 
-
-	// 비밀번호 변경(작성중)
-	@Override
-	public Object findMemberByPw(String password) {
-		
-		return null;
-	}
-
 	
 	// 1일 전 팔로우
 	@Override
@@ -253,6 +245,16 @@ public class MemberServiceImpl implements MemberService {
 		
 		return mapper.getYesterday7Count(memberNo);
 	}
+	
+
+	// 비밀번호 변경(작성중)
+	@Override
+	public Object findMemberByPw(String password) {
+		
+		return mapper.updatePwd(password);
+	}
+	
+	
 	
 }
 

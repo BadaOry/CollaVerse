@@ -31,12 +31,14 @@
                   value="${ loginMember.id }" readonly required >
             </td>    
             </tr>
-         <tr>
+            <!-- 
+         	<tr>
                 <th>비밀번호</th>
             <td>
                <input type="password" name="password" id="pass1" value="${ loginMember.password }" required >
             </td>    
             </tr>
+             -->
             <tr>
                 <th>휴대폰번호</th>
                 <td>
@@ -65,10 +67,10 @@
         </table>
             <br>
         <div class="btnAll" align="center">
-        	<button type="button" id="updatePwd">비밀번호변경</button>
         	<input type="submit" id="btn1" value="정보 수정">
         	<input type="button" id="btnDelete" value="탈퇴">
         	<input type="reset" id="btn2" value="취소" onclick="location.href='${ path }'">
+        	<button type="button" id="updatePwd">비밀번호변경</button>
         </div>
  	</form>
     </div>
@@ -99,7 +101,7 @@
 
 </script>
 
-<!-- 
+
 <script>
 // 비밀번호 변경(작성중)
 	$(document).ready(() => {
@@ -111,7 +113,6 @@
 		});
 	});
 </script>
- -->
 
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>	
