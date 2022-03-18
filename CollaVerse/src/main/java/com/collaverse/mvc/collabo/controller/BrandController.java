@@ -31,8 +31,10 @@ public class BrandController {
 		
 		
 		// 정상적으로 가져오는지 확인 
-/*		log.info(plist.toString());
-		log.info(blist.toString()); */
+/*		
+		log.info(plist.toString());
+		log.info(blist.toString()); 
+									*/
 		
 		model.addObject("plist", plist);
 		model.addObject("blist", blist);
@@ -47,6 +49,7 @@ public class BrandController {
 	public ModelAndView brandDetail(ModelAndView model, 
 			@RequestParam("startWith") String alphabet) {
 		
+		// brand 페이지에서 받아온 startWith 사용해 알파벳 출력
 		log.info("[Controller] 알파벳 잘 넘어오는지 출력 : {}", alphabet);
 		
 		// 알파벳으로 받아온 Brand 정보 

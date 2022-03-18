@@ -14,18 +14,22 @@
 </head>
 <body>
 
-	<%@ include file="/WEB-INF/views/common/header.jsp" %>   
+	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+	
+	<div class="frame">   
     
-    <div class="category_list">
+    <div class="category_name">
         <h3>테크</h3>
     </div>
-
+    
+	<div class="category_list">
+	
        <div class="tech">
         <div class="tech1">
     	<c:forEach var="tlist" items="${ tlist }" begin="0" end="0">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ tlist.no }">
             <div class="t_img">
-                 <img src="${ path }${ tlist.imgPath }${ tlist.no }.jpg" alt="" width="550px" height="400px">
+                 <img src="${ path }${ tlist.imgPath }${ tlist.no }.jpg" alt="" width="400px" height="300px">
             </div>              
             <p>          
             <strong>${ tlist.title }</strong>
@@ -38,7 +42,7 @@
             <table>
             <tr>
             	<td colspan = "2" rowspan="2" width="200px" height="150px">
-            	<img src="${ path }${ tpro.proImgpath }${ tpro.proNo }.jpg" alt="" width="150px" height="100px">
+            	<img src="${ path }${ tpro.proImgpath }${ tpro.proNo }.jpg" alt="" width="120px" height="90px">
             	</td>
             	<td>${ tpro.proName }</td>
             </tr>
@@ -53,7 +57,7 @@
     	<c:forEach var="tlist" items="${ tlist }" begin="1" end="1">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ tlist.no }">
             <div class="t_img">
-                 <img src="${ path }${ tlist.imgPath }${ tlist.no }.jpg" alt="" width="550px" height="400px">
+                 <img src="${ path }${ tlist.imgPath }${ tlist.no }.jpg" alt="" width="400px" height="300px">
             </div>              
             <p>          
             <strong>${ tlist.title }</strong>
@@ -66,7 +70,7 @@
             <table>
             <tr>
             	<td colspan = "2" rowspan="2" width="200px" height="150px">
-            	<img src="${ path }${ tpro.proImgpath }${ tpro.proNo }.jpg" alt="" width="150px" height="100px">
+            	<img src="${ path }${ tpro.proImgpath }${ tpro.proNo }.jpg" alt="" width="120px" height="90px">
             	</td>
             	<td>${ tpro.proName }</td>
             </tr>
@@ -81,7 +85,7 @@
     	<c:forEach var="tlist" items="${ tlist }" begin="2" end="2">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ tlist.no }">
             <div class="t_img">
-                 <img src="${ path }${ tlist.imgPath }${ tlist.no }.jpg" alt="" width="550px" height="400px">
+                 <img src="${ path }${ tlist.imgPath }${ tlist.no }.jpg" alt="" width="400px" height="300px">
             </div>              
             <p>          
             <strong>${ tlist.title }</strong>
@@ -94,7 +98,7 @@
             <table>
             <tr>
             	<td colspan = "2" rowspan="2" width="200px" height="150px">
-            	<img src="${ path }${ tpro.proImgpath }${ tpro.proNo }.jpg" alt="" width="150px" height="100px">
+            	<img src="${ path }${ tpro.proImgpath }${ tpro.proNo }.jpg" alt="" width="120px" height="90px">
             	</td>
             	<td>${ tpro.proName }</td>
             </tr>
@@ -104,6 +108,10 @@
             </table>
             </c:forEach>
 			</div>						
+    </div>
+    
+    </div>
+    
     </div>
     
     	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 

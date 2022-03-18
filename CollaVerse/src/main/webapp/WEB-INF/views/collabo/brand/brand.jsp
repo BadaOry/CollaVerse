@@ -19,7 +19,7 @@
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
     
 
-    
+    <div class="frame">
 
     <div class="brand_list">
   
@@ -32,7 +32,7 @@
     			<tr>
     			<td>
     				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
-    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="250px" height="150px">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="220px" height="120px">
     				</a>
     			</td>
     			</tr>
@@ -46,7 +46,7 @@
     			<tr>
     			<td>
     				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
-    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="250px" height="150px">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="220px" height="120px">
     				</a>
     			</td>
     			</tr>
@@ -60,7 +60,7 @@
     			<tr>
     			<td>
     				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
-    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="250px" height="150px">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="220px" height="120px">
     				</a>
     			</td>
     			</tr>
@@ -74,7 +74,7 @@
     			<tr>
     			<td>
     				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
-    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="250px" height="150px">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="220px" height="120px">
     				</a>
     			</td>
     			</tr>
@@ -88,7 +88,7 @@
     			<tr>
     			<td>
     				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
-    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="250px" height="150px">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="220px" height="120px">
     				</a>
     			</td>
     			</tr>
@@ -195,6 +195,12 @@
 			O
 			</a>
 			</li>
+			
+			<li>
+			<a href="${ path }/collabo/brand/brandDetail?startWith=P">
+			P
+			</a>
+			</li>			
 
 			<li>
 			<a href="${ path }/collabo/brand/brandDetail?startWith=Q">
@@ -258,6 +264,8 @@
 			</ul>
 			</div>
 						
+	</div>
+	
 	</div>
 	
 

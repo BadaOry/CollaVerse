@@ -16,6 +16,8 @@
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 
+	<div class="frame">
+
 	<div class= "select_alpha">
 	
 	<div class= select_brand>
@@ -23,6 +25,8 @@
 	</div>	
 	
 		<div class= "alpha_list">
+		<c:choose>
+			<c:when test="${ !empty blist }">
     		<c:forEach var="blist" items="${ blist }">
     			<table>
     			<tr>
@@ -37,9 +41,18 @@
     				<td>${ blist.brContent }</td>
     			</tr>
     			</table>
-    		</c:forEach>    		
+    		</c:forEach>
+    		</c:when>
+    		<c:otherwise>
+    			<tr>
+    				<td> 조회된 브랜드가 없습니다. </td>
+    			</tr>
+    		</c:otherwise>
+    	</c:choose>    		
     	</div>
     	
+	</div>
+	
 	</div>
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>

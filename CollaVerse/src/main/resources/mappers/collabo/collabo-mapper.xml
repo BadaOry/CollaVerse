@@ -285,20 +285,6 @@
   		</update>
 
  <!-- 
-   		<select id="selectAll" parameterType="String" resultType="promotionListResultMap">
-  			<include refid="promotionListSql"/>
-  			 
-  		</select>  
-
- 		
-  		<select id="pmtMainList" parameterType="String" resultType="String">
-  		SELECT PMT_TITLE,
-  			   START_DATE
-  			   WHERE PMT_NO = #{no}
-  		</select>
-  		
- 
- 		
   		<resultMap type="Promotion" extends="promotionListResultMap" id="promotionDetailResultMap">
   			<collection property="replies" javaType="arraylist" columnPrefix="R_" resultMap="replyResultMap"></collection>
   		</resultMap>
