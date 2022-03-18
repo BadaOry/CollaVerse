@@ -93,7 +93,7 @@
     
     <!-- 조회수 증가 -->
     <update id="count" parameterType="_int">
-    	update QNA SET READCOUNT = READCOUNT + 1 WHERE BNO = #{bno}
+    	UPDATE QNA SET READCOUNT = READCOUNT + 1 WHERE BNO = #{bno}
     </update>
     
     <!-- 게시판 수정 -->

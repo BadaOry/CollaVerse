@@ -15,4 +15,6 @@ public class Collections {
 	
 	private String profile_img;
 	
+	private String toMemNo;
+	
 }

@@ -30,6 +30,7 @@
 		<result property="id" column="ID"/>
 		<result property="nickname" column="NICKNAME"/>
 		<result property="profile_img" column="PROFILE_IMG"/>
+		<result property="toMemNo" column="TO_MEM_NO" />
 	</resultMap>
 		
 		
@@ -38,6 +39,17 @@
 		FROM MEMBER
 		WHERE MEMBER_ROLE IN ('개인', '기업')
 	</select>
+	
+	
+	<!-- 인피니트 스크롤 도전 -->
+	<select id="getInfiniteUserList" parameterType="_int" resultMap="listResultMap" resultType="arrayList">
+		SELECT RESULT.* 
+		FROM (SELECT ROWNUM NUMROW,ID, NICKNAME, PROFILE_IMG, MEMBER_ROLE
+				FROM MEMBER
+		        ORDER BY MEMBER_NO) RESULT
+		WHERE RESULT.NUMROW BETWEEN (14 * #{ i } + 1) AND (14 * (#{ i } + 1))
+		    AND MEMBER_ROLE IN ('개인', '기업')
+	</select>	
 		
 		 
 	<select id="findUserById" parameterType="String" resultMap="listResultMap" resultType="map">
@@ -53,6 +65,15 @@
 		WHERE NICKNAME LIKE '%' || #{ keyword } || '%' 
 	</select>
 	
+
+	<!--  브랜드에서만 검색하는 /search/only_brand 관련 메소드  -->
+	
+	<select id="getBrandUserIdList" resultMap="listResultMap" resultType="arrayList">
+		SELECT ID, NICKNAME, PROFILE_IMG
+		FROM MEMBER
+		WHERE MEMBER_ROLE IN ('기업')
+	</select>
+	
 	<select id="findBrandUserById" parameterType="String" resultMap="listResultMap" resultType="map">
 		SELECT ID, NICKNAME, PROFILE_IMG
 		FROM MEMBER 
@@ -65,6 +86,16 @@
 		FROM MEMBER 
 		WHERE NICKNAME LIKE '%' || #{ keyword } || '%' 
 			AND MEMBER_ROLE = '기업'
+	</select>
+	
+	
+	
+	<!--  유저에서만 검색하는 /search/only_user 관련 메소드  -->
+	
+	<select id="getOnlyUserIdList" resultMap="listResultMap" resultType="arrayList">
+		SELECT ID, NICKNAME, PROFILE_IMG
+		FROM MEMBER
+		WHERE MEMBER_ROLE IN ('개인')
 	</select>
 	
 	<select id="findOnlyUserById" parameterType="String" resultMap="listResultMap" resultType="map">
@@ -82,7 +113,31 @@
 	</select>
 	
 	
-	<select id="getuserListByFollower" resultMap="listResultMap" resultType="arrayList">
+	<!--  home.jsp 랜덤 유저 받아오기 -->
+	<select id="getRandomUserList" resultMap="listResultMap" resultType="arrayList">
+		SELECT RESULT.* 
+		FROM (SELECT ROWNUM NUMROW, RANDOM.* 
+		        FROM (MEMBER SAMPLE(30)) RANDOM
+		        ORDER BY MEMBER_NO) RESULT
+		WHERE RESULT.NUMROW IN (2, 4, 7)
+		    AND MEMBER_ROLE IN ('개인', '기업')
+	</select>
+	
+
+	
+	<!-- 팔로워 순대로 리스트 가져오는 구문
+	
+	<select id="getUserListByFollowerResult" parameterType="arrayList" resultMap="listResultMap" resultType="arrayList">
+		SELECT ID, NICKNAME, PROFILE_IMG
+		FROM MEMBER
+		WHERE MEMBER_NO IN 
+		<foreach item="item" index="index" collection="#{ userListByFollowerId }" open="(" separator="," close=")">
+			#{ item }
+		</foreach>
+	</select>
+	
+		
+	<select id="getUserListByFollower" resultMap="listResultMap" resultType="arrayList">
 		SELECT TO_MEM_NO, ROWNUM 
 		FROM (
 			SELECT COUNT(*), TO_MEM_NO
@@ -91,23 +146,7 @@
 			ORDER BY COUNT(*) DESC )
 		WHERE ROWNUM BETWEEN 1 AND 100
 	</select>
-	
-	<select id="getuserListByFollowerId" parameterType="arrayList" resultMap="listResultMap" resultType="arrayList">
-		SELECT ID, NICKNAME, PROFILE_IMG
-		FROM MEMBER
-		WHERE MEMBER_NO IN #{ userListByFollowerMemNo }
-	</select>
-	
-	<select id="getBrandUserIdList" resultMap="listResultMap" resultType="arrayList">
-		SELECT ID, NICKNAME, PROFILE_IMG
-		FROM MEMBER
-		WHERE MEMBER_ROLE IN ('기업')
-	</select>
-	
-	<select id="getOnlyUserIdList" resultMap="listResultMap" resultType="arrayList">
-		SELECT ID, NICKNAME, PROFILE_IMG
-		FROM MEMBER
-		WHERE MEMBER_ROLE IN ('개인')
-	</select>
-	
+		
+	 -->
+	 
 </mapper>

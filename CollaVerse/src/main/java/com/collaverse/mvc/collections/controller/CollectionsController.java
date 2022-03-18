@@ -1,5 +1,7 @@
 package com.collaverse.mvc.collections.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,13 +35,23 @@ public class CollectionsController {
 	@GetMapping("/collections/main")
 	public ModelAndView getAllUserList(ModelAndView model) {
 		
-		List<Collections> userList = null;
+		List<Collections> allUserList = null;
+		List<List<Collections>> infiniteUserList = new ArrayList();
 		
-		userList = mapper.getAllUserIdList();
+		allUserList = mapper.getAllUserIdList();
 		
-		log.info("[Controller] 받아온 id 리스트 출력 : {}", userList);
+		log.info("[Controller] 받아온 id 리스트 출력 : {}", allUserList);
 		
-		model.addObject("userList", userList);
+		// 인피니트 스크롤에 도전
+		for(int i = 0; i < (allUserList.size() /14) + 1; i++) {
+			
+			infiniteUserList.add(mapper.getInfiniteUserList(i));
+		}
+		
+		log.info("[Controller] 받아온infiniteList 리스트 출력 : {}", infiniteUserList);
+		
+		model.addObject("allUserList", allUserList);
+		model.addObject("infiniteUserList", infiniteUserList);
 		
 		return model;
 	}
@@ -152,29 +164,7 @@ public class CollectionsController {
 		return model;
 	}
 	
-	
-//	@GetMapping("/collections/search/ob_follower")
-//	public ModelAndView getUserListByFollower(ModelAndView model) {
-//		
-//		List<Collections> userListByFollowerMemNo = null;
-//		List<Collections> userListByFollowerId = null;
-//		
-//		// 팔로워 많은 순서대로 1 ~ 100 위 TO_MEM_NO 뽑아오기
-//		userListByFollowerMemNo = mapper.getuserListByFollower();
-//		
-//		log.info("[Controller] 받아온 TO_MEM_NO 리스트 출력 : {}", userListByFollowerMemNo);
-//		
-//		// 1 ~ 100 위 TO_MEM_NO 로 아이디 뽑아오기
-//		
-//		userListByFollowerId = mapper.getuserListByFollowerId(userListByFollowerMemNo);
-//		
-//		log.info("[Controller] 받아온 id 리스트 출력 : {}", userListByFollowerMemNo);
-//		
-//		model.addObject("userList", userListByFollowerId);
-//		
-//		return model;
-//	}
-	
+
 	@GetMapping("/collections/search/only_brand")
 	public ModelAndView getBrandUserList(ModelAndView model) {
 		
@@ -204,6 +194,45 @@ public class CollectionsController {
 		
 		return model;
 	}
+	
+	/*
+	@GetMapping("/collections/search/ob_follower")
+	public ModelAndView getUserListByFollower(ModelAndView model) {
+		
+		List<Collections> userListByFollowerMemNo = null;
+		ArrayList<String> userListByFollowerId = new ArrayList();
+
+		
+		// 1. 팔로워 많은 순서대로 1 ~ 100 위 TO_MEM_NO 뽑아오기
+		userListByFollowerMemNo = mapper.getUserListByFollower();
+		
+		log.info("[Controller] 받아온 TO_MEM_NO 리스트 출력 : {}", userListByFollowerMemNo);
+		
+		// 2. 1 ~ 100 위 TO_MEM_NO 로 id 뽑아서 List<String> 에 저장하기
+		for(int i = 0; i < userListByFollowerMemNo.size(); i++ ) {
+			
+			System.out.print(userListByFollowerMemNo.get(i).getToMemNo() + " / ");
+//			userListByFollowerId = Arrays.asList(userListByFollowerMemNo.get(i).getToMemNo());
+			
+			userListByFollowerId.add(i, userListByFollowerMemNo.get(i).getToMemNo());
+//			set(i, userListByFollowerMemNo.get(i).getToMemNo());
+		
+		}
+		System.out.println(" toString 찍어보기 " + userListByFollowerId.toString());
+		
+		// 3. id 찾아온걸로 파라미터 넘겨서 Collections 객체 리스트 가져오기
+		List<Collections> result = mapper.getUserListByFollowerResult(userListByFollowerId);
+		
+//		model.addObject("userList", userListByFollowerId);
+		
+		log.info("[Controller] 받아온 id 리스트 출력 : {}", userListByFollowerMemNo);
+		
+		model.addObject("result", result);
+		model.setViewName("/collections/search/ob_follower");
+		
+		return model;
+	}
+	*/
 	
 	
 }

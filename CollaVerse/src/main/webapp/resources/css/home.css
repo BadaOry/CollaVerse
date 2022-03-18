@@ -1,0 +1,187 @@
+@charset "UTF-8";
+
+#section {
+	/* display : inline-block; */
+	width: 85%;
+	padding: 50px 100px 50px 100px;
+	display: flex;
+	justify-content: center;
+}
+
+/* 왼쪽 박스 : 로고 이미지 */
+.logo {
+	display: inline-block;
+	/* background-color: red; */
+	width: 30%;
+	height: 900px;
+	border-radius: 6px;
+}
+
+#logoimage {
+	width: 100%;
+	height: 100%;
+	border-radius: 6px;
+}
+
+
+/* 오른쪽 박스 : 기타 내용 */
+.noticeandrank {
+	display: inline-block;
+	/* background-color: blue; */
+	width: 50%;
+	height: 900px;
+}
+
+.notice, .brandRank, .collectionRecommend  {
+	display: inline-block;
+	width: 100%;
+	height: 32.2%;
+	margin: 0px 0 15px 20px;
+	border: 0.5px solid #730e74;
+	border-radius: 6px;
+}
+
+.notice {
+	/* background-color: red; */
+	height: 20%;
+}
+
+/* -- 프로모션 좋아요 Top3 파트 -- */
+.brandRank {
+	/* background-color: green; */
+	height: 44%;
+}
+
+#promotion_image{
+	width: 125px;
+	height: 150px;
+	cursor: pointer;
+	margin: 0 0 0 20px;
+	justify-content: center;
+} 
+
+#pmt_title {
+	font-family: 'DOSGothic';
+	font-size: 15px;
+	text-align: left;
+	text-align: center;
+}
+
+#top3ListContainer {
+	margin: 0 0 0 0;
+	display: flex;
+	justify-content: center;
+	/* text-align: center; */
+}
+
+.pmt_info_container {
+	width: 30%;
+	display: inline-block;
+	margin: 0 0 0 10px;
+}
+
+.top3 {
+	display: inline-block;
+	width: 160px;
+	height: 245px;
+	margin: 30px 10px 0 10px;
+}
+
+#top3List_1 {
+	/* background-color: red; */
+}
+
+#first {
+	color: #730e74;
+	text-shadow: 2px 2px 0px #faaf22;
+}
+
+#top3List_2 {
+	/* background-color: blue; */
+}
+
+#second {
+	color : #8c116c;
+	text-shadow: 2px 2px 0px #cebcbc;
+}
+
+#top3List_3 {
+	/* background-color: green; */
+}
+
+#third {
+	color : #ae165f;
+	text-shadow: 2px 2px 0px #ececec;
+}
+
+.prize {
+	margin: 0;
+	font-family: 'DOSGothic';
+	text-align: center;
+	font-size: 30px;
+}
+
+.pmtHearHit {
+	font-family: 'DOSGothic';
+	font-size: 13px;
+	text-align: center;
+	margin: 5px 0 10px 0;
+	color: #9f9eac;
+}
+
+
+
+/* -- 컬렉션 랜덤 추천 파트 -- */
+.collectionRecommend {
+	/* background-color: red; */
+}
+
+.member_info_container {
+	width: 30%;
+	/* margin: 20px 10px 0 0;
+	display: inline-block; */
+	display: inline-block;
+	margin: 0 0 0 9px;
+}
+
+#collectionRecommendContent {
+	padding: 0 30px 0 30px 0;
+}
+
+#profile_image{
+	width: 100px;
+	height: 100px;
+	border-style: solid;
+	border-color: rgb(207, 205, 205);
+	border-radius: 70%;
+	cursor: pointer;
+	margin: 0 0 0 27px;
+	justify-content: center;
+}
+
+#member_nickname {
+	font-family: 'DOSGothic';
+	font-size: 20px;
+	text-align: left;
+	text-align: center;
+}
+
+
+
+/* 내용 파트 */
+#mini_title {
+	/* 고정값 */
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #730e74;
+	/* 변경값 */
+	text-align: left;
+	margin: 5% 0px 0px 10%; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 60%;
+}
+
+.content {	margin: 5% 10% 5% 10%;
+	font-family: 'DOSGothic';
+}
+
+

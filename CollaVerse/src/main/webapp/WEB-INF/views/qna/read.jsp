@@ -43,12 +43,13 @@ h2 {
 .mini-title {
 	/* 고정값 */
 	font-family: 'Sam3KRFont';
-	font-size: 30px;
+	font-size: 40px;
 	color: #730e74;
+	position: relative;
+	left: -40px;
 	/* 변경값 */
 	text-align: left;
 	margin: 50px 0 30px 50px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
-	width: 60%;
 }
 
 .card-title {
@@ -155,7 +156,7 @@ input, textarea{
 </head>
 <body>
 	<div class="col-lg-12" style="padding: 0 130px 0 130px;">
-		<h3 class="mini-title">QNA 게시판</h3>
+		<h3 class="mini-title">FAQ 게시판</h3>
    		<div class="cardd">
    			<div class="card-header">
    				<h3 class="card-title"><c:out value="${pageInfo.title}"/></h3>

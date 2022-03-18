@@ -69,7 +69,7 @@
 				
 					<c:when test="${ !empty followingList }">
 					
-						<c:forEach var="followingList" items="${ followingList }"  begin="0" end="6">
+						<c:forEach var="followingList" items="${ followingList }"  begin="0" end="5">
 								
 							<div class="member_info_container">
 								<img id="profile_image" src="${ path }/resources/upload/profile/${ followingList.profileImg }"					

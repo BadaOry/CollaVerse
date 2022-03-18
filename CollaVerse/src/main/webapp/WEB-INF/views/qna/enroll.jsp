@@ -43,12 +43,13 @@ h2 {
 .card-title {
 	/* 고정값 */
 	font-family: 'Sam3KRFont';
-	font-size: 30px;
+	font-size: 40px;
 	color: #730e74;
+	position: relative;
+	left: 150px;
 	/* 변경값 */
 	text-align: left;
 	margin: 50px 0 30px 50px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
-	width: 60%;
 }
 
 .card-body {

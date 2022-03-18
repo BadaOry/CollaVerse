@@ -15,7 +15,7 @@ public class StatisticsController {
 	@Autowired
 	private MemberService service;
 	
-	@GetMapping("/statisticsCount")
+	@GetMapping("/mypage/statisticsCount")
 	public String getStatistics(Model model,
 			@SessionAttribute("loginMember") Member loginMember) {
 		
@@ -56,6 +56,6 @@ public class StatisticsController {
   		model.addAttribute("yesterday6Count", yesterday6Count);
   		model.addAttribute("yesterday7Count", yesterday7Count);
   		
-		return "/statistics/statisticsCount";
+		return "/mypage/statistics/statisticsCount";
 	}
 }

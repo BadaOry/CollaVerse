@@ -33,13 +33,14 @@
 				enctype="multipart/form-data">
    <div class="frame">
 	
-				<div class="slide_content">
-				<div class="slide_div">
-					<div style="width: 550; height: 400px">
-						<a><strong>작성자 </strong></a><input type="text" name="writerId" value="${ loginMember.id }" readonly>
-					<table>
+				<div class="promotion_input">
+					<table id="middle">
 						<tr>
-							<th>카테고리</th>
+							<th style="color: #730e74">작성자</th>
+							<td><input id="product" type="text" name="writerId" value="${ loginMember.id }" readonly></td>
+						</tr>
+						<tr>
+							<th style="color: #730e74">카테고리</th>
 							<td>
 								<select name="c_no">
 									<option value="1">리빙</option>
@@ -51,43 +52,34 @@
 							</td>
 						</tr>
 						<tr>
-							<th>시작일</th>
+							<th style="color: #730e74">시작일</th>
 							<td>
 								<%-- name="startDate" 달력에서 날짜 선택하게하는 --%>					
 								<input type="date" name="startDate">
 							</td>
 						</tr>
 						<tr>
-							<th>종료일</th>
+							<th style="color: #730e74">종료일</th>
 							<td>
 								<%-- name="endDate" 달력에서 날짜 선택하게하는 --%>					
 								<input type="date" name="endDate">
 							</td>
 						</tr>
+						<tr>
+							<th style="color: #730e74">대표 프로모션 이미지</th>
+							<td><input id="product" type="file" name="promImg"></td>
+						</tr>
 					</table>
-					</div>
-				</div>				
 				</div>	
 
     <div class="p_title">
         <hr>
-        	<input type="text" name="promName" id="title" placeholder="프로모션 이름">
+        	<input id="promName" type="text" name="promName" placeholder="프로모션 이름">
         <hr>
     </div>
     
-    <div class="p_explain">
-        <p>프로모션 설명</p>
-    </div>
-
-    <div class="p_content">
-        <p>
-            ${ promotionInfo.content }
-        </p>
-    </div>    
-
-    <div class="category_detail">
-        <p>제품 정보</p>
-        <%-- <strong>제품 정보</strong> --%>
+    <div id="promotion_explain">
+		<p><textarea id="promContent" name="promContent" placeholder="프로모션 설명"></textarea></p>
     </div>
 
     <div class="p_info">
@@ -109,26 +101,36 @@
         	
         		<table>
         		<tr>
+        		<th style="color: #730e74">제품1 이미지</th>
+        		</tr>
+        		
+        		<tr>
         		<td>
-                <img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="470px" height="350px">
+                <input id="product" type="file" name="prodImg">
                 </td>
                 </tr>
                 
                 <tr>
                 <td>
-	            <p>${ productInfo.proName }</p>
+	            <p><textarea id="product" name="prodName1" cols="30" rows="1" placeholder="제품1 이름"></textarea></p>
 	            </td>
 				</tr>
 
 				<tr>
 				<td>
-	            <p>${ productInfo.proPrice }</p>
+	            <p><textarea id="product" name="prodPrice1" cols="30" rows="1" placeholder="제품1 가격"></textarea></p>
 	            </td>
 				</tr>
 				
 				<tr>
 				<td>
-	            <p>${ productInfo.proContent }</p>
+	            <p><textarea id="product" name="prodContent1" cols="50" rows="15" placeholder="제품1 설명/획득 조건"></textarea></p>
+	            </td>
+	            </tr>
+	            
+				<tr>
+				<td>
+	            <p><textarea id="product" name="prodQty1" cols="30" rows="1" placeholder="제품1 구매 가능 수량"></textarea></p>
 	            </td>
 	            </tr>
 				</table>
@@ -139,26 +141,36 @@
         	
         		<table>
         		<tr>
+        		<th style="color: #730e74">제품2 이미지</th>
+        		</tr>
+        		
+        		<tr>
         		<td>
-                <img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="470px" height="350px">
+                <input id="product" type="file" name="prodImg">
                 </td>
                 </tr>
                 
                 <tr>
                 <td>
-	            <p>${ productInfo.proName }</p>
+	            <p><textarea id="product" name="prodName2" cols="30" rows="1" placeholder="제품2 이름"></textarea></p>
 	            </td>
 				</tr>
 
 				<tr>
 				<td>
-	            <p>${ productInfo.proPrice }</p>
+	            <p><textarea id="product" name="prodPrice2" cols="30" rows="1" placeholder="제품2 가격"></textarea></p>
 	            </td>
 				</tr>
 				
 				<tr>
 				<td>
-	            <p>${ productInfo.proContent }</p>
+	            <p><textarea id="product" name="prodContent2" cols="50" rows="15" placeholder="제품2 설명/획득 조건"></textarea></p>
+	            </td>
+	            </tr>
+	            
+				<tr>
+				<td>
+	            <p><textarea id="product" name="prodQty2" cols="30" rows="1" placeholder="제품2 구매 가능 수량"></textarea></p>
 	            </td>
 	            </tr>
 				</table>
@@ -169,26 +181,36 @@
         	
         		<table>
         		<tr>
+        		<th style="color: #730e74">제품3 이미지</th>
+        		</tr>
+        		
+        		<tr>
         		<td>
-                <img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="470px" height="350px">
+                <input id="product" type="file" name="prodImg">
                 </td>
                 </tr>
                 
                 <tr>
                 <td>
-	            <p>${ productInfo.proName }</p>
+	            <p><textarea id="product" name="prodName3" cols="30" rows="1" placeholder="제품3 이름"></textarea></p>
 	            </td>
 				</tr>
 
 				<tr>
 				<td>
-	            <p>${ productInfo.proPrice }</p>
+	            <p><textarea id="product" name="prodPrice3" cols="30" rows="1" placeholder="제품3 가격"></textarea></p>
 	            </td>
 				</tr>
 				
 				<tr>
 				<td>
-	            <p>${ productInfo.proContent }</p>
+	            <p><textarea id="product" name="prodContent3" cols="50" rows="15" placeholder="제품3 설명/획득 조건"></textarea></p>
+	            </td>
+	            </tr>
+	            
+				<tr>
+				<td>
+	            <p><textarea id="product" name="prodQty3" cols="30" rows="1" placeholder="제품3 구매 가능 수량"></textarea></p>
 	            </td>
 	            </tr>
 				</table>
@@ -196,10 +218,19 @@
         </div>
                         
 		</div>
+		
+		<hr>
+		
+		<div id="2button2" align="center">
+			<button id="promotion_enroll">등록</button>
+			<button id="cancel" type="reset">취소</button>
+	    </div>
 
     </div>
 
     <hr>
+    
+    
 
 <!--       
      <div class="brand_title">

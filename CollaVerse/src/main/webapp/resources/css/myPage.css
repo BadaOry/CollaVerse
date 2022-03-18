@@ -88,6 +88,7 @@ input[type=file] {
 	height: 50px;
 }
 
+/*
 #updatePwd {
  	/* 고정값 */
  	background-color:#720e74;
@@ -104,3 +105,19 @@ input[type=file] {
  	display:inline-block;
  	width: 145px;
 }
+*/
+
+#updatePwd:hover {
+	color: #ae165f;
+}
+
+#updatePwd {
+    background-color: white;
+    border-style: none;
+    font-size: 11px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: 'DOSGothic';
+    color : #730e74;
+}
+

@@ -82,6 +82,16 @@
   			 
   		</select>
   		
+  		<!-- 메인에서 쓸 좋아요 순위 3개 -->
+  		<select id="selectTop3"  resultMap="promotionListResultMap">
+	  		SELECT ROWNUM, RESULT.*
+			FROM (SELECT PMT_NO, PMT_TITLE, PMT_IMG_PATH, HEART_HIT
+			    FROM PROMOTION
+			    ORDER BY HEART_HIT DESC) RESULT
+			WHERE ROWNUM <![CDATA[<]]>=3
+  		</select>
+  		
+  		
   		<select id="getPromotionCount" parameterType="map" resultType="_int">
 			SELECT COUNT(*) 
 			FROM PROMOTION
