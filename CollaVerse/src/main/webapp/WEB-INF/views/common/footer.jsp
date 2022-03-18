@@ -9,12 +9,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common/footer.css">
 </head>
 <body>
 
 	<footer>
-		<div id="footer_content">사이트 소개 <br> 우앙</div>
+		<div id="cp_container">
+		
+			<p id="cp">Copyright © CollaVerse</p>
+		
+		</div>
+		
+		<div id="info_container">
+		
+			<p id="serviceInfo" onclick="location.href='${ path }/information'">서비스 소개<p>
+			
+			<p id="nothing">     │     </p>
+			
+			<p id="gitHub" onclick="location.href='https://github.com/BadaOry/CollaVerse'">githHub</p>
+			
+		</div>
+			
+
 	</footer>
 	
 </body>
