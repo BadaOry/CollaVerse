@@ -39,6 +39,8 @@ public interface CollectionsMapper {
 	List<Collections> findOnlyUserByNickname(String keyword);
 
 	List<Collections> getRandomUserList(); // home.jsp 랜덤 유저 받아오기
+
+	List<Collections> getInfiniteUserList(int i); // 블록별로 유저 받아오기
 	
 	
 

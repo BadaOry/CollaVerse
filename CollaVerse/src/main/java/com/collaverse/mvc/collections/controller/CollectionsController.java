@@ -35,13 +35,23 @@ public class CollectionsController {
 	@GetMapping("/collections/main")
 	public ModelAndView getAllUserList(ModelAndView model) {
 		
-		List<Collections> userList = null;
+		List<Collections> allUserList = null;
+		List<List<Collections>> infiniteUserList = new ArrayList();
 		
-		userList = mapper.getAllUserIdList();
+		allUserList = mapper.getAllUserIdList();
 		
-		log.info("[Controller] 받아온 id 리스트 출력 : {}", userList);
+		log.info("[Controller] 받아온 id 리스트 출력 : {}", allUserList);
 		
-		model.addObject("userList", userList);
+		// 인피니트 스크롤에 도전
+		for(int i = 0; i < (allUserList.size() /14) + 1; i++) {
+			
+			infiniteUserList.add(mapper.getInfiniteUserList(i));
+		}
+		
+		log.info("[Controller] 받아온infiniteList 리스트 출력 : {}", infiniteUserList);
+		
+		model.addObject("allUserList", allUserList);
+		model.addObject("infiniteUserList", infiniteUserList);
 		
 		return model;
 	}
