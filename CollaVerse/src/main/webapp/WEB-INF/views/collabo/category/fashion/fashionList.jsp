@@ -14,32 +14,21 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
-	
-<!--  	
-   <div class="frame">
-        <nav class="colla_menu">
-            <ul>
-                <li><a onclick="location.href='${ path }/collabo/category/living/livingList'" >리빙</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/culture/cultureList'" >문화</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/food/foodList'" >식품</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/tech/techList'" >테크</a></li>
-                <li><a onclick="location.href='${ path }/collabo/category/fashion/fashionList'" >패션</a></li>
-                <li><a onclick="location.href='${ path }/collabo/brand/brand'" >브랜드</a></li>
-            </ul>
-        </nav>
-    </div>
--->      
+
+	<div class="frame">      
     
-    <div class="category_list">
+    <div class="category_name">
         <h3>패션</h3>
     </div>
+    
+    <div class="category_list">
 
         <div class="fashion">
         <div class="fashion1">
     	<c:forEach var="fslist" items="${ fslist }" begin="0" end="0">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ fslist.no }">
             <div class="fs_img">
-                 <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="550px" height="400px">
+                 <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="400px" height="300px">
             </div>              
             <p>          
             <strong>${ fslist.title }</strong>
@@ -52,7 +41,7 @@
             <table>
             <tr>
             	<td colspan = "2" rowspan="2" width="200px" height="150px">
-            	<img src="${ path }${ fspro.proImgpath }${ fspro.proNo }.jpg" alt="" width="150px" height="100px">
+            	<img src="${ path }${ fspro.proImgpath }${ fspro.proNo }.jpg" alt="" width="120px" height="90px">
             	</td>
             	<td>${ fspro.proName }</td>
             </tr>
@@ -67,7 +56,7 @@
     	<c:forEach var="fslist" items="${ fslist }" begin="1" end="1">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ fslist.no }">
             <div class="fs_img">
-                 <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="550px" height="400px">
+                 <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="400px" height="300px">
             </div> 
             <p>          
             <strong>${ fslist.title }</strong>
@@ -80,7 +69,7 @@
             <table>
             <tr>
             	<td colspan = "2" rowspan="2" width="200px" height="150px">
-            	<img src="${ path }${ fspro.proImgpath }${ fspro.proNo }.jpg" alt="" width="150px" height="100px">
+            	<img src="${ path }${ fspro.proImgpath }${ fspro.proNo }.jpg" alt="" width="120px" height="90px">
             	</td>
             	<td>${ fspro.proName }</td>
             </tr>
@@ -95,7 +84,7 @@
     	<c:forEach var="fslist" items="${ fslist }" begin="2" end="2">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ fslist.no }">
             <div class="fs_img">
-                 <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="550px" height="400px">
+                 <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="400px" height="300px">
             </div>              
             <p>          
             <strong>${ fslist.title }</strong>
@@ -108,7 +97,7 @@
             <table>
             <tr>
             	<td colspan = "2" rowspan="2" width="200px" height="150px">
-            	<img src="${ path }${ fspro.proImgpath }${ fspro.proNo }.jpg" alt="" width="150px" height="100px">
+            	<img src="${ path }${ fspro.proImgpath }${ fspro.proNo }.jpg" alt="" width="120px" height="90px">
             	</td>
             	<td>${ fspro.proName }</td>
             </tr>
@@ -118,6 +107,10 @@
             </table>
             </c:forEach>
 			</div>						
+    </div>
+    
+    </div>
+    
     </div>
     
     	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 

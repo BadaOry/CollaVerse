@@ -2,102 +2,8 @@
 
 /* 프로모션 상세 */
 
-/* 이미지 탭*/
-/* 가운데 정렬 다른 방법 찾을 것 */
-input[type="radio"] {
-	display:none;
-}
-
-.conbox{
-    margin-top: 3%;
-    margin-left: 17%;
-
-    width:550px;
-	height:350px;
-    border: 20px solid rgb(161, 155, 155);
-    border-radius: 30px;
-    display: none;
-    text-align: center;
-}
-
-.btn {
-    margin-left: 43.3%;
-	padding:10px;
-}
-
-label[for*="tab"] {
-    margin-left: 20%;
-	display:inline-block;
-	padding:10px;
-	background:lightgrey;
-	margin:5px;
-	border-radius:100%;
-}
-
-input[id="tab01"]:checked ~ .con1 {
-	display:block;
-}
-input[id="tab02"]:checked ~ .con2 {
-	display:block;
-}
-input[id="tab03"]:checked ~ .con3 {
-	display:block;
-}
-
-input[id="tab01"]:checked ~ .btn > label[for="tab01"]{
-	background:#ebd266;;
-}
-input[id="tab02"]:checked ~ .btn > label[for="tab02"]{
-	background:#f1bfd4;;
-}
-input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
-	background:#b4dee9;;
-}
-
-/* 그 외 */
-.p_title{
-    font-family: 'DOSGothic';
-    font-size: large; 
-    margin: 3%;
-    text-align: center;
-}
-
-.category_detail{
-	/* ▼ 지현님 코드
-    font-family: 'Nanum Gothic', sans-serif;
-    margin: 3%;
-    */
-    font-family: 'Sam3KRFont';
-   	font-size: 30px;
-   	text-align: left;
-   	color: #730e74;
-   	margin: 30px 0 30px 50px;
-   	width: 60%;
-}
-
-.p_explain{
-	/* ▼ 지현님 코드
-    font-family: 'Nanum Gothic', sans-serif;
-    margin: 3%;
-    */
-    	font-family: 'Sam3KRFont';
-    	font-size: 30px;
-    	text-align: left;
-    	color: #730e74;
-    	margin: 30px 0 30px 50px;
-    	width: 60%;
-}
-
-.p_content{
-    font-family: 'DOSGothic';
-    text-align: center;
-}
-
-.proInfo{
-	font-family: 'DOSGothic';
-    display: flex;
-    justify-content: space-around;
-    text-align: center; 
+.frame{
+	margin: 50px 50px; 
 }
 
 /* 이미지 슬라이드 */
@@ -127,19 +33,74 @@ input[id="tab03"]:checked ~ .btn > label[for="tab03"]{
 */
 
 .slide_content{
-	width: 550px; 
-	height: 350px; /* 정렬하려는 요소의 넓이를 반드시 지정 */ 
-	margin: 0 auto;
-	margin-top: 1%;
-	margin-bottom: 5%;
+	width: 450px; 
+	height: 350px; 
+	margin: 0 auto; /* 가운데 정렬 .. ? */
+	margin-bottom: 3%;
 }
 
+.slide_div img{
+	border-radius: 15px;
+}
 
+.p_title{
+    font-family: 'DOSGothic';
+    font-size: large; 
+    margin: 3%;
+    text-align: center;
+}
 
+.category_detail{
+    font-family: 'Sam3KRFont';
+   	font-size: 28px;
+   	text-align: left;
+   	color: #730e74;
+   	margin: 30px 0 30px 50px;
+   	width: 60%;
+}
 
+.p_explain{
+    	font-family: 'Sam3KRFont';
+    	font-size: 28px;
+    	text-align: left;
+    	color: #730e74;
+    	margin: 30px 0 30px 50px;
+    	width: 60%;
+}
 
+.p_content{
+    font-family: 'DOSGothic';
+    text-align: center;
+}
 
+.proInfo{
+	font-family: 'DOSGothic';
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+	margin: 2% 5%;
+}
 
+.proInfo strong{
+	font-size: 15px;
+}
 
+.proInfo p{
+    font-size: 13px;	
+}
 
+.proInfo img {
+	border-radius: 15px;
+}
 
+.proList1 {
+	margin: 0 5px;
+}
+
+.proList2 {
+	margin: 0 5px;
+}
+
+.proList3 {
+	margin: 0 5px;
+}

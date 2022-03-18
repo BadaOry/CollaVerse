@@ -15,16 +15,20 @@
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
 	
-    <div class="category_list">
+	<div class="frame">
+	
+    <div class="category_name">
         <h3>문화</h3>
     </div>
+    
+    <div class="category_list">
 
         <div class="culture">
         <div class="culture1">
     	<c:forEach var="clist" items="${ clist }" begin="0" end="0">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ clist.no }">  
-            <div class="c_img">
-                 <img src="${ path }${ clist.imgPath }${ clist.no }.jpg" alt="" width="550px" height="400px">
+            <div class="l_img">
+                 <img src="${ path }${ clist.imgPath }${ clist.no }.jpg" alt="" width="400px" height="300px">
             </div>              
             <p>          
             <strong>${ clist.title }</strong>
@@ -37,7 +41,7 @@
             <table>
             <tr>
             	<td colspan = "2" rowspan="2" width="200px" height="150px">
-            	<img src="${ path }${ cpro.proImgpath }${ cpro.proNo }.jpg" alt="" width="150px" height="100px">
+            	<img src="${ path }${ cpro.proImgpath }${ cpro.proNo }.jpg" alt="" width="120px" height="90px">
             	</td>
             	<td>${ cpro.proName }</td>
             </tr>
@@ -52,7 +56,7 @@
     	<c:forEach var="clist" items="${ clist }" begin="1" end="1">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ clist.no }">  
             <div class="l_img">
-                 <img src="${ path }${ clist.imgPath }${ clist.no }.jpg" alt="" width="550px" height="400px">
+                 <img src="${ path }${ clist.imgPath }${ clist.no }.jpg" alt="" width="400px" height="300px">
             </div>              
             <p>          
             <strong>${ clist.title }</strong>
@@ -65,7 +69,7 @@
             <table>
             <tr>
             	<td colspan = "2" rowspan="2" width="200px" height="150px">
-            	<img src="${ path }${ cpro.proImgpath }${ cpro.proNo }.jpg" alt="" width="150px" height="100px">
+            	<img src="${ path }${ cpro.proImgpath }${ cpro.proNo }.jpg" alt="" width="120px" height="90px">
             	</td>
             	<td>${ cpro.proName }</td>
             </tr>
@@ -80,7 +84,7 @@
     	<c:forEach var="clist" items="${ clist }" begin="2" end="2">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ clist.no }">  
             <div class="l_img">
-                 <img src="${ path }${ clist.imgPath }${ clist.no }.jpg" alt="" width="550px" height="400px">
+                 <img src="${ path }${ clist.imgPath }${ clist.no }.jpg" alt="" width="400px" height="300px">
             </div>              
             <p>          
             <strong>${ clist.title }</strong>
@@ -93,7 +97,7 @@
             <table>
             <tr>
             	<td colspan = "2" rowspan="2" width="200px" height="150px">
-            	<img src="${ path }${ cpro.proImgpath }${ cpro.proNo }.jpg" alt="" width="150px" height="100px">
+            	<img src="${ path }${ cpro.proImgpath }${ cpro.proNo }.jpg" alt="" width="120px" height="90px">
             	</td>
             	<td>${ cpro.proName }</td>
             </tr>
@@ -104,6 +108,9 @@
             </c:forEach>
 			</div>						
             </div>
+            
+            </div>
+       </div>
     
     	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 
     	

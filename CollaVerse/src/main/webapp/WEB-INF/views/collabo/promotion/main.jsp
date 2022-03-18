@@ -54,7 +54,7 @@
     <div id="promotion">
     <c:if test="${ loginMember.role == '관리자'}">
     		<button id="write_pro" onclick="location.href='${ path }/collabo/promotion/writing_promotion'">프로모션 작성하기</button></c:if>
-        <h3 class="mini_title">최신 프로모션</h3>
+        <h3 class="mini_title" style= "margin:0; padding:0">최신 프로모션</h3>
 <!--          
         <a onclick="location.href='${ path }/collabo/promotion/detail?pmtNo=1'">
         	클릭해서 테스트용 pmt_no=1 으로 이동
@@ -64,13 +64,13 @@
     </div>
         
     <div class="p_new">
-            <div class="area1">
+            <div class= p_list1">
             <c:forEach var="list" items="${ list }" begin="0" end="2">
             <table>
             <tr>
             <td>
             		<a href="${ path }/collabo/promotion/detail?pmtNo=${ list.no }">               
-                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
+                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="250px">
                     </a> 
             </td>
             </tr>         
@@ -88,13 +88,13 @@
  			</c:forEach>
             </div>
  
-            <div class="area2">
+            <div class="p_list2">
             <c:forEach var="list" items="${ list }" begin="3" end="5">
             <table>
             <tr>
             <td>    
             		<a href="${ path }/collabo/promotion/detail?pmtNo=${ list.no }">                            
-                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
+                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="250px">
                     </a> 
             </td>
             </tr>         
@@ -112,13 +112,13 @@
  			</c:forEach>
             </div>
 
-            <div class="area3">
+            <div class="p_list3">
              <c:forEach var="list" items="${ list }" begin="6" end="8">
             <table>
             <tr>
             <td>      
             		<a href="${ path }/collabo/promotion/detail?pmtNo=${ list.no }">                          
-                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
+                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="250px">
                     </a> 
             </td>
             </tr>         
@@ -136,13 +136,13 @@
  			</c:forEach>
             </div>         
             
-            <div class="area4">
+            <div class="p_list4">
               <c:forEach var="list" items="${ list }" begin="9" end="11">
             <table>
             <tr>
             <td>    
             		<a href="${ path }/collabo/promotion/detail?pmtNo=${ list.no }">                		            
-                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
+                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="250px">
                     </a> 
             </td>
             </tr>         
@@ -161,13 +161,13 @@
             </div>
             
       
-            <div class="area5">
+            <div class="p_list5">
              <c:forEach var="list" items="${ list }" begin="12" end="14">
             <table>
             <tr>
             <td> 
             		<a href="${ path }/collabo/promotion/detail?pmtNo=${ list.no }">                               
-                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="300px">
+                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="250px">
                     </a> 
             </td>
             </tr>         

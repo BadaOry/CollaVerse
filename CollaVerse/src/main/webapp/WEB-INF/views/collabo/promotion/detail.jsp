@@ -35,7 +35,7 @@
 				<c:forEach var="productInfo" items="${ productInfo }" begin="0" end="2">
 					<div>
 						<a>
-							<img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="550" height="400px">
+							<img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt=""width="450px" height="350px">
 						</a>
 					</div>
 					</c:forEach>
@@ -112,13 +112,13 @@
         		<table>
         		<tr>
         		<td>
-                <img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="470px" height="350px">
+                <img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="350px" height="250px">
                 </td>
                 </tr>
                 
                 <tr>
                 <td>
-	            <p>${ productInfo.proName }</p>
+	            <strong>${ productInfo.proName }</strong>
 	            </td>
 				</tr>
 
@@ -144,13 +144,13 @@
         		<table>
         		<tr>
         		<td>
-                <img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="470px" height="350px">
+                <img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="350px" height="250px">
                 </td>
                 </tr>
                 
                 <tr>
                 <td>
-	            <p>${ productInfo.proName }</p>
+	            <strong>${ productInfo.proName }</strong>
 	            </td>
 				</tr>
 
@@ -176,13 +176,13 @@
         		<table>
         		<tr>
         		<td>
-                <img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="470px" height="350px">
+                <img src="${ path }${ productInfo.proImgpath }${ productInfo.proNo }.jpg" alt="" width="350px" height="250px">
                 </td>
                 </tr>
                 
                 <tr>
                 <td>
-	            <p>${ productInfo.proName }</p>
+	            <strong>${ productInfo.proName }</strong>
 	            </td>
 				</tr>
 
