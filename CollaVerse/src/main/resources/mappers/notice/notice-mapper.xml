@@ -116,4 +116,14 @@
         </if>
     
     </select>
+    
+    <!--  메인에서 최신 공지 3개 가져오기 -->
+    <select id="selectRecent3" resultMap="noticeListResultMap">
+	    SELECT RESULT.* 
+		FROM (SELECT ROWNUM NUMROW, TITLE, TO_CHAR(REG_DATE, 'YYYY-mm-dd'), BNO
+			  FROM (SELECT TITLE, REG_DATE, BNO
+				    FROM NOTICE
+				    ORDER BY REG_DATE DESC)) RESULT
+		WHERE RESULT.NUMROW BETWEEN 1 AND 3
+    </select>
   </mapper>

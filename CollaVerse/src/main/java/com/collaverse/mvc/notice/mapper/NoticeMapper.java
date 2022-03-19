@@ -30,4 +30,7 @@ public interface NoticeMapper {
     
     /* 게시판 총 갯수 */
     public int getTotal(Criteria cri);
+
+    /* 메인에서 최근 공지사항 3개 가져오기 */
+	public List<Notice> selectRecent3();
 }
