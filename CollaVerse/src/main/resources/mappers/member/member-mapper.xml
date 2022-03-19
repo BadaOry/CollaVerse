@@ -303,16 +303,6 @@
 							WHERE TO_MEM_NO = #{memberNo}
 							))
 	</select>
-	
-	<!-- 비밀번호 변경 (작성중) -->
-	<update id="updatePwd" parameterType="com.collaverse.mvc.member.model.vo.Member">
-		UPDATE MEMBER SET PASSWORD = #{password} WHERE MEMBER_NO = #{no}
-	</update>
-	
-	<select id="findMemberByPw" parameterType="string" resultMap="memberResultMap">
-		<include refid="selectMemberSql" />
-		WHERE PASSWORD = #{password} AND MEMBER_STATUS = 'Y'
-	</select>
 
 	<!-- 1일 전 팔로우 -->
 	<select id = "getYesterday1Count" resultType="_int">
@@ -361,6 +351,16 @@
 		SELECT COUNT(*)
 		FROM FOLLOWER
 		WHERE TO_MEM_NO = #{memberNo} AND TO_CHAR(FOLLOWER_CREATE_DATE) = TO_CHAR(SYSDATE - 7)
+	</select>
+	
+		<!-- 비밀번호 변경 (작성중) -->
+	<update id="updatePwd" parameterType="com.collaverse.mvc.member.model.vo.Member">
+		UPDATE MEMBER SET PASSWORD = #{password} WHERE MEMBER_NO = #{no}
+	</update>
+	
+	<select id="findMemberByPw" parameterType="string" resultMap="memberResultMap">
+		<include refid="selectMemberSql" />
+		WHERE PASSWORD = #{password} AND MEMBER_STATUS = 'Y'
 	</select>
 
 </mapper>

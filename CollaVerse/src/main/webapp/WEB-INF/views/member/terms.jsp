@@ -178,14 +178,6 @@
 				</textarea><br>
 				</div>
 				
-				<!-- 
-				<div align="center">
-					<p><input type="checkbox" id="agree" required>동의합니다. (필수)</p>
-				</div>
-				<div align="center">
-					<input type="button" id="personal" value="동의 후 회원가입" onclick="location.href='${ path }/member/enroll'">
-				</div>
-				 -->
 				<form action="${ path }/member/enroll" method="post">
 					<div align="center">
 						<p><input type="checkbox" id="agree" name="agree" required>동의합니다. (필수)</p>

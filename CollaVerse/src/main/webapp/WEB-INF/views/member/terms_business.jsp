@@ -177,14 +177,6 @@
  
 				</textarea><br>
 				</div>
-				<!-- 
-				<div align="center">
-					<p><input type="checkbox">동의합니다. (필수)</p>
-				</div>
-				<div align="center">
-					<input type="button" id="business" value="동의 후 회원가입" onclick="location.href='${ path }/member/enroll_business'">
-				</div>
-				 -->
 				
 				<form action="${ path }/member/enroll_business" method="post">
 					<div align="center">
@@ -194,7 +186,6 @@
 						<input type="button" id="personal" name="checked" value="동의 후 회원가입" onclick="getCheckvalue()">
 					</div>
 				</form>
-				
 		<br>
 		
 <!--  약관동의 체크박스 미동의 시 가입 불가 -->
