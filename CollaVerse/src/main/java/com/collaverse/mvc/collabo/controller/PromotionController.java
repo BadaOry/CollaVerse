@@ -47,9 +47,8 @@ public class PromotionController {
 	}
 	
 	@PostMapping("/collabo/promotion/writing_promotion")
-	public ModelAndView writingpromotion(ModelAndView model,/* HttpServletRequest request,*/
+	public ModelAndView writingpromotion(ModelAndView model,
 			@SessionAttribute(name="loginMember") Member loginMember,
-//			@ModelAttribute WritePromotion writepromotion,
 			@RequestParam("promName") String promTitle,
 			@RequestParam("promContent") String promContent,
 			@RequestParam("startDate") @DateTimeFormat(pattern="yyyy-MM-dd") Date startDate,
@@ -68,20 +67,18 @@ public class PromotionController {
 			@RequestParam("prodQty2") String prodQty2,
 			@RequestParam("prodQty3") String prodQty3,
 			@RequestParam("promImg") MultipartFile promImg, @RequestParam("prodImg") MultipartFile[] prodImg) {
+		
 		int promresult = 0;
 		int prodresult1 = 0;
 		int prodresult2 = 0;
 		int prodresult3 = 0;
+		
 		Promotion promotionVo = new Promotion();
 		Product productVo1 = new Product();
 		Product productVo2 = new Product();
 		Product productVo3 = new Product();
+		
 		String location  = null;
-		
-		log.info("[Controller] 요청이 오는지 확인 ");
-		System.out.println("나오냐? " + promTitle + promContent +  startDate + endDate);
-		
-//		log.info("writepromotion 출력 {} ", writepromotion.toString());
 		
 		log.info("promImg Name : {}", promImg.getOriginalFilename());
 		log.info("promImg is Empty : {}", promImg.isEmpty());
@@ -105,10 +102,8 @@ public class PromotionController {
 		// pmt_content 는 받아와야함
 		promotionVo.setContent(promContent);
 		
-		// pmt_status 는 쿼리에서 디콜트로 y
+		// pmt_status 는 쿼리에서 디폴트로 y
 		// start_date & end_date는 받아와야 함
-		// > 1. promotion/detail 페이지에서 start enddate 를 보여주는 공간이 없네요
-		//        > insert 문 구현 완료되면 지현님이랑 상의해서 어디넣을지 
 		promotionVo.setStartDate(startDate);
 		promotionVo.setEndDate(endDate);
 		
@@ -143,34 +138,28 @@ public class PromotionController {
 		productVo1.setCNo(cNo);
 		productVo2.setCNo(cNo);
 		productVo3.setCNo(cNo);
-		// pmt_no는 promotion에서 받아오기?
+		// pmt_no는 promotion에서 받아오기
 		
 		log.info("[Controller] promotionVo 에 내용이 잘 set 되었는지 확인 : {}", promotionVo);	
 		
 		promresult = service.promotionSave(promotionVo);
 		
-		// promTitle 을 파라미터로 넘겨서 mapper.xml 까지 가서 where = #{promTitle} 로 방금 insert한 promotion의 정보를 빼온다
-//		promotionVo = service.findPromotionInfo(promTitle);
-		// select * from promotion where = #{promTitle}
-		
 		log.info("[Controller] insert 후에 다시 찾아온 promotion 입력내용 : {}", promotionVo);	
-		
 		
 		int promotionNo = promotionVo.getNo();
 		
-		log.info("[Controller] promotionVo 의 promotionNo 확 : {}", promotionNo);	
+		log.info("[Controller] promotionVo 의 promotionNo 확인 : {}", promotionNo);	
 		
 		 
 		// 2. Promotion 이미지 파일명 바꾸기
 		if (promImg != null && !promImg.isEmpty()) {
 			
 			String renamedFileName = null;
-//			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			try {
 				location = resourceLoader.getResource("resources/images/promotion").getFile().getPath();
 				renamedFileName = PromotionFileProcess.promotionsave(promImg, location, promotionNo);
 				
-				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
+				log.info("[Controller] PromotionFileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
 			} catch (IOException e) {
 				
 				e.printStackTrace();
@@ -183,15 +172,15 @@ public class PromotionController {
 			}
 		}
 				
-		log.info("[Controller] 파일명 두개 잘 set했는지 promotion 최종 확인 : {}", promotionVo);
+		log.info("[Controller] 파일명 두 개 잘 set했는지 promotion 최종 확인 : {}", promotionVo);
 		
 		prodresult1 = service.productSave1(productVo1);
 		prodresult2 = service.productSave2(productVo2);
 		prodresult3 = service.productSave3(productVo3);
 		
-		log.info("[Controller] insert 후에 다시 찾아온 product 입력내용 : {}", productVo1);	
-		log.info("[Controller] insert 후에 다시 찾아온 product 입력내용 : {}", productVo2);	
-		log.info("[Controller] insert 후에 다시 찾아온 product 입력내용 : {}", productVo3);	
+		log.info("[Controller] insert 후에 다시 찾아온 product1 입력내용 : {}", productVo1);	
+		log.info("[Controller] insert 후에 다시 찾아온 product2 입력내용 : {}", productVo2);	
+		log.info("[Controller] insert 후에 다시 찾아온 product3 입력내용 : {}", productVo3);	
 		
 		int productNo1 = productVo1.getProNo();
 		int productNo2 = productVo2.getProNo();
@@ -207,12 +196,11 @@ public class PromotionController {
 		if (prodImg != null && !prodImg[0].isEmpty()) {
 			
 			String renamedFileName = null;
-//			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			try {
 				location = resourceLoader.getResource("resources/images/product").getFile().getPath();
 				renamedFileName = ProductFileProcess.productsave1(prodImg, location, productNo1);
 				
-				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
+				log.info("[Controller] ProductFileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
 			} catch (IOException e) {
 				
 				e.printStackTrace();
@@ -228,12 +216,11 @@ public class PromotionController {
 		if (prodImg != null && !prodImg[1].isEmpty()) {
 			
 			String renamedFileName = null;
-//			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			try {
 				location = resourceLoader.getResource("resources/images/product").getFile().getPath();
 				renamedFileName = ProductFileProcess.productsave2(prodImg, location, productNo2);
 				
-				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
+				log.info("[Controller] ProductFileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
 			} catch (IOException e) {
 				
 				e.printStackTrace();
@@ -248,12 +235,11 @@ public class PromotionController {
 		if (prodImg != null && !prodImg[2].isEmpty()) {
 			
 			String renamedFileName = null;
-//			String location = request.getSession().getServletContext().getRealPath("resources/upload/promotion");
 			try {
 				location = resourceLoader.getResource("resources/images/product").getFile().getPath();
 				renamedFileName = ProductFileProcess.productsave3(prodImg, location, productNo3);
 				
-				log.info("[Controller] FileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
+				log.info("[Controller] ProductFileProcess 에서 가져온 renamedFileName 출력 : {}", renamedFileName);
 			} catch (IOException e) {
 				
 				e.printStackTrace();
@@ -270,9 +256,9 @@ public class PromotionController {
 		productVo2.setPmtNo(String.valueOf(promotionNo));
 		productVo3.setPmtNo(String.valueOf(promotionNo));
 		
-		log.info("[Controller] productVo 에 내용이 잘 set 되었는지 확인 : {}", productVo1);	
-		log.info("[Controller] productVo 에 내용이 잘 set 되었는지 확인 : {}", productVo2);	
-		log.info("[Controller] productVo 에 내용이 잘 set 되었는지 확인 : {}", productVo3);	
+		log.info("[Controller] productVo1 에 내용이 잘 set 되었는지 확인 : {}", productVo1);	
+		log.info("[Controller] productVo2 에 내용이 잘 set 되었는지 확인 : {}", productVo2);	
+		log.info("[Controller] productVo3 에 내용이 잘 set 되었는지 확인 : {}", productVo3);	
 		
 		// ★ PRODUCTVO 123 에 PMTNO UPDATE 쿼리를 돌려야돼요
 		prodresult1 = service.productUpdate1(productVo1);
@@ -284,7 +270,7 @@ public class PromotionController {
 		log.info("[Controller] productVo3 최종 확인 : {}", productVo3);	
 		
 		
-		// 완성ㅇ한 productVo 123 을 List 에 집어넣는 짓
+		// 완성한 productVo 123 을 List 에 집어넣기
 		List<Product> productList = new ArrayList();
 		
 		productList.add(productVo1);

@@ -24,6 +24,35 @@
     <div class="category_list">
 
         <div class="fashion">
+        
+        <div class="fashion4">
+    	<c:forEach var="fslist" items="${ fslist }" begin="3">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ fslist.no }">
+            <div class="fs_img">
+                 <img src="${ path }${ fslist.imgPath }${ fslist.no }.jpg" alt="" width="400px" height="300px">
+            </div>              
+            <p>          
+            <strong>${ fslist.title }</strong>
+            </a>
+            <p>${ fslist.content }</p>
+			</c:forEach>                       
+            <p>
+               
+    		<c:forEach var="fspro" items="${ fspro }" begin="9" end="11">
+            <table>
+            <tr>
+            	<td colspan = "2" rowspan="2" width="200px" height="150px">
+            	<img src="${ path }${ fspro.proImgpath }${ fspro.proNo }.jpg" alt="" width="120px" height="90px">
+            	</td>
+            	<td>${ fspro.proName }</td>
+            </tr>
+            <tr>
+            	<td>${ fspro.proPrice }</td>
+            </tr>
+            </table>
+            </c:forEach>
+			</div>
+        
         <div class="fashion1">
     	<c:forEach var="fslist" items="${ fslist }" begin="0" end="0">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ fslist.no }">
