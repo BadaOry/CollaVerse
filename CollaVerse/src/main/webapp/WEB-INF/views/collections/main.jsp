@@ -65,75 +65,75 @@
 		</form>
 
 	
-	</div>
-	
+	</div>			 
 		
-	<div id="userContainer">
-	
-			<c:forEach var="allUserList"  items="${ allUserList }">
-			
-				<div class="user_info_container">
-					<img id="profile_image" src="${ path }/resources/upload/profile/${ allUserList.profile_img }"
-						onclick="location.href='${ path }/mypage/collection/list/${ allUserList.id }'" />
-				
-					<p id="user_nickname"> ${ allUserList.nickname } </p>
-				</div>
-						
-			</c:forEach>
-
+		
+	<div id="userContainer">			
 		
 	</div>
-		
-		<%-- 
-		
-			<div>
-				<c:forEach var="infiniteUserList"  items="${ infiniteUserList }">
-				
-					<div class="user_info_container">
-						<img id="profile_image" src="${ path }/resources/upload/profile/${ infiniteUserList.Collections.profile_img }"
-							onclick="location.href='${ path }/mypage/collection/list/${ infiniteUserList.Collections.id }'" />
-					
-						<p id="user_nickname"> ${infiniteUserList.Collections.nickname } </p>
-					</div>
-							
-				</c:forEach>
-				
-			</div>
-		 -->
-		 
-		
-		<!--  인피니트 코드 실습 #1
-		
-		<div class="box"> 1번째 블록</div>
-		<div class="box"> 2번째 블록</div>
-		
-		 -->
-		 
-
-
-
 	
+
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	
 	<script>
-		<%-- 인피니트 코드 실습 #1 
-		var count =2;
-		var userList = ${ userList };
+	
+		var count =1;
+        var timer;
+		
+		window.onload = function() {
+			getList();	
+		}
 		
 	    window.onscroll = function() {
 	        if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-	            var toAdd = document.createElement("div");
-	            toAdd.classList.add("box")
-	            toAdd.textContent = ++count +  "번째 블록"
-	            if()
-	            document.querySelector('#userContainer').appendChild(toAdd);
+	          clearTimeout(timer);
+	          timer = setTimeout(function() {
+	            // 실행할 코드 내용
+	        	getList();        	
+	          },200) 
 	        }
+
+	    };
+		
+	    function getList() {
+	    	$.ajax({
+        		type : 'post',
+        		url : '${ path }/collections/infinite',
+        		dataType : 'json',
+        		data : {
+        			lastBlock : count
+        		},
+        		error : function() {
+        			alert("에러났다긔");
+        		},
+        		success : function(data) {
+        			var str = "";
+        			
+        			if (data != "" && data.length != 0 ) {
+        				$(data).each(function(index, value) {
+        					str += '<div class="user_info_container">' 
+        						+ '<img id="profile_image" src="${ path }/resources/upload/profile/' + value.profile_img + '" onclick="location.href=\'${ path }/mypage/collection/list/' + value.id + '\'" />' 
+	        					+ '<p id="user_nickname">' + value.nickname + '</p>'
+        						+ '</div>'	
+        					;
+        				});
+        				console.log(str);
+        				
+        				$("#userContainer").append(str);
+        				
+        				count++;
+        				
+        			} else {
+        				window.onscroll = null;
+        			}
+        		} 
+        		
+        		
+        	});
 	    }
 		
-		
-	
 	</script>
-		--%>
+	
 
 	
 </body>
