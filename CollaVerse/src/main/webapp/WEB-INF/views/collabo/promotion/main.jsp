@@ -64,7 +64,32 @@
     </div>
         
     <div class="p_new">
-            <div class= p_list1">
+    
+    		<div class="p_list6">
+             <c:forEach var="list" items="${ list }" begin="15">
+            <table>
+            <tr>
+            <td>
+            		<a href="${ path }/collabo/promotion/detail?pmtNo=${ list.no }">                               
+                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="250px">
+                    </a> 
+            </td>
+            </tr>         
+                <tr>
+                <td>
+                <a href="${ path }/collabo/promotion/detail?pmtNo=${ list.no }">                  
+                ${ list.title }
+                </a>
+                </td>
+                </tr>
+                <tr>
+				<td><fmt:formatDate value="${ list.startDate }" pattern="yyyy-MM-dd ~"/></td>
+				</tr>
+				</table>
+ 			</c:forEach>
+            </div>
+    
+            <div class="p_list1">
             <c:forEach var="list" items="${ list }" begin="0" end="2">
             <table>
             <tr>
@@ -121,7 +146,7 @@
                     <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="250px">
                     </a> 
             </td>
-            </tr>         
+            </tr>    
                 <tr>
                 <td>
                 <a href="${ path }/collabo/promotion/detail?pmtNo=${ list.no }">                  
@@ -184,6 +209,7 @@
 				</table>
  			</c:forEach>
             </div>
+            
     </div>
 </div>
 

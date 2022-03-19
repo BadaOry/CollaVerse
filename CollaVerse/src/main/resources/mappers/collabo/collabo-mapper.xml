@@ -245,12 +245,8 @@
 			WHERE REGEXP_LIKE (BR_NAME, '^[ ${ alphabet } ]')		
   		</select>
   		 		
-  		<!-- Promotion VO 에 INSERT 하는 부분 -->
-
-	     	
-        
-  		<!-- Promotion VO 에 pmtNo 받아올라고 첫 번째 INSERT 하는 부분 -->
-
+  		 		
+  		<!-- Promotion VO 에 pmtNo 받아오려고 첫 번째 INSERT 하는 부분 -->
   		<insert id="promotionSave" parameterType="com.collaverse.mvc.collabo.model.vo.Promotion"
   			useGeneratedKeys="true" keyProperty="no" keyColumn="PMT_NO">  			
   			INSERT INTO PROMOTION (

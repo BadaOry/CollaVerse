@@ -126,6 +126,7 @@ public class PromotionServiceImpl implements PromotionService {
 		return mapper.productSave(productVo1);
 		
 	}
+	
 	@Override
 	public int productSave2(Product productVo2) {
 		
@@ -134,6 +135,7 @@ public class PromotionServiceImpl implements PromotionService {
 		return mapper.productSave(productVo2);
 		
 	}
+	
 	@Override
 	public int productSave3(Product productVo3) {
 		
