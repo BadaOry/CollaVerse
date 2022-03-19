@@ -93,9 +93,9 @@
 					</c:if>
 					<c:if test="${ loginMember.role == '기업' }">
 						<li><a href="${ path }/mypage/businessMypage">My 콜라버스</a>
-							<ul style="width: 600px; right:0px;">
+							<ul>
 								<li><a class="header_nav1" href="${ path }/mypage/calendar/scheduleDetail">My 콜라보 캘린더</a></li>
-								<li><a class="header_nav1" href="${ path }/mypage/statisticsCount">통계</a></li>
+								<li><a class="header_nav1" href="${ path }/mypage/statistics/statisticsCount">통계</a></li>
 								<li><a class="header_nav1" href="${ path }/mypage/collection/list/${ loginMember.id }">MyCollection</a></li>
 								<li><a class="header_nav1" href="${ path }/mypage/myFollow/main">팔로우</a></li>
 							</ul>
@@ -110,7 +110,7 @@
 						</li>
 					</c:if>
 					
-					<li><a class="menu_title"  href="${ path }/qna/qnaList">FAQ</a></li>
+					<li><a class="menu_title"  href="${ path }/qna/test">FAQ</a></li>
 				</ul>
 			</nav>
 		</div>

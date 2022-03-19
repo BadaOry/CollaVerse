@@ -497,20 +497,18 @@ public class MemberController {
 	
 	@PostMapping("/member/updatePwd")
 	public ModelAndView updatePwd(
-			ModelAndView model,
-			@SessionAttribute(name="loginMember") Member loginMember,
-			@ModelAttribute Member member) {
+			ModelAndView model, // 데이터와 넘길 페이지의 값을 모두 가지고 있는 객체
+			@SessionAttribute(name="loginMember") Member loginMember, //model의 정보를 http 세션에 저장해주는 어노
+			@ModelAttribute Member member) { //사용자가 요청 시 전달하는 값을 오브젝트 형태로 매핑해주는 어노
 		
 		int result = 0;
 		
-		member.setNo(loginMember.getNo());
+		member.setPassword(loginMember.getPassword()); //member의 비밀번호를 가져온다
 		
-		System.out.println(member);
+		System.out.println(member); //출력해보니 member의 비밀번호만 가져와서 그것만 뜸. 나머지 null
 		
-		result = service.save(loginMember);
-		
-		System.out.println(loginMember);
-		
+		result = service.save(member);
+				
 		if(result > 0) {
 			model.addObject("loginMember", service.findMemberByPw(loginMember.getPassword()));
 			model.addObject("msg", "비밀번호 변경 완료");
@@ -524,6 +522,10 @@ public class MemberController {
 		
 		return model;
 	}
+	
+	
+	
+	
 	
 
 }

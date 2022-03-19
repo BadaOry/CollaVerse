@@ -4,18 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.collaverse.mvc.member.model.service.MemberService;
 import com.collaverse.mvc.member.model.vo.Member;
 
 @Controller
+@RequestMapping("/mypage/statistics")
 public class StatisticsController {
 	
 	@Autowired
 	private MemberService service;
 	
-	@GetMapping("/mypage/statisticsCount")
+	@GetMapping("/statisticsCount")
 	public String getStatistics(Model model,
 			@SessionAttribute("loginMember") Member loginMember) {
 		

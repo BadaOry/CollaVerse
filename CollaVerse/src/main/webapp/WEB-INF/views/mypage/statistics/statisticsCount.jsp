@@ -58,6 +58,12 @@ body {
 	  width: 900px;
 	  height: 600px;
 	}
+	#info_container #serviceInfo {
+	margin-top: 12px;
+	}
+	#info_container #gitHub {
+		margin-top: 11px;
+	}
 	</style>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>

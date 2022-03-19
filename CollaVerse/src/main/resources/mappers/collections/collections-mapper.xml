@@ -41,14 +41,14 @@
 	</select>
 	
 	
-	<!-- 인피니트 스크롤 도전 -->
+	<!-- 인피니트 스크롤 데이터 받아오기 -->
 	<select id="getInfiniteUserList" parameterType="_int" resultMap="listResultMap" resultType="arrayList">
 		SELECT RESULT.* 
 		FROM (SELECT ROWNUM NUMROW,ID, NICKNAME, PROFILE_IMG, MEMBER_ROLE
 				FROM MEMBER
+                WHERE MEMBER_ROLE IN ('개인', '기업')
 		        ORDER BY MEMBER_NO) RESULT
-		WHERE RESULT.NUMROW BETWEEN (14 * #{ i } + 1) AND (14 * (#{ i } + 1))
-		    AND MEMBER_ROLE IN ('개인', '기업')
+		WHERE RESULT.NUMROW BETWEEN (12 * (#{ count } - 1) + 1) AND (12 * #{ count })
 	</select>	
 		
 		 

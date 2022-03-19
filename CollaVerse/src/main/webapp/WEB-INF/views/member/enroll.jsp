@@ -74,7 +74,7 @@
 	 			<tr>
 	 				<th>성별 *</th>
 	 				<td>
-						<input type="radio" name="gender" value="woman">여자
+						<input type="radio" name="gender" value="woman" checked>여자
 	 					<input type="radio" name="gender" value="man">남자
 	 				</td>
 	 			</tr>

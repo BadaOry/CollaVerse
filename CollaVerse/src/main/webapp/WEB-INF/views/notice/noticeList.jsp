@@ -151,7 +151,9 @@ tr td a {
 a {
 	color: black;
 }
-
+#sey {
+	font-size: 50px;
+}
 .page-item active{
 	background-color: #faae22;
 	color: #730e74;
@@ -195,6 +197,12 @@ a {
 	font-family: 'DOSGothic';
 	height: 40px;
 }
+#info_container #serviceInfo {
+	margin-top: 12px;
+}
+#info_container #gitHub {
+	margin-top: 11px;
+}
 </style>
 </head>
 <body>
@@ -211,7 +219,7 @@ a {
    				<div id="bo" class="card-header with-border">
    					<h3 class="card-title">공지사항</h3>
    				</div>
-				<span id="se" class="form-group">
+				<span id="sed" class="form-group">
 				    <select id="counts" name="pageUnit" onchange="Change(1)">   
 				        <option value="5" <c:if test="${ pageMaker.cri.amount == 5 }">selected="selected"</c:if>>5개씩 보기</option>
 				        <option value="10" <c:if test="${ pageMaker.cri.amount == 10 }">selected="selected"</c:if>>10개씩 보기</option>
@@ -223,6 +231,15 @@ a {
 				
 				
    				<div class="card-body">
+   					<span id="sey" class="form-group">
+					    <select id="counts" name="pageUnit" onchange="Change(1)">   
+					        <option value="5" <c:if test="${ pageMaker.cri.amount == 5 }">selected="selected"</c:if>>5개씩 보기</option>
+					        <option value="10" <c:if test="${ pageMaker.cri.amount == 10 }">selected="selected"</c:if>>10개씩 보기</option>
+					        <option value="20" <c:if test="${ pageMaker.cri.amount == 20 }">selected="selected"</c:if>>20개씩 보기</option>
+					        <option value="30" <c:if test="${ pageMaker.cri.amount == 30 }">selected="selected"</c:if>>30개씩 보기</option>
+					        <option value="40" <c:if test="${ pageMaker.cri.amount == 40 }">selected="selected"</c:if>>40개씩 보기</option>
+					    </select>
+					</span>
    					<table class="table table-borderedd">
    						<tbody>
    						<tr>

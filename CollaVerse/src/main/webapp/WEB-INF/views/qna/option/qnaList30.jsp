@@ -18,80 +18,36 @@
   <link rel="stylesheet" href="${ path }/resources/css/bootstrap.min.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 <style>
-/* 헤더 */
-#header1 {
-	height: 80px;
-	margin: -20px 0 0 0; 
+#ho {
+width: 1200px;
+margin: auto;
 }
-
-#header3 {
-	margin: 35px 0 0 0;
+.card-header {
+	border-bottom: 0;
 }
-
-
-body {
-	margin: 8px;
+#bo {
+	background-color: #fff;
+	heifht: 100px;
 }
-	
-h2 {
-	text-align: center;
-	font-size: 100px;
+#se {
+	background-color: #fff;
+	position: relative;
+	left: 1055px;
+	bottom:-10px;
 }
-
-/* --------- */
-div {
-	/*width: 1200px;
-	 margin: auto; */
-}
-#writeButton {
-	text-align: right;
-}
-.form-group {
-	margin-left: 1180px;
-}
-.pageInfo{
-	list-style : none;
-	display: inline-block;
-	margin: 50px 0 0 100px;
- }
-.pageInfo li{
-	float: left;
-	font-size: 20px;
-	margin-left: 18px;
-	padding: 7px;
-	font-weight: 500;
-}
-.search_area {
-	text-align: center;
-}
-
-.col-lg-12 {
-	margin : 0px 50px 20px 0px;
-	
+table {
+	border-color : white;
 }
 
 .card-title {
-	/* 고정값 */
 	font-family: 'Sam3KRFont';
 	font-size: 40px;
 	color: #730e74;
 	position: relative;
-	left: 150px;
+	left: -50px;
 	/* 변경값 */
 	text-align: left;
-	margin: 50px 0 30px 50px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
-}
-
-.card-header {
-	border-bottom : 0px solid rgba(0,0,0);
-}
-#bo {
-	background-color: #fff;
-	height: 10px;
-	margin: 0;
-}
-table {
-	border-color : white;
+	margin: 50px 0 30px 50px;
 }
 
 tr #t {
@@ -100,15 +56,14 @@ tr #t {
 	font-family: 'Sam3KRFont';
 	text-align: center;
 }
-
 tr td {
 	font-family: 'DOSGothic';
 	text-align: center;
 }
 tr td a {
 	text-decoration: none;
+	color: black;
 }
-
 .btn-successs {
 	margin: 0 220px 0 0;/* 고정값 */
 	background-color:#720e74;
@@ -125,43 +80,13 @@ tr td a {
 	display:inline-block;
 	width: 200px;	
 }
-
-.btn-successs:hover {
-  	/* 고정값 */
-	background-color:#faae22;
-	color: #720e74;
-	border: 2px solid #720e74;
-	
+.float-right {
+	width: 200px;
 }
-.btn-successs:active {
-	position:relative;
-	top:1px;
-}
-
-.paginationn {
-	display : flex;
-	list-style: none;
-	
-}
-
 .search_wrapp{ 
 	margin: 30px 0 50px 0;
+	text-align: center;
 }
-
-a {
-	color: black;
-}
-
-.page-item active{
-	background-color: #faae22;
-	color: #730e74;
-}
-
-.card-body {
-	padding: 20px 200px 50px 200px;
-}
-
-
 #searchbtn{
  	/* 고정값 */
 	background-color:#720e74;
@@ -195,6 +120,12 @@ a {
 	font-family: 'DOSGothic';
 	height: 40px;
 }
+#info_container #serviceInfo {
+	margin-top: 12px;
+}
+#info_container #gitHub {
+	margin-top: 11px;
+}
 </style>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
@@ -206,8 +137,8 @@ a {
 	response.setDateHeader("Expires", 1L);
 %>
 
-	<div class="col-lg-12">
-		<div class="cardd">
+	<div id="ho" class="col-lg-12">
+		<div class="carddd">
 			<div id="bo" class="card-header with-border">
 				<h3 class="card-title">FAQ 게시판</h3>
 			</div>
@@ -268,7 +199,7 @@ a {
 		</div>
    	</div>
     
-    <nav aria-label="Page navigation example" style="margin-left: 400px;">
+    <nav aria-label="Page navigation example" style="margin-left: 560px;">
 	  <ul class="pagination justify-content-center">
 	    <!-- 이전페이지 버튼 -->
         <c:if test="${pageMaker.prev}">

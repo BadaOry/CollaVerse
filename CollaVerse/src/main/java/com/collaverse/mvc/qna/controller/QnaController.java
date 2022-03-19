@@ -30,7 +30,7 @@ public class QnaController {
    private ReplyService rservice;
    
    /* 게시판 목록 페이지 접속(페이징 적용) */
-    @GetMapping("/qnaList")
+    @GetMapping("/test")
    public void qnaListGET(Model model, Criteria cri) {
        
       log.info("qnaListGET");

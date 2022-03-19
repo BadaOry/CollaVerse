@@ -110,7 +110,7 @@
       <div id="follower-statistic">
         <p>총 팔로워 ${ followerCount }명</p>
         <div> 금일 ${ todayCount }명</div>
-        <a href="${ path }/mypage/statisticsCount" style="text-decoration: none;">
+        <a href="${ path }/mypage/statistics/statisticsCount" style="text-decoration: none;">
 	        <ul id="follower-result">
 	            <c:if test="${ todayCount - yesterdayCount > '0'}">
 					<li>어제 대비 ${ todayCount - yesterdayCount }명 증가</li>

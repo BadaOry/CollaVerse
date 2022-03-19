@@ -31,12 +31,15 @@
         
     <div class="p_new">
     
+
     		 <!-- 새로 추가되는 프로모션 등록 -->
-             <div class="p_list6">
+
+    		<div class="p_list6">
              <c:forEach var="list" items="${ list }" begin="15">
             <table>
             <tr>
-            <td> 
+            <td>
+
             		<a href="${ path }/collabo/promotion/detail?pmtNo=${ list.no }">                               
                     <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="250px">
                     </a> 
@@ -55,8 +58,9 @@
 				</table>
  			</c:forEach>
             </div>
-            
-            <div class= "p_list1">
+
+    
+            <div class="p_list1">
             <c:forEach var="list" items="${ list }" begin="0" end="2">
             <table>
             <tr>
@@ -113,7 +117,7 @@
                     <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="250px">
                     </a> 
             </td>
-            </tr>         
+            </tr>    
                 <tr>
                 <td>
                 <a href="${ path }/collabo/promotion/detail?pmtNo=${ list.no }">                  
@@ -176,6 +180,7 @@
 				</table>
  			</c:forEach>
             </div>
+            
     </div>
 </div>
 

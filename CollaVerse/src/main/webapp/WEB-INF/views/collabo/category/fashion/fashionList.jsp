@@ -52,7 +52,7 @@
             </table>
             </c:forEach>
 			</div>						
-			
+        
         <div class="fashion1">
     	<c:forEach var="fslist" items="${ fslist }" begin="0" end="0">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ fslist.no }">
