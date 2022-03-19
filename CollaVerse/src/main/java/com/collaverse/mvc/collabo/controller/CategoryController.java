@@ -44,9 +44,12 @@ public class CategoryController {
 	@GetMapping("/collabo/category/culture/cultureList")
 	public ModelAndView cultureList(ModelAndView model) {
 		
+		// 문화 프로모션 가져오기
 		List<Promotion> clist = service.selectCulture();
+		// 문화 상품 가져오기
 		List<Product> cpro = service.selectCproduct();
 		
+		// 정상적으로 가져오는지 확인
 		log.info(clist.toString());
 		log.info(cpro.toString());
 		
@@ -61,9 +64,12 @@ public class CategoryController {
 	@GetMapping("/collabo/category/food/foodList")
 	public ModelAndView foodList(ModelAndView model) {
 		
+		// 식품 프로모션 가져오기
 		List<Promotion> flist = service.selectFood(); 
+		// 식품 상품 가져오기
 		List<Product> fpro = service.selectFproduct();
 		
+		// 정상적으로 가져오는지 확인
 		log.info(flist.toString());
 		log.info(fpro.toString());
 		
@@ -78,9 +84,12 @@ public class CategoryController {
 	@GetMapping("/collabo/category/tech/techList")
 	public ModelAndView techList(ModelAndView model) {
 		
+		// 전자제품 프로모션 가져오기
 		List<Promotion> tlist = service.selectTech();
+		// 전자제품 상품 가져오기
 		List<Product> tpro = service.selectTproduct();
 		
+		// 정상적으로 가져오는지 확인
 		log.info(tlist.toString());
 		log.info(tpro.toString());
 		
@@ -95,9 +104,12 @@ public class CategoryController {
 	@GetMapping("/collabo/category/fashion/fashionList")
 	public ModelAndView fashionList(ModelAndView model) {
 		
+		// 패션 프로모션 가져오기
 		List<Promotion> fslist = service.selectFashion();
+		// 패션 상품 가져오기
 		List<Product> fspro = service.selectFsproduct();
 		
+		// 정상적으로 가져오는지 확인
 		log.info(fslist.toString());
 		log.info(fspro.toString());
 		
@@ -108,33 +120,4 @@ public class CategoryController {
 		return model;
 	}
 	
-	/*
-	 * 
-	 * 		@GetMapping("/collabo/promotion/main")
-		public ModelAndView list(ModelAndView model) {
-			
-//			promotion = service.selectAll();
-			
-//			model.addObject("promotion", promotion);
-//			model.setViewName("/collabo/promotion/main");
-			
-			List<Promotion> list = service.selectAll();
-			
-			log.info(list.toString());
-			
-			model.addObject("list", list);
-			model.setViewName("/collabo/promotion/main");
-			
-			return model;
-		}
-
-	
-
-	
-	@GetMapping("/collabo/brand/brand")
-	public String brand() {
-		return "/collabo/brand/brand";
-	}
-	
-	 */	
 }

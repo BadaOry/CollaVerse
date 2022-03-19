@@ -18,53 +18,12 @@ public class PromotionServiceImpl implements PromotionService {
 	@Autowired
 	private CollaboMapper mapper;
 
-	/*
-	@Override
-	public List<Promotion> pmtMainList() {
-		
-		return mapper.pmtMainList();
-	}
-	*/
-
 
 	@Override
 	public List<Promotion> selectAll() {
 		
 		return mapper.selectAll();
 	}
-
-
-	/*
-	@Override
-	public Promotion selectAll() {
-		
-		return mapper.selectAll();
-	}
-	*/
-
-/*
-	@Override
-	public int getPromotionCount() {
-
-		return mapper.getPromotionCount();
-	}
-
-	@Override
-	public List<Promotion> getPromotionList(PageInfo pageInfo) {
-		int offset = (pageInfo.getCurrentPage() - 1) * pageInfo.getListLimit();
-		int limit = pageInfo.getListLimit();
-		RowBounds rowBounds = new RowBounds(offset, limit);
-		return mapper.selectAll(rowBounds);
-	}
-*/
-	
-/*
-	@Override
-	public Promotion findPromotionByNo(int no) {
-		
-		return mapper.selectPromotionByNo(no);
-	}
-*/
 	
 	public int save(Promotion promotion) {
 		int result = 0;
@@ -142,21 +101,6 @@ public class PromotionServiceImpl implements PromotionService {
 		return mapper.productSave(productVo3);
 		
 	}
-
-	@Override
-	public List<Brand> selectBrandIntro() {
-		// TODO Auto-generated method stub
-		return mapper.selectBrandIntro();
-	}
-
-
-	@Override
-	public List<Brand> selectBrandIntro(int pmtNo) {
-		
-		log.info("[ServiceImpl] getBrandInfo 를 위해 pmtNo 잘 가져오는지 확인 : {}", pmtNo);
-		
-		return mapper.selectBrandIntro(pmtNo);
-  }
 
 
 	@Override

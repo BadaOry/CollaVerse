@@ -20,9 +20,10 @@ public class Product {
 	
 	private String proImgpath;
 	
-	// 외래키 (Category 참조)
+	// CATEGORY 테이블 참조
 	private String cNo;
 	
+	// PROMOTION 테이블 참조
 	private String pmtNo;
 	
 	private String originalFileName;

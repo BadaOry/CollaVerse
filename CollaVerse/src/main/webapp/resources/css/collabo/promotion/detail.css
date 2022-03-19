@@ -97,6 +97,7 @@
 
 .proInfo img {
 	border-radius: 15px;
+	margin: 0 0 2%;
 }
 
 .promotion_input {
@@ -199,4 +200,20 @@
 
 .proList3 {
 	margin: 0 5px;
+}
+
+.p_date_name {
+    font-family: 'Sam3KRFont';
+    font-size: 22px;
+    text-align: left;
+    color: #730e74;
+    margin: 30px 0 30px 50px;
+    width: 60%;	
+}
+
+.p_date {
+    font-family: 'DOSGothic';
+    font-size: 15px;
+    text-align: left;
+    margin: 0 10%;
 }

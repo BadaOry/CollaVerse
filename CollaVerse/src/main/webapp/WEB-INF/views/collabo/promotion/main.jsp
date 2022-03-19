@@ -21,50 +21,42 @@
 
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
     
-    <!-- <div class="write_pro"> -->
-    	
-    <!-- </div> -->
-    
     <div class="frame">
     
-<!--
-   <div class="colla_img">콜라보 소개이미지</div> 
-
-	<div class="promotion_slide">
-		
-					<div>
-						<a>
-							<img src="${ pageContext.request.contextPath }/resources/images/promotion_slide/NB X PEANUTS.jpg">
-						</a>
-					</div>
-					
-					<div>
-						<a>
-							<img src="${ pageContext.request.contextPath }/resources/images/promotion_slide/LINECHEF X SNOOPY.jpg">
-						</a>
-					</div>
-					
-					<div>
-						<a>
-							<img src="${ pageContext.request.contextPath }/resources/images/promotion_slide/Z X FILA.jpg">
-						</a>
-					</div>					
-	</div>
--->
     <div id="promotion">
     <c:if test="${ loginMember.role == '관리자'}">
     		<button id="write_pro" onclick="location.href='${ path }/collabo/promotion/writing_promotion'">프로모션 작성하기</button></c:if>
-        <h3 class="mini_title" style= "margin:0; padding:0">최신 프로모션</h3>
-<!--          
-        <a onclick="location.href='${ path }/collabo/promotion/detail?pmtNo=1'">
-        	클릭해서 테스트용 pmt_no=1 으로 이동
-        </a>
--->
-    		
+        <h3 class="mini_title">최신 프로모션</h3>    		
     </div>
         
     <div class="p_new">
-            <div class= p_list1">
+    
+    		 <!-- 새로 추가되는 프로모션 등록 -->
+             <div class="p_list6">
+             <c:forEach var="list" items="${ list }" begin="15">
+            <table>
+            <tr>
+            <td> 
+            		<a href="${ path }/collabo/promotion/detail?pmtNo=${ list.no }">                               
+                    <img src="${ path }${ list.imgPath }${ list.no }.jpg" alt="" width="250px" height="250px">
+                    </a> 
+            </td>
+            </tr>         
+                <tr>
+                <td>
+                <a href="${ path }/collabo/promotion/detail?pmtNo=${ list.no }">                  
+                ${ list.title }
+                </a>
+                </td>
+                </tr>
+                <tr>
+				<td><fmt:formatDate value="${ list.startDate }" pattern="yyyy-MM-dd ~"/></td>
+				</tr>
+				</table>
+ 			</c:forEach>
+            </div>
+            
+            <div class= "p_list1">
             <c:forEach var="list" items="${ list }" begin="0" end="2">
             <table>
             <tr>
@@ -188,21 +180,6 @@
 </div>
 
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 
-
-<!--  	
-	<script>
-	$(document).ready(function(){
-		$(".promotion_slide").slick(
-				{
-					dots: true,
-					autoplay : true,
-					autoplaySpeed: 5000
-				}		
-		)	
-	});
-
-</script>
--->
 	
 </body>
 </html>

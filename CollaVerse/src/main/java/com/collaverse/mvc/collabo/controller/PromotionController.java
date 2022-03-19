@@ -107,8 +107,6 @@ public class PromotionController {
 		
 		// pmt_status 는 쿼리에서 디콜트로 y
 		// start_date & end_date는 받아와야 함
-		// > 1. promotion/detail 페이지에서 start enddate 를 보여주는 공간이 없네요
-		//        > insert 문 구현 완료되면 지현님이랑 상의해서 어디넣을지 
 		promotionVo.setStartDate(startDate);
 		promotionVo.setEndDate(endDate);
 		
@@ -315,7 +313,7 @@ public class PromotionController {
 		@GetMapping("/collabo/promotion/main")
 		public ModelAndView list(ModelAndView model) {
 			
-			// Promotion 정보 가져옴 
+			// Promotion 정보 가져오기 
 			List<Promotion> list = service.selectAll();
 			
 			// 정상적으로 가져오는지 확인 
@@ -343,16 +341,12 @@ public class PromotionController {
 		
 		log.info("[Controller] service 가 가져온 Promotion 정보 : {} ", pmt);
 		
-		// 2. Product 정보 가져오기 (못가져오고 있음, mapper.xml 쪽의 문제로 추측)
+		// 2. Product 정보 가져오기 
 		pdt = service.getProductInfo(pmtNo);
 		
 		log.info("[Controller] service 가 가져온 Product 정보 : {} ", pdt);
 		
-		// 3. Brand 정보 가져오기 
-		br = service.selectBrandIntro(pmtNo);
-		log.info("[Controller] service 가 가져온 Brand 정보 : {} ", br);
-		
-		// 4. heartCheck 처리하기
+		// 3. heartCheck 처리하기
 		int heartCheck = 0;
 		if(loginMember  != null){
 			int heartMemNo = loginMember.getNo();

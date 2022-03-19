@@ -67,10 +67,6 @@ public interface CollaboMapper {
 	int productUpdate(Product productVo);
 	
 	// 브랜드 조회 
-	List<Brand> selectBrandIntro();
-
-	List<Brand> selectBrandIntro(int pmtNo);
-
 	List<Brand> selectBrand();
 
 	List<Brand> selectBrandDetail2(String alphabet);

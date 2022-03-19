@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
@@ -23,7 +21,7 @@
 
     <div class="brand_list">
   
-	<p>BRAND</p>
+	<p>브랜드<p>
 		
 	<div class="brand_logo">
     		<div class=area1>
@@ -32,7 +30,7 @@
     			<tr>
     			<td>
     				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
-    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="220px" height="120px">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="190px" height="100px">
     				</a>
     			</td>
     			</tr>
@@ -46,7 +44,7 @@
     			<tr>
     			<td>
     				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
-    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="220px" height="120px">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="190px" height="100px">
     				</a>
     			</td>
     			</tr>
@@ -60,7 +58,7 @@
     			<tr>
     			<td>
     				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
-    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="220px" height="120px">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="190px" height="100px">
     				</a>
     			</td>
     			</tr>
@@ -74,7 +72,7 @@
     			<tr>
     			<td>
     				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
-    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="220px" height="120px">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="190px" height="100px">
     				</a>
     			</td>
     			</tr>
@@ -88,7 +86,7 @@
     			<tr>
     			<td>
     				<a href="${ path }/collabo/promotion/detail?pmtNo=${ blist.brPmtNo }">
-    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="220px" height="120px">
+    				<img src="${ path }${ blist.brImgPath }${ blist.brMemberNo }.jpg" alt="" width="190px" height="100px">
     				</a>
     			</td>
     			</tr>
@@ -99,7 +97,7 @@
     </div>
 		
 	<div class="brand_array">
-			<p>ABC</p>			 
+			<p>ABC</p>	 
 								
 	</div>
 			
@@ -264,8 +262,7 @@
 			</ul>
 			</div>
 						
-	</div>
-	
+	</div>	
 	</div>
 	
 

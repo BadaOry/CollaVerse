@@ -14,19 +14,21 @@ public class BrandServiceImpl implements BrandService {
 	@Autowired
 	private CollaboMapper mapper;
 
+	// 프로모션 조회
 	@Override
 	public List<Promotion> selectAll() {
 		
 		return mapper.selectAll();
 	}
 
+	// 브랜드 전체 조회
 	@Override
 	public List<Brand> selectBrand() {
 		
 		return mapper.selectBrand();
 	}
 
-
+	// 알파벳별 브랜드 조회
 	@Override
 	public List<Brand> selectBrandDetail(String alphabet) {
 		

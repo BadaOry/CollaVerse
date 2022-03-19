@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Brand {
+	// MEMBER 테이블 참조
 	private int brMemberNo;
 	
 	private String brName;
@@ -16,6 +17,7 @@ public class Brand {
 	
 	private String brImgPath;
 	
+	// PROMOTION 테이블 참조
 	private int brPmtNo;
 	
 }
