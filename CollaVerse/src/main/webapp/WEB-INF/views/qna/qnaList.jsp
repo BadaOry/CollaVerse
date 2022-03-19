@@ -195,6 +195,12 @@ a {
 	font-family: 'DOSGothic';
 	height: 40px;
 }
+#info_container #serviceInfo {
+	margin-top: 12px;
+}
+#info_container #gitHub {
+	margin-top: 11px;
+}
 </style>
 </head>
 <body>

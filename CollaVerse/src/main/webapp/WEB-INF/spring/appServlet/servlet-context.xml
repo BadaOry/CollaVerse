@@ -40,6 +40,9 @@
 			<mapping path="/member/myPage"/>
 			<mapping path="/member/myPage_business"/>
 			<mapping path="/member/update"/>
+			
+			<mapping path="/mypage/businessMypage" />
+			<mapping path="/mypage/statistics/statisticsCount" />
       
       
       <!-- Crystal Part -->
