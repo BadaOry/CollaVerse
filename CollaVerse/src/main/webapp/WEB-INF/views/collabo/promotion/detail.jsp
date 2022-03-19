@@ -44,7 +44,7 @@
 
     <div class="p_title">
         <hr>
-        	<div style="width: 10%; float: left">
+        	<div style="width: 3%; float: left">
         		<table>
         			<tr>
         				<td>
@@ -69,14 +69,17 @@
         				</td>
         			</tr>
         		</table>
-        	</div>     	
-        	<div style="width: 90%; float: left">
+        	</div>
+        	<!-- 제품명 가운데 정렬 맞추기 위해 style 수정 -->     	
+        	<div style="width: 97%; float: left">
 		        <p><strong>${ promotionInfo.title }</strong></p>
         	</div>
-        <hr>
+        	
+    	<hr>        	
     </div>
     
     <div class="p_explain">
+
         <p>프로모션 설명</p>
     </div>
 
@@ -133,10 +136,15 @@
 	            <p>${ productInfo.proContent }</p>
 	            </td>
 	            </tr>
-				</table>
-			
+	          
+				<tr>
+				<td>
+	            <p> ( 구매 수량: ${ productInfo.proQty } ) </p>
+	            </td>
+	            </tr>                       	            
+				</table>		
         </c:forEach>
-        </div>
+        </div>                     
         
         <div class="proList2">
         <c:forEach var="productInfo" items="${ productInfo }" begin="1" end="1">
@@ -165,6 +173,12 @@
 	            <p>${ productInfo.proContent }</p>
 	            </td>
 	            </tr>
+	            
+				<tr>
+				<td>
+	            <p> ( 구매 수량: ${ productInfo.proQty } ) </p>
+	            </td>
+	            </tr>   	            
 				</table>
 			
         </c:forEach>
@@ -197,6 +211,12 @@
 	            <p>${ productInfo.proContent }</p>
 	            </td>
 	            </tr>
+	            
+				<tr>
+				<td>
+	            <p> ( 구매 수량: ${ productInfo.proQty } ) </p>
+	            </td>
+	            </tr>   	            
 				</table>
 			
         </c:forEach>
@@ -205,30 +225,19 @@
 		</div>
 
     </div>
-
-    <hr>
-
-<!--       
-     <div class="brand_title">
-        <p>브랜드 소개</p>
-     </div>
-     
-     <div class="brand_introduction"> 
-     <c:forEach var="brandInfo" items="${ brandInfo }" begin="0" end="1">  
-        <table>
-        		<tr>
-        		<td>
-                <p>${ brandInfo.brName }</p>
-                </td>
-                <td>
-	            <p>${ brandInfo.brContent }</p>
-	            </td>                
-                </tr>
-                
-		</table>		
-        </c:forEach>
+    
+    <div class="p_date_name">
+        <p>프로모션 기간</p>
     </div>
--->
+    
+    <div class="p_date">
+        		<table>
+        		<tr>
+        		<td><fmt:formatDate value="${ promotionInfo.startDate }" pattern="yyyy-MM-dd ~"/></td>
+                <td><fmt:formatDate value="${ promotionInfo.endDate }" pattern="yyyy-MM-dd"/></td>        		
+                </tr>
+				</table>       
+    </div>          
 
 </div>
 

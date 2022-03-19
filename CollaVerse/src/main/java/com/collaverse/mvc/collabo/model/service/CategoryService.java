@@ -7,6 +7,7 @@ import com.collaverse.mvc.collabo.model.vo.Promotion;
 
 public interface CategoryService {
 
+	// 카테고리별 Promotion 조회
 	List<Promotion> selectLiving();
 
 	List<Promotion> selectCulture();
@@ -17,6 +18,7 @@ public interface CategoryService {
 
 	List<Promotion> selectFashion();
 
+	// 카테고리별 Product 조회
 	List<Product> selectLproduct();
 
 	List<Product> selectCproduct();

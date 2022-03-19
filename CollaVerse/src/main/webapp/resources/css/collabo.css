@@ -6,7 +6,6 @@
 }
 
 /* 콜라보 메인 */
-
 /* 프로모션 작성 버튼 */
 #write_pro {
 	background-color:#720e74;
@@ -35,31 +34,12 @@
    	top:1px;
 }
 
-/* 콜라보 메인 정보 부분 */ 
-
-/* 슬라이드 부분 현재 사용하지 않고 있음
-.colla_img{
-    font-family: 'Nanum Gothic', sans-serif;
-    background-color: rgb(198, 182, 218);
-    height: 350px;
-    text-align: center;
-    margin: 3%;
-}
-
-.promotion_slide{
-	width: 620px; 
-	margin: 0 auto;
-	margin-top: 1%;
-	margin-bottom: 5%;	
-}
-*/
-
+/* 최신 프로모션 */
 .promotion{
     	font-family: 'Sam3KRFont';
     	font-size: 25px;
     	text-align: left;
-    	color: #730e74;
-    	margin: 30px 0 30px 50px;    	
+    	color: #730e74; 	
     	width: 60%;
 }
 
@@ -70,8 +50,12 @@
     	margin: 30px 0 30px 50px;
 }
 
+.mini_title{
+    	margin: 2% 3%;	
+}
+
 .p_new {
-	margin: 2.5% 5%; /*화면 % 확 후 다시 조절*/
+	margin: 2.5% 50%; 
 	font-family: 'DOSGothic';
 	display: flex;
   	flex-direction: row;
@@ -98,19 +82,23 @@
 }
 
 .p_list1 {
-	margin: 0 7px;
+	margin: 0 5px;
 }
 
 .p_list2 {
-	margin: 0 7px;
+	margin: 0 5px;
 }
 
 .p_list3 {
-	margin: 0 7px;
+	margin: 0 5px;
 }
 
 .p_list4 {
-	margin: 0 7px;
+	margin: 0 5px;
+}
+
+.p_list5{
+	margin: 0 5px;
 }
 
 .p_new td{
@@ -119,30 +107,31 @@
   	padding: 0 5px 5px 0;
 }
 
-/* 카테고리 목록 */
+/* 카테고리 */
 .category_name{
     font-family: 'Sam3KRFont';
     font-size: 25px;
     text-align: left;
     color: #730e74;
-    margin: 30px 0 30px 50px;
+    margin: 2% 8%;
     width: 60%;
 }
 
 .category_list td{
   text-align: center;
   font-size: 14px;
+  
 }
 
 /* 리빙 카테고리 */
-
 .living{
     font-family: 'DOSGothic';
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     text-align: center;
-    margin: 2.5% 5%; /*화면 % 확 후 다시 조절*/
+    /* 세로방향 | 가로방향 */
+    margin: 2.5% 2%;
 }
 
 .living p{
@@ -157,22 +146,12 @@
 }
 
 .living img{
-	border-radius: 10px;	
+	border-radius: 20px;	
 }
 
 .l_img{
 	text-align: center;
 }
-
-/* 
-.lproduct{
-	font-family: 'DOSGothic';
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    text-align: center;
-}
-*/
 
 .living a {
   text-decoration: none; /* 링크의 밑줄 제거 */
@@ -192,16 +171,15 @@
 	margin: 0 8px;
 }
 
+/* 문화 카테고리 */
 .culture{
     font-family: 'DOSGothic';
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     text-align: center;
-    margin: 2.5% 5%; 
+    margin: 2.5% 2%;
 }
-
-/* 문화 카테고리 */
 
 .culture p{
     text-align: center;
@@ -215,7 +193,7 @@
 }
 
 .culture img{
-	border-radius: 10px;	
+	border-radius: 20px;	
 }
 
 .culture a {
@@ -225,26 +203,25 @@
 }
 
 .culture1 {
-	margin: 0 8px;
+	margin: 0 2%;
 }
 
 .culture2 {
-	margin: 0 8px;
+	margin: 0 1%;
 }
 
 .culture3 {
-	margin: 0 8px;
+	margin: 0 1%;
 }
 
 /* 식품 카테고리 */
-
 .food{
     font-family: 'DOSGothic';
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     text-align: center;
-    margin: 2.5% 5%;
+    margin: 2.5% 2%;
 }
 
 .food p{
@@ -259,7 +236,7 @@
 }
 
 .food img{
-	border-radius: 10px;	
+	border-radius: 20px;	
 }
 
 .food a {
@@ -269,27 +246,26 @@
 }
 
 .food1 {
-	margin: 0 8px;
+	margin: 0 1%;
 }
 
 .food2 {
-	margin: 0 8px;
+	margin: 0 1%;
 }
 
 .food3 {
-	margin: 0 8px;
+	margin: 0 1%;
 }
 
+/* 테크 카테고리 */
 .tech{
     font-family: 'DOSGothic';
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     text-align: center;
-    margin: 2.5% 5%;
+    margin: 2.5% 2%;
 }
-
-/* 테크 카테고리 */
 
 .tech p{
     text-align: center;
@@ -303,7 +279,7 @@
 }
 
 .tech img{
-	border-radius: 10px;	
+	border-radius: 20px;	
 }
 
 .tech a {
@@ -313,26 +289,25 @@
 }
 
 .tech1 {
-	margin: 0 8px;
+	margin: 0 2%;
 }
 
 .tech2 {
-	margin: 0 8px;
+	margin: 0 1%;
 }
 
 .tech3 {
-	margin: 0 8px;
+	margin: 0 1%;
 }
 
 /* 패션 카테고리 */
-
 .fashion{
     font-family: 'DOSGothic';
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     text-align: center;
-    margin: 2.5% 5%;
+    margin: 2.5% 4%;
 }
 
 .fashion p{
@@ -347,7 +322,7 @@
 }
 
 .fashion img{
-	border-radius: 10px;	
+	border-radius: 20px;	
 }
 
 .fashion a {
@@ -357,28 +332,26 @@
 }
 
 .fashion1 {
-	margin: 0 8px;
+	margin: 0 2%;
 }
 
 .fashion2 {
-	margin: 0 8px;
+	margin: 0 1%;
 }
 
-.fashion3 {
-	margin: 0 8px;
-}
 
 /* 브랜드 */ 
 .brand_logo {
 	display: flex;
   	flex-direction: row;
   	justify-content: space-around;
-  	margin: 0 2%;	
+	margin: 0 2%;
 }
 
 .brand_list p{
     	font-family: 'Sam3KRFont';
-    	font-size: 40px;
+    	font-size: 30px;
+    	font-weight: bold;
     	text-align: left;
     	color: #730e74;
     	/* 위 | 오른쪽 | 아래 | 왼쪽 */
@@ -386,23 +359,21 @@
     	width: 60%;	
 }
 
-/*.brand_logo table{
-	padding: -10px;
-}*/
-
 .brand_logo img{
-	border-radius: 15px;
+	border-radius: 20px;
 }
 
 .brand_array{
-	margin: 3% 0 2% 0;
+	margin: 4% 1% 2% 0;
 }
+
+/* 브랜드 알파벳 이동*/
 .brand_englist ul{
 	list-style: none;
 	font-family: 'Sam3KRFont';
 	font-size: 35px;
 	display: inline;
-	margin-left: 23px;
+	margin-left: 1%;
 }
 
 .brand_englist li{
@@ -413,22 +384,23 @@
 	margin-left: 23px;
 }
 
-.brand_englist li:hover{
-	background-color: rgb(198, 182, 218);	
-}
-
 .brand_englist a {
   text-decoration: none; /* 링크의 밑줄 제거 */
   color: inherit; /* 링크의 색상 제거 */
 	font-family: 'Sam3KRFont';
-	font-size: 35px;
+	font-size: 28px;
 }
 
-/* 브랜드 Detail*/
+.brand_englist a:hover{
+	color: #faaf22;
+}
 
+
+/* 브랜드 Detail*/
 .select_brand{
     font-family: 'Sam3KRFont';
-    font-size: 40px;
+    font-size: 30px;
+    font-weight: bold;
     text-align: left;
     color: #730e74;
     margin: 30px 0 30px 50px;
@@ -437,12 +409,39 @@
 
 .alpha_list {
 	display: flex;
-  	flex-direction: row;
-  	justify-content: space-around;
-  	font-family: 'DOSGothic';	
-    text-align: center; 
-    margin: 0 3%; 		
+	flex-direction: row;
+	justify-content: space-around;
+	font-family: 'DOSGothic';
+	text-align: center;
+	margin: 0 4%;
+	font-size: 13px;
 }
+
+.alpha_list table{
+	border-spacing: 3%; /* 테이블 간격 조절 */
+}
+
+.alpha_list td{
+	padding : 2% 0 0 0; /* 테이블 간격 조절 */
+}
+
+.alpha_list img{
+	border-radius: 30px;
+}
+
+.alpha_list strong{
+    font-size: 20px;	
+}
+
+.no_brand{
+	text-align: left;
+	margin: 20px 0 20px 0px;
+	font-family: 'Sam3KRFont';
+	font-size: 30px;
+	color: #dbeaf8;
+	text-shadow: 4px 4px 0px #faaf22;
+}
+
 
 
 

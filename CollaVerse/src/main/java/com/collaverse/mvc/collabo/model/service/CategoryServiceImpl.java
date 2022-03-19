@@ -14,6 +14,7 @@ public class CategoryServiceImpl implements CategoryService {
 	@Autowired
 	private CollaboMapper mapper;
 
+	// 카테고리별 Promotion 조회
 	@Override
 	public List<Promotion> selectLiving() {
 		
@@ -43,6 +44,7 @@ public class CategoryServiceImpl implements CategoryService {
 		return mapper.selectFashion();
 	}
 
+	// 카테고리별 Product 조회
 	@Override
 	public List<Product> selectLproduct() {
 		

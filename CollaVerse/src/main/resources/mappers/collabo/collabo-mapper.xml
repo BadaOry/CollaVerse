@@ -77,6 +77,7 @@
 	  		<result property="brPmtNo" column="BR_PMT_NO"/>  		
   		</resultMap>  		
   		
+  		<!-- PROMOTION 전체 조회 -->
   		<select id="selectAll" parameterType="map" resultMap="promotionListResultMap">
   			<include refid="promotionListSql"/>
   			 
@@ -173,7 +174,7 @@
 			    AND HEART_MEM_NO = #{ heart_mem_no }
     	</delete>
     	
-  		
+  		<!-- 카테고리별 프로모션 정보 받아오는 부분 -->
   		<select id="selectLiving" parameterType="map" resultMap="promotionListResultMap">
   			<include refid="promotionListSql"/> 			 
   			 WHERE C_NO = '1' 
@@ -202,7 +203,7 @@
   			 WHERE C_NO = '5' 
   		</select> 
   		
-  		
+  		<!-- 카테고리별 상품 정보 받아오는 부분 -->
   		<select id="selectLproduct" parameterType="map" resultMap="productListResultMap">
   			<include refid="productListSql"/>
   			 WHERE C_NO = '1' 
@@ -226,27 +227,22 @@
   		<select id="selectFsproduct" parameterType="map" resultMap="productListResultMap">
   			<include refid="productListSql"/>
   			 WHERE C_NO = '5' 
-
   		</select>
   		
+  		<!-- Brand 조회 -->
   		<select id="selectBrand" parameterType="map" resultMap="brandListResultMap">
   			<include refid="brandListSql"/>
   		</select>
   		
-  		<select id="selectBrandIntro" parameterType="map" resultMap="brandListResultMap">
-  			SELECT BR_MEMBER_NO, BR_NAME, BR_CONTENT, BR_IMG_PATH, BR_PMT_NO 
-  			FROM PROMOTION P, BRAND B
-  			WHERE P.PMT_NO = B.BR_PMT_NO
-  		</select>
-  	
+  		<!-- 브랜드 알파벳 정렬 부분 -->
   		<select id="selectBrandDetail2" parameterType="String" resultMap="brandListResultMap">
 			SELECT *
 			FROM BRAND 
 			WHERE REGEXP_LIKE (BR_NAME, '^[ ${ alphabet } ]')		
   		</select>
   		 		
-  		 		
-  		<!-- Promotion VO 에 pmtNo 받아오려고 첫 번째 INSERT 하는 부분 -->
+  		<!-- Promotion VO 에 INSERT 하는 부분 -->  
+  		<!-- Promotion VO 에 pmtNo 받아올라고 첫 번째 INSERT 하는 부분 -->
   		<insert id="promotionSave" parameterType="com.collaverse.mvc.collabo.model.vo.Promotion"
   			useGeneratedKeys="true" keyProperty="no" keyColumn="PMT_NO">  			
   			INSERT INTO PROMOTION (
@@ -279,92 +275,5 @@
   			SET PMT_NO = #{ pmtNo }
   			WHERE PRO_NO = #{ proNo }
   		</update>
-
- <!-- 
-  		<resultMap type="Promotion" extends="promotionListResultMap" id="promotionDetailResultMap">
-  			<collection property="replies" javaType="arraylist" columnPrefix="R_" resultMap="replyResultMap"></collection>
-  		</resultMap>
-
-  		
-  		<select id="findAll" parameterType="map" resultMap="promotionListResultMap">
-  				<include refid="promotionListSql"/>
-  				
-  				<choose>
-					<when test="title != null">
-							AND PMT_TITLE LIKE '%' || #{title} || '%'
-					</when>
-					<when test="content != null">
-							AND PMT_CONTENT LIKE '%' || #{content} || '%'
-					</when>
-			</choose>
-  		</select>
-
-  		
-  		 <select id="getPromotionCount" parameterType="map" resultType="_int">
-			SELECT COUNT(*) 
-			FROM PROMOTION
-			WHERE PMT_STATUS = 'Y'
-			<choose>
-					<when test="title != null">
-							AND PMT_TITLE LIKE '%' || #{title} || '%'
-					</when>
-					<when test="content != null">
-							AND PMT_CONTENT LIKE '%' || #{content} || '%'
-					</when>
-			</choose>
-		</select>
-		
-		
-		  <select id="getPromotionList" parameterType="map" resultType="_int">
-			SELECT COUNT(*) 
-			FROM PROMOTION
-			WHERE PMT_STATUS = 'Y'
-			<choose>
-					<when test="title != null">
-							AND PMT_TITLE LIKE '%' || #{title} || '%'
-					</when>
-					<when test="content != null">
-							AND PMT_CONTENT LIKE '%' || #{content} || '%'
-					</when>
-			</choose>
-		</select>
-		
-		<select id="selectPromotionByNo" parameterType="_int" resultMap="promotionDetailResultMap">
-			SELECT 	PMT_NO,
-  					PMT_TITLE, 
-  					PMT_IMG_PATH, 
-  					PMT_CONTENT, 
-  					START_DATE, 
-  					END_DATE, 
-  					READCOUNT, 
-  					C_NO
-					FROM PROMOTION
-					WHERE PMT_STATUS = 'Y' AND PMT_NO = #{no}
-		</select>
-
-		<insert id="insertPromotion" parameterType="Promotion" useGeneratedKeys="true" keyProperty="no" keyColumn="NO">
-			INSERT INTO PROMOTION (
-				PMT_NO
-				PMT_TITLE,
-				PMT_IMG_PATH,
-				PMT_CONTENT,
-				PMT_STATUS,
-				START_DATE,
-				END_DATE,
-				READCOUNT,
-				C_NO
-			) VALUES (
-				SEQ_PROMOTION_NO.NEXTVAL,
-				#{ ptmTitle },
-				#{ pmtImtPath },
-				#{ pmtContent },
-				DEFAULT,
-				#{ startDate },
-				#{ endDate },
-				DEFAULT,
-				DEFAULT
-			)
-		</insert>
- -->
 
   </mapper>

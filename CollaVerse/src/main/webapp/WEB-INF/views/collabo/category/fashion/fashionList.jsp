@@ -51,7 +51,7 @@
             </tr>
             </table>
             </c:forEach>
-			</div>
+			</div>						
         
         <div class="fashion1">
     	<c:forEach var="fslist" items="${ fslist }" begin="0" end="0">

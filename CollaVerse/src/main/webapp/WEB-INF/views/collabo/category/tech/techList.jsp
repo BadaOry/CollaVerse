@@ -25,6 +25,35 @@
 	<div class="category_list">
 	
        <div class="tech">
+       
+              <div class="tech3">
+    	<c:forEach var="tlist" items="${ tlist }" begin="3">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ tlist.no }">
+            <div class="t_img">
+                 <img src="${ path }${ tlist.imgPath }${ tlist.no }.jpg" alt="" width="400px" height="300px">
+            </div>              
+            <p>          
+            <strong>${ tlist.title }</strong>
+            </a>
+            <p>${ tlist.content }</p>
+			</c:forEach>                       
+            <p>
+               
+    		<c:forEach var="tpro" items="${ tpro }" begin="9" end="11">
+            <table>
+            <tr>
+            	<td colspan = "2" rowspan="2" width="200px" height="150px">
+            	<img src="${ path }${ tpro.proImgpath }${ tpro.proNo }.jpg" alt="" width="120px" height="90px">
+            	</td>
+            	<td>${ tpro.proName }</td>
+            </tr>
+            <tr>
+            	<td>${ tpro.proPrice }</td>
+            </tr>
+            </table>
+            </c:forEach>
+			</div>
+			
         <div class="tech1">
     	<c:forEach var="tlist" items="${ tlist }" begin="0" end="0">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ tlist.no }">

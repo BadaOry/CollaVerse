@@ -29,12 +29,9 @@ public class BrandController {
 		// Brand 정보 
 		List<Brand> blist = service.selectBrand();
 		
-		
 		// 정상적으로 가져오는지 확인 
-/*		
 		log.info(plist.toString());
 		log.info(blist.toString()); 
-									*/
 		
 		model.addObject("plist", plist);
 		model.addObject("blist", blist);

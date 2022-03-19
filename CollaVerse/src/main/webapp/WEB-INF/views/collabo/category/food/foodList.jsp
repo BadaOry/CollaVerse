@@ -24,6 +24,35 @@
     <div class="category_list">
 
        <div class="food">
+       
+        	<div class="food4">
+    	<c:forEach var="flist" items="${ flist }" begin="3">
+    	<a href="${ path }/collabo/promotion/detail?pmtNo=${ flist.no }">
+            <div class="l_img">
+                 <img src="${ path }${ flist.imgPath }${ flist.no }.jpg" alt="" width="400px" height="300px">
+            </div>              
+            <p>          
+            <strong>${ flist.title }</strong>
+            </a>
+            <p>${ flist.content }</p>
+			</c:forEach>                       
+            <p>
+               
+    		<c:forEach var="fpro" items="${ fpro }" begin="8" end="10">
+            <table>
+            <tr>
+            	<td colspan = "2" rowspan="2" width="200px" height="150px">
+            	<img src="${ path }${ fpro.proImgpath }${ fpro.proNo }.jpg" alt="" width="120px" height="90px">
+            	</td>
+            	<td>${ fpro.proName }</td>
+            </tr>
+            <tr>
+            	<td>${ fpro.proPrice }</td>
+            </tr>
+            </table>
+            </c:forEach>
+			</div>	
+			
          <div class="food1">
     	<c:forEach var="flist" items="${ flist }" begin="0" end="0">
     	<a href="${ path }/collabo/promotion/detail?pmtNo=${ flist.no }">  

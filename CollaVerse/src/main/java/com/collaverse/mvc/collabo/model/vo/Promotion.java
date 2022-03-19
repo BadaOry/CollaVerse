@@ -28,7 +28,7 @@ public class Promotion {
 	
 	private int readCount;
 	
-	// 외래키 (Category 참조)
+	// CATEGORY 테이블 참조
 	private String cNo;
 	
 	
