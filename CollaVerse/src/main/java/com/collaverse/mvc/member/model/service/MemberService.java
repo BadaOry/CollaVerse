@@ -87,9 +87,7 @@ public interface MemberService {
 	// 7일 전 팔로우
 	int getYesterday7Count(@Param("memberNo") int memberNo); 
 
-
 	// 비밀번호변경(작성중)
-	Object findMemberByPw(String password);
-
+	Object findMemberByPw(String string);
 
 }

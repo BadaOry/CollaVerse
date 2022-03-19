@@ -25,20 +25,18 @@
 		<table>
 			  <tr>
                 <th>아이디</th>
-            <td>
-               <input type="hidden" name="no" value="${ loginMember.no }" />
-               <input type="text" name="id" id="newId" 
-                  value="${ loginMember.id }" readonly required >
-            </td>    
+            	<td>
+               		<input type="hidden" name="no" value="${ loginMember.no }" />
+               		<input type="text" name="id" id="newId" 
+                  		value="${ loginMember.id }" readonly required >
+            	</td>    
             </tr>
-            <!-- 
          	<tr>
                 <th>비밀번호</th>
-            <td>
-               <input type="password" name="password" id="pass1" value="${ loginMember.password }" required >
-            </td>    
+            	<td>
+               		<input type="password" name="password" id="pass1" value="${ loginMember.password }" required >
+            	</td>    
             </tr>
-             -->
             <tr>
                 <th>휴대폰번호</th>
                 <td>
@@ -79,11 +77,10 @@
 
 <script>
       $("#btnDelete").on("click", () => {
-         if(confirm("정말로 탈퇴하시겠습니까?")) {
+         if(confirm("정말 탈퇴하시겠습니까?")) {
             location.replace("${ path }/member/delete");
          }
       });
-
 </script>
 
 <script>
@@ -101,7 +98,6 @@
 
 </script>
 
-
 <script>
 // 비밀번호 변경(작성중)
 	$(document).ready(() => {
@@ -113,7 +109,6 @@
 		});
 	});
 </script>
-
 
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>	
 </body>

@@ -34,12 +34,13 @@
 	</table>
 	<br>
 		<div class="btnAll" align="center">
-		     <input type="submit" id="btn1" value="수정">
+		     <input type="submit" id="btn1" value="수정" onclick="validate()">
 		     <button id="btn2" onclick="window.close();">취소</button>
 		</div>
 	</form>
 </div>
 
+<!-- 
 <script>
 // 비밀번호 변경
 $(document).ready(() =>{
@@ -76,6 +77,11 @@ $(document).ready(() =>{
 		});
 		
 	});
+</script>
+ -->
+
+<script>
+// 비밀번호 변경
 		function validate() {
 			let newPw = $("#newPw").val();
 			let newPwCheck = $("#newPwCheck").val();
@@ -89,7 +95,7 @@ $(document).ready(() =>{
 				return false;
 			}
 		}
-	</script>
+</script>
 
 </body>
 </html>
