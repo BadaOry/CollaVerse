@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.collaverse.mvc.collections.model.dao.CollectionsMapper;
@@ -35,26 +36,26 @@ public class CollectionsController {
 	@GetMapping("/collections/main")
 	public ModelAndView getAllUserList(ModelAndView model) {
 		
-		List<Collections> allUserList = null;
-		List<List<Collections>> infiniteUserList = new ArrayList();
-		
-		allUserList = mapper.getAllUserIdList();
-		
-		log.info("[Controller] 받아온 id 리스트 출력 : {}", allUserList);
-		
-		// 인피니트 스크롤에 도전
-		for(int i = 0; i < (allUserList.size() /14) + 1; i++) {
-			
-			infiniteUserList.add(mapper.getInfiniteUserList(i));
-		}
-		
-		log.info("[Controller] 받아온infiniteList 리스트 출력 : {}", infiniteUserList);
-		
-		model.addObject("allUserList", allUserList);
-		model.addObject("infiniteUserList", infiniteUserList);
+		model.setViewName("/collections/main");
 		
 		return model;
 	}
+	
+
+	@PostMapping("collections/infinite")
+	public @ResponseBody List<Collections> inifineList(@RequestParam("lastBlock") int count) {
+		
+		log.info("[Controller] lastBlock 잘 오는지 확인 : {}", count);
+		
+		List<Collections> infiniteUserList = new ArrayList();
+		
+		infiniteUserList = mapper.getInfiniteUserList(count);
+		
+		log.info("[Controller] 받아온infiniteList 리스트 출력 : {}", infiniteUserList);
+		
+		return infiniteUserList;		
+	}
+	
 	
 	@PostMapping("/collections/search/result")
 	public ModelAndView searchUserList(ModelAndView model,

@@ -83,22 +83,6 @@
 	
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %>   
 	
-	<script>
-	$(document).ready(() => {
-		
-		$('#miniTitle').on('click', () => {
-        	if($('.gray').css('display') === 'none') {
-                $('.gray').show(1900, 'swing');
-            } else { 
-                $('.gray').hide(1900, 'swing');
-            }
-        });
-		
-		
-		
-	});
-   
-	
-	</script> 
+
 </body>
 </html>

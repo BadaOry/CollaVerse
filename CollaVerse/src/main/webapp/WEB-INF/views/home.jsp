@@ -27,8 +27,16 @@
 			
 				<p id="mini_title">서비스 공지사항<p>
 				
-				<div class="content"> 
-					내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 내용 실험중 
+				<div class="noticecontent"> 
+				
+					<c:forEach var="recentNoticeList" items="${ recentNoticeList }" begin="0" end="2">
+						
+						<div class="notice_div">
+							<p class="notice_title" onclick="location.href='${ path }/notice/read?bno=${ recentNoticeList.bno }'"> ${ recentNoticeList.title }</p>
+						</div>
+						
+					</c:forEach>
+					
 				</div>
 				
 			</div>

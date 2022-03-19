@@ -37,19 +37,12 @@ public interface CollectionsMapper {
 	List<Collections> findOnlyUserById(String keyword);
 	
 	List<Collections> findOnlyUserByNickname(String keyword);
+	
+	
 
 	List<Collections> getRandomUserList(); // home.jsp 랜덤 유저 받아오기
 
-	List<Collections> getInfiniteUserList(int i); // 블록별로 유저 받아오기
+	List<Collections> getInfiniteUserList(int count); // 인피니트 스크롤 :블록별로 유저 받아오기 
 	
 	
-
-//	// 팔로워 많은 순대로 가져오는 getUserListByFollower 메소드에 연결될 Mapper
-//	
-//	List<Collections> getUserListByFollower();
-//	
-//	List<Collections> getUserListByFollowerResult(@Param("userListByFollowerId") ArrayList<String> userListByFollowerId);
-
-	
-
 }

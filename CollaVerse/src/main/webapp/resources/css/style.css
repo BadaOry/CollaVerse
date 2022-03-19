@@ -8,28 +8,23 @@ header{
 	background-size: 100% 100%;
 }
 
-#title{margin: 0;/* padding: 0px 0 0 50px; *//* text-align: center; */color: #730e74;font-family: 'Sam3KRFont';font-size: 30px;margin: 20px 0 0 0;}
+#title{margin: 0; color: #730e74;font-family: 'Sam3KRFont';font-size: 30px;margin: 20px 0 0 0;}
 
 #header1 a{
 	color: white;
 	font-size: 80px;
 	text-decoration: none;
-	/* background-color: black; */
 	font-family: 'Sam3KRFont';
 	margin: 0 0 0 60px;
 	text-shadow: 4px 4px 0px #faaf22;
 }
 
 #header2{
-	/* height: 30px; */
-	/* position: relative; */
-	/* background-color: black; */
 	padding: 10px 0 0 0;
 }
 
 #header3{
 	padding: 0 0 0 650px;
-	/* background-color: black; */
 }
 
 .header_nav {
@@ -50,7 +45,6 @@ header{
 #header3 a {
 	font-size: 20px;
 	color: white;
-	/* background-color: black; */
 	height: 20px;
 	padding: 0 10px 0 10px;
 	text-decoration: none;
@@ -66,7 +60,6 @@ header{
 	display: none;
 	position: absolute;
 	padding: 10px 0 10px 0;
-	/* text-align: center; */
 }
 
 #header3 ul li:hover ul {
@@ -87,16 +80,10 @@ header{
 #section{height: auto;}
 
 #table{
-	/* padding: 25px 50px 0 0; */
 	float: right;
 	margin: 10px 30px 0 0;
 }
 
-/*
-#body{ -ms-overflow-style: none; } ::-webkit-scrollbar { display: none; }
-/*특정 부분 스크롤바 없애기
-.box{ -ms-overflow-style: none; } .box::-webkit-scrollbar{ display:none; }
-*/
 
 #search{
 	margin-top: 50px;
@@ -129,13 +116,6 @@ header{
 	object-fit: cover;
 }
 
-.eventbanner{
-	/* background: green; */
-	/* margin: 5%; */
-	/* height: 400px; */
-	/* text-align: center; */
-}
-
 .calendar{
 	background: lime;
 	margin: 5%;
@@ -143,124 +123,8 @@ header{
 	text-align: center;
 }
 
-/*
-.noticeandrank {
-	margin: 5%;
-	height: 600px;
-}
-
-.notice{
-    float: left;
-    width:48%;
-	background: red;
-//	margin: 5%; 
-	height: 600px;
-	text-align: center;
-}
 
 
-
-.rank{
-    float: right;
-    width:48%;
-	background: blue;
-//	margin: 5%; 
-	height: 600px;
-	text-align: center;
-}
-*/
-
-/*
-html, body {margin:0; overflow:;}
-img {
-    width: 8vw;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin: auto;
-}
-
-#body {
-  overflow-x: hidden;
-  height: 100vh;
-  background-color: #9f9eac;
-  /* background by SVGBackgrounds.com
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-}
-
-.fake-scroll {
-  position: absolute;
-  top: 0;
-  width: 1px;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 0 10%;
-  justify-items: end;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.image {
-  position: relative;
-  width: 300px;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-.image:nth-child(2n) {
-  justify-self: start;
-}
-.image:nth-child(1) {
-  background-image: url("https://cdn.jsdelivr.net/gh/lmgonzalves/scroll-based-animation/img/image1.jpg");
-}
-.image:nth-child(2) {
-  background-image: url("https://cdn.jsdelivr.net/gh/lmgonzalves/scroll-based-animation/img/image2.jpg");
-}
-.image:nth-child(3) {
-  background-image: url("https://cdn.jsdelivr.net/gh/lmgonzalves/scroll-based-animation/img/image3.jpg");
-}
-.image:nth-child(4) {
-  background-image: url("https://cdn.jsdelivr.net/gh/lmgonzalves/scroll-based-animation/img/image4.jpg");
-}
-.image:nth-child(5) {
-  background-image: url("https://cdn.jsdelivr.net/gh/lmgonzalves/scroll-based-animation/img/image5.jpg");
-}
-.image:nth-child(6) {
-  background-image: url("https://cdn.jsdelivr.net/gh/lmgonzalves/scroll-based-animation/img/image6.jpg");
-}
-.image:nth-child(7) {
-  background-image: url("https://cdn.jsdelivr.net/gh/lmgonzalves/scroll-based-animation/img/image7.jpg");
-}
-.image:nth-child(8) {
-  background-image: url("https://cdn.jsdelivr.net/gh/lmgonzalves/scroll-based-animation/img/image8.jpg");
-}
-.image:nth-child(9) {
-  background-image: url("https://cdn.jsdelivr.net/gh/lmgonzalves/scroll-based-animation/img/image9.jpg");
-}
-.image:nth-child(10) {
-  background-image: url("https://cdn.jsdelivr.net/gh/lmgonzalves/scroll-based-animation/img/image10.jpg");
-}
-
-@media screen and (max-width: 760px) {
-  .container {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
-
-  .image:nth-child(2n) {
-    justify-self: center;
-  }
-}
-*/
 
 footer{
 	position: relative;

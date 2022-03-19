@@ -20,6 +20,8 @@ import com.collaverse.mvc.collabo.model.dao.CollaboMapper;
 import com.collaverse.mvc.collabo.model.vo.Promotion;
 import com.collaverse.mvc.collections.model.dao.CollectionsMapper;
 import com.collaverse.mvc.collections.model.vo.Collections;
+import com.collaverse.mvc.notice.mapper.NoticeMapper;
+import com.collaverse.mvc.notice.model.Notice;
 
 /**
  * Handles requests for the application home page.
@@ -39,6 +41,9 @@ public class HomeController {
 	@Autowired
 	private CollaboMapper collaboMapper;
 	
+	@Autowired
+	private NoticeMapper noticeMapper;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 //		logger.info("Welcome home! The client locale is {}.", locale);
@@ -53,8 +58,13 @@ public class HomeController {
 		
 		
 		// 1. 공지사항 가져오기
+		List<Notice> recentNoticeList = noticeMapper.selectRecent3();
 		
+		// 정상적으로 가져오는지 확인 
+		System.out.println(recentNoticeList.toString());
 		
+		model.addAttribute("recentNoticeList", recentNoticeList);
+				
 		// 2. 프로모션 좋아요 top 3 리스트
 		List<Promotion> top3List = collaboMapper.selectTop3();
 		
