@@ -541,8 +541,8 @@ COMMIT;
 --SELECT * FROM MEMBER WHERE ID='admin' AND MEMBER_STATUS='Y';
 
 --05. 프로필 사진을 기본 이미지로 변경하는 쿼리
-UPDATE MEMBER 
-SET PROFILE_IMG = 'profile_basic.png';  
+--UPDATE MEMBER 
+--SET PROFILE_IMG = 'profile_basic.png';  
 
 
 --------------------------------------------------------------
