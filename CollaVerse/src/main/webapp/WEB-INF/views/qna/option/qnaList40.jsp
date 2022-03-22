@@ -27,7 +27,9 @@ margin: auto;
 }
 #bo {
 	background-color: #fff;
-	heifht: 100px;
+	padding-bottom: 0;
+	padding-top: 0;
+	top: 20px;
 }
 #se {
 	background-color: #fff;

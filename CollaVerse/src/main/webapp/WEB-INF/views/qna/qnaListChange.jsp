@@ -18,36 +18,80 @@
 <link rel="stylesheet" href="${ path }/resources/css/bootstrap.min.css">
 <script src="${ path }/js/jquery-3.6.0.js"></script>
 <style>
-#ho {
-width: 1200px;
-margin: auto;
+/* 헤더 */
+#header1 {
+	height: 80px;
+	margin: -20px 0 0 0; 
 }
-.card-header {
-	border-bottom: 0;
+
+#header3 {
+	margin: 35px 0 0 0;
 }
-#bo {
-	background-color: #fff;
-	heifht: 100px;
+
+
+body {
+	margin: 8px;
 }
-#se {
-	background-color: #fff;
-	position: relative;
-	left: 1055px;
-	bottom:-10px;
+	
+h2 {
+	text-align: center;
+	font-size: 100px;
 }
-table {
-	border-color : white;
+
+/* --------- */
+div {
+	/*width: 1200px;
+	 margin: auto; */
+}
+#writeButton {
+	text-align: right;
+}
+.form-group {
+	margin-left: 1180px;
+}
+.pageInfo{
+	list-style : none;
+	display: inline-block;
+	margin: 50px 0 0 100px;
+ }
+.pageInfo li{
+	float: left;
+	font-size: 20px;
+	margin-left: 18px;
+	padding: 7px;
+	font-weight: 500;
+}
+.search_area {
+	text-align: center;
+}
+
+.col-lg-12 {
+	margin : 0px 50px 20px 0px;
+	
 }
 
 .card-title {
+	/* 고정값 */
 	font-family: 'Sam3KRFont';
 	font-size: 40px;
 	color: #730e74;
 	position: relative;
-	left: -50px;
+	left: 150px;
 	/* 변경값 */
 	text-align: left;
-	margin: 50px 0 30px 50px;
+	margin: 50px 0 30px 50px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+}
+
+.card-header {
+	border-bottom : 0px solid rgba(0,0,0);
+}
+#bo {
+	background-color: #fff;
+	height: 10px;
+	margin: 0;
+}
+table {
+	border-color : white;
 }
 
 tr #t {
@@ -56,14 +100,15 @@ tr #t {
 	font-family: 'Sam3KRFont';
 	text-align: center;
 }
+
 tr td {
 	font-family: 'DOSGothic';
 	text-align: center;
 }
 tr td a {
 	text-decoration: none;
-	color: black;
 }
+
 .btn-successs {
 	margin: 0 220px 0 0;/* 고정값 */
 	background-color:#720e74;
@@ -80,13 +125,43 @@ tr td a {
 	display:inline-block;
 	width: 200px;	
 }
-.float-right {
-	width: 200px;
+
+.btn-successs:hover {
+  	/* 고정값 */
+	background-color:#faae22;
+	color: #720e74;
+	border: 2px solid #720e74;
+	
 }
+.btn-successs:active {
+	position:relative;
+	top:1px;
+}
+
+.paginationn {
+	display : flex;
+	list-style: none;
+	
+}
+
 .search_wrapp{ 
 	margin: 30px 0 50px 0;
-	text-align: center;
 }
+
+a {
+	color: black;
+}
+
+.page-item active{
+	background-color: #faae22;
+	color: #730e74;
+}
+
+.card-body {
+	padding: 20px 200px 50px 200px;
+}
+
+
 #searchbtn{
  	/* 고정값 */
 	background-color:#720e74;
@@ -127,15 +202,22 @@ tr td a {
 	margin-top: 11px;
 }
 </style>
-<%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
 <body>
-		<div id="ho" class="col-lg-12">
-   			<div class="carddd">
+<%
+	response.setHeader("pragma", "No-cache");
+	response.setHeader("Cache-Control", "no-cache");
+	response.addHeader("Cache-Control", "no-store");
+	response.setDateHeader("Expires", 1L);
+%>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+
+      	<div class="col-lg-12">
+   			<div class="cardd">
    				<div id="bo" class="card-header with-border">
    					<h3 class="card-title">FAQ 게시판</h3>
    				</div>
-   				<span id="se" class="form-group">
+				<span id="se" class="form-group">
 				    <select id="counts" name="pageUnit" onchange="Change(1)">   
 				        <option value="5" <c:if test="${ pageMaker.cri.amount == 5 }">selected="selected"</c:if>>5개씩 보기</option>
 				        <option value="10" <c:if test="${ pageMaker.cri.amount == 10 }">selected="selected"</c:if>>10개씩 보기</option>
@@ -144,6 +226,8 @@ tr td a {
 				        <option value="40" <c:if test="${ pageMaker.cri.amount == 40 }">selected="selected"</c:if>>40개씩 보기</option>
 				    </select>
 				</span>
+				
+				
    				<div class="card-body">
    					<table class="table table-borderedd">
    						<tbody>
@@ -190,9 +274,9 @@ tr td a {
    				</div>
    			</div>
       	</div>
-      	
-      	<nav aria-label="Page navigation example" style="margin-left: 560px;">
-	  <ul class="pagination justify-content-center">
+
+    <nav aria-label="Page navigation example" style="margin-left: 400px;">
+	  <ul class="paginationn justify-content-center">
 	    <!-- 이전페이지 버튼 -->
         <c:if test="${pageMaker.prev}">
             <li class="pageInfo_btn previous"><a class="page-link" href="${pageMaker.startPage-1}">Previous</a></li>
@@ -207,8 +291,10 @@ tr td a {
 	    </c:if>
 	  </ul>
 	</nav>
-	
-	<div class="search_wrapp">
+    
+    
+    
+    <div class="search_wrapp">
         <div class="search_area">
         	<select name="type" id="category">
                 <option value="" <c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>옵션을 선택해주세요</option>
@@ -223,14 +309,17 @@ tr td a {
             <button id="searchbtn">Search</button>
         </div>
     </div>   
-      	
-    <form id="moveForm" method="get">
+	
+	
+	
+	<form id="moveForm" method="get">
 		<input type="text" name="pageNum" value="${pageMaker.cri.pageNum }" style='display:none;'>
         <input type="text" name="amount" value="${pageMaker.cri.amount }" style='display:none;'>
         <input type="text" name="keyword" value="${pageMaker.cri.keyword }" style='display:none;'>
         <input type="text" name="type" value="${pageMaker.cri.type }" style='display:none;'>
     </form>
-      	
+
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </body>
 <script>
 function Change(idx){
@@ -318,5 +407,4 @@ $(".search_area button").on("click", function(e){
     moveForm.submit();
 });
 </script>
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </html>

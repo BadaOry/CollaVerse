@@ -76,7 +76,7 @@ body {
             <a class="nav-link active" data-toggle="tab" href="#followerCount">1주간 팔로워 증감량</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#genderPercent">성별 비율</a>
+            <a class="nav-link" data-toggle="tab" href="#genderPercentPie">성별 비율</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#peopleCount">팔로워 수치</a>
@@ -90,9 +90,9 @@ body {
             
             <canvas id="followerCountChart"></canvas> 
           </div>
-          <div class="tab-pane fade" id="genderPercent">
+          <div class="tab-pane fade" id="genderPercentPie">
             
-            <canvas id="genderPercentChart"></canvas> 
+            <canvas width="850vw" height="450vh" id="genderPercentPieChart"></canvas> 
           </div>
           <div class="tab-pane fade" id="peopleCount">
             
@@ -231,10 +231,10 @@ myChart = new Chart(ctx, {
 
 
 //남녀 성별 비율
-canvas = document.getElementById('genderPercentChart');
+canvas = document.getElementById('genderPercentPieChart');
 ctx = canvas.getContext('2d');
 myChart = new Chart(ctx, {
-    type: 'bar', 
+    type: 'pie', 
     plugins:[ChartDataLabels],
     data: {
         labels: ['남성', '여성'], // [X 축 데이터 라벨 (제목)]
@@ -263,34 +263,11 @@ myChart = new Chart(ctx, {
               }
             },
             legend: {
-                display: false,
+                display: true,
                 position: 'bottom'
             }
         },
-        scales: {
-                  y: { // [y 축 관련 설정] 
-                      ticks: {
-                        stepSize: 10, //y축 간격 
-                        min: 0,
-                        font: { 
-                            family: 'Helvetica Neue',
-                            size: 15,
-                            weight: 'bold',
-                            lineHeight: 1.2,   
-                        } 
-                      }
-                  },
-                  x: {
-                	  ticks: {
-	               		  font: { 
-	                             family: 'Helvetica Neue',
-	                             size: 15,
-	                             weight: 'bold',
-	                             lineHeight: 1.2,   
-	                         } 
-                	  }
-                  }
-              }     
+        responsive: false  
     }
 });
 
@@ -303,7 +280,7 @@ myChart = new Chart(ctx, {
     data: {
         labels: ['남성', '여성', '총원'], // [X 축 데이터 라벨 (제목)]
         datasets: [{
-                  axis: 'y',
+                  axis: 'x',
                   label: '남녀 수치',
                   // barPercentage: 0.2,
                   barThickness: 100,
@@ -334,10 +311,12 @@ myChart = new Chart(ctx, {
                 position: 'bottom'
             }
         },
-        indexAxis: 'y',
+        indexAxis: 'x',
         scales: {
         		  y: {
         			ticks: {
+        				stepSize: 5, 
+                        min: 0,
         				font: { 
                             family: 'Helvetica Neue',
                             size: 15,
@@ -346,10 +325,8 @@ myChart = new Chart(ctx, {
                         } 
         			}  
         		  },
-                  x: { // [y 축 관련 설정] 
+                  x: {
                     ticks: {
-                      stepSize: 5, //y축 간격 
-                      min: 0,
                       font: { 
                           family: 'Helvetica Neue',
                           size: 15,

@@ -26,7 +26,7 @@
 			
 			<p id="nothing">     │     </p>
 			
-			<p id="gitHub" onclick="location.href='https://github.com/BadaOry/CollaVerse'">githHub</p>
+			<p id="gitHub" onclick="location.href='https://github.com/BadaOry/CollaVerse'">gitHub</p>
 			
 		</div>
 			

@@ -37,7 +37,11 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="${ path }/resources/css/mypage/person_mypage.css">
-
+<style>
+a:link {
+	color: black;
+}
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
