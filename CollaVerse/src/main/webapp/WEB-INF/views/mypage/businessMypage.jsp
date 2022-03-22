@@ -25,28 +25,30 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- fullcalendar -->
-	<link href='${ path }/resources/fullcalendar/packages/core/main.css' rel='stylesheet' />
-	<link href='${ path }/resources/fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
-	<link href='${ path }/resources/fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
-	<link href='${ path }/resources/fullcalendar/packages/list/main.css' rel='stylesheet' />
-	<script src='${ path }/resources/fullcalendar/packages/core/main.js'></script>
-	<script src='${ path }/resources/fullcalendar/packages/interaction/main.js'></script>
-	<script src='${ path }/resources/fullcalendar/packages/daygrid/main.js'></script>
-	<script src='${ path }/resources/fullcalendar/packages/timegrid/main.js'></script>
-	<script src='${ path }/resources/fullcalendar/packages/list/main.js'></script>
+<link href='${ path }/resources/fullcalendar/packages/core/main.css' rel='stylesheet' />
+<link href='${ path }/resources/fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+<link href='${ path }/resources/fullcalendar/packages/timegrid/main.css' rel='stylesheet' />
+<link href='${ path }/resources/fullcalendar/packages/list/main.css' rel='stylesheet' />
+<script src='${ path }/resources/fullcalendar/packages/core/main.js'></script>
+<script src='${ path }/resources/fullcalendar/packages/interaction/main.js'></script>
+<script src='${ path }/resources/fullcalendar/packages/daygrid/main.js'></script>
+<script src='${ path }/resources/fullcalendar/packages/timegrid/main.js'></script>
+<script src='${ path }/resources/fullcalendar/packages/list/main.js'></script>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="${ path }/resources/css/mypage/business_mypage.css">
 
 <style>
-	#follower-result {
-		right: 100px;
-	}
+#follower-result {
+	right: 100px;
+}
+a:link {
+	color: black;
+}
 </style>
 </head>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <body>
-
   <main id="business">
     <section class="mypage">
       <div id="brand-photo">
@@ -55,10 +57,9 @@
       <div id="brand-name"><strong>${ loginMember.nickname } <span id="col">브</span><span id="la">랜</span><span id="ver">드</span><span id="se"> 페이지</span></strong></div>
     </section>
 
-
     <section id="brand-calendar">
       <p class="mini_title">브랜드 캘린더</p>
-      <a href="${ path }/mypage/calendar/scheduleDetail">
+      <a id="cs" href="${ path }/mypage/calendar/scheduleDetail">
       	<div id='calendar' style="position : relative;"></div>
       </a>
     </section>
@@ -66,42 +67,28 @@
     <section id="brand-follower">
 	    <p class="mini_title">브랜드 팔로워 - ${ followerCount } 명</p>
 	    <div id="follower">
-	    
 	    	<c:choose>
-				
 					<c:when test="${ !empty followerList }">
-					
 						<c:forEach var="followerList" items="${ followerList }"  begin="0" end="5">
-								
 							<div class="member_info_container">
 								<img id="profile_image" src="${ path }/resources/upload/profile/${ followerList.profileImg }"					
 									 onclick="location.href='${ path }/mypage/collection/list/${ followerList.toMemId }'" />
 									 
 								<p id="member_nickname">${ followerList.toMemNick }</p>	
 							</div>
-							
 						</c:forEach>
-
-						
 					</c:when>
 					
 					<c:otherwise>
-					
 						<p id="no_followernList">팔로워가 존재하지 않습니다.</p>
-						
 					</c:otherwise>
-					
-				</c:choose>
+			</c:choose>
 
-        
         <article class="more">
-        
 	        <a href="${ path }/mypage/myFollow/main">
 	        	<div class="material-icons arrow_right">arrow_right</div>
 	        </a>
-         
         </article>
-        
     	</div>
     </section>
 
@@ -135,53 +122,32 @@
       </div>
     </section>
 
-
-
     <section id="brand-collection" style="margin-bottom: 40px;">
     	<p class="mini_title">마이 컬렉션</p>
     	<div id="collection">
 	    	<c:choose>
-					
 						<c:when test="${ !empty collectionList }">
-						
 							<c:forEach var="collectionList" items="${ collectionList }" begin="0" end="5">
-									
 								<div class="member_info_container">
 									<img id="collection_image" src="${ path }/resources/upload/collection/${ collectionList.renamedFileName01 }" />
 								</div>
-								
 							</c:forEach>			
-							
 						</c:when>
-						
 						<c:otherwise>
-						
 							<p id="no_collectionList">컬렉션이 존재하지 않습니다.</p>
-							
 						</c:otherwise>
-						
 					</c:choose>
-      
         
         <article class="more"  style="width: 60px; display:inline-block; margin: 0 0 0 30px;">
-          
 	        <a href="${ path }/mypage/collection/list/${ loginMember.id }">
 	        	<div class="material-icons arrow_right">arrow_right</div>
 	        </a>
-        
         </article>
-        
-      </div>
+      	</div>
     </section>
-
   </main>
-
-
-
 </body>
-
 <script>
-
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
@@ -233,9 +199,6 @@
 
     calendar.render();
   });
-  
-
 </script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
-
 </html>

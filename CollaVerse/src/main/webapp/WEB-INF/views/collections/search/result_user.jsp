@@ -49,10 +49,12 @@
 			<select name="searchCategory" id="searchCategory">
 				<option value="id">ID</option>
 					 
-		        <option value="nickname">닉네임</option>
+		        <option value="nickname" 
+					<c:if test="${ map.searchOption == 'nickname' }">selected</c:if>
+		        >닉네임</option>
 				
 			</select>
-			<input type="text" name="keyword" id="searchUser" placeholder="아이디를 입력해주세요" required>
+			<input type="text" name="keyword" id="searchUser" placeholder="검색 내용을 입력해주세요" value="${ map.keyword }" required>
 			<input type="submit" id="searchSubmit" value="검색">
 
 		</form>

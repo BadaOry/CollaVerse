@@ -71,8 +71,6 @@
 		       <option value="#4d638c" style="color:#4d638c;">패션</option>
 		   </select>
 		</div>
-		<button class = "ok-button" type= "button" id="deleteB" >삭제</button>
-		<button class = "ok-button" type= "button" onclick="click_modify();">수정</button>
 		<button class = "ok-button" type= "button" onclick="click_confirm();">확인</button>
 	</div>	
 	
@@ -83,19 +81,16 @@
 
 function click_modify(){
 
-	alert('수정누름');
+
 };
 
 function click_confirm(){
 
-	alert('확인누름');
 	window.close();
 };
 
 function click_delete(){
 
-	alert('삭제누름');
-	
 	var scheduleData = JSON.stringify($('form#scheduleData').serializeObject());
 	
 	$.ajax({

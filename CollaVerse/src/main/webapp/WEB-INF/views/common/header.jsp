@@ -110,7 +110,7 @@
 						</li>
 					</c:if>
 					
-					<li><a class="menu_title"  href="${ path }/qna/test">FAQ</a></li>
+					<li><a class="menu_title"  href="${ path }/qna/qnaList">FAQ</a></li>
 				</ul>
 			</nav>
 		</div>

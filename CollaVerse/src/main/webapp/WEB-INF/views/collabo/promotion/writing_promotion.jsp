@@ -222,6 +222,21 @@
 </div>
 </form>
 
+<!-- 	<script>
+		 	$('[name="promImg"]').on('change',function(){
+		 	    console.log('파일 변경 성공');
+		 	    
+		 	    var reader = new FileReader();
+		 		
+	           reader.onload = function (e) {
+	               document.getElementById("imagePreview").src = e.target.result;
+	           };
+	
+	           reader.readAsDataURL(this.files[0]);
+		 	    
+		 	});
+	</script> -->
+
 	<%@ include file="/WEB-INF/views/common/footer.jsp" %> 
 
 </body>
