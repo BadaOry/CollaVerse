@@ -136,20 +136,11 @@ input, textarea{
 	height: auto;
 }
 
-#reply {
-	margin: 10px 0 0 180px;
-	background-color: antiquewhite;
-	width: 1150px;
-	font-family:'DOSGothic';
-	padding: 10px 0 0px 0;
+#info_container #serviceInfo {
+	margin-top: 12px;
 }
-
-#reply_content{ 
-	margin: 0 0 30px 50px;
-}
-
-#reply_info {
-	margin: 0px 0 0px 30px;
+#info_container #gitHub {
+	margin-top: 11px;
 }
 </style>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>

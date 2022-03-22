@@ -75,6 +75,14 @@ input, textarea {
 	background-color : #730e74;
 	border-color: #faae22;	
 }
+.btn-primary:hover {
+	background-color: #730e74;
+	border-color: #730e74;
+}
+.btn-success:hover {
+	background-color: #730e74;
+	border-color: #730e74;
+}
 
 .btn-warning {
 	font-family: 'Sam3KRFont';
@@ -97,7 +105,12 @@ input, textarea {
 .card-footer {
 	background-color: white;
 }
-
+#info_container #serviceInfo {
+	margin-top: 12px;
+}
+#info_container #gitHub {
+	margin-top: 11px;
+}
 </style>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>

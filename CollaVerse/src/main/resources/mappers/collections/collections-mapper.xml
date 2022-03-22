@@ -105,7 +105,7 @@
 			AND MEMBER_ROLE = '개인'
 	</select>
 	
-	<select id="finOnlyUserByNickname" parameterType="String" resultMap="listResultMap" resultType="arrayList">
+	<select id="findOnlyUserByNickname" parameterType="String" resultMap="listResultMap" resultType="arrayList">
 		SELECT ID, NICKNAME, PROFILE_IMG
 		FROM MEMBER 
 		WHERE NICKNAME LIKE '%' || #{ keyword } || '%' 
