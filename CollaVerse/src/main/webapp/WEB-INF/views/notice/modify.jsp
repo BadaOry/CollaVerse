@@ -107,7 +107,12 @@ input, textarea {
 .card-footer {
 	background-color: white;
 }
-
+#info_container #serviceInfo {
+	margin-top: 12px;
+}
+#info_container #gitHub {
+	margin-top: 11px;
+}
 </style>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
@@ -182,4 +187,5 @@ $("#delete_btn").on("click", function(e){
 });
 </script>	
 </body>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </html>

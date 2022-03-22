@@ -75,6 +75,34 @@ input, textarea {
 	background-color : #730e74;
 	border-color: #faae22;	
 }
+#list_btn {
+	font-family: 'Sam3KRFont';
+	font-size: 15px;
+	color: white;
+	/* 변경값 */
+	margin: 0px 0 0px 30px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 80px;
+	background-color : #730e74;
+	border-color: #faae22;	
+}
+#save_btn {
+	font-family: 'Sam3KRFont';
+	font-size: 15px;
+	color: white;
+	/* 변경값 */
+	margin: 0px 0 0px 30px; /* 위아래 마진은 고정, 왼쪽 마진만 변경하여 사용*/
+	width: 80px;
+	background-color : #730e74;
+	border-color: #faae22;	
+}
+/*.btn-primary:hover {
+	background-color: #730e74;
+	border-color: #730e74;
+}
+.btn-success:hover {
+	background-color: #730e74;
+	border-color: #730e74;
+}*/
 
 .btn-warning {
 	font-family: 'Sam3KRFont';
@@ -97,7 +125,12 @@ input, textarea {
 .card-footer {
 	background-color: white;
 }
-
+#info_container #serviceInfo {
+	margin-top: 12px;
+}
+#info_container #gitHub {
+	margin-top: 11px;
+}
 </style>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 </head>
@@ -122,15 +155,21 @@ input, textarea {
 				</div>
 			</div>
 			<div class="card-footer">
-				<button type="button" class="btn-primary"  style="margin: 0 0 0 180px;"><i class="fa fa-list"></i> 목록</button>
+				<button type="button" id="list_btn" class="btn-primary listBtn"  style="margin: 0 0 0 180px;"><i class="fa fa-list"></i> 목록</button>
 				<div class="float-right">
 					<button type="reset" class="btn-warning"><i class="fa fa-reply"></i> 초기화</button>
-					<button type="submit" class="btn-success" style="margin: 0 180px 0 0;"><i class="fa fa-save"></i> 저장</button>
+					<button type="submit" id="save_btn" class="btn-success Save" style="margin: 0 180px 0 0;"><i class="fa fa-save"></i> 저장</button>
 				</div>
 			</div>
 		</div>
 	</form>
 </body>
+<script>
 
+/* 목록 버튼 */
+$("#list_btn").on("click", function(e){
+	location.href="${path}/qna/qnaList";
+});
+</script>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </html>

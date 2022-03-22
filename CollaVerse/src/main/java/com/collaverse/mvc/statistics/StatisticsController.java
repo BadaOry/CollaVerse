@@ -23,7 +23,6 @@ public class StatisticsController {
 		
 		int memberNo = loginMember.getNo();
 		
-		
 		int womenCount = service.getWomenCount(memberNo);
   		int menCount = service.getMenCount(memberNo);
   		int teenagerCount = service.getTeenagerCount(memberNo);
